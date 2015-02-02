@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import java.util.List;
@@ -130,7 +131,21 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        return new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+
+            @Override
+            public int getSpanSize(int position) {
+                switch(position){
+                    case 0:
+                        return 2;
+                    default:
+                        return 1;
+                }
+            }
+
+        });
+        return gridLayoutManager;
     }
 
     @Override

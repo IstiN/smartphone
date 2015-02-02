@@ -46,6 +46,13 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
+        View contentView = holder.itemView.findViewById(R.id.content);
+        /*TODO if (position == 0) {
+            ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
+            layoutParams.height = layoutParams.height * 2;
+            contentView.setLayoutParams(layoutParams);
+        }*/
+
         CursorModel cursorModel = mSmartModel.get(position);
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
         String photoUri = cursorModel.getString(ContactsContract.Contacts.PHOTO_URI);
