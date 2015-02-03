@@ -11,8 +11,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <color name="material_blue_500">#728f9c</color>
-    <color name="material_blue_700">#668390</color>
-    <color name="material_blue_A200">#d4405b78</color>
+    <color name="material_blue_500">#4785f4</color>
+    <color name="material_blue_700">#3767d6</color>
+    <color name="material_blue_A200">#d44785f4</color>
 
 </resources>

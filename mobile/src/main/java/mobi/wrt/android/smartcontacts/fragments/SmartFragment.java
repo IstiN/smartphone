@@ -1,12 +1,15 @@
 package mobi.wrt.android.smartcontacts.fragments;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +21,11 @@ import java.util.List;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.ContentUtils;
+import by.istin.android.xcore.utils.CursorUtils;
+import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.fragments.adapter.SmartAdapter;
 
 /**
@@ -49,6 +55,8 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
 
     public static class SmartModel extends CursorModel{
 
+        private CursorModel mLastCall;
+
         public SmartModel(Cursor cursor) {
             super(cursor);
         }
@@ -57,6 +65,20 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
             super(cursor, isMoveToFirst);
         }
 
+        @Override
+        public void doInBackground(Context context) {
+            super.doInBackground(context);
+            Cursor lastCall = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, RecentFragment.PROJECTION, null, null, RecentFragment.ORDER + " LIMIT 1");
+            if (lastCall != null && lastCall.moveToFirst()) {
+                mLastCall = new CursorModel(lastCall);
+            }
+        }
+
+        @Override
+        public void close() {
+            super.close();
+            CursorUtils.close(mLastCall);
+        }
     }
 
     public static final String[] PROJECTION = new String[]{ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_URI};
@@ -107,6 +129,32 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
     @Override
     public SmartAdapter createAdapter(FragmentActivity fragmentActivity, SmartModel cursor) {
         return new SmartAdapter(cursor);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
+        super.onLoadFinished(loader, cursor);
+        final View recentCallView = getActivity().findViewById(R.id.recent_call);
+        final View headerView = getActivity().findViewById(R.id.header);
+        RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall);
+        getCollectionView().setOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            private boolean isVisible = true;
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                Log.xd(SmartFragment.this, " state " + newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                Log.xd(SmartFragment.this, dx + " " + dy);
+                headerView.setTop(-dy);
+            }
+
+        });
     }
 
     @Override

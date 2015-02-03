@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import by.istin.android.xcore.model.CursorModel;
+import by.istin.android.xcore.utils.Log;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 
@@ -57,6 +58,7 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
         String photoUri = cursorModel.getString(ContactsContract.Contacts.PHOTO_URI);
         holder.mTextView.setText(name);
+        Log.xd(this, photoUri);
         Picasso.with(holder.mImageView.getContext()).load(photoUri).into(holder.mImageView);
     }
 
