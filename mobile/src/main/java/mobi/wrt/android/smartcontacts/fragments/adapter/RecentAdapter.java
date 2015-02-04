@@ -48,8 +48,11 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.Holder> {
 
     private RecentFragment.RecentModel mRecentModel;
 
-    public RecentAdapter(RecentFragment.RecentModel recentModel) {
+    private int mTopPadding;
+
+    public RecentAdapter(RecentFragment.RecentModel recentModel, int topPadding) {
         this.mRecentModel = recentModel;
+        this.mTopPadding = topPadding;
     }
 
     @Override
@@ -60,6 +63,9 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
+        if (position == 0) {
+            holder.itemView.setPadding(0, mTopPadding, 0, 0);
+        }
         CursorModel cursorModel = mRecentModel.get(position);
         initItem(holder, cursorModel);
     }

@@ -15,6 +15,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.fragments.adapter.SmartAdapter;
+import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**
  * Created by IstiN on 31.01.2015.
@@ -128,33 +131,14 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
 
     @Override
     public SmartAdapter createAdapter(FragmentActivity fragmentActivity, SmartModel cursor) {
-        return new SmartAdapter(cursor);
+        return new SmartAdapter(cursor, findFirstResponderFor(IFloatHeader.class).attach(getCollectionView()));
     }
 
     @Override
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
-        super.onLoadFinished(loader, cursor);
         final View recentCallView = getActivity().findViewById(R.id.recent_call);
-        final View headerView = getActivity().findViewById(R.id.header);
         RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall);
-        getCollectionView().setOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            private boolean isVisible = true;
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                Log.xd(SmartFragment.this, " state " + newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                Log.xd(SmartFragment.this, dx + " " + dy);
-                headerView.setTop(-dy);
-            }
-
-        });
+        super.onLoadFinished(loader, cursor);
     }
 
     @Override

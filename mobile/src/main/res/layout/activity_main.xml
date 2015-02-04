@@ -10,17 +10,17 @@
         android:elevation="2dp"
         android:background="?attr/colorPrimary"
         android:orientation="vertical"
-        android:animateLayoutChanges="true">
+        >
 
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/recent_call"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dip"
-            android:layout_marginLeft="8dip"
-            android:layout_marginRight="8dip"
-            android:layout_marginBottom="4dip"
+            android:layout_height="@dimen/height_recent_call"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin_small"
             android:background="#fafafa"
             card_view:cardCornerRadius="2dp">
 
@@ -39,7 +39,6 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header"
         android:background="#fafafa"/>
 
 </RelativeLayout>

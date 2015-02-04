@@ -5,23 +5,31 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
+import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements IFloatHeader {
 
     private SlidingTabLayout mSlidingTabLayout;
 
     private ViewPager mViewPager;
+
+    private RecyclerView.OnScrollListener mFloatHeaderScrollListener;
+
+    private int mAdditionalAdapterHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +72,35 @@ public class MainActivity extends ActionBarActivity {
         });
         mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setViewPager(mViewPager);
+
+        final View recentCallView = findViewById(R.id.recent_call);
+        final int heightRecentCall = getResources().getDimensionPixelSize(R.dimen.height_recent_call);
+        final int defaultMargin = getResources().getDimensionPixelSize(R.dimen.default_margin);
+        final int defaultMarginSmall = getResources().getDimensionPixelSize(R.dimen.default_margin_small);
+        final int heightOfTabs = findViewById(R.id.sliding_tabs).getLayoutParams().height;
+        mAdditionalAdapterHeight = heightRecentCall + defaultMargin + defaultMarginSmall + heightOfTabs;
+        mFloatHeaderScrollListener = new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) recentCallView.getLayoutParams();
+                int newTopMargin = layoutParams.topMargin - dy;
+                if (newTopMargin > defaultMargin) {
+                    newTopMargin = defaultMargin;
+                } else if (newTopMargin < -(defaultMarginSmall + heightRecentCall)) {
+                    newTopMargin = -(defaultMarginSmall + heightRecentCall);
+                }
+                layoutParams.topMargin = newTopMargin;
+                recentCallView.setLayoutParams(layoutParams);
+            }
+
+        };
     }
 
     public void onContactMoreClick(View view) {
@@ -90,5 +127,11 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public int attach(RecyclerView recyclerView) {
+        recyclerView.setOnScrollListener(mFloatHeaderScrollListener);
+        return mAdditionalAdapterHeight;
     }
 }

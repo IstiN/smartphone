@@ -4,6 +4,7 @@ import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,8 +36,11 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
 
     private SmartFragment.SmartModel mSmartModel;
 
-    public SmartAdapter(SmartFragment.SmartModel smartModel) {
+    private int mTopPadding;
+
+    public SmartAdapter(SmartFragment.SmartModel smartModel, int topPadding) {
         this.mSmartModel = smartModel;
+        this.mTopPadding = topPadding;
     }
 
     @Override
@@ -48,6 +52,9 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         View contentView = holder.itemView.findViewById(R.id.content);
+        if (position == 0) {
+            holder.itemView.setPadding(0, mTopPadding, 0, 0);
+        }
         /*TODO if (position == 0) {
             ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
             layoutParams.height = layoutParams.height * 2;

@@ -12,6 +12,7 @@ import by.istin.android.xcore.model.CursorModel;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
+import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**
  * Created by IstiN on 31.01.2015.
@@ -72,7 +73,7 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
 
     @Override
     public RecentAdapter createAdapter(FragmentActivity fragmentActivity, RecentModel cursor) {
-        return new RecentAdapter(cursor);
+        return new RecentAdapter(cursor, findFirstResponderFor(IFloatHeader.class).attach(getCollectionView()));
     }
 
     @Override
