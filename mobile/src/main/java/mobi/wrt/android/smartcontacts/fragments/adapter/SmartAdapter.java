@@ -14,11 +14,16 @@ import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.Log;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
+import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**
  * Created by IstiN on 31.01.2015.
  */
-public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
+public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartFragment.SmartModel> {
+
+    public SmartAdapter(SmartFragment.SmartModel cursors, int topPadding, IFloatHeader floatHeader) {
+        super(cursors, topPadding, floatHeader);
+    }
 
     public static class Holder extends RecyclerView.ViewHolder {
 
@@ -34,15 +39,6 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
 
     }
 
-    private SmartFragment.SmartModel mSmartModel;
-
-    private int mTopPadding;
-
-    public SmartAdapter(SmartFragment.SmartModel smartModel, int topPadding) {
-        this.mSmartModel = smartModel;
-        this.mTopPadding = topPadding;
-    }
-
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = View.inflate(parent.getContext(), R.layout.adapter_smart_contact, null);
@@ -51,17 +47,16 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        View contentView = holder.itemView.findViewById(R.id.content);
-        if (position == 0) {
-            holder.itemView.setPadding(0, mTopPadding, 0, 0);
-        }
+        super.onBindViewHolder(holder, position);
+        View itemView = holder.itemView;
+        View contentView = itemView.findViewById(R.id.content);
         /*TODO if (position == 0) {
             ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
             layoutParams.height = layoutParams.height * 2;
             contentView.setLayoutParams(layoutParams);
         }*/
 
-        CursorModel cursorModel = mSmartModel.get(position);
+        SmartFragment.SmartModel cursorModel = getModelByPosition(position);
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
         String photoUri = cursorModel.getString(ContactsContract.Contacts.PHOTO_URI);
         holder.mTextView.setText(name);
@@ -69,13 +64,4 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.Holder> {
         Picasso.with(holder.mImageView.getContext()).load(photoUri).into(holder.mImageView);
     }
 
-    @Override
-    public int getItemCount() {
-        return mSmartModel.size();
-    }
-
-    public void swap(SmartFragment.SmartModel model) {
-        mSmartModel = model;
-        notifyDataSetChanged();
-    }
 }

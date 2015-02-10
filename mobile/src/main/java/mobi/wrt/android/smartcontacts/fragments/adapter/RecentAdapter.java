@@ -2,12 +2,7 @@ package mobi.wrt.android.smartcontacts.fragments.adapter;
 
 import android.content.ContentValues;
 import android.database.DatabaseUtils;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.provider.CallLog;
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +13,20 @@ import com.squareup.picasso.Picasso;
 
 import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.model.CursorModel;
-import by.istin.android.xcore.utils.CursorUtils;
 import mobi.wrt.android.smartcontacts.Application;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
+import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**
  * Created by IstiN on 31.01.2015.
  */
-public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.Holder> {
+public class RecentAdapter extends FloatHeaderAdapter<RecentAdapter.Holder, RecentFragment.RecentModel> {
+
+    public RecentAdapter(RecentFragment.RecentModel model, int topPadding, IFloatHeader floatHeader) {
+        super(model, topPadding, floatHeader);
+    }
 
     public static class Holder extends RecyclerView.ViewHolder {
 
@@ -46,14 +45,6 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.Holder> {
 
     }
 
-    private RecentFragment.RecentModel mRecentModel;
-
-    private int mTopPadding;
-
-    public RecentAdapter(RecentFragment.RecentModel recentModel, int topPadding) {
-        this.mRecentModel = recentModel;
-        this.mTopPadding = topPadding;
-    }
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -63,14 +54,14 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        if (position == 0) {
-            holder.itemView.setPadding(0, mTopPadding, 0, 0);
-        }
-        CursorModel cursorModel = mRecentModel.get(position);
-        initItem(holder, cursorModel);
+        super.onBindViewHolder(holder, position);
+        initItem(holder, getModelByPosition(position));
     }
 
     public static void initItem(Holder holder, CursorModel cursorModel) {
+        if (cursorModel == null) {
+            return;
+        }
         String name = cursorModel.getString(CallLog.Calls.CACHED_NAME);
         String number = cursorModel.getString(CallLog.Calls.NUMBER);
         holder.mTextView.setText(name == null ? number : name);
@@ -80,13 +71,4 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.Holder> {
         Picasso.with(holder.mImageView.getContext()).load(ContactHelper.get(ContextHolder.get()).getContactPhotoUri(number)).transform(Application.ROUNDED_TRANSFORMATION).into(holder.mImageView);
     }
 
-    @Override
-    public int getItemCount() {
-        return mRecentModel.size();
-    }
-
-    public void swap(RecentFragment.RecentModel model) {
-        mRecentModel = model;
-        notifyDataSetChanged();
-    }
 }

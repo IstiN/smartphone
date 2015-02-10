@@ -131,7 +131,8 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
 
     @Override
     public SmartAdapter createAdapter(FragmentActivity fragmentActivity, SmartModel cursor) {
-        return new SmartAdapter(cursor, findFirstResponderFor(IFloatHeader.class).attach(getCollectionView()));
+        IFloatHeader firstResponderFor = findFirstResponderFor(IFloatHeader.class);
+        return new SmartAdapter(cursor, firstResponderFor.attach(getCollectionView()), firstResponderFor);
     }
 
     @Override

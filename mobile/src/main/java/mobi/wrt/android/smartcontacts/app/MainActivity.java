@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
@@ -28,6 +31,10 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
     private ViewPager mViewPager;
 
     private RecyclerView.OnScrollListener mFloatHeaderScrollListener;
+
+    private Set<View> mFloatHeaders = new HashSet<>();
+
+    private Set<RecyclerView> mRecyclerViews = new HashSet<>();
 
     private int mAdditionalAdapterHeight;
 
@@ -98,6 +105,11 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
                 }
                 layoutParams.topMargin = newTopMargin;
                 recentCallView.setLayoutParams(layoutParams);
+                for (RecyclerView view : mRecyclerViews) {
+                    if (view != recyclerView) {
+                        view.setScrollY(view.getScrollY() - dy);
+                    }
+                }
             }
 
         };
@@ -132,6 +144,17 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
     @Override
     public int attach(RecyclerView recyclerView) {
         recyclerView.setOnScrollListener(mFloatHeaderScrollListener);
+        mRecyclerViews.add(recyclerView);
         return mAdditionalAdapterHeight;
+    }
+
+    @Override
+    public void addTopView(View view) {
+        mFloatHeaders.add(view);
+    }
+
+    @Override
+    public void removeTopView(View view) {
+        mFloatHeaders.remove(view);
     }
 }
