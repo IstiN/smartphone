@@ -5,11 +5,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,10 +41,18 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
 
     private int mAdditionalAdapterHeight;
 
+    private FloatingActionButton mFloatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final View recentCallView = findViewById(R.id.recent_call);
+        final int heightRecentCall = getResources().getDimensionPixelSize(R.dimen.height_recent_call);
+        final int defaultMargin = getResources().getDimensionPixelSize(R.dimen.default_margin);
+        final int defaultHorizontalMargin = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
+        final int defaultMarginSmall = getResources().getDimensionPixelSize(R.dimen.default_margin_small);
+        final int heightOfTabs = findViewById(R.id.sliding_tabs).getLayoutParams().height;
+        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
 
@@ -79,12 +90,32 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
         });
         mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setViewPager(mViewPager);
+        mSlidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-        final View recentCallView = findViewById(R.id.recent_call);
-        final int heightRecentCall = getResources().getDimensionPixelSize(R.dimen.height_recent_call);
-        final int defaultMargin = getResources().getDimensionPixelSize(R.dimen.default_margin);
-        final int defaultMarginSmall = getResources().getDimensionPixelSize(R.dimen.default_margin_small);
-        final int heightOfTabs = findViewById(R.id.sliding_tabs).getLayoutParams().height;
+            private int prevValue = 0;
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.xd(MainActivity.this, "translate " + position + " " + positionOffset + " " + positionOffsetPixels);
+                if (position == 0 && positionOffsetPixels + mFloatingActionButton.getWidth() + defaultHorizontalMargin < mViewPager.getWidth()) {
+                    if (prevValue < positionOffsetPixels || prevValue > positionOffsetPixels) {
+                        int value = positionOffsetPixels / 2;
+                        mFloatingActionButton.animate().translationX(value).setDuration(0l).start();
+                    }
+                }
+                prevValue = positionOffsetPixels;
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         mAdditionalAdapterHeight = heightRecentCall + defaultMargin + defaultMarginSmall + heightOfTabs;
         mFloatHeaderScrollListener = new RecyclerView.OnScrollListener() {
 
@@ -107,7 +138,15 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
                 recentCallView.setLayoutParams(layoutParams);
                 for (RecyclerView view : mRecyclerViews) {
                     if (view != recyclerView) {
-                        view.setScrollY(view.getScrollY() - dy);
+                        RecyclerView.LayoutManager layoutManager = view.getLayoutManager();
+                        if (layoutManager instanceof LinearLayoutManager) {
+                            LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
+                            int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
+                            if (firstVisibleItemPosition == 0) {
+                                //we don't need to scroll if we already don't see first item
+                                linearLayoutManager.scrollToPositionWithOffset(0, newTopMargin - defaultMargin);
+                            }
+                        }
                     }
                 }
             }

@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context=".MainActivity"
     android:id="@+id/main_container">
@@ -31,7 +32,7 @@
         <mobi.wrt.android.smartcontacts.view.SlidingTabLayout
             android:id="@+id/sliding_tabs"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="48dip"
             />
     </LinearLayout>
 
@@ -40,5 +41,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fafafa"/>
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_dialpad"
+        fab:fab_colorNormal="?attr/colorPrimary"
+        fab:fab_colorPressed="?attr/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        fab:fab_colorRipple="?attr/colorAccent" />
 
 </RelativeLayout>

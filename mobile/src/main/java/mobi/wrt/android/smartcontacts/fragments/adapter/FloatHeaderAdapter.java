@@ -39,14 +39,16 @@ public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder,
                 mCurrentFloatView = itemView;
                 itemView.setPadding(0, mTopPadding, 0, 0);
                 mFloatHeader.addTopView(mCurrentFloatView);
-            } else if (mCurrentFloatView != itemView) {
+            } else if (itemView != mCurrentFloatView) {
                 mCurrentFloatView.setPadding(0, 0, 0, 0);
                 mFloatHeader.removeTopView(mCurrentFloatView);
                 mCurrentFloatView = itemView;
                 itemView.setPadding(0, mTopPadding, 0, 0);
                 mFloatHeader.addTopView(mCurrentFloatView);
             }
-
+        } else if (itemView == mCurrentFloatView) {
+            mCurrentFloatView.setPadding(0, 0, 0, 0);
+            mCurrentFloatView = null;
         }
     }
 
