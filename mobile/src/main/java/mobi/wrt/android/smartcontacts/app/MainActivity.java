@@ -94,10 +94,23 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
 
             private int prevValue = 0;
 
+            private int maxValue = -1;
+
+            private int fabMargin = -1;
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.xd(MainActivity.this, "translate " + position + " " + positionOffset + " " + positionOffsetPixels);
-                if (position == 0 && positionOffsetPixels + mFloatingActionButton.getWidth() + defaultHorizontalMargin < mViewPager.getWidth()) {
+                if (position == 0) {
+                    if (fabMargin == -1) {
+                        int width = mFloatingActionButton.getWidth();
+                        if (width > 0) {
+                            fabMargin = width + defaultHorizontalMargin * 2;
+                            maxValue = mViewPager.getWidth() - fabMargin;
+                        }
+                    }
+                    if (positionOffsetPixels > maxValue) {
+                        positionOffsetPixels = maxValue;
+                    }
                     if (prevValue < positionOffsetPixels || prevValue > positionOffsetPixels) {
                         int value = positionOffsetPixels / 2;
                         mFloatingActionButton.animate().translationX(value).setDuration(0l).start();
