@@ -40,22 +40,6 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
     public static final String COLUMN_PHONES = "phones";
     public static final String COLUMN_PRIMARY_PHONE = "primary_phone";
 
-    public void initPhoneNumbers(ContentValues contentValues, Long id) {
-        List<ContentValues> entities = ContentUtils.getEntities(getActivity(), new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.IS_SUPER_PRIMARY}, ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null);
-        if (entities != null) {
-            contentValues.put(COLUMN_PHONES, StringUtil.joinAll(PHONE_DELIMETER, entities, ContactsContract.CommonDataKinds.Phone.NUMBER));
-            if (entities.size() == 1) {
-                contentValues.put(COLUMN_PRIMARY_PHONE, entities.get(0).getAsString(ContactsContract.CommonDataKinds.Phone.NUMBER));
-            } else {
-                for (ContentValues phoneValues : entities) {
-                    if (phoneValues.getAsInteger(ContactsContract.CommonDataKinds.Phone.IS_SUPER_PRIMARY) > 0) {
-                        contentValues.put(COLUMN_PRIMARY_PHONE, phoneValues.getAsString(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                    }
-                }
-            }
-        }
-    }
-
     public static class SmartModel extends CursorModel{
 
         private CursorModel mLastCall;
@@ -164,21 +148,7 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-
-            @Override
-            public int getSpanSize(int position) {
-                switch(position){
-                    case 0:
-                        return 2;
-                    default:
-                        return 1;
-                }
-            }
-
-        });
-        return gridLayoutManager;
+        return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
 
     @Override

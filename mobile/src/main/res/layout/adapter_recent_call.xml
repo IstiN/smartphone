@@ -1,17 +1,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="58dip"
     tools:context=".MainActivity"
     android:paddingRight="16dip"
-    android:paddingBottom="8dip">
+    >
 
+    <View
+        android:id="@+id/clickableView"
+        android:onClick="onRecentContactClick"
+        android:layout_width="match_parent"
+        android:layout_height="58dip"
+        android:background="?attr/selectableItemBackground"/>
 
     <ImageView
         android:id="@+id/icon"
+        android:onClick="onContactMoreClick"
         android:layout_marginLeft="16dip"
         android:layout_marginRight="16dip"
         android:layout_marginTop="8dip"
+        android:layout_marginBottom="8dip"
         android:layout_width="42dip"
         android:layout_height="42dip"
         android:scaleType="centerCrop" />
@@ -22,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/icon"
         android:paddingTop="4dip"
+        android:paddingBottom="8dip"
         android:orientation="vertical">
 
         <TextView
@@ -31,12 +40,13 @@
             android:singleLine="true"
             android:ellipsize="end"
             android:textColor="#333333"
-            android:textSize="15sp"
+            android:textSize="16sp"
              />
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:textColor="#737373"
             android:textSize="14sp"
              />

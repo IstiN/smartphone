@@ -1,58 +1,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context=".MainActivity"
-    android:id="@+id/main_container">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fafafa" />
 
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="2dp"
         android:background="?attr/colorPrimary"
-        android:orientation="vertical"
-        >
+        android:elevation="2dp"
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/recent_call"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_recent_call"
-            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin_small"
             android:layout_marginLeft="@dimen/default_margin"
             android:layout_marginRight="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin_small"
+            android:layout_marginTop="@dimen/default_margin"
             android:background="#fafafa"
             card_view:cardCornerRadius="2dp">
 
-            <include layout="@layout/adapter_recent_call"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+                <include layout="@layout/adapter_recent_call" />
+            </FrameLayout>
 
         </android.support.v7.widget.CardView>
 
         <mobi.wrt.android.smartcontacts.view.SlidingTabLayout
             android:id="@+id/sliding_tabs"
             android:layout_width="match_parent"
-            android:layout_height="48dip"
-            />
+            android:layout_height="48dip" />
     </LinearLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fafafa"/>
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_margin="16dp"
         android:src="@drawable/ic_dialpad"
         fab:fab_colorNormal="?attr/colorPrimary"
-        fab:fab_colorPressed="?attr/colorAccent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        fab:fab_colorPressed="?attr/colorPrimaryDark"
         fab:fab_colorRipple="?attr/colorAccent" />
 
 </RelativeLayout>

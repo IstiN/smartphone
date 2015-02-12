@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.CallLog;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
@@ -38,7 +39,15 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
             if (!isEmpty()) {
                 ContactHelper contactHelper = ContactHelper.get(context);
                 for (int i = 0; i < size(); i++) {
-                    contactHelper.initPhotoUri(get(i).getString(CallLog.Calls.NUMBER));
+                    CursorModel model = get(i);
+                    String phoneNumber = model.getString(CallLog.Calls.NUMBER);
+                    contactHelper.initPhotoUri(phoneNumber);
+                    Integer numberType = model.getInt(CallLog.Calls.CACHED_NUMBER_TYPE);
+                    if (numberType != null) {
+                        switch (numberType) {
+                            case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
+                        }
+                    }
                 }
             }
         }

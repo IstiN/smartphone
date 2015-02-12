@@ -1,15 +1,12 @@
 package mobi.wrt.android.smartcontacts.fragments.adapter;
 
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.squareup.picasso.Picasso;
+import java.util.HashSet;
+import java.util.Set;
 
 import by.istin.android.xcore.model.CursorModel;
-import by.istin.android.xcore.utils.Log;
-import mobi.wrt.android.smartcontacts.R;
-import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**
@@ -23,34 +20,47 @@ public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder,
 
     private IFloatHeader mFloatHeader;
 
-    private View mCurrentFloatView;
+    private View[] mCurrentFloatViews;
 
     public FloatHeaderAdapter(Model model, int topPadding, IFloatHeader floatHeader) {
         this.mModel = model;
         this.mTopPadding = topPadding;
         this.mFloatHeader = floatHeader;
+        this.mCurrentFloatViews = new View[getFloatPositionCount()];
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         View itemView = holder.itemView;
-        if (position == 0) {
-            if (mCurrentFloatView == null) {
-                mCurrentFloatView = itemView;
+        if (isFloatPosition(position)) {
+            if (mCurrentFloatViews[position] == null) {
+                mCurrentFloatViews[position] = itemView;
                 itemView.setPadding(0, mTopPadding, 0, 0);
-                mFloatHeader.addTopView(mCurrentFloatView);
-            } else if (itemView != mCurrentFloatView) {
-                mCurrentFloatView.setPadding(0, 0, 0, 0);
-                mFloatHeader.removeTopView(mCurrentFloatView);
-                mCurrentFloatView = itemView;
+                mFloatHeader.addTopView(itemView);
+            } else if (itemView != mCurrentFloatViews[position]) {
+                mCurrentFloatViews[position].setPadding(0, 0, 0, 0);
+                mFloatHeader.removeTopView(mCurrentFloatViews[position]);
+                mCurrentFloatViews[position] = itemView;
                 itemView.setPadding(0, mTopPadding, 0, 0);
-                mFloatHeader.addTopView(mCurrentFloatView);
+                mFloatHeader.addTopView(itemView);
             }
-        } else if (itemView == mCurrentFloatView) {
-            mCurrentFloatView.setPadding(0, 0, 0, 0);
-            mCurrentFloatView = null;
+        } else {
+            for (int i = 0; i < mCurrentFloatViews.length; i++) {
+                if (itemView == mCurrentFloatViews[i]) {
+                    mCurrentFloatViews[i].setPadding(0, 0, 0, 0);
+                    mCurrentFloatViews[i] = null;
+                }
+            }
         }
     }
+
+    protected boolean isFloatPosition(int position) {
+        return position == 0;
+    };
+
+    protected int getFloatPositionCount() {
+        return 1;
+    };
 
     public Model getModelByPosition(int position) {
         mModel.moveToPosition(position);

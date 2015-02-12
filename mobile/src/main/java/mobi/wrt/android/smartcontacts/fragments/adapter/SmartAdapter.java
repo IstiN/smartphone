@@ -31,10 +31,16 @@ public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartF
 
         private TextView mTextView;
 
+        private View mClickableView;
+
+        private View mMoreView;
+
         public Holder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.icon);
             mTextView = (TextView) itemView.findViewById(R.id.name);
+            mClickableView = itemView.findViewById(R.id.clickableView);
+            mMoreView = itemView.findViewById(R.id.more);
         }
 
     }
@@ -50,11 +56,11 @@ public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartF
         super.onBindViewHolder(holder, position);
         View itemView = holder.itemView;
         View contentView = itemView.findViewById(R.id.content);
-        /*TODO if (position == 0) {
+        if (position == 0) {
             ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
             layoutParams.height = layoutParams.height * 2;
             contentView.setLayoutParams(layoutParams);
-        }*/
+        }
 
         SmartFragment.SmartModel cursorModel = getModelByPosition(position);
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
@@ -62,6 +68,18 @@ public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartF
         holder.mTextView.setText(name);
         Log.xd(this, photoUri);
         Picasso.with(holder.mImageView.getContext()).load(photoUri).into(holder.mImageView);
+        Long id = cursorModel.getLong(ContactsContract.Contacts._ID);
+        holder.mClickableView.setTag(id);
+        holder.mMoreView.setTag(id);
     }
 
+    @Override
+    protected boolean isFloatPosition(int position) {
+        return position == 0 || position == 1;
+    }
+
+    @Override
+    protected int getFloatPositionCount() {
+        return 2;
+    }
 }

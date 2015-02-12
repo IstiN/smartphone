@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.DatabaseUtils;
 import android.provider.CallLog;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -36,11 +37,14 @@ public class RecentAdapter extends FloatHeaderAdapter<RecentAdapter.Holder, Rece
 
         private TextView mDescriptionTextView;
 
+        private View mClickableView;
+
         public Holder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.icon);
             mTextView = (TextView) itemView.findViewById(R.id.name);
             mDescriptionTextView = (TextView) itemView.findViewById(R.id.description);
+            mClickableView = itemView.findViewById(R.id.clickableView);
         }
 
     }
@@ -65,10 +69,14 @@ public class RecentAdapter extends FloatHeaderAdapter<RecentAdapter.Holder, Rece
         String name = cursorModel.getString(CallLog.Calls.CACHED_NAME);
         String number = cursorModel.getString(CallLog.Calls.NUMBER);
         holder.mTextView.setText(name == null ? number : name);
-        ContentValues values  = new ContentValues();
-        DatabaseUtils.cursorRowToContentValues(cursorModel, values);
-        holder.mDescriptionTextView.setText(values.toString());
-        Picasso.with(holder.mImageView.getContext()).load(ContactHelper.get(ContextHolder.get()).getContactPhotoUri(number)).transform(Application.ROUNDED_TRANSFORMATION).into(holder.mImageView);
+        //ContentValues values  = new ContentValues();
+        //DatabaseUtils.cursorRowToContentValues(cursorModel, values);
+        //TODO add date
+        holder.mDescriptionTextView.setText(number);
+        holder.mClickableView.setTag(number);
+        ContactHelper contactHelper = ContactHelper.get(ContextHolder.get());
+        holder.mImageView.setTag(contactHelper.getContactId(number));
+        Picasso.with(holder.mImageView.getContext()).load(contactHelper.getContactPhotoUri(number)).transform(Application.ROUNDED_TRANSFORMATION).into(holder.mImageView);
     }
 
 }

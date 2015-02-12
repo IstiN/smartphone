@@ -7,5 +7,6 @@
     <string name="speed_dial">Speed dial</string>
     <string name="recent">Recent</string>
     <string name="contacts">Contacts</string>
+    <string name="title_choose_number">Choose number</string>
 
 </resources>

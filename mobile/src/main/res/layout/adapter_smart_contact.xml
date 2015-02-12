@@ -17,7 +17,15 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
+        <View
+            android:id="@+id/clickableView"
+            android:onClick="onContactClick"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"/>
+
         <ImageView
+            android:id="@+id/more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
