@@ -15,4 +15,10 @@
     <color name="material_blue_700">#3767d6</color>
     <color name="material_blue_A200">#d44785f4</color>
 
+    <style name="PhoneNumber">
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
 </resources>

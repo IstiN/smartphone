@@ -34,6 +34,7 @@ import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
+import mobi.wrt.android.smartcontacts.fragments.PhoneFragment;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
@@ -140,6 +141,12 @@ public class MainActivity extends ActionBarActivity implements IFloatHeader {
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new PhoneFragment()).commit();
             }
         });
         mAdditionalAdapterHeight = heightRecentCall + defaultMargin + defaultMarginSmall + heightOfTabs;

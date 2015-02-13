@@ -59,4 +59,8 @@
         fab:fab_colorPressed="?attr/colorPrimaryDark"
         fab:fab_colorRipple="?attr/colorAccent" />
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>
