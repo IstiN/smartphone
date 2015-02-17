@@ -57,7 +57,8 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
             super.doInBackground(context);
             Cursor lastCall = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, RecentFragment.PROJECTION, null, null, RecentFragment.ORDER + " LIMIT 1");
             if (lastCall != null && lastCall.moveToFirst()) {
-                mLastCall = new CursorModel(lastCall);
+                mLastCall = new RecentFragment.RecentModel(lastCall);
+                mLastCall.doInBackground(context);
             }
         }
 

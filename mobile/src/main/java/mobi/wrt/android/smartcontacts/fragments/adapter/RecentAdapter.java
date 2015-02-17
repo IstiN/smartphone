@@ -1,10 +1,9 @@
 package mobi.wrt.android.smartcontacts.fragments.adapter;
 
-import android.content.ContentValues;
-import android.database.DatabaseUtils;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.provider.CallLog;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,6 +24,16 @@ import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
  */
 public class RecentAdapter extends FloatHeaderAdapter<RecentAdapter.Holder, RecentFragment.RecentModel> {
 
+    private static Drawable sIcCallReceived;
+    private static Drawable sIcCallReceivedRed;
+    private static Drawable sIcCallMade;
+
+    static {
+        Resources resources = ContextHolder.get().getResources();
+        sIcCallMade = resources.getDrawable(R.drawable.ic_call_made);
+        sIcCallReceived = resources.getDrawable(R.drawable.ic_call_received);
+        sIcCallReceivedRed = resources.getDrawable(R.drawable.ic_call_received_red);
+    }
     public RecentAdapter(RecentFragment.RecentModel model, int topPadding, IFloatHeader floatHeader) {
         super(model, topPadding, floatHeader);
     }
@@ -68,11 +77,32 @@ public class RecentAdapter extends FloatHeaderAdapter<RecentAdapter.Holder, Rece
         }
         String name = cursorModel.getString(CallLog.Calls.CACHED_NAME);
         String number = cursorModel.getString(CallLog.Calls.NUMBER);
+        byte[] phoneLogs = cursorModel.getBlob(CallLog.Calls.TYPE);
         holder.mTextView.setText(name == null ? number : name);
         //ContentValues values  = new ContentValues();
         //DatabaseUtils.cursorRowToContentValues(cursorModel, values);
         //TODO add date
-        holder.mDescriptionTextView.setText(number);
+        if (phoneLogs.length > 3) {
+            holder.mDescriptionTextView.setText("(" + phoneLogs.length + ") " + number);
+        } else {
+            holder.mDescriptionTextView.setText(number);
+        }
+        for (int i = 0; i < 3; i++) {
+            ImageView viewWithTag = (ImageView) holder.itemView.findViewWithTag("c_icon_" + i);
+            if (i < phoneLogs.length) {
+                byte type = phoneLogs[i];
+                if (type == CallLog.Calls.INCOMING_TYPE) {
+                    viewWithTag.setImageDrawable(sIcCallReceived);
+                } else if (type == CallLog.Calls.MISSED_TYPE) {
+                    viewWithTag.setImageDrawable(sIcCallReceivedRed);
+                } else if (type == CallLog.Calls.OUTGOING_TYPE) {
+                    viewWithTag.setImageDrawable(sIcCallMade);
+                }
+                viewWithTag.setVisibility(View.VISIBLE);
+            } else {
+                viewWithTag.setVisibility(View.GONE);
+            }
+        }
         holder.mClickableView.setTag(number);
         ContactHelper contactHelper = ContactHelper.get(ContextHolder.get());
         holder.mImageView.setTag(contactHelper.getContactId(number));
