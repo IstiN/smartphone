@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -20,19 +21,35 @@ import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
+import mobi.wrt.android.smartcontacts.utils.ColorUtils;
+import mobi.wrt.android.smartcontacts.utils.HumanTimeUtil;
 
 /**
  * Created by IstiN on 31.01.2015.
  */
-public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, RecentAdapter, RecentFragment.RecentModel> {
+public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder, RecentAdapter, RecentFragment.RecentModel> {
 
     public static final String ORDER = CallLog.Calls.DATE + " DESC";
+    private static final int NUMBER = 1;
+    private static final int NAME_POSITION = 2;
+    private static final int DATE_POSITION = 3;
     public static final String[] PROJECTION = new String[]{CallLog.Calls._ID, CallLog.Calls.NUMBER, CallLog.Calls.CACHED_NAME, CallLog.Calls.DATE, CallLog.Calls.CACHED_NUMBER_TYPE, CallLog.Calls.TYPE};
     public static final int MAX_COUNT = 15;
     //We will group by number in the Cursor model so we need to get more data as possible to create MAX_COUNT of items.
     public static final int LIMIT = MAX_COUNT * 2;
 
+    public static final String EXTRA_IS_LIMIT = "is_limit";
+
+    public boolean isLimit() {
+        if (getArguments() == null) {
+            return true;
+        }
+        return getArguments().getBoolean(EXTRA_IS_LIMIT, true);
+    }
+
     public static class RecentModel extends CursorModel {
+
+        private boolean isLimit = true;
 
         public RecentModel(Cursor cursor) {
             super(cursor);
@@ -60,26 +77,24 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
                             addRow(matrixCursor, callTypes, objects);
                             objects = null;
                         }
-                        if (matrixCursor.getCount() == MAX_COUNT) {
+                        if (isLimit && matrixCursor.getCount() == MAX_COUNT) {
                             break;
                         }
                         lastPhoneNumber = phoneNumber;
                         objects = new Object[PROJECTION.length];
                         //last item will be byte array
                         for (int j = 0; j < PROJECTION.length - 1; j++) {
-                            objects[j] = model.getString(PROJECTION[j]);
+                            if (j == DATE_POSITION) {
+                                objects[j] = model.getLong(PROJECTION[j]);
+                            } else {
+                                objects[j] = model.getString(PROJECTION[j]);
+                            }
                         }
                         callTypes.add(callType);
                         contactHelper.initPhotoUri(phoneNumber);
                     } else {
                         callTypes.add(callType);
                     }
-                    /*Integer numberType = model.getInt(CallLog.Calls.CACHED_NUMBER_TYPE);
-                    if (numberType != null) {
-                        switch (numberType) {
-                            case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
-                        }
-                    }*/
                 }
                 if (objects != null) {
                     addRow(matrixCursor, callTypes, objects);
@@ -87,6 +102,7 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
                 setCursor(matrixCursor);
                 moveToFirst();
             }
+            mLastHeader = null;
         }
 
         public void addRow(MatrixCursor matrixCursor, List<Byte> callTypes, Object[] objects) {
@@ -95,8 +111,30 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
                 callsLog[i] = callTypes.get(i);
             }
             objects[PROJECTION.length - 1] = callsLog;
+
+            Object dateObject = objects[DATE_POSITION];
+            Long date = (Long) dateObject;
+            objects[DATE_POSITION] = HumanTimeUtil.humanFriendlyDate(date);
+            addGroupHeaderIfNeed(matrixCursor, date);
             matrixCursor.addRow(objects);
             callTypes.clear();
+        }
+
+        private String mLastHeader = null;
+
+        public void addGroupHeaderIfNeed(MatrixCursor matrixCursor, Long date) {
+            String newHeader = HumanTimeUtil.humanFriendlyDateHeader(date);
+            if (mLastHeader == null || !mLastHeader.equals(newHeader)) {
+                mLastHeader = newHeader;
+                addHeader(matrixCursor);
+            }
+
+        }
+
+        public void addHeader(MatrixCursor matrixCursor) {
+            Object[] groupHeader = new Object[PROJECTION.length];
+            groupHeader[NAME_POSITION] = mLastHeader;
+            matrixCursor.addRow(groupHeader);
         }
 
     }
@@ -112,7 +150,9 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
         return new CursorModel.CursorModelCreator<RecentModel>() {
             @Override
             public RecentModel create(Cursor cursor) {
-                return new RecentModel(cursor);
+                RecentModel recentModel = new RecentModel(cursor);
+                recentModel.isLimit = isLimit();
+                return recentModel;
             }
         };
     }
@@ -137,7 +177,7 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
     public RecentAdapter createAdapter(FragmentActivity fragmentActivity, RecentModel cursor) {
         Log.endAction(getClass().getName());
         IFloatHeader floatHeader = findFirstResponderFor(IFloatHeader.class);
-        return new RecentAdapter(cursor, floatHeader.attach(getCollectionView()), floatHeader);
+        return new RecentAdapter(cursor, floatHeader.attach(getCollectionView()), floatHeader, isLimit());
     }
 
     @Override
@@ -153,7 +193,7 @@ public class RecentFragment extends RecyclerViewFragment<RecentAdapter.Holder, R
 
     @Override
     public String getOrder() {
-        return " " + ORDER + " LIMIT " + LIMIT;
+        return " " + ORDER + (isLimit() ? (" LIMIT " + LIMIT) : "");
     }
 
     @Override

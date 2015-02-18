@@ -11,9 +11,16 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="BarAppTheme" parent="AppTheme">
+        <item name="windowActionBar">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <color name="material_blue_500">#4785f4</color>
     <color name="material_blue_700">#3767d6</color>
     <color name="material_blue_A200">#d44785f4</color>
+
+    <color name="group_header">#787878</color>
 
     <style name="PhoneNumber">
         <item name="android:textColor">?attr/colorPrimaryDark</item>

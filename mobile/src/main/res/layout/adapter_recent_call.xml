@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="58dip"
-    android:paddingRight="16dip"
     tools:context=".MainActivity">
 
     <View
@@ -14,8 +13,8 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="42dip"
-        android:layout_height="42dip"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_marginBottom="8dip"
         android:layout_marginLeft="16dip"
         android:layout_marginRight="16dip"
@@ -23,6 +22,16 @@
         android:onClick="onContactMoreClick"
         android:scaleType="centerCrop" />
 
+    <TextView
+        android:id="@+id/character"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginBottom="8dip"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:layout_marginTop="8dip" />
 
     <TextView
         android:id="@+id/name"
@@ -31,6 +40,7 @@
         android:layout_toRightOf="@id/icon"
         android:ellipsize="end"
         android:paddingTop="4dip"
+        android:paddingRight="16dip"
         android:singleLine="true"
         android:textColor="#333333"
         android:textSize="16sp" />
@@ -69,6 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:paddingLeft="4dip"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:paddingRight="16dip"
             android:layout_toRightOf="@id/icons"
             android:textColor="#737373"
             android:textSize="14sp" />

@@ -29,6 +29,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:theme="@style/BarAppTheme"
+            android:name="mobi.wrt.android.smartcontacts.app.RecentActivity"
+            android:label="@string/calls_history"
+            android:screenOrientation="portrait"
+            android:parentActivityName="mobi.wrt.android.smartcontacts.app.MainActivity"/>
+
     </application>
 
 </manifest>

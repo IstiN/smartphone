@@ -59,6 +59,7 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
             if (lastCall != null && lastCall.moveToFirst()) {
                 mLastCall = new RecentFragment.RecentModel(lastCall);
                 mLastCall.doInBackground(context);
+                mLastCall.moveToLast();
             }
         }
 

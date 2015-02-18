@@ -12,6 +12,8 @@ import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.XCoreHelper;
 import by.istin.android.xcore.utils.AppUtils;
 import by.istin.android.xcore.utils.StringUtil;
+import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.utils.ColorUtils;
 
 /**
  * Created by IstiN on 03.02.2015.
@@ -50,6 +52,9 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
         String resultUri = mPhotoUriCache.get(phone);
         if (resultUri == null) {
             resultUri = getContactIdFromNumber(phone);
+            if (resultUri.equals(StringUtil.EMPTY)) {
+                ColorUtils.getColorCircle(ContextHolder.get().getResources().getDimensionPixelSize(R.dimen.icon_size), phone);
+            }
             mPhotoUriCache.put(phone, resultUri);
         }
         return resultUri;
