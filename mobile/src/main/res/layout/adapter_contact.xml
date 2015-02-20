@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="58dip"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/clickableView"
+        android:layout_width="match_parent"
+        android:layout_height="58dip"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="onContactClick" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginBottom="8dip"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        android:layout_marginTop="8dip"
+        android:onClick="onContactMoreClick"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/character"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginBottom="8dip"
+        android:layout_marginLeft="16dip"
+        android:layout_marginRight="16dip"
+        android:paddingTop="8dip"
+        android:gravity="center_horizontal"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="8dip" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/icon_size"
+        android:layout_toRightOf="@id/icon"
+        android:ellipsize="end"
+        android:paddingTop="16dip"
+        android:paddingRight="16dip"
+        android:singleLine="true"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+</RelativeLayout>

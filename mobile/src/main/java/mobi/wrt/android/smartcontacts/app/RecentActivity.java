@@ -28,7 +28,7 @@ public class RecentActivity extends BaseControllerActivity implements IFloatHead
     }
 
     @Override
-    public int attach(RecyclerView recyclerView) {
+    public int attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView) {
         return 0;
     }
 

@@ -25,6 +25,7 @@ import mobi.wrt.android.smartcontacts.fragments.PhoneFragment;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
+import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
 import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
 
@@ -55,6 +56,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         final int heightOfTabs = findViewById(R.id.sliding_tabs).getLayoutParams().height;
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
 
             @Override
@@ -217,8 +219,13 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     }
 
     @Override
-    public int attach(RecyclerView recyclerView) {
-        recyclerView.setOnScrollListener(mFloatHeaderScrollListener);
+    public int attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView) {
+        if (scrollListener != null) {
+            recyclerView.setOnScrollListener(new GroupOnScrollListener(scrollListener, mFloatHeaderScrollListener));
+        } else {
+            recyclerView.setOnScrollListener(mFloatHeaderScrollListener);
+        }
+
         mRecyclerViews.add(recyclerView);
         return mAdditionalAdapterHeight;
     }

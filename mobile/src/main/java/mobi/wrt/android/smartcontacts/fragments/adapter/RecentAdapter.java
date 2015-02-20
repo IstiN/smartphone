@@ -161,7 +161,7 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
         String number = cursorModel.getString(CallLog.Calls.NUMBER);
         String date = cursorModel.getString(CallLog.Calls.DATE);
         byte[] phoneLogs = cursorModel.getBlob(CallLog.Calls.TYPE);
-        String title = name == null ? number : name;
+        String title = StringUtil.isEmpty(name) ? number : name;
         holder.mTextView.setText(title);
         if (phoneLogs.length > 3) {
             holder.mDescriptionTextView.setText("(" + phoneLogs.length + ") " + number + ", " + date);
@@ -194,7 +194,7 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
                 holder.mCharacterView.setText("+");
                 holder.mImageView.setTag(number);
             } else {
-                holder.mCharacterView.setText(name == null ? "?" : String.valueOf(title.charAt(0)));
+                holder.mCharacterView.setText(name == null ? "?" : String.valueOf(Character.toUpperCase(title.charAt(0))));
             }
             UiUtil.setBackground(holder.mImageView, ColorUtils.getColorCircle(holder.mImageView.getHeight(), number));
         } else {

@@ -1,31 +1,21 @@
 package mobi.wrt.android.smartcontacts.fragments;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import java.util.List;
 
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
-import by.istin.android.xcore.utils.ContentUtils;
 import by.istin.android.xcore.utils.CursorUtils;
-import by.istin.android.xcore.utils.Log;
-import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.fragments.adapter.SmartAdapter;
@@ -35,10 +25,6 @@ import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
  * Created by IstiN on 31.01.2015.
  */
 public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, SmartAdapter, SmartFragment.SmartModel>  {
-
-    public static final String PHONE_DELIMETER = "!=!";
-    public static final String COLUMN_PHONES = "phones";
-    public static final String COLUMN_PRIMARY_PHONE = "primary_phone";
 
     public static class SmartModel extends CursorModel{
 
@@ -72,7 +58,7 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
 
     public static final String[] PROJECTION = new String[]{ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_URI};
     public static final String SELECTION = ContactsContract.Contacts.HAS_PHONE_NUMBER + "=1 AND " + ContactsContract.Contacts.STARRED + "=1";
-    public static final String ORDER = ContactsContract.Contacts.DISPLAY_NAME + " ASC";
+    public static final String ORDER = null;
 
     @Override
     public void onViewCreated(View view) {
@@ -118,7 +104,7 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
     @Override
     public SmartAdapter createAdapter(FragmentActivity fragmentActivity, SmartModel cursor) {
         IFloatHeader firstResponderFor = findFirstResponderFor(IFloatHeader.class);
-        return new SmartAdapter(cursor, firstResponderFor.attach(getCollectionView()), firstResponderFor);
+        return new SmartAdapter(cursor, firstResponderFor.attach(null, getCollectionView()), firstResponderFor);
     }
 
     @Override

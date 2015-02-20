@@ -177,7 +177,7 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
     public RecentAdapter createAdapter(FragmentActivity fragmentActivity, RecentModel cursor) {
         Log.endAction(getClass().getName());
         IFloatHeader floatHeader = findFirstResponderFor(IFloatHeader.class);
-        return new RecentAdapter(cursor, floatHeader.attach(getCollectionView()), floatHeader, isLimit());
+        return new RecentAdapter(cursor, floatHeader.attach(null, getCollectionView()), floatHeader, isLimit());
     }
 
     @Override
