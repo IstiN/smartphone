@@ -3,10 +3,8 @@ package mobi.wrt.android.smartcontacts;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
-import android.view.View;
 import android.widget.TextView;
 
-import smartcontacts.android.wrt.mobi.myapplication.R;
 
 public class MainActivity extends Activity {
 

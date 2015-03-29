@@ -169,13 +169,11 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
 
     @Override
     public Loader<RecentModel> onCreateLoader(int id, Bundle args) {
-        Log.startAction(getClass().getName());
         return super.onCreateLoader(id, args);
     }
 
     @Override
     public RecentAdapter createAdapter(FragmentActivity fragmentActivity, RecentModel cursor) {
-        Log.endAction(getClass().getName());
         IFloatHeader floatHeader = findFirstResponderFor(IFloatHeader.class);
         return new RecentAdapter(cursor, floatHeader.attach(null, getCollectionView()), floatHeader, isLimit());
     }

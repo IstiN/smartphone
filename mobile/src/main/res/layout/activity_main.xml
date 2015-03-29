@@ -64,7 +64,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dip" />
         </LinearLayout>
-
+        <View
+            android:layout_below="@id/header"
+            android:layout_width="match_parent"
+            android:layout_height="3dip"
+            android:background="@drawable/bg_float_header_shadow"/>
         <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
