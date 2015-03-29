@@ -1,17 +1,18 @@
 package mobi.wrt.android.smartcontacts.app;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -19,6 +20,7 @@ import com.melnykov.fab.FloatingActionButton;
 import java.util.HashSet;
 import java.util.Set;
 
+import by.istin.android.xcore.utils.Log;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
 import mobi.wrt.android.smartcontacts.fragments.PhoneFragment;
@@ -48,12 +50,31 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final View recentCallView = findViewById(R.id.recent_call);
-        final int heightRecentCall = getResources().getDimensionPixelSize(R.dimen.height_recent_call);
+        final View headerContainer = findViewById(R.id.header);
+        final View floatHeaderContainer = findViewById(R.id.float_header);
+        ViewTreeObserver viewTreeObserver = headerContainer.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                ViewTreeObserver viewTreeObserver = headerContainer.getViewTreeObserver();
+                if (viewTreeObserver.isAlive()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        viewTreeObserver.removeOnGlobalLayoutListener(this);
+                    } else {
+                        viewTreeObserver.removeGlobalOnLayoutListener(this);
+                    }
+                }
+                int height = headerContainer.getHeight();
+                if (height > 0) {
+                    mAdditionalAdapterHeight = height;
+                }
+                Log.xd(MainActivity.this, "height " + height);
+            }
+        });
         final int defaultMargin = getResources().getDimensionPixelSize(R.dimen.default_margin);
         final int defaultHorizontalMargin = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
         final int defaultMarginSmall = getResources().getDimensionPixelSize(R.dimen.default_margin_small);
-        final int heightOfTabs = findViewById(R.id.sliding_tabs).getLayoutParams().height;
+
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setOffscreenPageLimit(3);
@@ -138,7 +159,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new PhoneFragment()).commit();
             }
         });
-        mAdditionalAdapterHeight = heightRecentCall + defaultMargin + defaultMarginSmall + heightOfTabs;
+
         mFloatHeaderScrollListener = new RecyclerView.OnScrollListener() {
 
             @Override
@@ -149,15 +170,18 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) recentCallView.getLayoutParams();
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) floatHeaderContainer.getLayoutParams();
                 int newTopMargin = layoutParams.topMargin - dy;
-                if (newTopMargin > defaultMargin) {
+                if (newTopMargin >= defaultMargin) {
                     newTopMargin = defaultMargin;
-                } else if (newTopMargin < -(defaultMarginSmall + heightRecentCall)) {
-                    newTopMargin = -(defaultMarginSmall + heightRecentCall);
+                } else {
+                    int newHeight = - (defaultMarginSmall + floatHeaderContainer.getHeight() - defaultMargin);
+                    if (newTopMargin <= newHeight) {
+                        newTopMargin = newHeight;
+                    }
                 }
                 layoutParams.topMargin = newTopMargin;
-                recentCallView.setLayoutParams(layoutParams);
+                floatHeaderContainer.setLayoutParams(layoutParams);
                 for (RecyclerView view : mRecyclerViews) {
                     if (view != recyclerView) {
                         RecyclerView.LayoutManager layoutManager = view.getLayoutManager();
@@ -166,7 +190,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                             int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
                             if (firstVisibleItemPosition == 0) {
                                 //we don't need to scroll if we already don't see first item
-                                linearLayoutManager.scrollToPositionWithOffset(0, newTopMargin - defaultMargin);
+                                linearLayoutManager.scrollToPositionWithOffset(0, newTopMargin);
                             }
                         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
                             StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) layoutManager;
@@ -176,7 +200,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                                     for (int pos : firstVisibleItemPositions) {
                                         if (pos < 3) {
                                             //we don't need to scroll if we already don't see first item
-                                            staggeredGridLayoutManager.scrollToPositionWithOffset(0, newTopMargin - defaultMargin);
+                                            staggeredGridLayoutManager.scrollToPositionWithOffset(0, newTopMargin);
                                             break;
                                         }
                                     }
