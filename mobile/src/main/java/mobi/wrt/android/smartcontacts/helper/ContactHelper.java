@@ -11,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.XCoreHelper;
 import by.istin.android.xcore.utils.AppUtils;
+import by.istin.android.xcore.utils.CursorUtils;
 import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.utils.ColorUtils;
@@ -61,16 +62,16 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
     }
 
     private String getContactIdFromNumber(String number) {
-        Uri contactUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI,
-                Uri.encode(number));
-        Cursor c = ContextHolder.get().getContentResolver().query(contactUri, PROJECTION,
-                null, null, null);
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
+        Cursor c = ContextHolder.get().getContentResolver().query(uri, PROJECTION, null, null, null);
         if (c.moveToFirst()) {
-            String photoUri = c.getString(c.getColumnIndex(ContactsContract.Contacts.PHOTO_URI));
-            Long id = c.getLong(c.getColumnIndex(ContactsContract.Contacts._ID));
+            String photoUri = CursorUtils.getString(ContactsContract.Contacts.PHOTO_URI, c);
+            Long id = CursorUtils.getLong(ContactsContract.Contacts._ID, c);
             mContactIdCache.put(number, id);
-            c.close();
+            CursorUtils.close(c);
             return photoUri == null ? StringUtil.EMPTY : photoUri;
+        } else {
+            CursorUtils.close(c);
         }
         return StringUtil.EMPTY;
     }

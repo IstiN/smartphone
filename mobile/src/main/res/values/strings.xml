@@ -25,5 +25,6 @@
     <string name="about_1_minute_ago">about 1 minute ago</string>
     <string name="seconds_ago">seconds ago</string>
     <string name="right_now">right now</string>
+    <string name="search_hint">Type a name or phone number</string>
 
 </resources>

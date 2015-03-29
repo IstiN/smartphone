@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'idea'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "mobi.wrt.android.smartcontacts"
@@ -19,6 +20,14 @@ android {
     }
 }
 
+
+idea {
+    module{
+        //sourceDirs += file("\\android-sdk-macosx\\sources\\android-22\\")
+        //sourceDirs += file("E:\\Android\\sources\\platform_frameworks_support\\v7\\appcompat\\src")
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //wearApp project(':wear')
@@ -32,3 +41,4 @@ dependencies {
     compile 'com.melnykov:floatingactionbutton:1.2.0'
     //compile 'com.google.android.gms:play-services:6.5.87'
 }
+

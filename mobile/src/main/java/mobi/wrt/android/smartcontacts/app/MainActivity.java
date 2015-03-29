@@ -1,20 +1,28 @@
 package mobi.wrt.android.smartcontacts.app;
 
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.HashSet;
@@ -46,10 +54,45 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     private int mAdditionalAdapterHeight;
 
     private FloatingActionButton mFloatingActionButton;
+
+    private Toolbar mToolbar;
+
+    private ActionBarDrawerToggle mDrawerToggle;
+
+    private DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //getSupportActionBar().hide();
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mDrawerToggle = new ActionBarDrawerToggle(this,
+                mDrawerLayout, mToolbar, R.string.search_hint,
+                R.string.search_hint) {
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View view) {
+                super.onDrawerOpened(view);
+                invalidateOptionsMenu();
+            }
+        };
+        findViewById(R.id.search_input).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSearchInputClick(v);
+            }
+        });
+        mToolbar.setNavigationOnClickListener(null);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
         final View headerContainer = findViewById(R.id.header);
         final View floatHeaderContainer = findViewById(R.id.float_header);
         ViewTreeObserver viewTreeObserver = headerContainer.getViewTreeObserver();
@@ -214,6 +257,22 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             }
 
         };
+    }
+
+    public void onSearchInputClick(View view) {
+        ValueAnimator anim = ValueAnimator.ofFloat(0, 1);
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                float slideOffset = (Float) valueAnimator.getAnimatedValue();
+                mDrawerToggle.onDrawerSlide(mDrawerLayout, slideOffset);
+            }
+        });
+        anim.setInterpolator(new DecelerateInterpolator());
+        // You can change this duration to more closely match that of the default animation.
+        anim.setDuration(500);
+        anim.start();
+
     }
 
     public void onRecentMoreClick(View view) {
