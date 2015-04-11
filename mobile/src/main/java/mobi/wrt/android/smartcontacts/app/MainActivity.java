@@ -21,8 +21,6 @@ import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.HashSet;
@@ -33,6 +31,7 @@ import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
 import mobi.wrt.android.smartcontacts.fragments.PhoneFragment;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
+import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
@@ -259,20 +258,18 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         };
     }
 
-    public void onSearchInputClick(View view) {
-        ValueAnimator anim = ValueAnimator.ofFloat(0, 1);
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                float slideOffset = (Float) valueAnimator.getAnimatedValue();
-                mDrawerToggle.onDrawerSlide(mDrawerLayout, slideOffset);
-            }
-        });
-        anim.setInterpolator(new DecelerateInterpolator());
-        // You can change this duration to more closely match that of the default animation.
-        anim.setDuration(500);
-        anim.start();
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if (fragment != null && fragment instanceof SearchFragment) {
+            ((SearchFragment)fragment).closeSearch();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
+    public void onSearchInputClick(View view) {
+        getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new SearchFragment()).commit();
     }
 
     public void onRecentMoreClick(View view) {

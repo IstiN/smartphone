@@ -13,6 +13,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 
+import com.squareup.picasso.Picasso;
+
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.CursorUtils;
@@ -63,7 +65,7 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
     @Override
     public void onViewCreated(View view) {
         super.onViewCreated(view);
-        getCollectionView().addItemDecoration(new RecyclerView.ItemDecoration() {
+        /*getCollectionView().addItemDecoration(new RecyclerView.ItemDecoration() {
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
@@ -78,7 +80,7 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
                 }
             }
 
-        });
+        });*/
     }
 
     @Override
@@ -110,7 +112,7 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
     @Override
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
         final View recentCallView = getActivity().findViewById(R.id.recent_call);
-        RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall);
+        RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()));
         super.onLoadFinished(loader, cursor);
     }
 

@@ -22,16 +22,35 @@
         android:layout_marginTop="-4dip"
         android:background="#00000000">
 
-        <TextView
-            android:id="@+id/search_input"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:paddingTop="2dip"
-            android:text="@string/search_hint"
-            android:background="@null"
-            android:textAppearance="@android:style/TextAppearance.Theme"
-            android:textColor="@color/group_header" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/search_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingTop="2dip"
+                android:text="@string/search_hint"
+                android:background="@null"
+                android:textAppearance="@android:style/TextAppearance.Theme"
+                android:textColor="@color/group_header" />
+
+            <EditText
+                android:id="@+id/search_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingTop="2dip"
+                android:hint="@string/search_hint"
+                android:background="@null"
+                android:visibility="invisible"
+                android:textColorHint="@color/group_header"
+                android:textAppearance="@android:style/TextAppearance.Theme"
+                />
+
+        </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 

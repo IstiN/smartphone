@@ -54,20 +54,11 @@ public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartF
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         super.onBindViewHolder(holder, position);
-        View itemView = holder.itemView;
-        View contentView = itemView.findViewById(R.id.content);
-        if (position == 0) {
-            ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
-            layoutParams.height = layoutParams.height * 2;
-            contentView.setLayoutParams(layoutParams);
-        }
-
         SmartFragment.SmartModel cursorModel = getModelByPosition(position);
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
         String photoUri = cursorModel.getString(ContactsContract.Contacts.PHOTO_URI);
         holder.mTextView.setText(name);
-        Log.xd(this, photoUri);
-        Picasso.with(holder.mImageView.getContext()).load(photoUri).into(holder.mImageView);
+        getPicasso().load(photoUri).into(holder.mImageView);
         Long id = cursorModel.getLong(ContactsContract.Contacts._ID);
         holder.mClickableView.setTag(id);
         holder.mMoreView.setTag(id);

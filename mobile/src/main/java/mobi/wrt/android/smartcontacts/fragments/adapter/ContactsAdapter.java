@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
@@ -65,7 +63,7 @@ public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, 
 
         holder.mImageView.setTag(id);
 
-        Picasso.with(holder.mImageView.getContext()).load(photoUri).into(holder.mImageView);
+        getPicasso().load(photoUri).into(holder.mImageView);
 
         if (StringUtil.isEmpty(photoUri)) {
             holder.mCharacterView.setText(String.valueOf(Character.toUpperCase(name.charAt(0))));
@@ -73,7 +71,7 @@ public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, 
         } else {
             holder.mCharacterView.setText(StringUtil.EMPTY);
             UiUtil.setBackground(holder.mImageView, null);
-            Picasso.with(holder.mImageView.getContext()).load(photoUri).transform(Application.ROUNDED_TRANSFORMATION).into(holder.mImageView);
+            getPicasso().load(photoUri).transform(Application.ROUNDED_TRANSFORMATION).into(holder.mImageView);
         }
     }
 

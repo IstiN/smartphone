@@ -3,9 +3,9 @@ package mobi.wrt.android.smartcontacts.fragments.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.squareup.picasso.Picasso;
 
+import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.model.CursorModel;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
@@ -22,11 +22,18 @@ public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder,
 
     private View[] mCurrentFloatViews;
 
+    private Picasso mPicasso;
+
     public FloatHeaderAdapter(Model model, int topPadding, IFloatHeader floatHeader) {
         this.mModel = model;
         this.mTopPadding = topPadding;
         this.mFloatHeader = floatHeader;
         this.mCurrentFloatViews = new View[getFloatPositionCount()];
+        this.mPicasso = Picasso.with(ContextHolder.get());
+    }
+
+    public Picasso getPicasso() {
+        return mPicasso;
     }
 
     @Override

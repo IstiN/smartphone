@@ -146,14 +146,14 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
         RecentFragment.RecentModel modelByPosition = getModelByPosition(position);
         int viewType = getViewType(modelByPosition);
         if (viewType == VIEW_TYPE_NUMBER) {
-            initItem((Holder) holder, modelByPosition);
+            initItem((Holder) holder, modelByPosition, getPicasso());
         } else if (viewType == VIEW_TYPE_GROUP) {
             GroupHolder groupHolder = (GroupHolder) holder;
             groupHolder.mTextView.setText(modelByPosition.getString(CallLog.Calls.CACHED_NAME));
         }
     }
 
-    public static void initItem(Holder holder, CursorModel cursorModel) {
+    public static void initItem(Holder holder, CursorModel cursorModel, Picasso picasso) {
         if (cursorModel == null) {
             return;
         }
@@ -201,7 +201,7 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
             holder.mCharacterView.setText(StringUtil.EMPTY);
             UiUtil.setBackground(holder.mImageView, null);
         }
-        Picasso.with(holder.mImageView.getContext()).load(contactPhotoUri).transform(Application.ROUNDED_TRANSFORMATION).into(holder.mImageView);
+        picasso.load(contactPhotoUri).transform(Application.ROUNDED_TRANSFORMATION).into(holder.mImageView);
     }
 
 
