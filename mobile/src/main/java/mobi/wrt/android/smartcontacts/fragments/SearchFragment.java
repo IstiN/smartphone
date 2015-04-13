@@ -3,16 +3,16 @@ package mobi.wrt.android.smartcontacts.fragments;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import by.istin.android.xcore.fragment.AbstractFragment;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.view.DrawerArrowDrawable;
 
 /**
  * Created by IstiN on 31.01.2015.
@@ -24,44 +24,29 @@ public class SearchFragment extends AbstractFragment {
         return R.layout.fragment_search;
     }
 
-    private Toolbar mToolbar;
-
-    private DrawerLayout mDrawerLayout;
-
-    private ActionBarDrawerToggle mDrawerToggle;
-
     private View mShadowView;
 
     private EditText mEditText;
+
+    private DrawerArrowDrawable mArrowDrawable;
 
     @Override
     public void onViewCreated(final View view) {
         super.onViewCreated(view);
         mEditText = (EditText) view.findViewById(R.id.search_edit);
         mShadowView = view.findViewById(R.id.shadow);
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        mDrawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer);
-        mDrawerToggle = new ActionBarDrawerToggle(getActivity(),
-                mDrawerLayout, mToolbar, R.string.search_hint,
-                R.string.search_hint) {
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-            }
-
-            public void onDrawerOpened(View view) {
-                super.onDrawerOpened(view);
-            }
-        };
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mEditText.setVisibility(View.VISIBLE);
+        mArrowDrawable = new DrawerArrowDrawable(getActivity(), getActivity());
+        ImageView topButton = (ImageView) view.findViewById(R.id.arrow);
+        topButton.setImageDrawable(mArrowDrawable);
+        topButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 closeSearch();
             }
         });
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mDrawerToggle.syncState();
 
-        animate(view, 0, 1, new Animator.AnimatorListener() {
+        animate(0, 1, new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
 
@@ -70,9 +55,6 @@ public class SearchFragment extends AbstractFragment {
             @Override
             public void onAnimationEnd(Animator animation) {
                 view.findViewById(R.id.search_input).setVisibility(View.INVISIBLE);
-                mEditText = (EditText) view.findViewById(R.id.search_edit);
-                mEditText.setVisibility(View.VISIBLE);
-                UiUtil.showKeyboard(mEditText);
                 mShadowView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -91,15 +73,22 @@ public class SearchFragment extends AbstractFragment {
 
             }
         });
+        mEditText.requestFocus();
+        mEditText.post(new Runnable() {
+            @Override
+            public void run() {
+                UiUtil.showKeyboard(mEditText);
+            }
+        });
     }
 
-    private void animate(final View view, int startValue, int endvalue, Animator.AnimatorListener listener) {
+    private void animate(int startValue, int endvalue, Animator.AnimatorListener listener) {
         ValueAnimator anim = ValueAnimator.ofFloat(startValue, endvalue);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 float slideOffset = (Float) valueAnimator.getAnimatedValue();
-                mDrawerToggle.onDrawerSlide(mDrawerLayout, slideOffset);
+                mArrowDrawable.setProgress(slideOffset);
                 if (slideOffset < 0.57f) {
                     mShadowView.setAlpha(slideOffset);
                 } else {
@@ -123,7 +112,7 @@ public class SearchFragment extends AbstractFragment {
             return;
         }
         isCloseRunning = true;
-        animate(getView(), 1, 0, new Animator.AnimatorListener() {
+        animate(1, 0, new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
 
@@ -136,7 +125,6 @@ public class SearchFragment extends AbstractFragment {
                     return;
                 }
                 activity.getSupportFragmentManager().popBackStackImmediate();
-                UiUtil.hideKeyboard(mEditText);
             }
 
             @Override
@@ -149,5 +137,6 @@ public class SearchFragment extends AbstractFragment {
 
             }
         });
+        UiUtil.hideKeyboard(mEditText);
     }
 }

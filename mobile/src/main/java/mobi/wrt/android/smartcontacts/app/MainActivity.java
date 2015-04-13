@@ -1,6 +1,5 @@
 package mobi.wrt.android.smartcontacts.app;
 
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,17 +7,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
-import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -34,6 +32,7 @@ import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
+import mobi.wrt.android.smartcontacts.view.DrawerArrowDrawable;
 import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
 import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
@@ -46,7 +45,6 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     private RecyclerView.OnScrollListener mFloatHeaderScrollListener;
 
-    private Set<View> mFloatHeaders = new HashSet<>();
 
     private Set<RecyclerView> mRecyclerViews = new HashSet<>();
 
@@ -54,44 +52,27 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     private FloatingActionButton mFloatingActionButton;
 
-    private Toolbar mToolbar;
-
-    private ActionBarDrawerToggle mDrawerToggle;
-
-    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //getSupportActionBar().hide();
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        mDrawerToggle = new ActionBarDrawerToggle(this,
-                mDrawerLayout, mToolbar, R.string.search_hint,
-                R.string.search_hint) {
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                invalidateOptionsMenu();
-            }
-
-            public void onDrawerOpened(View view) {
-                super.onDrawerOpened(view);
-                invalidateOptionsMenu();
-            }
-        };
         findViewById(R.id.search_input).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSearchInputClick(v);
             }
         });
-        mToolbar.setNavigationOnClickListener(null);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mDrawerToggle.syncState();
-
+        DrawerArrowDrawable drawable = new DrawerArrowDrawable(this, this);
+        ImageView menuButton = (ImageView) findViewById(R.id.arrow);
+        menuButton.setImageDrawable(drawable);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((DrawerLayout)findViewById(R.id.drawer)).openDrawer(Gravity.START);
+            }
+        });
         final View headerContainer = findViewById(R.id.header);
         final View floatHeaderContainer = findViewById(R.id.float_header);
         ViewTreeObserver viewTreeObserver = headerContainer.getViewTreeObserver();
@@ -214,8 +195,8 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 super.onScrolled(recyclerView, dx, dy);
                 LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) floatHeaderContainer.getLayoutParams();
                 int newTopMargin = layoutParams.topMargin - dy;
-                if (newTopMargin >= defaultMargin) {
-                    newTopMargin = defaultMargin;
+                if (newTopMargin > 0) {
+                    newTopMargin = 0;
                 } else {
                     int newHeight = - (defaultMarginSmall + floatHeaderContainer.getHeight() - defaultMargin);
                     if (newTopMargin <= newHeight) {
@@ -312,11 +293,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     @Override
     public void addTopView(View view) {
-        mFloatHeaders.add(view);
     }
 
     @Override
     public void removeTopView(View view) {
-        mFloatHeaders.remove(view);
     }
 }

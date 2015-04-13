@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,23 +13,26 @@
     card_view:cardCornerRadius="2dp"
     tools:showIn="@layout/activity_main">
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="-4dip"
-        android:background="#00000000">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="24dip"
+                android:paddingRight="24dip"
+                android:background="?attr/selectableItemBackground"
+                android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/search_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingTop="2dip"
+                android:layout_toRightOf="@id/arrow"
                 android:text="@string/search_hint"
                 android:background="@null"
                 android:textAppearance="@android:style/TextAppearance.Theme"
@@ -42,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingTop="2dip"
+                android:layout_toRightOf="@id/arrow"
                 android:hint="@string/search_hint"
                 android:background="@null"
                 android:visibility="invisible"
@@ -51,7 +52,5 @@
                 />
 
         </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
 
 </android.support.v7.widget.CardView>
