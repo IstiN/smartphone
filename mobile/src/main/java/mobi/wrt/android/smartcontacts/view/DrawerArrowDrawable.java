@@ -13,9 +13,6 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.appcompat.R;
 
-/**
- * Created by uladzimir_klyshevich on 4/13/15.
- */
 public class DrawerArrowDrawable extends Drawable {
 
     private final Paint mPaint = new Paint();

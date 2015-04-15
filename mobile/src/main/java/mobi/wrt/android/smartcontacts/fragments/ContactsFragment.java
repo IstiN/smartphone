@@ -53,26 +53,6 @@ public class ContactsFragment extends RecyclerViewFragment<ContactsAdapter.Holde
     public static final String SELECTION = ContactsContract.Contacts.HAS_PHONE_NUMBER + "=1";
     public static final String ORDER = ContactsContract.Contacts.STARRED + " desc, " + ContactsContract.Contacts.DISPLAY_NAME + " asc";
 
-    @Override
-    public void onViewCreated(View view) {
-        super.onViewCreated(view);
-        getCollectionView().addItemDecoration(new RecyclerView.ItemDecoration() {
-
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.left = 2;
-                outRect.right = 2;
-                outRect.bottom = 2;
-
-                // Add top margin only for the first item to avoid double space between items
-                int childPosition = parent.getChildPosition(view);
-                if (childPosition < 2) {
-                    outRect.top = 4;
-                }
-            }
-
-        });
-    }
 
     @Override
     public CursorModel.CursorModelCreator<ContactsModel> getCursorModelCreator() {

@@ -141,11 +141,6 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
 
 
     @Override
-    public void onViewCreated(View view) {
-        super.onViewCreated(view);
-    }
-
-    @Override
     public CursorModel.CursorModelCreator<RecentModel> getCursorModelCreator() {
         return new CursorModel.CursorModelCreator<RecentModel>() {
             @Override

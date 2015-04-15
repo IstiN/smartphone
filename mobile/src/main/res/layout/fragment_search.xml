@@ -15,8 +15,15 @@
         android:clickable="true"
         android:alpha="0"/>
 
-    <include layout="@layout/view_search" />
+    <include android:id="@+id/search_bar_container" layout="@layout/view_search" />
 
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar_container"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        />
 
 </RelativeLayout>

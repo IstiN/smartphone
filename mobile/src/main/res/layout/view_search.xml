@@ -16,7 +16,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true">
 
             <ImageView
                 android:id="@+id/arrow"
@@ -46,10 +47,24 @@
                 android:layout_toRightOf="@id/arrow"
                 android:hint="@string/search_hint"
                 android:background="@null"
+                android:singleLine="true"
                 android:visibility="invisible"
                 android:textColorHint="@color/group_header"
                 android:textAppearance="@android:style/TextAppearance.Theme"
                 />
+
+            <ImageView
+                android:id="@+id/clear"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="12dip"
+                android:paddingRight="12dip"
+                android:src="@drawable/abc_ic_clear_mtrl_alpha"
+                android:tint="@color/group_header"
+                android:visibility="invisible"
+                android:background="?attr/selectableItemBackground"
+                android:layout_alignParentRight="true"
+                android:layout_height="match_parent" />
 
         </RelativeLayout>
 

@@ -16,6 +16,7 @@ import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.ContentUtils;
 import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 
 /**
  * Created by IstiN on 18.02.2015.
@@ -71,7 +72,7 @@ public class BaseControllerActivity extends ActionBarActivity {
     }
 
     public void initPhoneNumbers(Long id, final ISuccess<List<ContentValues>> result, final ISuccess<String> success) {
-        final List<ContentValues> entities = ContentUtils.getEntities(this, new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.IS_SUPER_PRIMARY}, ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id + " AND " + ContactsContract.CommonDataKinds.Phone.NUMBER + " IS NOT NULL", null);
+        final List<ContentValues> entities = ContactHelper.get(this).getPhonesById(id);
         if (entities != null && !entities.isEmpty()) {
             if (entities.size() == 1) {
                 final String phoneNumber = entities.get(0).getAsString(ContactsContract.CommonDataKinds.Phone.NUMBER);

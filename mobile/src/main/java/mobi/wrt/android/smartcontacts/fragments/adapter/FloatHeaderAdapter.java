@@ -3,18 +3,14 @@ package mobi.wrt.android.smartcontacts.fragments.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.squareup.picasso.Picasso;
-
-import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.model.CursorModel;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**
  * Created by IstiN on 10.02.2015.
  */
-public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder, Model extends CursorModel> extends RecyclerView.Adapter<Holder> {
+public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder, Model extends CursorModel> extends CursorModelAdapter<Holder, Model> {
 
-    private Model mModel;
 
     private int mTopPadding;
 
@@ -22,18 +18,11 @@ public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder,
 
     private View[] mCurrentFloatViews;
 
-    private Picasso mPicasso;
-
     public FloatHeaderAdapter(Model model, int topPadding, IFloatHeader floatHeader) {
-        this.mModel = model;
+        super(model);
         this.mTopPadding = topPadding;
         this.mFloatHeader = floatHeader;
         this.mCurrentFloatViews = new View[getFloatPositionCount()];
-        this.mPicasso = Picasso.with(ContextHolder.get());
-    }
-
-    public Picasso getPicasso() {
-        return mPicasso;
     }
 
     @Override
@@ -69,18 +58,4 @@ public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder,
         return 1;
     };
 
-    public Model getModelByPosition(int position) {
-        mModel.moveToPosition(position);
-        return mModel;
-    }
-
-    @Override
-    public int getItemCount() {
-        return mModel.size();
-    }
-
-    public void swap(Model model) {
-        mModel = model;
-        notifyDataSetChanged();
-    }
 }

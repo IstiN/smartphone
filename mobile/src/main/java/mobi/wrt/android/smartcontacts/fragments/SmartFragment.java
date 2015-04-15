@@ -63,27 +63,6 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
     public static final String ORDER = null;
 
     @Override
-    public void onViewCreated(View view) {
-        super.onViewCreated(view);
-        /*getCollectionView().addItemDecoration(new RecyclerView.ItemDecoration() {
-
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.left = 2;
-                outRect.right = 2;
-                outRect.bottom = 2;
-
-                // Add top margin only for the first item to avoid double space between items
-                int childPosition = parent.getChildPosition(view);
-                if(childPosition < 2) {
-                    outRect.top = 4;
-                }
-            }
-
-        });*/
-    }
-
-    @Override
     public CursorModel.CursorModelCreator<SmartModel> getCursorModelCreator() {
         return new CursorModel.CursorModelCreator<SmartModel>() {
             @Override
