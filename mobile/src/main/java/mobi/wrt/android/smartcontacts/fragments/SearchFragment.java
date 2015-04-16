@@ -1,11 +1,16 @@
 package mobi.wrt.android.smartcontacts.fragments;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.accounts.AuthenticatorDescription;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.BaseColumns;
@@ -27,7 +32,6 @@ import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.fragment.CursorLoaderFragmentHelper;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
-import by.istin.android.xcore.utils.ContentUtils;
 import by.istin.android.xcore.utils.CursorUtils;
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.StringUtil;
@@ -60,6 +64,8 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
 
     private String mSearchQuery;
 
+    private View mSearchClear;
+
     private TextWatcher mWatcher = new TextWatcher() {
 
         private Handler mHandler = new Handler();
@@ -70,8 +76,6 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                 CursorLoaderFragmentHelper.restartLoader(SearchFragment.this);
             }
         };
-
-        private View searchClear;
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -87,27 +91,21 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                 return;
             }
             String value = s.toString();
-            if (searchClear == null) {
-                searchClear = view.findViewById(R.id.clear);
-                searchClear.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mEditText.setText(StringUtil.EMPTY);
-                    }
-                });
-            }
-            if (StringUtil.isEmpty(value)) {
-                if (searchClear != null) {
-                    searchClear.setVisibility(View.GONE);
+            mSearchClear.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mEditText.setText(StringUtil.EMPTY);
                 }
+            });
+            if (StringUtil.isEmpty(value)) {
+                mSearchClear.setVisibility(View.GONE);
                 SearchAdapter adapter = getAdapter();
                 if (adapter != null) {
                     swap(adapter, null);
                 }
+                getCollectionView().setVisibility(View.INVISIBLE);
             } else {
-                if (searchClear != null) {
-                    searchClear.setVisibility(View.VISIBLE);
-                }
+                mSearchClear.setVisibility(View.VISIBLE);
             }
 
             mSearchQuery = value;
@@ -128,7 +126,8 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
             super.doInBackground(context);
             ContactHelper contactHelper = ContactHelper.get(context);
             if (!CursorUtils.isEmpty(this)) {
-                List<ContentValues> result = new ArrayList<>();
+                List<ContentValues> resultWithPhones = new ArrayList<>();
+                List<ContentValues> resultWithoutPhones = new ArrayList<>();
                 for (int i = 0; i < size(); i++) {
                     moveToPosition(i);
                     ContentValues contentValues = new ContentValues();
@@ -136,12 +135,20 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                     Long id = getLong(BaseColumns._ID);
                     final List<ContentValues> entities = contactHelper.getPhonesById(id);
                     //TODO make facebook and skype chat visibility
-                    final List<ContentValues> emails = contactHelper.getEmailsById(id);
+                    /*final List<ContentValues> emails = contactHelper.getEmailsById(id);
                     if (emails != null) {
                         for (ContentValues email : emails) {
                             Log.xd(this, email);
+                            AccountManager accountManager = AccountManager.get(context);
+                            Account[] accounts = accountManager.getAccounts();
+                            for (Account account : accounts) {
+                                if (account.type.equals(email.getAsString(ContactsContract.CommonDataKinds.Email.ACCOUNT_TYPE_AND_DATA_SET))) {
+                                    Log.xd(this, account);
+
+                                }
+                            }
                         }
-                    }
+                    }*/
 
                     if (entities != null && !entities.isEmpty()) {
                         int sizeOfPhones = entities.size();
@@ -150,34 +157,53 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                             Log.xd(this, phone.toString());
                             String number = phone.getAsString(ContactsContract.CommonDataKinds.Phone.NUMBER);
                             if (!StringUtil.isEmpty(number)) {
-                                Log.xd(this, "number: " + number);
+                                //Log.xd(this, "number: " + number);
                                 contactHelper.initPhotoUri(number);
                             }
                             contentValues.putAll(phone);
-                            result.add(contentValues);
+                            resultWithPhones.add(contentValues);
                             if (j != sizeOfPhones - 1) {
                                 contentValues = new ContentValues();
                                 DatabaseUtils.cursorRowToContentValues(this, contentValues);
                             }
                         }
                     } else {
-                        result.add(contentValues);
+                        resultWithoutPhones.add(contentValues);
                     }
                 }
-
-                setCursor(CursorUtils.listContentValuesToCursor(result,
+                resultWithPhones.addAll(resultWithoutPhones);
+                setCursor(CursorUtils.listContentValuesToCursor(resultWithPhones,
                         ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_URI,
                         ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.IS_SUPER_PRIMARY, ContactsContract.CommonDataKinds.Phone.TYPE));
             }
         }
     }
 
+    public class AccountInfo {
+
+        private Drawable mIcon;
+
+        private String mName;
+
+    }
+
+    private AccountInfo getIconForAccount(Account account, AccountManager manager) {
+        AuthenticatorDescription[] descriptions =  manager.getAuthenticatorTypes();
+        for (AuthenticatorDescription description: descriptions) {
+            if (description.type.equals(account.type)) {
+                PackageManager pm = ContextHolder.get().getPackageManager();
+                Drawable drawable = pm.getDrawable(description.packageName, description.iconId, null);
+            }
+        }
+        return null;
+    }
 
     @Override
     public void onViewCreated(final View view) {
         super.onViewCreated(view);
         mEditText = (EditText) view.findViewById(R.id.search_edit);
         mShadowView = view.findViewById(R.id.shadow);
+        mSearchClear = view.findViewById(R.id.clear);
         mEditText.setVisibility(View.VISIBLE);
         mEditText.addTextChangedListener(mWatcher);
         mArrowDrawable = new DrawerArrowDrawable(getActivity(), getActivity());
@@ -211,21 +237,21 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                 UiUtil.showKeyboard(mEditText);
             }
         });
-        getCollectionView().setOnScrollListener(new RecyclerView.OnScrollListener() {
+        RecyclerView collectionView = getCollectionView();
+        collectionView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+                Log.xd(SearchFragment.this, "state " + newState);
+                UiUtil.hideKeyboard(mEditText);
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy > 1) {
-                    UiUtil.hideKeyboard(mEditText);
-                }
             }
         });
-
+        collectionView.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -255,6 +281,8 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                 } else {
                     mShadowView.setAlpha(0.57f);
                 }
+                mSearchClear.setAlpha(slideOffset);
+                getCollectionView().setAlpha(slideOffset);
             }
         });
         anim.setInterpolator(new DecelerateInterpolator());
@@ -301,6 +329,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
     public void onLoadFinished(Loader<SearchCursorModel> loader, SearchCursorModel cursor) {
         if (!StringUtil.isEmpty(mSearchQuery)) {
             super.onLoadFinished(loader, cursor);
+            getCollectionView().setVisibility(View.VISIBLE);
         }
     }
 
@@ -311,7 +340,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
 
     @Override
     public String getOrder() {
-        return ContactsContract.Contacts._ID + " ASC LIMIT 0, 10";
+        return ContactsContract.Contacts._ID + " ASC";
     }
 
     @Override

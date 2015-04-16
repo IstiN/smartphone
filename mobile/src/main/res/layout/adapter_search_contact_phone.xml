@@ -1,9 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="58dip"
-    tools:context=".MainActivity"
-    android:background="@color/cardview_light_background">
+    android:background="#fafafa"
+    tools:context=".MainActivity">
+
 
     <View
         android:id="@+id/clickableView"
@@ -24,8 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:singleLine="true"
             android:ellipsize="end"
+            android:singleLine="true"
             android:textColor="#737373"
             android:textSize="14sp" />
 
@@ -33,12 +35,13 @@
             android:id="@+id/phone_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:singleLine="true"
+            android:layout_centerVertical="true"
             android:ellipsize="end"
             android:paddingRight="16dip"
+            android:singleLine="true"
             android:textColor="#737373"
             android:textSize="14sp" />
     </RelativeLayout>
 </RelativeLayout>
+

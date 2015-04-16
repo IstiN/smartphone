@@ -95,6 +95,15 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
 
     public List<ContentValues> getEmailsById(Long id) {
         String[] projection = EMAILS_PROJECTION;
+        //String[] projection = null;
         return ContentUtils.getEntities(ContextHolder.get(), projection, ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, EMAILS_SELECTION, new String[]{String.valueOf(id)});
+    }
+
+    public CharSequence getPhoneTypeLabel(Integer value) {
+        if (value == null) {
+            return StringUtil.EMPTY;
+        }
+        Context context = ContextHolder.get();
+        return ContactsContract.CommonDataKinds.Phone.getTypeLabel(context.getResources(), value, StringUtil.EMPTY);
     }
 }

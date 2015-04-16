@@ -1,7 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,20 +7,24 @@
         android:id="@+id/shadow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="true"
+        android:alpha="0"
         android:background="#000000"
         android:clickable="true"
-        android:alpha="0"/>
+        android:focusable="true" />
 
-    <include android:id="@+id/search_bar_container" layout="@layout/view_search" />
+    <include
+        android:id="@+id/search_bar_container"
+        layout="@layout/view_search" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_bar_container"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        />
+        <android.support.v7.widget.RecyclerView
+            android:id="@android:id/list"
+            android:layout_below="@id/search_bar_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/default_margin_plus_card"
+            android:layout_marginRight="@dimen/default_margin_plus_card"
+            android:layout_marginBottom="@dimen/default_margin_small"
+            />
+
 
 </RelativeLayout>

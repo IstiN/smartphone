@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import by.istin.android.xcore.model.CursorModel;
+import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
+import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 import mobi.wrt.android.smartcontacts.utils.ColorUtils;
 
 /**
@@ -113,13 +114,24 @@ public class SearchAdapter extends CursorModelAdapter<RecyclerView.ViewHolder, S
         } else if (viewType == VIEW_TYPE_NUMBER) {
             NumberHolder numberHolder = (NumberHolder) holder;
             String number = modelByPosition.getString(ContactsContract.CommonDataKinds.Phone.NUMBER);
-            numberHolder.mClickableView.setTag(number);
+            numberHolder.mClickableView.setTag(StringUtil.isEmpty(number) ? modelByPosition.getLong(ContactsContract.CommonDataKinds.Phone._ID) : number);
             numberHolder.mPhoneView.setText(number);
-            numberHolder.mTypeView.setText(modelByPosition.getString(ContactsContract.CommonDataKinds.Phone.TYPE));
+            setType(modelByPosition, number, numberHolder.mTypeView);
         }
     }
 
-    public static void initItem(Holder holder, CursorModel cursorModel, Picasso picasso) {
+    private void setType(SearchFragment.SearchCursorModel modelByPosition, String number, TextView typeTextView) {
+        if (StringUtil.isEmpty(number)) {
+            typeTextView.setVisibility(View.INVISIBLE);
+            return;
+        }
+        typeTextView.setVisibility(View.VISIBLE);
+        Integer type = modelByPosition.getInt(ContactsContract.CommonDataKinds.Phone.TYPE);
+        CharSequence phoneTypeLabel = ContactHelper.get(ContextHolder.get()).getPhoneTypeLabel(type);
+        typeTextView.setText(phoneTypeLabel);
+    }
+
+    public void initItem(Holder holder, SearchFragment.SearchCursorModel cursorModel, Picasso picasso) {
         if (cursorModel == null) {
             return;
         }
@@ -130,9 +142,9 @@ public class SearchAdapter extends CursorModelAdapter<RecyclerView.ViewHolder, S
         String number = cursorModel.getString(ContactsContract.CommonDataKinds.Phone.NUMBER);
         holder.mTextView.setText(name);
         holder.mPhoneTextView.setText(number);
-        holder.mClickableView.setTag(number);
+        holder.mClickableView.setTag(StringUtil.isEmpty(number) ? cursorModel.getLong(ContactsContract.CommonDataKinds.Phone._ID) : number);
         holder.mImageView.setTag(id);
-        holder.mTypeView.setText(cursorModel.getString(ContactsContract.CommonDataKinds.Phone.TYPE));
+        setType(cursorModel, number, holder.mTypeView);
         if (photoUri == null) {
             holder.mCharacterView.setText(name == null ? "?" : String.valueOf(Character.toUpperCase(name.charAt(0))));
             UiUtil.setBackground(holder.mImageView, ColorUtils.getColorCircle(holder.mImageView.getHeight(), number == null ? name : number));

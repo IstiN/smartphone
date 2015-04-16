@@ -32,13 +32,23 @@ public class BaseControllerActivity extends ActionBarActivity {
             startActivity(intent);
             return;
         }
-        Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, String.valueOf(tag));
+        Long id = (Long) tag;
+        openContact(id);
+    }
+
+    private void openContact(Long id) {
+        Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, String.valueOf(id));
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
 
     public void onRecentContactClick(View view) {
-        makeCall((String)view.getTag());
+        Object tag = view.getTag();
+        if (tag instanceof Long) {
+            openContact((Long)tag);
+            return;
+        }
+        makeCall((String)tag);
     }
 
     public void onContactClick(final View view) {

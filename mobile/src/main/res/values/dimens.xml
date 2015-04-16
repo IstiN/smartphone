@@ -5,6 +5,7 @@
     <dimen name="height_recent_call">66dp</dimen>
     <dimen name="height_search_bar">54dp</dimen>
     <dimen name="default_margin">8dp</dimen>
+    <dimen name="default_margin_plus_card">10dp</dimen>
     <dimen name="default_margin_small">4dp</dimen>
     <dimen name="number_height">64dip</dimen>
     <dimen name="icon_size">42dip</dimen>
