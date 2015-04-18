@@ -8,6 +8,7 @@ import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -88,8 +89,11 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
         return new SmartAdapter(cursor, firstResponderFor.attach(null, getCollectionView()), firstResponderFor);
     }
 
+    private int count;
+
     @Override
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
+        this.count = cursor.getCount();
         final View recentCallView = getActivity().findViewById(R.id.recent_call);
         RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()));
         super.onLoadFinished(loader, cursor);
@@ -117,7 +121,17 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position < count) {
+                    return 1;
+                }
+                return 2;
+            }
+        });
+        return gridLayoutManager;
     }
 
     @Override

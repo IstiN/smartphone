@@ -9,4 +9,5 @@
     <dimen name="default_margin_small">4dp</dimen>
     <dimen name="number_height">64dip</dimen>
     <dimen name="icon_size">42dip</dimen>
+    <dimen name="smart_contact_height">128dip</dimen>
 </resources>

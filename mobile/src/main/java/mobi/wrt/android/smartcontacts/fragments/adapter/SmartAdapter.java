@@ -1,6 +1,7 @@
 package mobi.wrt.android.smartcontacts.fragments.adapter;
 
 import android.provider.ContactsContract;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.Log;
 import mobi.wrt.android.smartcontacts.R;
@@ -21,8 +23,16 @@ import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
  */
 public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartFragment.SmartModel> {
 
+    public static final int REGULAR_VIEW_TYPE = 0;
+    public static final int FOOTER_VIEW_TYPE = 1;
+
+    private int smartContactHeight;
+
+    private int parentHeight;
+
     public SmartAdapter(SmartFragment.SmartModel cursors, int topPadding, IFloatHeader floatHeader) {
         super(cursors, topPadding, floatHeader);
+        smartContactHeight = ContextHolder.get().getResources().getDimensionPixelSize(R.dimen.smart_contact_height);
     }
 
     public static class Holder extends RecyclerView.ViewHolder {
@@ -46,14 +56,53 @@ public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartF
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if (position == getItemCount() - 1) {
+            return FOOTER_VIEW_TYPE;
+        }
+        return REGULAR_VIEW_TYPE;
+    }
+
+    private class FooterHolder extends Holder {
+
+        public FooterHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = View.inflate(parent.getContext(), R.layout.adapter_smart_contact, null);
-        return new Holder(itemView);
+        if (viewType == REGULAR_VIEW_TYPE) {
+            View itemView = View.inflate(parent.getContext(), R.layout.adapter_smart_contact, null);
+            return new Holder(itemView);
+        } else {
+            View itemView = new View(parent.getContext());
+            int itemCount = super.getItemCount()/2;
+            parentHeight = parent.getHeight();
+            int height = parentHeight - smartContactHeight * itemCount;
+            if (height < 0) {
+                height = smartContactHeight;
+            }
+            itemView.setLayoutParams(new GridLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
+            return new FooterHolder(itemView);
+        }
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         super.onBindViewHolder(holder, position);
+        if (position == getItemCount() - 1) {
+            View itemView = holder.itemView;
+            ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
+            int itemCount = super.getItemCount()/2;
+            int height = parentHeight - smartContactHeight * itemCount;
+            if (height < 0) {
+                height = smartContactHeight;
+            }
+            layoutParams.height = height;
+            itemView.setLayoutParams(layoutParams);
+            return;
+        }
         SmartFragment.SmartModel cursorModel = getModelByPosition(position);
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
         String photoUri = cursorModel.getString(ContactsContract.Contacts.PHOTO_URI);
@@ -72,5 +121,10 @@ public class SmartAdapter extends FloatHeaderAdapter<SmartAdapter.Holder, SmartF
     @Override
     protected int getFloatPositionCount() {
         return 2;
+    }
+
+    @Override
+    public int getItemCount() {
+        return super.getItemCount() + 1;
     }
 }

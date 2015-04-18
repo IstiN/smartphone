@@ -216,6 +216,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                                 linearLayoutManager.scrollToPositionWithOffset(0, newTopMargin);
                             }
                         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
+                            Log.xd(MainActivity.this, "new " + newTopMargin);
                             StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) layoutManager;
                             try {
                                 int[] firstVisibleItemPositions = staggeredGridLayoutManager.findFirstCompletelyVisibleItemPositions(null);
