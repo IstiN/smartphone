@@ -1,6 +1,7 @@
 package mobi.wrt.android.smartcontacts.app;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -53,6 +54,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     private FloatingActionButton mFloatingActionButton;
 
+    private boolean isFabClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,28 +191,11 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         });
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
 
-            private boolean isClicked = false;
-
             @Override
             public void onClick(View v) {
-                if (isClicked) {
-                    return;
-                }
-                isClicked = true;
-                mFloatingActionButton.hide(true);
-                mFloatingActionButton.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new PhoneFragment()).commit();
-                    }
-                }, 200l);
-                mFloatingActionButton.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isClicked = false;
-                    }
-                }, 500l);
+                showPhone(null);
             }
+
         });
 
         mFloatHeaderScrollListener = new RecyclerView.OnScrollListener() {
@@ -268,6 +253,53 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             }
 
         };
+        proceedIntent(getIntent());
+    }
+
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        proceedIntent(intent);
+    }
+
+    private void proceedIntent(Intent intent) {
+        Uri data = intent.getData();
+        if (data != null && data.getScheme().equalsIgnoreCase("tel")) {
+            String path = data.getSchemeSpecificPart();
+            showPhone(path);
+        }
+    }
+
+    private void showPhone(final String phoneNumber) {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if (fragment != null && fragment instanceof PhoneFragment) {
+            ((PhoneFragment) fragment).updatePhone(phoneNumber);
+            return;
+        }
+        if (isFabClicked) {
+            return;
+        }
+        isFabClicked = true;
+        mFloatingActionButton.hide(true);
+        mFloatingActionButton.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                PhoneFragment fragment = new PhoneFragment();
+                if (phoneNumber != null) {
+                    Bundle args = new Bundle();
+                    args.putString(PhoneFragment.EXTRA_PHONE, phoneNumber);
+                    fragment.setArguments(args);
+                }
+                getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, fragment).commit();
+            }
+        }, 200l);
+        mFloatingActionButton.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isFabClicked = false;
+            }
+        }, 500l);
     }
 
     @Override

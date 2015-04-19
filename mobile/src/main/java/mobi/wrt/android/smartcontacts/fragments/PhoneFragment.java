@@ -39,6 +39,7 @@ public class PhoneFragment extends AbstractFragment {
 
     public static final int NUMBER_STAR = 10;
     public static final int NUMBER_SHARP = 11;
+    public static final String EXTRA_PHONE = "phone";
     private View mShadowView;
 
     private EditText mEditText;
@@ -58,6 +59,8 @@ public class PhoneFragment extends AbstractFragment {
     public void onViewCreated(final View view) {
         super.onViewCreated(view);
         mEditText = (EditText) view.findViewById(R.id.edit_phone);
+        String phone = getPhone();
+        setNumber(phone);
         mPhone = view.findViewById(R.id.phone);
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mPhone.getLayoutParams();
         mInitalBottomMargin = layoutParams.bottomMargin;
@@ -211,6 +214,22 @@ public class PhoneFragment extends AbstractFragment {
         }
     }
 
+    private void setNumber(String phone) {
+        if (isValidPhoneNumber(phone)) {
+            mEditText.setText(phone);
+            mEditText.setSelection(phone.length());
+        }
+    }
+
+    private String getPhone() {
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            return arguments.getString(EXTRA_PHONE);
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -331,5 +350,9 @@ public class PhoneFragment extends AbstractFragment {
             }
 
         });
+    }
+
+    public void updatePhone(String phoneNumber) {
+        setNumber(phoneNumber);
     }
 }
