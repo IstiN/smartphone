@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -58,6 +59,16 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                    if (!mFloatingActionButton.isVisible()) {
+                        mFloatingActionButton.show(true);
+                    }
+                }
+            }
+        });
         findViewById(R.id.search_input).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,9 +105,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 Log.xd(MainActivity.this, "height " + height);
             }
         });
-        final int defaultMargin = getResources().getDimensionPixelSize(R.dimen.default_margin);
-        final int defaultHorizontalMargin = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
-        final int defaultMarginSmall = getResources().getDimensionPixelSize(R.dimen.default_margin_small);
+        final int defaultMargin = getResources().getDimensionPixelSize(R.dimen.default_margin_8);
+        final int defaultHorizontalMargin = getResources().getDimensionPixelSize(R.dimen.default_margin_16);
+        final int defaultMarginSmall = getResources().getDimensionPixelSize(R.dimen.default_margin_4);
 
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -177,9 +188,28 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             }
         });
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+
+            private boolean isClicked = false;
+
             @Override
             public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new PhoneFragment()).commit();
+                if (isClicked) {
+                    return;
+                }
+                isClicked = true;
+                mFloatingActionButton.hide(true);
+                mFloatingActionButton.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new PhoneFragment()).commit();
+                    }
+                }, 200l);
+                mFloatingActionButton.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isClicked = false;
+                    }
+                }, 500l);
             }
         });
 
@@ -243,8 +273,12 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     @Override
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
-        if (fragment != null && fragment instanceof SearchFragment) {
-            ((SearchFragment)fragment).closeSearch();
+        if (fragment != null) {
+            if (fragment instanceof SearchFragment) {
+                ((SearchFragment)fragment).closeSearch();
+            } else if (fragment instanceof PhoneFragment) {
+                ((PhoneFragment)fragment).closePhone();
+            }
         } else {
             super.onBackPressed();
         }

@@ -1,12 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:focusable="true"
-    android:clickable="true"
-    android:background="#ffffff"
-    >
+    tools:context=".MainActivity">
 
 
     <!--<android.support.v7.widget.RecyclerView
@@ -15,124 +13,360 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical" />-->
 
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="#000000"
+        android:clickable="true"
+        android:focusable="true" />
 
-    <LinearLayout
+
+    <RelativeLayout
         android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:divider="#cccccc"
-        android:showDividers="middle">
+        android:focusable="true"
+        android:clickable="true"
+        android:elevation="5dip">
+
+        <LinearLayout
+            android:id="@+id/phone_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimaryDark"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true"
+            android:paddingBottom="@dimen/default_margin_24"
+            android:paddingLeft="@dimen/default_margin_24"
+            android:paddingRight="@dimen/default_margin_24"
+            android:paddingTop="@dimen/default_margin_16">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_8"
+                android:paddingBottom="@dimen/default_margin_4"
+                android:text="@string/app_name"
+                android:textColor="?attr/colorAccent"
+                android:textSize="12sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:animateLayoutChanges="true"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/backspace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="@dimen/default_margin_16"
+                    android:paddingLeft="@dimen/default_margin_16"
+                    android:paddingRight="@dimen/default_margin_16"
+                    android:paddingTop="@dimen/default_margin_16"
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/ic_backspace" />
+
+                <EditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="0dip"
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/backspace"
+                    android:textCursorDrawable="@null"
+                    android:background="@null"
+                    android:textColor="#ffffff"
+                    android:textSize="34sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dip"
+                    android:background="?attr/colorAccent"
+                    android:layout_marginRight="4dip"
+                    android:layout_below="@id/backspace"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/paste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_paste"
+                android:paddingTop="@dimen/default_margin_8"
+                android:background="?attr/selectableItemBackground"
+                android:layout_marginTop="@dimen/default_margin_8"
+                android:visibility="invisible"
+                android:paddingBottom="@dimen/default_margin_8"
+                android:textColor="?attr/colorAccent"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/number_height"
-            android:divider="#cccccc"
-            android:orientation="horizontal"
-            android:showDividers="middle">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone_top"
+            android:background="#fafafa"
+            android:orientation="vertical"
+            android:paddingRight="78dip">
 
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="1"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                style="@style/PhoneNumber"
-                android:text="2"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="3"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_size_54"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="1"
+                    android:text="1" />
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:tag="2"
+                    android:text="2" />
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="3"
+                    android:text="3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_size_54">
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="4"
+                    android:text="4" />
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:tag="5"
+                    android:text="5" />
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="6"
+                    android:text="6" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_size_54">
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="7"
+                    android:text="7" />
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:tag="8"
+                    android:text="8" />
+
+                <TextView
+                    style="@style/PhoneNumber"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="9"
+                    android:text="9" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_size_54">
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="10"
+                    android:background="?attr/selectableItemBackground">
+
+                    <TextView
+                        style="@style/PhoneNumber"
+                        android:id="@+id/n_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="*"
+                        android:duplicateParentState="false"
+                        android:layout_centerInParent="true"
+                        android:textSize="42sp" />
+
+                    <TextView
+                        android:layout_toRightOf="@id/n_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(P)"
+                        style="@style/PhoneNumberSecond"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:tag="0"
+                    android:background="?attr/selectableItemBackground">
+
+                    <TextView
+                        style="@style/PhoneNumber"
+                        android:id="@+id/n_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:background="@null"
+                        android:duplicateParentState="false"
+                        android:layout_centerInParent="true"/>
+
+                    <TextView
+                        android:layout_toRightOf="@id/n_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(+)"
+                        style="@style/PhoneNumberSecond"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.35"
+                    android:tag="11"
+                    android:background="?attr/selectableItemBackground">
+
+                    <TextView
+                        android:id="@+id/n_sharp"
+                        style="@style/PhoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@null"
+                        android:text="#" />
+                    <TextView
+                        android:layout_toRightOf="@id/n_sharp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(W)"
+                        style="@style/PhoneNumberSecond"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/number_height"
-            android:divider="#cccccc">
+            android:layout_height="4dip"
+            android:layout_below="@id/phone_top"
+            android:background="@drawable/bg_float_header_shadow" />
 
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="4"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                style="@style/PhoneNumber"
-                android:text="5"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="6"/>
-        </LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/number_height"
-            android:divider="#cccccc">
+            android:layout_width="82dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/phone_top"
+            android:layout_marginTop="-28dip"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/default_margin_16">
 
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="7"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                style="@style/PhoneNumber"
-                android:text="8"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="9"/>
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/btn_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dip"
+                android:src="@drawable/ic_local_phone"
+                fab:fab_colorNormal="#4CAF50"
+                fab:fab_colorPressed="#388E3C"
+                fab:fab_colorRipple="#C8E6C9" />
+
+
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/btn_add_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dip"
+                android:src="@drawable/ic_person_add"
+                fab:fab_colorNormal="#03A9F4"
+                fab:fab_colorPressed="#0288D1"
+                fab:fab_colorRipple="#B3E5FC"
+                fab:fab_type="mini" />
+
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/btn_send_sms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dip"
+                android:src="@drawable/ic_perm_phone_msg_black_24dp"
+                fab:fab_colorNormal="#9E9E9E"
+                fab:fab_colorPressed="#616161"
+                fab:fab_colorRipple="#F5F5F5"
+                fab:fab_type="mini" />
+
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/btn_voice_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dip"
+                android:src="@drawable/ic_voicemail"
+                fab:fab_colorNormal="#009688"
+                fab:fab_colorPressed="#00796B"
+                fab:fab_colorRipple="#B2DFDB"
+                fab:fab_type="mini" />
+
+            <!-- <com.melnykov.fab.FloatingActionButton
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center_horizontal"
+                 android:layout_marginBottom="16dip"
+                 android:src="@drawable/ic_clear"
+                 fab:fab_colorNormal="#607D8B"
+                 fab:fab_colorPressed="#455A64"
+                 fab:fab_colorRipple="#CFD8DC"
+                 fab:fab_type="mini" /> -->
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/number_height"
-            android:divider="#cccccc">
 
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="*"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                style="@style/PhoneNumber"
-                android:text="0"/>
-            <TextView
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                style="@style/PhoneNumber"
-                android:text="#"/>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/edit_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/phone"
-        />
-
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,13 +1,17 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="height_recent_call">66dp</dimen>
     <dimen name="height_search_bar">54dp</dimen>
-    <dimen name="default_margin">8dp</dimen>
+    <dimen name="default_size_54">64dp</dimen>
+    <dimen name="default_margin_64">64dp</dimen>
+    <dimen name="default_margin_48">48dp</dimen>
+    <dimen name="default_margin_32">32dp</dimen>
+    <dimen name="default_margin_24">24dp</dimen>
+    <dimen name="default_margin_16">16dp</dimen>
+    <dimen name="default_margin_12">12dp</dimen>
+    <dimen name="default_margin_8">8dp</dimen>
+    <dimen name="default_margin_4">4dp</dimen>
     <dimen name="default_margin_plus_card">10dp</dimen>
-    <dimen name="default_margin_small">4dp</dimen>
-    <dimen name="number_height">64dip</dimen>
     <dimen name="icon_size">42dip</dimen>
     <dimen name="smart_contact_height">128dip</dimen>
 </resources>

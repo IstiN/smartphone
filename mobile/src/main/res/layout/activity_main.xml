@@ -40,10 +40,10 @@
                     android:id="@+id/recent_call"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_recent_call"
-                    android:layout_marginBottom="@dimen/default_margin_small"
-                    android:layout_marginLeft="@dimen/default_margin"
-                    android:layout_marginRight="@dimen/default_margin"
-                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin_4"
+                    android:layout_marginLeft="@dimen/default_margin_8"
+                    android:layout_marginRight="@dimen/default_margin_8"
+                    android:layout_marginTop="@dimen/default_margin_8"
                     android:background="#fafafa"
                     card_view:cardCornerRadius="2dp">
 
@@ -66,7 +66,7 @@
         <View
             android:layout_below="@id/header"
             android:layout_width="match_parent"
-            android:layout_height="3dip"
+            android:layout_height="4dip"
             android:background="@drawable/bg_float_header_shadow"/>
         <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fab"

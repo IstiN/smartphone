@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/default_margin_plus_card"
             android:layout_marginRight="@dimen/default_margin_plus_card"
-            android:layout_marginBottom="@dimen/default_margin_small"
+            android:layout_marginBottom="@dimen/default_margin_4"
             />
 
 

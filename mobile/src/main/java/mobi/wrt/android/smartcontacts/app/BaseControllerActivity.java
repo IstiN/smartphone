@@ -1,19 +1,18 @@
 package mobi.wrt.android.smartcontacts.app;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.List;
 
 import by.istin.android.xcore.callable.ISuccess;
 import by.istin.android.xcore.ui.DialogBuilder;
-import by.istin.android.xcore.utils.ContentUtils;
 import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
@@ -26,14 +25,19 @@ public class BaseControllerActivity extends ActionBarActivity {
     public void onContactMoreClick(View view) {
         final Object tag = view.getTag();
         if (tag instanceof String) {
-            Intent intent = new Intent(Intent.ACTION_INSERT);
-            intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
-            intent.putExtra(ContactsContract.Intents.Insert.PHONE, (String)tag);
-            startActivity(intent);
+            String phone = (String) tag;
+            addContact(this, phone);
             return;
         }
         Long id = (Long) tag;
         openContact(id);
+    }
+
+    public static void addContact(Context context, String phone) {
+        Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
+        intent.putExtra(ContactsContract.Intents.Insert.PHONE, phone);
+        context.startActivity(intent);
     }
 
     private void openContact(Long id) {
@@ -48,7 +52,7 @@ public class BaseControllerActivity extends ActionBarActivity {
             openContact((Long)tag);
             return;
         }
-        makeCall((String)tag);
+        makeCall(BaseControllerActivity.this, (String)tag);
     }
 
     public void onContactClick(final View view) {
@@ -66,7 +70,7 @@ public class BaseControllerActivity extends ActionBarActivity {
                         DialogBuilder.options(BaseControllerActivity.this, R.string.title_choose_number, numbers, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                makeCall(numbers[which]);
+                                makeCall(BaseControllerActivity.this, numbers[which]);
                             }
                         });
                     }
@@ -74,7 +78,7 @@ public class BaseControllerActivity extends ActionBarActivity {
                 }, new ISuccess<String>() {
                     @Override
                     public void success(String s) {
-                        makeCall(s);
+                        makeCall(BaseControllerActivity.this, s);
                     }
                 });
             }
@@ -121,9 +125,15 @@ public class BaseControllerActivity extends ActionBarActivity {
         }
     }
 
-    public void makeCall(String s) {
-        String url = "tel:"+s;
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(url));
-        startActivity(intent);
+    public static void makeCall(Context context, String phone) {
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+        context.startActivity(intent);
     }
+
+    public static void sendSms(Context context, String phone) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("sms:" + phone));
+        context.startActivity(intent);
+    }
+
 }
