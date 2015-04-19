@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.fragment.AbstractFragment;
 import by.istin.android.xcore.utils.Holder;
 import by.istin.android.xcore.utils.Log;
@@ -251,7 +252,7 @@ public class PhoneFragment extends AbstractFragment {
                             public void run() {
                                 TextView textView = (TextView) view.findViewById(R.id.paste);
                                 textView.setVisibility(View.VISIBLE);
-                                textView.setText(Html.fromHtml("<u>" + textView.getText() + "</u>?"), TextView.BufferType.SPANNABLE);
+                                textView.setText(Html.fromHtml("<u>" + ContextHolder.get().getString(R.string.label_paste) + "</u>?"), TextView.BufferType.SPANNABLE);
                                 textView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
