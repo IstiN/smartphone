@@ -78,5 +78,9 @@ public class Application extends CoreApplication {
         super.onCreate();
         Crashlytics.start(this);
     }
-    
+
+    @Override
+    protected Class<?> getBuildConfigClass() {
+        return BuildConfig.class;
+    }
 }

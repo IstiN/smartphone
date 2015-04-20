@@ -33,6 +33,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors{
+        airpush {
+            applicationId "mobi.wrt.android.smartcontacts.free"
+        }
+        pro {
+
+        }
+    }
 }
 
 
