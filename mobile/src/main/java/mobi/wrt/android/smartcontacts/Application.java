@@ -5,6 +5,7 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import com.crashlytics.android.Crashlytics;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,4 +73,10 @@ public class Application extends CoreApplication {
         return MODULES;
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Crashlytics.start(this);
+    }
+    
 }

@@ -48,6 +48,9 @@
             android:screenOrientation="portrait"
             android:parentActivityName="mobi.wrt.android.smartcontacts.app.MainActivity"/>
 
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="8f3d88d09845f2b2625579984199691baccd68de" />
     </application>
 
 </manifest>
