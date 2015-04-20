@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -200,37 +199,54 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
         mFloatHeaderScrollListener = new RecyclerView.OnScrollListener() {
 
+            private RecyclerView mCurrentView;
+
+            private int maxHeight;
+
+            private LinearLayout.LayoutParams mHeaderLayoutParams;
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+                if (newState == 1) {
+                    mCurrentView = recyclerView;
+                    maxHeight = - (defaultMarginSmall + floatHeaderContainer.getHeight() - defaultMargin);
+                    mHeaderLayoutParams = (LinearLayout.LayoutParams) floatHeaderContainer.getLayoutParams();
+                } else if (newState == 0) {
+                    mCurrentView = null;
+                }
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) floatHeaderContainer.getLayoutParams();
-                int newTopMargin = layoutParams.topMargin - dy;
+                if (recyclerView != mCurrentView) {
+                    return;
+                }
+                int newTopMargin = mHeaderLayoutParams.topMargin - dy;
                 if (newTopMargin > 0) {
                     newTopMargin = 0;
                 } else {
-                    int newHeight = - (defaultMarginSmall + floatHeaderContainer.getHeight() - defaultMargin);
-                    if (newTopMargin <= newHeight) {
-                        newTopMargin = newHeight;
+                    if (newTopMargin < maxHeight) {
+                        newTopMargin = maxHeight;
                     }
                 }
-                layoutParams.topMargin = newTopMargin;
-                floatHeaderContainer.setLayoutParams(layoutParams);
+                if (mHeaderLayoutParams.topMargin == newTopMargin) {
+                    return;
+                }
+                mHeaderLayoutParams.topMargin = newTopMargin;
+                floatHeaderContainer.setLayoutParams(mHeaderLayoutParams);
                 for (RecyclerView view : mRecyclerViews) {
                     if (view != recyclerView) {
                         RecyclerView.LayoutManager layoutManager = view.getLayoutManager();
-                        if (layoutManager instanceof LinearLayoutManager) {
+                        //if (layoutManager instanceof LinearLayoutManager) {
                             LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
                             int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
                             if (firstVisibleItemPosition == 0) {
                                 //we don't need to scroll if we already don't see first item
                                 linearLayoutManager.scrollToPositionWithOffset(0, newTopMargin);
                             }
-                        } else if (layoutManager instanceof StaggeredGridLayoutManager) {
+                        /*} else if (layoutManager instanceof StaggeredGridLayoutManager) {
                             Log.xd(MainActivity.this, "new " + newTopMargin);
                             StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) layoutManager;
                             try {
@@ -247,7 +263,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                             } catch (NullPointerException e) {
                                 //staggeredgrid manager has a bug
                             }
-                        }
+                        }*/
                     }
                 }
             }

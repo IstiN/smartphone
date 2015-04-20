@@ -27,7 +27,7 @@
             android:gravity="left"
             android:textColor="#ffffff"
             />
-        
+
         <View
             android:id="@+id/clickableView"
             android:onClick="onContactClick"
