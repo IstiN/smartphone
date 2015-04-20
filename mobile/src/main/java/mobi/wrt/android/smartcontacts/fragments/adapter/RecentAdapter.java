@@ -196,7 +196,7 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
             } else {
                 holder.mCharacterView.setText(name == null ? "?" : String.valueOf(Character.toUpperCase(title.charAt(0))));
             }
-            UiUtil.setBackground(holder.mImageView, ColorUtils.getColorCircle(holder.mImageView.getHeight(), number));
+            UiUtil.setBackground(holder.mImageView, ColorUtils.getColorCircle(holder.mImageView.getHeight(), title));
         } else {
             holder.mCharacterView.setText(StringUtil.EMPTY);
             UiUtil.setBackground(holder.mImageView, null);

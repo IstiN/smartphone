@@ -2,6 +2,7 @@ package mobi.wrt.android.smartcontacts.fragments;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.CallLog;
@@ -10,9 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-
 
 import com.squareup.picasso.Picasso;
 
@@ -27,7 +26,7 @@ import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 /**
  * Created by IstiN on 31.01.2015.
  */
-public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, SmartAdapter, SmartFragment.SmartModel>  {
+public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder, SmartAdapter, SmartFragment.SmartModel>  {
 
     public static class SmartModel extends CursorModel{
 
@@ -90,6 +89,27 @@ public class SmartFragment extends RecyclerViewFragment<SmartAdapter.Holder, Sma
     }
 
     private int count;
+
+    @Override
+    public void onViewCreated(View view) {
+        super.onViewCreated(view);
+        getCollectionView().addItemDecoration(new RecyclerView.ItemDecoration() {
+
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                outRect.left = 1;
+                outRect.right = 1;
+                outRect.bottom = 1;
+
+                // Add top margin only for the first item to avoid double space between items
+                int childAdapterPosition = parent.getChildAdapterPosition(view);
+                if (childAdapterPosition == 0 || childAdapterPosition == 1) {
+                    outRect.top = 1;
+                }
+            }
+
+        });
+    }
 
     @Override
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {

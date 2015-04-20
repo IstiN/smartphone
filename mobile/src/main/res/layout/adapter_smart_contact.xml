@@ -15,8 +15,19 @@
             android:id="@+id/icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:tint="#20000000"/>
 
+        <TextView
+            android:id="@+id/character"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="44sp"
+            android:paddingLeft="@dimen/default_margin_12"
+            android:gravity="left"
+            android:textColor="#ffffff"
+            />
+        
         <View
             android:id="@+id/clickableView"
             android:onClick="onContactClick"
@@ -43,10 +54,10 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="12dip"
-                android:paddingRight="12dip"
-                android:paddingBottom="8dip"
-                android:paddingTop="8dip"
+                android:paddingLeft="@dimen/default_margin_12"
+                android:paddingRight="@dimen/default_margin_12"
+                android:paddingBottom="@dimen/default_margin_8"
+                android:paddingTop="@dimen/default_margin_8"
                 android:textColor="#ffffff"
                 android:background="@drawable/bg_smart_text"
                 android:textSize="14sp"
