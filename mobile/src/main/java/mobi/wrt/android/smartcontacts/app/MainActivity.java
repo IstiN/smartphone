@@ -26,6 +26,8 @@ import com.melnykov.fab.FloatingActionButton;
 import java.util.HashSet;
 import java.util.Set;
 
+import by.istin.android.xcore.ContextHolder;
+import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.utils.Log;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.ads.AdsProvider;
@@ -87,6 +89,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getTracker().track("onHomeHamburgerClick");
                 ((DrawerLayout)findViewById(R.id.drawer)).openDrawer(Gravity.START);
             }
         });
@@ -199,6 +202,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             @Override
             public void onClick(View v) {
                 showPhone(null);
+                getTracker().track("onShowPhone:floatButton");
             }
 
         });
@@ -290,6 +294,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         if (data != null && data.getScheme().equalsIgnoreCase("tel")) {
             String path = data.getSchemeSpecificPart();
             showPhone(path);
+            getTracker().track("onShowPhone:intent");
         }
     }
 
@@ -332,6 +337,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (fragment != null) {
             if (fragment instanceof SearchFragment) {
+                getTracker().track("onSearchCloseBackClick");
                 ((SearchFragment)fragment).closeSearch();
             } else if (fragment instanceof PhoneFragment) {
                 ((PhoneFragment)fragment).closePhone();
@@ -344,10 +350,12 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     }
 
     public void onSearchInputClick(View view) {
+        getTracker().track("onSearchInputClick");
         getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, new SearchFragment()).commit();
     }
 
     public void onRecentMoreClick(View view) {
+        getTracker().track("onRecentMoreClick");
         startActivity(new Intent(this, RecentActivity.class));
     }
 

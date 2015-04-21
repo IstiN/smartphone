@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import com.aebuwtdvfd.tcyvussuxg23220.AdListener;
 import com.aebuwtdvfd.tcyvussuxg23220.Bun;
 
+import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.BuildConfig;
@@ -20,6 +21,8 @@ import mobi.wrt.android.smartcontacts.app.MainActivity;
 public class AdsProvider implements IAdsProvider {
 
     private Bun mBun;
+
+    private ITracker mTracker;
 
     private boolean isAppWallCached = false;
 
@@ -36,7 +39,7 @@ public class AdsProvider implements IAdsProvider {
 
         @Override
         public void onAdError(String s) {
-
+            mTracker.track("smart:onAdError");
         }
 
         @Override
@@ -48,18 +51,19 @@ public class AdsProvider implements IAdsProvider {
         public void onAdCached(AdType adType) {
             if (adType == AdType.smartwall) {
                 isAppWallCached = true;
+                mTracker.track("smart:onAdCached");
             }
         }
 
         @Override
         public void noAdAvailableListener() {
-
+            mTracker.track("smart:noAdAvailableListener");
         }
     };
 
     @Override
     public void onCreate(final Activity activity) {
-        Log.xd(this, "I'm a AirPush version of ads");
+        mTracker = ITracker.Impl.get(activity);
         mBun = new Bun(activity.getApplicationContext(), mAdListener, true);
         mBun.startNotificationAd(BuildConfig.DEBUG);
         mBun.callSmartWallAd();
@@ -76,10 +80,12 @@ public class AdsProvider implements IAdsProvider {
                 RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) fab.getLayoutParams();
                 layoutParams.bottomMargin = UiUtil.getDp(activity, 48);
                 fab.setLayoutParams(layoutParams);
+                mTracker.track("onAdLoadedListener");
             }
 
             @Override
             public void onErrorListener(String s) {
+                mTracker.track("onErrorListener");
                 Log.xd(activity, "onErrorListener " + s);
             }
 
@@ -96,6 +102,7 @@ public class AdsProvider implements IAdsProvider {
             @Override
             public void onAdClickListener() {
                 Log.xd(activity, "onAdClickListener");
+                mTracker.track("onAdClickListener");
                 View fab = activity.findViewById(R.id.fab);
                 RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) fab.getLayoutParams();
                 layoutParams.bottomMargin = UiUtil.getDp(activity, 16);
@@ -104,6 +111,7 @@ public class AdsProvider implements IAdsProvider {
 
             @Override
             public void noAdAvailableListener() {
+                mTracker.track("noAdAvailableListener");
                 Log.xd(activity, "noAdAvailableListener");
             }
         });
@@ -114,6 +122,7 @@ public class AdsProvider implements IAdsProvider {
         if (isAppWallCached) {
             try {
                 mBun.showCachedAd(activity, AdListener.AdType.smartwall);
+                mTracker.track("smart:showCachedAd");
             } catch (Exception e) {
                 e.printStackTrace();
             }

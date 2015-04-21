@@ -32,6 +32,10 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import by.istin.android.xcore.ContextHolder;
+import by.istin.android.xcore.analytics.ITracker;
+import by.istin.android.xcore.utils.AppUtils;
+
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to
  * the user's scroll progress.
@@ -285,8 +289,11 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
         private int mScrollState;
 
+        private ITracker tracker = ITracker.Impl.get(ContextHolder.get());
+
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            tracker.track("onPageScrolled");
             int tabStripChildCount = mTabStrip.getChildCount();
             if ((tabStripChildCount == 0) || (position < 0) || (position >= tabStripChildCount)) {
                 return;
@@ -340,10 +347,14 @@ public class SlidingTabLayout extends HorizontalScrollView {
     }
 
     private class TabClickListener implements OnClickListener {
+
+        ITracker tracker = ITracker.Impl.get(ContextHolder.get());
+
         @Override
         public void onClick(View v) {
             for (int i = 0; i < mTabStrip.getChildCount(); i++) {
                 if (v == mTabStrip.getChildAt(i)) {
+                    tracker.track("onTabClick:" + i);
                     mViewPager.setCurrentItem(i);
                     return;
                 }

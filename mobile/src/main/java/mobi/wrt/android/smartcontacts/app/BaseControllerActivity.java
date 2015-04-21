@@ -11,6 +11,7 @@ import android.view.View;
 
 import java.util.List;
 
+import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.callable.ISuccess;
 import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.StringUtil;
@@ -22,15 +23,21 @@ import mobi.wrt.android.smartcontacts.helper.ContactHelper;
  */
 public class BaseControllerActivity extends ActionBarActivity {
 
+    public ITracker getTracker() {
+        return ITracker.Impl.get(this);
+    }
+
     public void onContactMoreClick(View view) {
         final Object tag = view.getTag();
         if (tag instanceof String) {
             String phone = (String) tag;
             addContact(this, phone);
+            getTracker().track("onContactMoreClick:new");
             return;
         }
         Long id = (Long) tag;
         openContact(id);
+        getTracker().track("onContactMoreClick:open");
     }
 
     public static void addContact(Context context, String phone) {
@@ -50,9 +57,11 @@ public class BaseControllerActivity extends ActionBarActivity {
         Object tag = view.getTag();
         if (tag instanceof Long) {
             openContact((Long)tag);
+            getTracker().track("onRecentContactClick:open");
             return;
         }
         makeCall(BaseControllerActivity.this, (String)tag);
+        getTracker().track("onRecentContactClick:call");
     }
 
     public void onContactClick(final View view) {
@@ -67,9 +76,11 @@ public class BaseControllerActivity extends ActionBarActivity {
                         for (int i = 0; i < contentValueses.size(); i++) {
                             numbers[i] = contentValueses.get(i).getAsString(ContactsContract.CommonDataKinds.Phone.NUMBER);
                         }
+                        getTracker().track("onContactClick:options");
                         DialogBuilder.options(BaseControllerActivity.this, R.string.title_choose_number, numbers, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                getTracker().track("onContactClick:options:call");
                                 makeCall(BaseControllerActivity.this, numbers[which]);
                             }
                         });
@@ -78,6 +89,7 @@ public class BaseControllerActivity extends ActionBarActivity {
                 }, new ISuccess<String>() {
                     @Override
                     public void success(String s) {
+                        getTracker().track("onContactClick:call");
                         makeCall(BaseControllerActivity.this, s);
                     }
                 });

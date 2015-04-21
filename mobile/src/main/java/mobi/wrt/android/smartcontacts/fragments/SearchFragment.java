@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.istin.android.xcore.ContextHolder;
+import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.fragment.CursorLoaderFragmentHelper;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
@@ -212,6 +213,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
         topButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ITracker.Impl.get(v.getContext()).track("onSearchCloseArrowClick");
                 closeSearch();
             }
         });
@@ -224,6 +226,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                 mShadowView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        ITracker.Impl.get(v.getContext()).track("onSearchCloseShadowClick");
                         closeSearch();
                     }
                 });
@@ -237,11 +240,20 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                 UiUtil.showKeyboard(mEditText);
             }
         });
+        final ITracker tracker = ITracker.Impl.get(getActivity());
+        tracker.track("search");
         RecyclerView collectionView = getCollectionView();
         collectionView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            boolean isFirst = false;
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+                if (!isFirst) {
+                    tracker.track("onSearchScrollView");
+                    isFirst = true;
+                }
                 Log.xd(SearchFragment.this, "state " + newState);
                 UiUtil.hideKeyboard(mEditText);
             }

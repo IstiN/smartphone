@@ -17,7 +17,6 @@
 
     <application>
 
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <meta-data android:name="com.aebuwtdvfd.tcyvussuxg23220.APPID" android:value="272015" />
         <meta-data android:name="com.aebuwtdvfd.tcyvussuxg23220.APIKEY" android:value="android*1346148707232208873"/>
         <activity android:exported="false" android:name="com.aebuwtdvfd.tcyvussuxg23220.AdActivity"

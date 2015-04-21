@@ -24,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import by.istin.android.xcore.ContextHolder;
+import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.fragment.AbstractFragment;
 import by.istin.android.xcore.utils.Holder;
 import by.istin.android.xcore.utils.Log;
@@ -59,6 +60,8 @@ public class PhoneFragment extends AbstractFragment {
     @Override
     public void onViewCreated(final View view) {
         super.onViewCreated(view);
+        final ITracker tracker = ITracker.Impl.get(getActivity());
+        tracker.track("phone");
         mEditText = (EditText) view.findViewById(R.id.edit_phone);
         String phone = getPhone();
         setNumber(phone);
@@ -106,6 +109,7 @@ public class PhoneFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 Editable phone = mEditText.getText();
+                tracker.track("phone:makephone");
                 if (phone.length() > 0) {
                     BaseControllerActivity.makeCall(getActivity(), phone.toString());
                 }
@@ -115,6 +119,7 @@ public class PhoneFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 Editable phone = mEditText.getText();
+                tracker.track("phone:addcontact");
                 if (phone.length() > 0) {
                     BaseControllerActivity.addContact(getActivity(), phone.toString());
                 }
@@ -124,6 +129,7 @@ public class PhoneFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 Editable phone = mEditText.getText();
+                tracker.track("phone:sendsms");
                 if (phone.length() > 0) {
                     BaseControllerActivity.sendSms(getActivity(), phone.toString());
                 }
@@ -132,6 +138,7 @@ public class PhoneFragment extends AbstractFragment {
         view.findViewById(R.id.btn_voice_mail).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tracker.track("phone:voicemail");
                 FragmentActivity activity = getActivity();
                 TelephonyManager telephonyManager = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
                 BaseControllerActivity.makeCall(activity, telephonyManager.getVoiceMailNumber());
@@ -160,6 +167,7 @@ public class PhoneFragment extends AbstractFragment {
         mBackspaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tracker.track("phone:backspace");
                 Editable currentText = mEditText.getText();
                 int selectionStart = mEditText.getSelectionStart();
                 if (selectionStart != 0) {
@@ -170,6 +178,7 @@ public class PhoneFragment extends AbstractFragment {
         mBackspaceBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                tracker.track("phone:backspace_long_tap");
                 mEditText.getText().clear();
                 return true;
             }
@@ -182,10 +191,13 @@ public class PhoneFragment extends AbstractFragment {
                     String tag = (String) v.getTag();
                     int number = Integer.parseInt(tag);
                     if (number < 10) {
+                        tracker.track("phone:number");
                         updateText(String.valueOf(number));
                     } else if (number == NUMBER_STAR) {
+                        tracker.track("phone:star");
                         updateText("*");
                     } else if (number == NUMBER_SHARP) {
+                        tracker.track("phone:sharp");
                         updateText("#");
                     }
                 }
@@ -198,13 +210,16 @@ public class PhoneFragment extends AbstractFragment {
                         int number = Integer.parseInt(tag);
                         if (number == 0) {
                             updateText("+");
+                            tracker.track("phone:+");
                             return true;
                         } else if (mEditText.getText().length() > 0) {
                             if (number == NUMBER_STAR) {
                                 updateText(",");
+                                tracker.track("phone:,");
                                 return true;
                             } else if (number == NUMBER_SHARP) {
                                 updateText(";");
+                                tracker.track("phone:;");
                                 return true;
                             }
                         }

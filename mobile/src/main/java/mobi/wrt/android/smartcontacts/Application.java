@@ -1,5 +1,6 @@
 package mobi.wrt.android.smartcontacts;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import by.istin.android.xcore.CoreApplication;
 import by.istin.android.xcore.XCoreHelper;
+import by.istin.android.xcore.analytics.Tracker;
 
 /**
  * Created by IstiN on 31.01.2015.
