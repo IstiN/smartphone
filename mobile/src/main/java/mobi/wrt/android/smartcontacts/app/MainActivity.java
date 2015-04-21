@@ -15,6 +15,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import java.util.Set;
 
 import by.istin.android.xcore.utils.Log;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.ads.AdsProvider;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
 import mobi.wrt.android.smartcontacts.fragments.PhoneFragment;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
@@ -55,11 +57,14 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     private boolean isFabClicked = false;
 
+    private AdsProvider mAdsProvider = new AdsProvider();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAdsProvider.onCreate(this);
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
@@ -147,6 +152,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             }
 
         });
+
         mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setViewPager(mViewPager);
         mSlidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -297,6 +303,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             return;
         }
         isFabClicked = true;
+
+        mAdsProvider.onFabClick(this);
+
         mFloatingActionButton.hide(true);
         mFloatingActionButton.postDelayed(new Runnable() {
             @Override
@@ -326,8 +335,10 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 ((SearchFragment)fragment).closeSearch();
             } else if (fragment instanceof PhoneFragment) {
                 ((PhoneFragment)fragment).closePhone();
+                mAdsProvider.onPhoneClosed(this);
             }
         } else {
+            mAdsProvider.onBackPressed(this);
             super.onBackPressed();
         }
     }

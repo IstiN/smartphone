@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+    <application>
+
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.aebuwtdvfd.tcyvussuxg23220.APPID" android:value="272015" />
+        <meta-data android:name="com.aebuwtdvfd.tcyvussuxg23220.APIKEY" android:value="android*1346148707232208873"/>
+        <activity android:exported="false" android:name="com.aebuwtdvfd.tcyvussuxg23220.AdActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity android:name="com.aebuwtdvfd.tcyvussuxg23220.BrowserActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name="com.aebuwtdvfd.tcyvussuxg23220.PlayActivity"
+            android:configChanges="orientation|screenSize" android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <service   android:name="com.aebuwtdvfd.tcyvussuxg23220.UbService"
+            android:exported="false" >
+        </service>
+        <service
+            android:name="com.aebuwtdvfd.tcyvussuxg23220.AdService"
+            android:exported="false" />
+        <receiver
+            android:name="com.aebuwtdvfd.tcyvussuxg23220.BootReceiver"
+            android:exported="true" >
+            <intent-filter android:priority="-1000" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
