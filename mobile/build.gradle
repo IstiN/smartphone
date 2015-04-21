@@ -35,10 +35,10 @@ android {
     }
     productFlavors {
             free {
-                applicationId "mobi.wrt.android.smartcontacts.free"
+
             }
             pro {
-
+                applicationId "mobi.wrt.android.smartcontacts.pro"
             }
         }
     }
