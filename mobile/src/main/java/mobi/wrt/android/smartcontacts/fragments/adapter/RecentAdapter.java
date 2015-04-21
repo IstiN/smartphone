@@ -9,6 +9,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.graphics.drawable.shapes.RectShape;
+import android.net.Uri;
 import android.provider.CallLog;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
@@ -33,7 +34,7 @@ import mobi.wrt.android.smartcontacts.utils.ColorUtils;
 /**
  * Created by IstiN on 31.01.2015.
  */
-public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, RecentFragment.RecentModel> {
+public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, RecentFragment.RecentModel> implements View.OnLongClickListener {
 
     public static final int VIEW_TYPE_GROUP = 1;
     public static final int VIEW_TYPE_NUMBER = 0;
@@ -54,6 +55,19 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
     public RecentAdapter(RecentFragment.RecentModel model, int topPadding, IFloatHeader floatHeader, boolean isLimit) {
         super(model, topPadding, floatHeader);
         this.isLimit = isLimit;
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        ViewGroup itemView = (ViewGroup) v.getParent();
+        final Long id = (Long) itemView.getTag();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ContextHolder.get().getContentResolver().delete(CallLog.Calls.CONTENT_URI, CallLog.Calls._ID + "=" + String.valueOf(id), null);
+            }
+        }).start();
+        return true;
     }
 
     public static class Holder extends RecyclerView.ViewHolder {
@@ -146,14 +160,14 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
         RecentFragment.RecentModel modelByPosition = getModelByPosition(position);
         int viewType = getViewType(modelByPosition);
         if (viewType == VIEW_TYPE_NUMBER) {
-            initItem((Holder) holder, modelByPosition, getPicasso());
+            initItem((Holder) holder, modelByPosition, getPicasso(), this);
         } else if (viewType == VIEW_TYPE_GROUP) {
             GroupHolder groupHolder = (GroupHolder) holder;
             groupHolder.mTextView.setText(modelByPosition.getString(CallLog.Calls.CACHED_NAME));
         }
     }
 
-    public static void initItem(Holder holder, CursorModel cursorModel, Picasso picasso) {
+    public static void initItem(Holder holder, CursorModel cursorModel, Picasso picasso, View.OnLongClickListener onLongClickListener) {
         if (cursorModel == null) {
             return;
         }
@@ -185,6 +199,10 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
             }
         }
         holder.mClickableView.setTag(number);
+        ViewGroup itemView = (ViewGroup) holder.mClickableView.getParent();
+        itemView.setTag(cursorModel.getLong(CallLog.Calls._ID));
+        holder.mClickableView.setOnLongClickListener(onLongClickListener);
+
         ContactHelper contactHelper = ContactHelper.get(ContextHolder.get());
         Long contactId = contactHelper.getContactId(number);
         holder.mImageView.setTag(contactId);

@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="58dip"
         android:background="?attr/selectableItemBackground"
-        android:onClick="onRecentContactClick" />
+        android:onClick="onRecentContactClick"
+        />
 
     <ImageView
         android:id="@+id/icon"

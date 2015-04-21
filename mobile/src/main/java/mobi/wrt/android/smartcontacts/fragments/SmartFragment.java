@@ -12,9 +12,11 @@ import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
 
+import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.CursorUtils;
@@ -115,7 +117,20 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
         this.count = cursor.getCount();
         final View recentCallView = getActivity().findViewById(R.id.recent_call);
-        RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()));
+        RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()), new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(final View v) {
+                ViewGroup itemView = (ViewGroup) v.getParent();
+                final Long id = (Long) itemView.getTag();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ContextHolder.get().getContentResolver().delete(CallLog.Calls.CONTENT_URI, CallLog.Calls._ID + "=" + String.valueOf(id), null);
+                    }
+                }).start();
+                return true;
+            }
+        });
         super.onLoadFinished(loader, cursor);
     }
 
