@@ -17,8 +17,10 @@ public class AppModule extends XCoreHelper.BaseModule {
     protected void onCreate(Context context) {
         registerAppService(new ContactHelper());
         ITracker tracker = ITracker.Impl.newInstance();
-        tracker.addTracker(new FlurryTracker("WTGTFV2VFJQQGQCC724X"));
-        tracker.addTracker(new GoogleTracker("UA-62124640-1"));
+        if (!BuildConfig.DEBUG) {
+            tracker.addTracker(new FlurryTracker("WTGTFV2VFJQQGQCC724X"));
+            tracker.addTracker(new GoogleTracker("UA-62124640-1"));
+        }
         registerAppService(tracker);
         tracker.onCreate((Application)context);
     }
