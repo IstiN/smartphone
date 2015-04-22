@@ -66,6 +66,7 @@ public class FlurryTracker extends AbstractTracker {
         FlurryAgent.setLogEnabled(BuildConfig.DEBUG);
         FlurryAgent.setCaptureUncaughtExceptions(false);
         FlurryAgent.setVersionName(BuildConfig.FLAVOR + " " + BuildConfig.VERSION_NAME);
+        FlurryAgent.setReportLocation(false);
         FlurryAgent.init(application, mKey);
     }
 

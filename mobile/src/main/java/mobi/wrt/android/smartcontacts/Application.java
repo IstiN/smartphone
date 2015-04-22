@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.StrictMode;
 
 import com.crashlytics.android.Crashlytics;
 import java.util.ArrayList;
@@ -79,6 +80,17 @@ public class Application extends CoreApplication {
     public void onCreate() {
         super.onCreate();
         Crashlytics.start(this);
+        if(BuildConfig.DEBUG){
+            StrictMode.VmPolicy policy = new StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .detectLeakedClosableObjects()
+                    .build();
+            StrictMode.setVmPolicy(policy);
+            StrictMode.noteSlowCall("xxx_slow");
+            StrictMode.ThreadPolicy.Builder threadPolicy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().penaltyLog();
+            StrictMode.setThreadPolicy(threadPolicy.build());
+        }
     }
 
     @Override

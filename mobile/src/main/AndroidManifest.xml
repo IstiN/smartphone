@@ -54,7 +54,7 @@
             android:value="8f3d88d09845f2b2625579984199691baccd68de" />
         <!-- Used for Google Play Store Campaign Measurement-->
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
-        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+        <receiver android:name="mobi.wrt.android.smartcontacts.InstallReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />

@@ -22,13 +22,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.melnykov.fab.FloatingActionButton;
+import com.mobileapptracker.MobileAppTracker;
 
+import java.security.spec.KeySpec;
 import java.util.HashSet;
 import java.util.Set;
 
 import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.utils.Log;
+import mobi.wrt.android.smartcontacts.Keys;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.ads.AdsProvider;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
@@ -61,11 +64,19 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     private AdsProvider mAdsProvider = new AdsProvider();
 
+    public MobileAppTracker mobileAppTracker = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize MAT
+        mobileAppTracker = MobileAppTracker.init(getApplicationContext(),
+                Keys.MAT_ADVERTISER_ID,
+                Keys.MAT_CONVERSION_KEY);
+
         mAdsProvider.onCreate(this);
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
@@ -357,6 +368,15 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     public void onRecentMoreClick(View view) {
         getTracker().track("onRecentMoreClick");
         startActivity(new Intent(this, RecentActivity.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Get source of open for app re-engagement
+        mobileAppTracker.setReferralSources(this);
+        // MAT will not function unless the measureSession call is included
+        mobileAppTracker.measureSession();
     }
 
     @Override
