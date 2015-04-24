@@ -3,7 +3,6 @@ package mobi.wrt.android.smartcontacts.tracker;
 import android.app.Activity;
 import android.app.Application;
 
-import com.flurry.android.FlurryAgent;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -11,7 +10,7 @@ import com.google.android.gms.analytics.Tracker;
 import java.util.HashMap;
 
 import by.istin.android.xcore.analytics.AbstractTracker;
-import mobi.wrt.android.smartcontacts.BuildConfig;
+import mobi.wrt.android.smartcontacts.Constants;
 
 /**
  * Created by uladzimir_klyshevich on 4/21/15.
@@ -76,7 +75,7 @@ public class GoogleTracker extends AbstractTracker {
     public void onCreate(Application application) {
         GoogleAnalytics googleAnalytics = GoogleAnalytics.getInstance(application);
         mTracker = googleAnalytics.newTracker(mKey);
-        mTracker.setAppVersion(BuildConfig.FLAVOR + " " + BuildConfig.VERSION_NAME);
+        mTracker.setAppVersion(Constants.ANALYTICS_VERSION_NAME);
     }
 
 }

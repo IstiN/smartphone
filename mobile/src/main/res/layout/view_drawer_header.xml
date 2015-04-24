@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="148dip"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_header_wallpaper" />
+
+
+    <FrameLayout
+        android:layout_width="80dip"
+        android:layout_height="80dip"
+        android:layout_margin="@dimen/default_margin_4"
+        android:background="@drawable/bg_contact_shadow">
+
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/default_margin_16"
+        android:paddingBottom="@dimen/default_margin_16"
+        android:textColor="#ffff" />
+
+    <com.google.android.gms.plus.PlusOneButton
+        xmlns:plus="http://schemas.android.com/apk/lib/com.google.android.gms.plus"
+        android:id="@+id/plus_one_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin_16"
+        plus:size="standard"
+        android:layout_alignParentRight="true"
+        plus:annotation="bubble" />
+
+    <com.facebook.share.widget.LikeView
+        android:id="@+id/facebook_button"
+        android:layout_below="@id/plus_one_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin_16"
+        android:layout_alignParentRight="true"
+        />
+
+</RelativeLayout>

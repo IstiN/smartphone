@@ -1,6 +1,9 @@
 package mobi.wrt.android.smartcontacts.app;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,27 +14,31 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.share.widget.LikeView;
 import com.melnykov.fab.FloatingActionButton;
 import com.mobileapptracker.MobileAppTracker;
 
-import java.security.spec.KeySpec;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Set;
 
-import by.istin.android.xcore.ContextHolder;
-import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.utils.Log;
-import mobi.wrt.android.smartcontacts.Keys;
+import mobi.wrt.android.smartcontacts.BuildConfig;
+import mobi.wrt.android.smartcontacts.Constants;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.ads.AdsProvider;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
@@ -41,6 +48,7 @@ import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 import mobi.wrt.android.smartcontacts.view.DrawerArrowDrawable;
+import mobi.wrt.android.smartcontacts.view.DrawerInitializer;
 import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
 import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
@@ -74,8 +82,8 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
         // Initialize MAT
         mobileAppTracker = MobileAppTracker.init(getApplicationContext(),
-                Keys.MAT_ADVERTISER_ID,
-                Keys.MAT_CONVERSION_KEY);
+                BuildConfig.MAT_ADVERTISER_ID,
+                BuildConfig.MAT_CONVERSION_KEY);
 
         mAdsProvider.onCreate(this);
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -88,6 +96,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 }
             }
         });
+        new DrawerInitializer().init(this, (ListView) findViewById(R.id.left_drawer));
         findViewById(R.id.search_input).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -377,6 +386,15 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         mobileAppTracker.setReferralSources(this);
         // MAT will not function unless the measureSession call is included
         mobileAppTracker.measureSession();
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AppEventsLogger.deactivateApp(this);
     }
 
     @Override

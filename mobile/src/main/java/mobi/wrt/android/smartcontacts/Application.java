@@ -79,7 +79,6 @@ public class Application extends CoreApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Crashlytics.start(this);
         if(BuildConfig.DEBUG){
             StrictMode.VmPolicy policy = new StrictMode.VmPolicy.Builder()
                     .detectAll()
@@ -90,6 +89,8 @@ public class Application extends CoreApplication {
             StrictMode.noteSlowCall("xxx_slow");
             StrictMode.ThreadPolicy.Builder threadPolicy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().penaltyLog();
             StrictMode.setThreadPolicy(threadPolicy.build());
+        } else {
+            Crashlytics.start(this);
         }
     }
 
