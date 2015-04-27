@@ -1,36 +1,36 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#3F51B5</item>
-        <item name="colorPrimaryDark">#303F9F</item>
-        <item name="colorAccent">#009688</item>
+    <style name="VoiceMailFabButton">
+        <item name="fab_colorNormal">#009688</item>
+        <item name="fab_colorPressed">#00796B</item>
+        <item name="fab_colorRipple">#B2DFDB</item>
+    </style>
 
-        <item name="colorControlNormal">#ffffff</item>
+    <style name="SendSmsFabButton">
+        <item name="fab_colorNormal">#9E9E9E</item>
+        <item name="fab_colorPressed">#616161</item>
+        <item name="fab_colorRipple">#F5F5F5</item>
+    </style>
 
+    <style name="AddContactFabButton">
+        <item name="fab_colorNormal">#03A9F4</item>
+        <item name="fab_colorPressed">#0288D1</item>
+        <item name="fab_colorRipple">#B3E5FC</item>
+    </style>
 
-        <item name="windowActionBar">false</item>
-        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-        <item name="android:windowNoTitle">true</item>
+    <style name="CallFabButton">
+        <item name="fab_colorNormal">#4CAF50</item>
+        <item name="fab_colorPressed">#388E3C</item>
+        <item name="fab_colorRipple">#C8E6C9</item>
     </style>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
-        <item name="color">@color/group_header</item>
+        <item name="color">?attr/groupHeaderColor</item>
     </style>
-
-    <style name="BarAppTheme" parent="AppTheme">
-        <item name="windowActionBar">true</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <color name="group_header">#B6B6B6</color>
-    <color name="textColorPrimary">#212121</color>
-    <color name="textColorSecondary">#727272</color>
 
     <style name="PhoneNumber">
-        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColor">?attr/contactNameColor</item>
         <item name="android:textSize">24sp</item>
         <item name="android:paddingTop">8dip</item>
         <item name="android:paddingBottom">8dip</item>
@@ -38,7 +38,7 @@
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
     <style name="PhoneNumberSecond">
-        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textColor">?attr/contactDescriptionColor</item>
         <item name="android:textSize">14sp</item>
         <item name="android:paddingLeft">@dimen/default_margin_4</item>
         <item name="android:paddingBottom">2dip</item>

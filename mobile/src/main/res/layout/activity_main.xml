@@ -19,7 +19,7 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fafafa" />
+            android:background="?attr/mainBackgroundColor" />
 
         <LinearLayout
             android:id="@+id/header"
@@ -44,8 +44,8 @@
                     android:layout_marginLeft="@dimen/default_margin_8"
                     android:layout_marginRight="@dimen/default_margin_8"
                     android:layout_marginTop="@dimen/default_margin_8"
-                    android:background="#fafafa"
-                    card_view:cardCornerRadius="2dp">
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardBackgroundColor="?attr/cardBackgroundColor">
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#F8F8F8"
+        android:background="?attr/mainBackgroundColor"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"

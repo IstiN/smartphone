@@ -32,7 +32,7 @@
         android:paddingTop="8dip"
         android:gravity="center_horizontal"
         android:textSize="16sp"
-        android:textColor="#ffffff"
+        android:textColor="?attr/contactCharacterColor"
         android:layout_marginTop="8dip" />
 
     <TextView
@@ -44,6 +44,6 @@
         android:paddingTop="16dip"
         android:paddingRight="16dip"
         android:singleLine="true"
-        android:textColor="#333333"
+        android:textColor="?attr/contactNameColor"
         android:textSize="16sp" />
 </RelativeLayout>

@@ -25,7 +25,7 @@
             android:textSize="44sp"
             android:paddingLeft="@dimen/default_margin_12"
             android:gravity="left"
-            android:textColor="#ffffff"
+            android:textColor="?attr/contactCharacterColor"
             />
 
         <View
@@ -58,7 +58,7 @@
                 android:paddingRight="@dimen/default_margin_12"
                 android:paddingBottom="@dimen/default_margin_8"
                 android:paddingTop="@dimen/default_margin_8"
-                android:textColor="#ffffff"
+                android:textColor="?attr/smartContactNameColor"
                 android:background="@drawable/bg_smart_text"
                 android:textSize="14sp"
                 android:textStyle="bold"

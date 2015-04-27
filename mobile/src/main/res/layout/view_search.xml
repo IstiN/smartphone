@@ -9,8 +9,8 @@
     android:layout_marginLeft="@dimen/default_margin_8"
     android:layout_marginRight="@dimen/default_margin_8"
     android:layout_marginTop="@dimen/default_margin_8"
-    android:background="#fafafa"
     card_view:cardCornerRadius="2dp"
+    card_view:cardBackgroundColor="?attr/cardBackgroundColor"
     tools:showIn="@layout/activity_main">
 
 
@@ -37,7 +37,7 @@
                 android:text="@string/search_hint"
                 android:background="@null"
                 android:textAppearance="@android:style/TextAppearance.Theme"
-                android:textColor="@color/group_header" />
+                android:textColor="?attr/groupHeaderColor" />
 
             <EditText
                 android:id="@+id/search_edit"
@@ -49,7 +49,8 @@
                 android:background="@null"
                 android:singleLine="true"
                 android:visibility="invisible"
-                android:textColorHint="@color/group_header"
+                android:textColor="?attr/contactNameColor"
+                android:textColorHint="?attr/groupHeaderColor"
                 android:textAppearance="@android:style/TextAppearance.Theme"
                 />
 
@@ -60,7 +61,7 @@
                 android:paddingLeft="12dip"
                 android:paddingRight="12dip"
                 android:src="@drawable/abc_ic_clear_mtrl_alpha"
-                android:tint="@color/group_header"
+                android:tint="?attr/groupHeaderColor"
                 android:visibility="invisible"
                 android:background="?attr/selectableItemBackground"
                 android:layout_alignParentRight="true"

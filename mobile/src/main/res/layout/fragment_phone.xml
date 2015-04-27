@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/phone_top"
-            android:background="#fafafa"
+            android:background="?attr/mainBackgroundColor"
             android:orientation="vertical"
             android:paddingRight="78dip">
 
@@ -314,9 +314,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dip"
                 android:src="@drawable/ic_local_phone"
-                fab:fab_colorNormal="#4CAF50"
-                fab:fab_colorPressed="#388E3C"
-                fab:fab_colorRipple="#C8E6C9" />
+                style="?attr/callFabButtonStyle"
+                />
 
 
             <com.melnykov.fab.FloatingActionButton
@@ -326,9 +325,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dip"
                 android:src="@drawable/ic_person_add"
-                fab:fab_colorNormal="#03A9F4"
-                fab:fab_colorPressed="#0288D1"
-                fab:fab_colorRipple="#B3E5FC"
+                style="?attr/addContactFabButtonStyle"
                 fab:fab_type="mini" />
 
             <com.melnykov.fab.FloatingActionButton
@@ -338,9 +335,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dip"
                 android:src="@drawable/ic_perm_phone_msg_black_24dp"
-                fab:fab_colorNormal="#9E9E9E"
-                fab:fab_colorPressed="#616161"
-                fab:fab_colorRipple="#F5F5F5"
+                style="?attr/sendSmsFabButtonStyle"
                 fab:fab_type="mini" />
 
             <com.melnykov.fab.FloatingActionButton
@@ -350,9 +345,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dip"
                 android:src="@drawable/ic_voicemail"
-                fab:fab_colorNormal="#009688"
-                fab:fab_colorPressed="#00796B"
-                fab:fab_colorRipple="#B2DFDB"
+                style="?attr/voiceMailFabButtonStyle"
                 fab:fab_type="mini" />
 
             <!-- <com.melnykov.fab.FloatingActionButton

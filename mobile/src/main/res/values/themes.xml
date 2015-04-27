@@ -1,0 +1,275 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AbstractAppTheme" parent="Theme.AppCompat.Light">
+
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="voiceMailFabButtonStyle">@style/VoiceMailFabButton</item>
+        <item name="sendSmsFabButtonStyle">@style/SendSmsFabButton</item>
+        <item name="addContactFabButtonStyle">@style/AddContactFabButton</item>
+        <item name="callFabButtonStyle">@style/CallFabButton</item>
+    </style>
+
+    <style name="BaseLightAppTheme" parent="AbstractAppTheme">
+
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="mainBackgroundColor">#fafafa</item>
+        <item name="cardBackgroundColor">#fafafa</item>
+        <item name="contactCharacterColor">#ffffff</item>
+        <item name="contactNameColor">#212121</item>
+        <item name="smartContactNameColor">#ffffff</item>
+        <item name="contactDescriptionColor">#727272</item>
+        <item name="scrollCharacterColor">#000000</item>
+        <item name="groupHeaderColor">#B6B6B6</item>
+
+    </style>
+
+    <style name="BaseDarkAppTheme" parent="AbstractAppTheme">
+        <item name="colorControlNormal">#1a1a1a</item>
+        <item name="mainBackgroundColor">#1a1a1a</item>
+        <item name="cardBackgroundColor">#1a1a1a</item>
+        <item name="contactCharacterColor">#ffffff</item>
+        <item name="contactNameColor">#fafafa</item>
+        <item name="smartContactNameColor">#fafafa</item>
+        <item name="contactDescriptionColor">#bcbcbc</item>
+        <item name="scrollCharacterColor">#fafafa</item>
+        <item name="groupHeaderColor">#B6B6B6</item>
+
+    </style>
+
+    <style name="BlackDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorControlNormal">#000000</item>
+        <item name="mainBackgroundColor">#000000</item>
+        <item name="cardBackgroundColor">#000000</item>
+
+        <item name="colorPrimary">#111111</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#333333</item>
+
+        <item name="contactCharacterColor">#cccccc</item>
+        <item name="contactNameColor">#f0f0f0</item>
+        <item name="smartContactNameColor">#f0f0f0</item>
+        <item name="contactDescriptionColor">#B6B6B6</item>
+        <item name="scrollCharacterColor">#f0f0f0</item>
+        <item name="groupHeaderColor">#B6B6B6</item>
+    </style>
+
+    <style name="RedLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#D32F2F</item>
+        <item name="colorAccent">#FFCDD2</item>
+    </style>
+
+    <style name="PinkLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#E91E63</item>
+        <item name="colorPrimaryDark">#C2185B</item>
+        <item name="colorAccent">#F8BBD0</item>
+    </style>
+
+    <style name="PurpleLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#9C27B0</item>
+        <item name="colorPrimaryDark">#7B1FA2</item>
+        <item name="colorAccent">#E1BEE7</item>
+    </style>
+
+    <style name="DeepPurpleLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#673AB7</item>
+        <item name="colorPrimaryDark">#512DA8</item>
+        <item name="colorAccent">#D1C4E9</item>
+    </style>
+
+    <style name="IndigoLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimaryDark">#303F9F</item>
+        <item name="colorAccent">#C5CAE9</item>
+    </style>
+
+    <style name="BlueLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="colorAccent">#BBDEFB</item>
+    </style>
+
+    <style name="LightBlueLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#03A9F4</item>
+        <item name="colorPrimaryDark">#0288D1</item>
+        <item name="colorAccent">#B3E5FC</item>
+    </style>
+
+    <style name="CyanLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#0097A7</item>
+        <item name="colorAccent">#B2EBF2</item>
+    </style>
+
+    <style name="TealLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">#00796B</item>
+        <item name="colorAccent">#B2DFDB</item>
+    </style>
+
+    <style name="GreenLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryDark">#388E3C</item>
+        <item name="colorAccent">#C8E6C9</item>
+    </style>
+
+    <style name="LightGreenLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#8BC34A</item>
+        <item name="colorPrimaryDark">#689F38</item>
+        <item name="colorAccent">#DCEDC8</item>
+    </style>
+
+    <style name="LimeLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#CDDC39</item>
+        <item name="colorPrimaryDark">#AFB42B</item>
+        <item name="colorAccent">#F0F4C3</item>
+    </style>
+    <style name="YellowLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#FFEB3B</item>
+        <item name="colorPrimaryDark">#FBC02D</item>
+        <item name="colorAccent">#FFF9C4</item>
+    </style>
+    <style name="AmberLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#FFC107</item>
+        <item name="colorPrimaryDark">#FFA000</item>
+        <item name="colorAccent">#FFECB3</item>
+    </style>
+    <style name="OrangeLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#FF9800</item>
+        <item name="colorPrimaryDark">#F57C00</item>
+        <item name="colorAccent">#FFE0B2</item>
+    </style>
+    <style name="DeepOrangeLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#FF5722</item>
+        <item name="colorPrimaryDark">#E64A19</item>
+        <item name="colorAccent">#FFCCBC</item>
+    </style>
+    <style name="BrownLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#795548</item>
+        <item name="colorPrimaryDark">#5D4037</item>
+        <item name="colorAccent">#D7CCC8</item>
+    </style>
+    <style name="GrayLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#9E9E9E</item>
+        <item name="colorPrimaryDark">#616161</item>
+        <item name="colorAccent">#F5F5F5</item>
+    </style>
+    <style name="BlueGrayLightAppTheme" parent="BaseLightAppTheme">
+        <item name="colorPrimary">#607D8B</item>
+        <item name="colorPrimaryDark">#455A64</item>
+        <item name="colorAccent">#CFD8DC</item>
+    </style>
+
+    <!-- DARK -->
+    <style name="RedDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#D32F2F</item>
+        <item name="colorAccent">#FFCDD2</item>
+    </style>
+
+    <style name="PinkDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#E91E63</item>
+        <item name="colorPrimaryDark">#C2185B</item>
+        <item name="colorAccent">#F8BBD0</item>
+    </style>
+
+    <style name="PurpleDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#9C27B0</item>
+        <item name="colorPrimaryDark">#7B1FA2</item>
+        <item name="colorAccent">#E1BEE7</item>
+    </style>
+
+    <style name="DeepPurpleDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#673AB7</item>
+        <item name="colorPrimaryDark">#512DA8</item>
+        <item name="colorAccent">#D1C4E9</item>
+    </style>
+
+    <style name="IndigoDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimaryDark">#303F9F</item>
+        <item name="colorAccent">#C5CAE9</item>
+    </style>
+
+    <style name="BlueDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="colorAccent">#BBDEFB</item>
+    </style>
+
+    <style name="LightBlueDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#03A9F4</item>
+        <item name="colorPrimaryDark">#0288D1</item>
+        <item name="colorAccent">#B3E5FC</item>
+    </style>
+
+    <style name="CyanDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#0097A7</item>
+        <item name="colorAccent">#B2EBF2</item>
+    </style>
+
+    <style name="TealDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">#00796B</item>
+        <item name="colorAccent">#B2DFDB</item>
+    </style>
+
+    <style name="GreenDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryDark">#388E3C</item>
+        <item name="colorAccent">#C8E6C9</item>
+    </style>
+
+    <style name="LightGreenDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#8BC34A</item>
+        <item name="colorPrimaryDark">#689F38</item>
+        <item name="colorAccent">#DCEDC8</item>
+    </style>
+
+    <style name="LimeDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#CDDC39</item>
+        <item name="colorPrimaryDark">#AFB42B</item>
+        <item name="colorAccent">#F0F4C3</item>
+    </style>
+    <style name="YellowDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#FFEB3B</item>
+        <item name="colorPrimaryDark">#FBC02D</item>
+        <item name="colorAccent">#FFF9C4</item>
+    </style>
+    <style name="AmberDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#FFC107</item>
+        <item name="colorPrimaryDark">#FFA000</item>
+        <item name="colorAccent">#FFECB3</item>
+    </style>
+    <style name="OrangeDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#FF9800</item>
+        <item name="colorPrimaryDark">#F57C00</item>
+        <item name="colorAccent">#FFE0B2</item>
+    </style>
+    <style name="DeepOrangeDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#FF5722</item>
+        <item name="colorPrimaryDark">#E64A19</item>
+        <item name="colorAccent">#FFCCBC</item>
+    </style>
+    <style name="BrownDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#795548</item>
+        <item name="colorPrimaryDark">#5D4037</item>
+        <item name="colorAccent">#D7CCC8</item>
+    </style>
+    <style name="GrayDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#9E9E9E</item>
+        <item name="colorPrimaryDark">#616161</item>
+        <item name="colorAccent">#F5F5F5</item>
+    </style>
+    <style name="BlueGrayDarkAppTheme" parent="BaseDarkAppTheme">
+        <item name="colorPrimary">#607D8B</item>
+        <item name="colorPrimaryDark">#455A64</item>
+        <item name="colorAccent">#CFD8DC</item>
+    </style>
+</resources>

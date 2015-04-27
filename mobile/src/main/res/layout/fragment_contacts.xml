@@ -32,14 +32,14 @@
         android:id="@+id/scrollCharacterCard"
         android:layout_width="64dip"
         android:layout_height="64dip"
-        android:background="#fafafa"
         android:layout_centerInParent="true"
         card_view:cardCornerRadius="2dp"
+        card_view:cardBackgroundColor="?attr/cardBackgroundColor"
         android:visibility="gone">
 
         <TextView
             android:id="@+id/scrollCharacter"
-            android:textColor="#000000"
+            android:textColor="?attr/scrollCharacterColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>

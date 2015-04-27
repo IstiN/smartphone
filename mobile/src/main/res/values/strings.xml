@@ -27,6 +27,7 @@
     <string name="right_now">right now</string>
     <string name="search_hint">Type a contact name</string>
     <string name="label_paste">paste</string>
+    <string name="choose_theme">Choose theme</string>
 
 
 </resources>

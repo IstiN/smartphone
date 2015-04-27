@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
 
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
@@ -17,6 +18,7 @@ public class RecentActivity extends BaseControllerActivity implements IFloatHead
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.activity_fragment);
         if (savedInstanceState == null) {
             RecentFragment fragment = new RecentFragment();

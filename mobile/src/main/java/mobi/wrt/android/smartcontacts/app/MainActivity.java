@@ -1,9 +1,7 @@
 package mobi.wrt.android.smartcontacts.app;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,20 +22,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
-import com.facebook.share.widget.LikeView;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.plus.Plus;
 import com.melnykov.fab.FloatingActionButton;
 import com.mobileapptracker.MobileAppTracker;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Set;
 
 import by.istin.android.xcore.utils.Log;
+import by.istin.android.xcore.utils.ManifestMetadataUtils;
 import mobi.wrt.android.smartcontacts.BuildConfig;
-import mobi.wrt.android.smartcontacts.Constants;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.ads.AdsProvider;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
@@ -55,6 +53,7 @@ import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
 public class MainActivity extends BaseControllerActivity implements IFloatHeader {
 
+    public static final int REQUEST_CODE_RESOLUTION = 1;
     private SlidingTabLayout mSlidingTabLayout;
 
     private ViewPager mViewPager;
@@ -74,10 +73,52 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     public MobileAppTracker mobileAppTracker = null;
 
+    private CallbackManager callbackManager;
+
+    /* Client used to interact with Google APIs. */
+    private GoogleApiClient mGoogleApiClient;
+
+    private boolean mIntentInProgress = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                    @Override
+                    public void onConnected(Bundle bundle) {
+                        Log.xd(MainActivity.this, "plus onConnected");
+                    }
+
+                    @Override
+                    public void onConnectionSuspended(int i) {
+                        Log.xd(MainActivity.this, "plus onConnectionSuspended");
+                    }
+                })
+                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(ConnectionResult connectionResult) {
+                        Log.xd(MainActivity.this, "plus onConnectionFailed " + connectionResult);
+                        if (!mIntentInProgress && !connectionResult.hasResolution()) {
+                            try {
+                                mIntentInProgress = true;
+                                startIntentSenderForResult(connectionResult.getResolution().getIntentSender(),
+                                        REQUEST_CODE_RESOLUTION, null, 0, 0, 0);
+                            } catch (IntentSender.SendIntentException e) {
+                                // The intent was canceled before it was sent.  Return to the default
+                                // state and attempt to connect to get an updated ConnectionResult.
+                                mIntentInProgress = false;
+                                mGoogleApiClient.connect();
+                            }
+                        }
+                    }
+                })
+                .addApi(Plus.API)
+                //.addScope(Plus.SCOPE_PLUS_LOGIN)
+                .build();
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_main);
 
         // Initialize MAT
@@ -379,6 +420,19 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         startActivity(new Intent(this, RecentActivity.class));
     }
 
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    protected void onStop() {
+        super.onStop();
+
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -387,8 +441,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         // MAT will not function unless the measureSession call is included
         mobileAppTracker.measureSession();
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+        String facebookId = ManifestMetadataUtils.getString(this, "com.facebook.sdk.ApplicationId");
+        AppEventsLogger.activateApp(this, facebookId);
+        Log.xd(this, facebookId);
     }
 
     @Override
@@ -437,5 +492,18 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
     @Override
     public void removeTopView(View view) {
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_RESOLUTION) {
+            mIntentInProgress = false;
+
+            if (!mGoogleApiClient.isConnecting()) {
+                mGoogleApiClient.connect();
+            }
+        }
     }
 }

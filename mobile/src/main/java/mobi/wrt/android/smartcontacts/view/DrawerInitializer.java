@@ -1,5 +1,7 @@
 package mobi.wrt.android.smartcontacts.view;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.support.v4.content.Loader;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -19,13 +22,17 @@ import android.widget.TextView;
 import com.facebook.share.internal.LikeButton;
 import com.facebook.share.widget.LikeView;
 import com.google.android.gms.plus.PlusOneButton;
+import com.google.android.gms.plus.PlusShare;
 import com.squareup.picasso.Picasso;
 
+import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.CursorUtils;
+import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
 
 /**
  * Created by uladzimir_klyshevich on 4/23/15.
@@ -86,15 +93,45 @@ public class DrawerInitializer {
                     listView.addHeaderView(mHeader, null, false);
                     listView.setAdapter(new ArrayAdapter<>(activity,
                             android.R.layout.simple_list_item_single_choice,
-                            android.R.id.text1, new String[]{})
+                            android.R.id.text1, new String[]{"Themes"})
                     );
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            final ThemeUtils.ThemeValue[] themeValues = ThemeUtils.ThemeValue.values();
+                            String[] values = new String[themeValues.length];
+                            for (int i = 0; i < themeValues.length; i++) {
+                                values[i] = themeValues[i].name();
+                            }
+                            DialogBuilder.options(activity, R.string.choose_theme, values, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ThemeUtils.setTheme(activity, themeValues[which]);
+                                }
+                            });
+                        }
+                    });
                     mPlusOneButton = (PlusOneButton) mHeader.findViewById(R.id.plus_one_button);
                     mLikeButton = (LikeView) mHeader.findViewById(R.id.facebook_button);
+
+                    //String url = BuildConfig.MARKET_URL + BuildConfig.APPLICATION_ID;
+                    final String url = "https://www.facebook.com/groups/121829337899260/";
+                    mPlusOneButton.initialize(url, 0);
+                    /*mPlusOneButton.initialize(url, new PlusOneButton.OnPlusOneClickListener() {
+                        @Override
+                        public void onPlusOneClick(Intent intent) {
+                            // Launch the Google+ share dialog with attribution to your app.
+                            Intent shareIntent = new PlusShare.Builder(activity)
+                                    .setType("text/plain")
+                                    .setText("Welcome to the Google+ platform.")
+                                    .setContentUrl(Uri.parse(url))
+                                    .getIntent();
+                            activity.startActivityForResult(shareIntent, 0);
+
+                        }
+                    });*/
+                    mLikeButton.setObjectIdAndType(url, LikeView.ObjectType.PAGE);
                 }
-                //String url = BuildConfig.MARKET_URL + BuildConfig.APPLICATION_ID;
-                String url = "https://play.google.com";
-                mPlusOneButton.initialize(url, PLUS_ONE_REQUEST_CODE);
-                mLikeButton.setObjectIdAndType(url, LikeView.ObjectType.PAGE);
                 TextView nameView = (TextView) mHeader.findViewById(R.id.profile_name);
                 ImageView iconView = (ImageView) mHeader.findViewById(R.id.profile_icon);
 

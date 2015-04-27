@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -17,6 +18,7 @@ import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
+import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
 
 /**
  * Created by IstiN on 18.02.2015.
@@ -25,6 +27,12 @@ public class BaseControllerActivity extends ActionBarActivity {
 
     public ITracker getTracker() {
         return ITracker.Impl.get(this);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ThemeUtils.onActivityCreate(this);
     }
 
     public void onContactMoreClick(View view) {

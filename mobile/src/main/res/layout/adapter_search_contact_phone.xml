@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="58dip"
-    android:background="#fafafa"
+    android:background="?attr/mainBackgroundColor"
     tools:context=".MainActivity">
 
 
@@ -28,7 +28,7 @@
             android:layout_centerVertical="true"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textColor="#737373"
+            android:textColor="?attr/contactDescriptionColor"
             android:textSize="14sp" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:ellipsize="end"
             android:paddingRight="16dip"
             android:singleLine="true"
-            android:textColor="#737373"
+            android:textColor="?attr/contactDescriptionColor"
             android:textSize="14sp" />
     </RelativeLayout>
 </RelativeLayout>

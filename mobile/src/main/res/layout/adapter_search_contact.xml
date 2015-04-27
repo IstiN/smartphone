@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="58dip"
-    android:background="#fafafa"
+    android:background="?attr/mainBackgroundColor"
     tools:context=".MainActivity">
 
 
@@ -34,7 +34,7 @@
         android:layout_marginRight="16dip"
         android:layout_marginTop="8dip"
         android:gravity="center"
-        android:textColor="#ffffff" />
+        android:textColor="?attr/contactCharacterColor" />
 
     <TextView
         android:id="@+id/name"
@@ -45,7 +45,7 @@
         android:paddingRight="16dip"
         android:paddingTop="4dip"
         android:singleLine="true"
-        android:textColor="#333333"
+        android:textColor="?attr/contactNameColor"
         android:textSize="16sp" />
 
     <RelativeLayout
@@ -61,7 +61,7 @@
             android:layout_centerVertical="true"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textColor="#737373"
+            android:textColor="?attr/contactDescriptionColor"
             android:textSize="14sp" />
 
         <TextView
@@ -73,7 +73,7 @@
             android:ellipsize="end"
             android:paddingRight="16dip"
             android:singleLine="true"
-            android:textColor="#737373"
+            android:textColor="?attr/contactDescriptionColor"
             android:textSize="14sp" />
     </RelativeLayout>
 </RelativeLayout>

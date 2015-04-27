@@ -14,7 +14,7 @@
         android:paddingLeft="16dip"
         android:ellipsize="end"
         android:singleLine="true"
-        android:textColor="@color/group_header"
+        android:textColor="?attr/groupHeaderColor"
         android:textSize="16sp" />
 
 </RelativeLayout>

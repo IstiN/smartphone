@@ -1,0 +1,16 @@
+<resources>
+
+    <attr format="color" name="mainBackgroundColor"/>
+    <attr format="color" name="contactCharacterColor"/>
+    <attr format="color" name="contactNameColor"/>
+    <attr format="color" name="smartContactNameColor"/>
+    <attr format="color" name="groupHeaderColor"/>
+    <attr format="color" name="contactDescriptionColor"/>
+    <attr format="color" name="scrollCharacterColor"/>
+
+    <attr format="reference" name="voiceMailFabButtonStyle"/>
+    <attr format="reference" name="sendSmsFabButtonStyle"/>
+    <attr format="reference" name="addContactFabButtonStyle"/>
+    <attr format="reference" name="callFabButtonStyle"/>
+
+</resources>
