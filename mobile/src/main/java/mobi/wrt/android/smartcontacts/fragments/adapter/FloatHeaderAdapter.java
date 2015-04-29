@@ -16,7 +16,7 @@ public abstract class FloatHeaderAdapter<Holder extends RecyclerView.ViewHolder,
 
     private IFloatHeader mFloatHeader;
 
-    private View[] mCurrentFloatViews;
+    final private View[] mCurrentFloatViews;
 
     public FloatHeaderAdapter(Model model, int topPadding, IFloatHeader floatHeader) {
         super(model);

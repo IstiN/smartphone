@@ -45,6 +45,7 @@ import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
+import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
 import mobi.wrt.android.smartcontacts.view.DrawerArrowDrawable;
 import mobi.wrt.android.smartcontacts.drawer.DrawerInitializer;
 import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
@@ -54,6 +55,7 @@ import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 public class MainActivity extends BaseControllerActivity implements IFloatHeader {
 
     public static final int REQUEST_CODE_RESOLUTION = 1;
+    public static final int REQUEST_CODE_THEME = 2;
     private SlidingTabLayout mSlidingTabLayout;
 
     private ViewPager mViewPager;
@@ -500,10 +502,11 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         callbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_RESOLUTION) {
             mIntentInProgress = false;
-
             if (!mGoogleApiClient.isConnecting()) {
                 mGoogleApiClient.connect();
             }
+        } else if (requestCode == REQUEST_CODE_THEME && resultCode == RESULT_OK) {
+            ThemeUtils.setTheme(this, ThemeUtils.ThemeValue.values()[data.getIntExtra(ThemesActivity.EXTRA_THEME_ORDINAL_KEY, 0)]);
         }
     }
 }

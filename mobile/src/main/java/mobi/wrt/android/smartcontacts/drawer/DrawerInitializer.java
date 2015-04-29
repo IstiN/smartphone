@@ -109,7 +109,8 @@ public class DrawerInitializer {
                     });
                     mPlusOneButton = (PlusOneButton) mHeader.findViewById(R.id.plus_one_button);
                     mLikeButton = (LikeView) mHeader.findViewById(R.id.facebook_button);
-
+                    mLikeButton.setVisibility(View.INVISIBLE);
+                    mPlusOneButton.setVisibility(View.INVISIBLE);
                     //String url = BuildConfig.MARKET_URL + BuildConfig.APPLICATION_ID;
                     final String url = "https://www.facebook.com/groups/121829337899260/";
                     mPlusOneButton.initialize(url, 0);

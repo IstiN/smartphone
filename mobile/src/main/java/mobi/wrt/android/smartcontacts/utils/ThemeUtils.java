@@ -44,7 +44,7 @@ public class ThemeUtils {
         BLUE_DARK(R.style.BlueDarkAppTheme),
         LIGHT_BLUE_DARK(R.style.LightBlueDarkAppTheme),
         CYAN_DARK(R.style.CyanDarkAppTheme),
-        TEAL_DARK(R.style.TealLightAppTheme),
+        TEAL_DARK(R.style.TealDarkAppTheme),
         GREEN_DARK(R.style.GreenDarkAppTheme),
         LIGHT_GREEN_DARK(R.style.LightGreenDarkAppTheme),
         LIME_DARK(R.style.LimeDarkAppTheme),
@@ -63,6 +63,12 @@ public class ThemeUtils {
 
         ThemeValue(int themeStyle) {
             this.mThemeStyle = themeStyle;
+        }
+
+
+        @Override
+        public String toString() {
+            return super.toString().replace("_", " ");
         }
     }
 

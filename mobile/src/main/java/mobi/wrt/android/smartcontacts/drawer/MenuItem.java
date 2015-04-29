@@ -1,11 +1,15 @@
 package mobi.wrt.android.smartcontacts.drawer;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 
 import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.ui.DialogBuilder;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.app.MainActivity;
+import mobi.wrt.android.smartcontacts.app.ThemesActivity;
 import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
 
 /**
@@ -16,7 +20,9 @@ public enum MenuItem {
     THEMES(R.drawable.ic_color_lens, R.string.theme, new View.OnClickListener() {
         @Override
         public void onClick(final View v) {
-            final ThemeUtils.ThemeValue[] themeValues = ThemeUtils.ThemeValue.values();
+            Intent intent = new Intent(v.getContext(), ThemesActivity.class);
+            ((Activity)v.getContext()).startActivityForResult(intent, MainActivity.REQUEST_CODE_THEME);
+            /*final ThemeUtils.ThemeValue[] themeValues = ThemeUtils.ThemeValue.values();
             String[] values = new String[themeValues.length];
             for (int i = 0; i < themeValues.length; i++) {
                 values[i] = themeValues[i].name();
@@ -26,7 +32,7 @@ public enum MenuItem {
                 public void onClick(DialogInterface dialog, int which) {
                     ThemeUtils.setTheme((android.app.Activity) v.getContext(), themeValues[which]);
                 }
-            });
+            });*/
         }
     }),
 
@@ -51,12 +57,12 @@ public enum MenuItem {
         }
     }),
 
-    PLAY_VERSION(R.drawable.ic_shop, R.string.ads_free_version, new View.OnClickListener() {
+    /*PLAY_VERSION(R.drawable.ic_shop, R.string.ads_free_version, new View.OnClickListener() {
         @Override
         public void onClick(final View v) {
 
         }
-    }),
+    }),*/
 
     ABOUT(R.drawable.ic_info, R.string.about, new View.OnClickListener() {
         @Override

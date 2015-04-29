@@ -1,0 +1,37 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/default_margin_4"
+    android:layout_marginLeft="@dimen/default_margin_8"
+    android:layout_marginRight="@dimen/default_margin_8"
+    android:layout_marginTop="@dimen/default_margin_8"
+    card_view:cardBackgroundColor="?attr/cardBackgroundColor"
+    card_view:cardCornerRadius="2dp"
+    tools:showIn="@layout/activity_main">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="286dip"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@android:id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#80000000"
+            android:paddingBottom="@dimen/default_margin_4"
+            android:paddingLeft="@dimen/default_margin_8"
+            android:paddingTop="@dimen/default_margin_4"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
