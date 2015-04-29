@@ -28,6 +28,7 @@ import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.app.MainActivity;
 import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
 
 /**
@@ -65,6 +66,8 @@ public class DrawerInitializer {
     private View mHeader;
     private PlusOneButton mPlusOneButton;
     private LikeView mLikeButton;
+    private String mShareUrl;
+
 
     public void init(final FragmentActivity activity, final ListView listView) {
         ViewGroup.LayoutParams layoutParams = listView.getLayoutParams();
@@ -109,11 +112,11 @@ public class DrawerInitializer {
                     });
                     mPlusOneButton = (PlusOneButton) mHeader.findViewById(R.id.plus_one_button);
                     mLikeButton = (LikeView) mHeader.findViewById(R.id.facebook_button);
-                    mLikeButton.setVisibility(View.INVISIBLE);
-                    mPlusOneButton.setVisibility(View.INVISIBLE);
+                    //mLikeButton.setVisibility(View.INVISIBLE);
+                    //mPlusOneButton.setVisibility(View.INVISIBLE);
                     //String url = BuildConfig.MARKET_URL + BuildConfig.APPLICATION_ID;
-                    final String url = "https://www.facebook.com/groups/121829337899260/";
-                    mPlusOneButton.initialize(url, 0);
+                    mShareUrl = "https://www.facebook.com/groups/121829337899260/";
+                    mPlusOneButton.initialize(mShareUrl, MainActivity.REQUEST_CODE_PLUS);
                     /*mPlusOneButton.initialize(url, new PlusOneButton.OnPlusOneClickListener() {
                         @Override
                         public void onPlusOneClick(Intent intent) {
@@ -127,7 +130,7 @@ public class DrawerInitializer {
 
                         }
                     });*/
-                    mLikeButton.setObjectIdAndType(url, LikeView.ObjectType.PAGE);
+                    mLikeButton.setObjectIdAndType(mShareUrl, LikeView.ObjectType.PAGE);
                 }
                 TextView nameView = (TextView) mHeader.findViewById(R.id.profile_name);
                 ImageView iconView = (ImageView) mHeader.findViewById(R.id.profile_icon);
@@ -197,5 +200,9 @@ public class DrawerInitializer {
 
             }
         });
+    }
+
+    public void refreshButtons() {
+        mPlusOneButton.initialize(mShareUrl, MainActivity.REQUEST_CODE_PLUS);
     }
 }

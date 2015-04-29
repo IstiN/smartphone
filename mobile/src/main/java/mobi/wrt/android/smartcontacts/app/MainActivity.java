@@ -54,6 +54,7 @@ import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
 public class MainActivity extends BaseControllerActivity implements IFloatHeader {
 
+    public static final int REQUEST_CODE_PLUS = 0;
     public static final int REQUEST_CODE_RESOLUTION = 1;
     public static final int REQUEST_CODE_THEME = 2;
     private SlidingTabLayout mSlidingTabLayout;
@@ -81,6 +82,8 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     private GoogleApiClient mGoogleApiClient;
 
     private boolean mIntentInProgress = false;
+
+    private DrawerInitializer mDrawerInitializer = new DrawerInitializer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +142,8 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 }
             }
         });
-        new DrawerInitializer().init(this, (ListView) findViewById(R.id.left_drawer));
+
+        mDrawerInitializer.init(this, (ListView) findViewById(R.id.left_drawer));
         findViewById(R.id.search_input).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -507,6 +511,8 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             }
         } else if (requestCode == REQUEST_CODE_THEME && resultCode == RESULT_OK) {
             ThemeUtils.setTheme(this, ThemeUtils.ThemeValue.values()[data.getIntExtra(ThemesActivity.EXTRA_THEME_ORDINAL_KEY, 0)]);
+        } else if (requestCode == REQUEST_CODE_PLUS) {
+            mDrawerInitializer.refreshButtons();
         }
     }
 }
