@@ -146,13 +146,13 @@ public class BaseControllerActivity extends ActionBarActivity {
     }
 
     public static void makeCall(Context context, String phone) {
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+StringUtil.encode(phone)));
         context.startActivity(intent);
     }
 
     public static void sendSms(Context context, String phone) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("sms:" + phone));
+        intent.setData(Uri.parse("sms:" + StringUtil.encode(phone)));
         context.startActivity(intent);
     }
 

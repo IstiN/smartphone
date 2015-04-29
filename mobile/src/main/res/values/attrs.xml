@@ -7,6 +7,7 @@
     <attr format="color" name="groupHeaderColor"/>
     <attr format="color" name="contactDescriptionColor"/>
     <attr format="color" name="scrollCharacterColor"/>
+    <attr format="color" name="leftMenuItemColor"/>
 
     <attr format="reference" name="voiceMailFabButtonStyle"/>
     <attr format="reference" name="sendSmsFabButtonStyle"/>

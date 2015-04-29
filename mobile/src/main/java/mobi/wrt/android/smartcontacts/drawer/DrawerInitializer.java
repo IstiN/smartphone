@@ -1,7 +1,6 @@
-package mobi.wrt.android.smartcontacts.view;
+package mobi.wrt.android.smartcontacts.drawer;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,15 +18,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.facebook.share.internal.LikeButton;
 import com.facebook.share.widget.LikeView;
 import com.google.android.gms.plus.PlusOneButton;
-import com.google.android.gms.plus.PlusShare;
 import com.squareup.picasso.Picasso;
 
 import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.CursorUtils;
-import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
@@ -38,6 +34,8 @@ import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
  * Created by uladzimir_klyshevich on 4/23/15.
  */
 public class DrawerInitializer {
+
+
     public static final String SELECTION = ContactsContract.Contacts.Data.MIMETYPE + "=? OR "
             + ContactsContract.Contacts.Data.MIMETYPE + "=? OR "
             + ContactsContract.Contacts.Data.MIMETYPE + "=? OR "
@@ -91,24 +89,22 @@ public class DrawerInitializer {
                 if (mHeader == null) {
                     mHeader = View.inflate(activity, R.layout.view_drawer_header, null);
                     listView.addHeaderView(mHeader, null, false);
-                    listView.setAdapter(new ArrayAdapter<>(activity,
-                            android.R.layout.simple_list_item_single_choice,
-                            android.R.id.text1, new String[]{"Themes"})
+                    final MenuItem[] values = MenuItem.values();
+                    listView.setAdapter(new ArrayAdapter<MenuItem>(activity,
+                            R.layout.adapter_left_menu,
+                            android.R.id.text1, values) {
+                                @Override
+                                public View getView(int position, View convertView, ViewGroup parent) {
+                                    View view = super.getView(position, convertView, parent);
+                                    ((ImageView)view.findViewById(R.id.icon)).setImageResource(values[position].iconDrawable);
+                                    return view;
+                                }
+                            }
                     );
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            final ThemeUtils.ThemeValue[] themeValues = ThemeUtils.ThemeValue.values();
-                            String[] values = new String[themeValues.length];
-                            for (int i = 0; i < themeValues.length; i++) {
-                                values[i] = themeValues[i].name();
-                            }
-                            DialogBuilder.options(activity, R.string.choose_theme, values, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ThemeUtils.setTheme(activity, themeValues[which]);
-                                }
-                            });
+                            values[position - 1].clickListener.onClick(view);
                         }
                     });
                     mPlusOneButton = (PlusOneButton) mHeader.findViewById(R.id.plus_one_button);

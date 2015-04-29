@@ -103,7 +103,7 @@
                 android:layout_marginTop="@dimen/default_margin_8"
                 android:visibility="invisible"
                 android:paddingBottom="@dimen/default_margin_8"
-                android:textColor="?attr/colorAccent"
+                android:textColor="#ffffff"
                 android:textSize="18sp" />
 
         </LinearLayout>

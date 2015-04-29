@@ -28,6 +28,12 @@
     <string name="search_hint">Type a contact name</string>
     <string name="label_paste">paste</string>
     <string name="choose_theme">Choose theme</string>
+    <string name="theme">Themes</string>
+    <string name="share">Share</string>
+    <string name="join_to_group">Join to group</string>
+    <string name="rate_app">Rate App</string>
+    <string name="ads_free_version">Ads free version</string>
+    <string name="about">About Application</string>
 
 
 </resources>

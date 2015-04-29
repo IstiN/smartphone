@@ -26,6 +26,9 @@
         <item name="scrollCharacterColor">#000000</item>
         <item name="groupHeaderColor">#B6B6B6</item>
 
+        <item name="leftMenuItemColor">#737373</item>
+
+
     </style>
 
     <style name="BaseDarkAppTheme" parent="AbstractAppTheme">
@@ -39,6 +42,7 @@
         <item name="scrollCharacterColor">#fafafa</item>
         <item name="groupHeaderColor">#B6B6B6</item>
 
+        <item name="leftMenuItemColor">#737373</item>
     </style>
 
     <style name="BlackDarkAppTheme" parent="BaseDarkAppTheme">

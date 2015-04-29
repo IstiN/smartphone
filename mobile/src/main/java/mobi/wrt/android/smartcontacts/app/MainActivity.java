@@ -46,7 +46,7 @@ import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 import mobi.wrt.android.smartcontacts.view.DrawerArrowDrawable;
-import mobi.wrt.android.smartcontacts.view.DrawerInitializer;
+import mobi.wrt.android.smartcontacts.drawer.DrawerInitializer;
 import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
 import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
