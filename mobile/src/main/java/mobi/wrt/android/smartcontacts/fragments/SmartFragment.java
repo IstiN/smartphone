@@ -17,12 +17,14 @@ import android.view.ViewGroup;
 import com.squareup.picasso.Picasso;
 
 import by.istin.android.xcore.ContextHolder;
+import by.istin.android.xcore.fragment.CursorLoaderFragmentHelper;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.CursorUtils;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.fragments.adapter.SmartAdapter;
+import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**
@@ -122,16 +124,26 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
             public boolean onLongClick(final View v) {
                 ViewGroup itemView = (ViewGroup) v.getParent();
                 final Long id = (Long) itemView.getTag();
-                new Thread(new Runnable() {
+                Context context = itemView.getContext();
+                ContactHelper.get(context).removeCallLog(context, id, new Runnable() {
                     @Override
                     public void run() {
-                        ContextHolder.get().getContentResolver().delete(CallLog.Calls.CONTENT_URI, CallLog.Calls._ID + "=" + String.valueOf(id), null);
+                        CursorLoaderFragmentHelper.restartLoader(SmartFragment.this);
                     }
-                }).start();
+                });
                 return true;
             }
         });
         super.onLoadFinished(loader, cursor);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SmartAdapter adapter = getAdapter();
+        if (adapter != null && adapter.getItemCount() > 0) {
+            CursorLoaderFragmentHelper.restartLoader(this);
+        }
     }
 
     @Override
@@ -160,10 +172,7 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (position < count) {
-                    return 1;
-                }
-                return 2;
+                return 1;
             }
         });
         return gridLayoutManager;

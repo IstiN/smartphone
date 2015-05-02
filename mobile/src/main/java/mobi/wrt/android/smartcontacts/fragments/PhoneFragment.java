@@ -52,6 +52,7 @@ public class PhoneFragment extends AbstractFragment {
 
     private int mInitalBottomMargin = 0;
 
+    private View mQuickPhoneCall;
     @Override
     public int getViewLayout() {
         return R.layout.fragment_phone;
@@ -62,6 +63,7 @@ public class PhoneFragment extends AbstractFragment {
         super.onViewCreated(view);
         final ITracker tracker = ITracker.Impl.get(getActivity());
         tracker.track("phone");
+        mQuickPhoneCall = view.findViewById(R.id.quick_phone_call);
         mEditText = (EditText) view.findViewById(R.id.edit_phone);
         String phone = getPhone();
         setNumber(phone);

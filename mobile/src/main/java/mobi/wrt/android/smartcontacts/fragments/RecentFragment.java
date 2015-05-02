@@ -14,6 +14,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import by.istin.android.xcore.fragment.CursorLoaderFragmentHelper;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.Log;
@@ -139,6 +140,14 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        RecentAdapter adapter = getAdapter();
+        if (adapter != null && adapter.getItemCount() > 0) {
+            CursorLoaderFragmentHelper.restartLoader(this);
+        }
+    }
 
     @Override
     public CursorModel.CursorModelCreator<RecentModel> getCursorModelCreator() {

@@ -362,4 +362,23 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/phone"
+        android:layout_marginLeft="@dimen/default_margin_8"
+        android:layout_marginRight="@dimen/default_margin_8"
+        android:paddingBottom="@dimen/default_margin_8"
+        >
+
+        <include layout="@layout/view_quick_phone_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
+
+
 </RelativeLayout>
+

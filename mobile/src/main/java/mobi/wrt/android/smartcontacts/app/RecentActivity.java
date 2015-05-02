@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 
+import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
@@ -26,6 +27,9 @@ public class RecentActivity extends BaseControllerActivity implements IFloatHead
             bundle.putBoolean(RecentFragment.EXTRA_IS_LIMIT, false);
             fragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().add(R.id.container, fragment).commit();
+        }
+        if (UiUtil.hasKitKat()) {
+            findViewById(R.id.main_container).setPadding(0, UiUtil.getStatusBarHeight(this) + UiUtil.getActionBarSize(this, new int[]{android.support.v7.appcompat.R.attr.actionBarSize}), 0, 0);
         }
     }
 

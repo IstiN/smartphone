@@ -6,7 +6,7 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
         <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
 
         <item name="voiceMailFabButtonStyle">@style/VoiceMailFabButton</item>
         <item name="sendSmsFabButtonStyle">@style/SendSmsFabButton</item>

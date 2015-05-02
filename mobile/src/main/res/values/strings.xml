@@ -34,6 +34,8 @@
     <string name="rate_app">Rate App</string>
     <string name="ads_free_version">Ads free version</string>
     <string name="about">About Application</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_remove_recent">Are you sure to remove the call log?</string>
 
 
 </resources>

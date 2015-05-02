@@ -21,6 +21,7 @@ import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.ContactsAdapter;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.fragments.adapter.SmartAdapter;
+import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 
 /**

@@ -1,5 +1,7 @@
 package mobi.wrt.android.smartcontacts.fragments.adapter;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -22,6 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.model.CursorModel;
+import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
@@ -61,12 +64,8 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
     public boolean onLongClick(View v) {
         ViewGroup itemView = (ViewGroup) v.getParent();
         final Long id = (Long) itemView.getTag();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ContextHolder.get().getContentResolver().delete(CallLog.Calls.CONTENT_URI, CallLog.Calls._ID + "=" + String.valueOf(id), null);
-            }
-        }).start();
+        Context context = v.getContext();
+        ContactHelper.get(context).removeCallLog(context, id, null);
         return true;
     }
 

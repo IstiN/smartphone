@@ -2,8 +2,11 @@ package mobi.wrt.android.smartcontacts.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Handler;
+import android.provider.CallLog;
 import android.provider.ContactsContract;
 
 import java.util.List;
@@ -12,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.XCoreHelper;
+import by.istin.android.xcore.analytics.ITracker;
+import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.AppUtils;
 import by.istin.android.xcore.utils.ContentUtils;
 import by.istin.android.xcore.utils.CursorUtils;
@@ -105,5 +110,29 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
         }
         Context context = ContextHolder.get();
         return ContactsContract.CommonDataKinds.Phone.getTypeLabel(context.getResources(), value, StringUtil.EMPTY);
+    }
+
+    public void removeCallLog(final Context context, final Long id, final Runnable runnable) {
+        final Handler handler = new Handler();
+        DialogBuilder.confirm(context, context.getString(R.string.confirm), context.getString(R.string.confirm_remove_recent), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ITracker.Impl.get(context).track("removeCallLog");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ContextHolder.get().getContentResolver().delete(CallLog.Calls.CONTENT_URI, CallLog.Calls._ID + "=" + String.valueOf(id), null);
+                        if (runnable != null) {
+                            handler.post(runnable);
+                        }
+                    }
+                }).start();
+            }
+        });
+    }
+
+    public void removePhoneCache(String phone) {
+        mContactIdCache.remove(phone);
+        mPhotoUriCache.remove(phone);
     }
 }

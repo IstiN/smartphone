@@ -72,9 +72,11 @@ public class ThemeUtils {
         }
     }
 
-    public static void onActivityCreate(Activity activity) {
+    public static int onActivityCreate(Activity activity) {
         int themeOrdinal = PreferenceHelper.getInt(CURRENT_THEME_KEY, 0);
-        activity.setTheme(ThemeValue.values()[themeOrdinal].mThemeStyle);
+        int mThemeStyle = ThemeValue.values()[themeOrdinal].mThemeStyle;
+        activity.setTheme(mThemeStyle);
+        return mThemeStyle;
     }
 
     public static void setTheme(Activity activity, ThemeValue themeValue) {

@@ -72,6 +72,9 @@ public class DrawerInitializer {
     public void init(final FragmentActivity activity, final ListView listView) {
         ViewGroup.LayoutParams layoutParams = listView.getLayoutParams();
         layoutParams.width = (int)((float)UiUtil.getDisplayWidth() * 0.85f);
+        if (UiUtil.hasKitKat()) {
+            listView.setPadding(0, UiUtil.getStatusBarHeight(activity), 0, 0);
+        }
         listView.setLayoutParams(layoutParams);
         activity.getSupportLoaderManager().restartLoader(PROFILE_URI.hashCode(), null, new LoaderManager.LoaderCallbacks<Cursor>() {
             @Override

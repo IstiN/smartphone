@@ -94,11 +94,11 @@ android {
         compile fileTree(dir: 'libs', include: ['*.jar'])
         freeCompile fileTree(dir: 'free_libs', include: ['*.jar'])
         //wearApp project(':wear')
-        compile 'com.android.support:appcompat-v7:22.0.0'
-        compile 'com.android.support:recyclerview-v7:22.0.0'
-        compile 'com.android.support:cardview-v7:22.0.0'
+        compile 'com.android.support:appcompat-v7:22.1.1'
+        compile 'com.android.support:recyclerview-v7:22.1.1'
+        compile 'com.android.support:cardview-v7:22.1.1'
         compile 'com.melnykov:floatingactionbutton:1.1.0'
-        compile 'com.android.support:palette-v7:22.0.0'
+        compile 'com.android.support:palette-v7:22.1.1'
         compile project(':module_android_xcore:xcore-library:xcore')
         compile 'com.squareup.picasso:picasso:2.4.0'
         compile 'com.melnykov:floatingactionbutton:1.3.0'
@@ -106,11 +106,11 @@ android {
         //compile 'com.google.android.gms:play-services:7.0.0'
         //compile 'com.google.android.gms:play-services:6.5.+'
 
-        compile 'com.google.android.gms:play-services-plus:7.0.0'
+        compile 'com.google.android.gms:play-services-plus:7.3.0'
 
-        compile 'com.google.android.gms:play-services-analytics:7.0.0'
-        compile 'com.google.android.gms:play-services-gcm:7.0.0'
-        compile 'com.google.android.gms:play-services-wearable:7.0.0'
+        compile 'com.google.android.gms:play-services-analytics:7.3.0'
+        compile 'com.google.android.gms:play-services-gcm:7.3.0'
+        compile 'com.google.android.gms:play-services-wearable:7.3.0'
 
 
         compile 'com.crashlytics.android:crashlytics:1.+'

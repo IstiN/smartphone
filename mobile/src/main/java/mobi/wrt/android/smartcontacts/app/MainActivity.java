@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.internal.widget.TintManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -34,8 +35,10 @@ import com.mobileapptracker.MobileAppTracker;
 import java.util.HashSet;
 import java.util.Set;
 
+import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.ManifestMetadataUtils;
+import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.BuildConfig;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.ads.AdsProvider;
@@ -150,6 +153,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 onSearchInputClick(v);
             }
         });
+
         DrawerArrowDrawable drawable = new DrawerArrowDrawable(this, this);
         ImageView menuButton = (ImageView) findViewById(R.id.arrow);
         menuButton.setImageDrawable(drawable);
@@ -347,6 +351,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
         };
         proceedIntent(getIntent());
+        if (UiUtil.hasKitKat()) {
+            findViewById(R.id.main_container).setPadding(0, UiUtil.getStatusBarHeight(this), 0, 0);
+        }
     }
 
 
@@ -510,7 +517,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 mGoogleApiClient.connect();
             }
         } else if (requestCode == REQUEST_CODE_THEME && resultCode == RESULT_OK) {
-            ThemeUtils.setTheme(this, ThemeUtils.ThemeValue.values()[data.getIntExtra(ThemesActivity.EXTRA_THEME_ORDINAL_KEY, 0)]);
+            ThemeUtils.ThemeValue themeValue = ThemeUtils.ThemeValue.values()[data.getIntExtra(ThemesActivity.EXTRA_THEME_ORDINAL_KEY, 0)];
+            ITracker.Impl.get(this).track("theme:"+themeValue.name());
+            ThemeUtils.setTheme(this, themeValue);
         } else if (requestCode == REQUEST_CODE_PLUS) {
             mDrawerInitializer.refreshButtons();
         }
