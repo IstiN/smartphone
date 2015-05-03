@@ -9,7 +9,6 @@ import android.provider.CallLog;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +16,10 @@ import java.util.List;
 import by.istin.android.xcore.fragment.CursorLoaderFragmentHelper;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
-import by.istin.android.xcore.utils.Log;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
-import mobi.wrt.android.smartcontacts.utils.ColorUtils;
 import mobi.wrt.android.smartcontacts.utils.HumanTimeUtil;
 
 /**
@@ -92,7 +89,7 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                             }
                         }
                         callTypes.add(callType);
-                        contactHelper.initPhotoUri(phoneNumber);
+                        contactHelper.initPhotoAndContactIdUri(phoneNumber);
                     } else {
                         callTypes.add(callType);
                     }

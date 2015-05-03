@@ -159,7 +159,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                             String number = phone.getAsString(ContactsContract.CommonDataKinds.Phone.NUMBER);
                             if (!StringUtil.isEmpty(number)) {
                                 //Log.xd(this, "number: " + number);
-                                contactHelper.initPhotoUri(number);
+                                contactHelper.initPhotoAndContactIdUri(number);
                             }
                             contentValues.putAll(phone);
                             resultWithPhones.add(contentValues);

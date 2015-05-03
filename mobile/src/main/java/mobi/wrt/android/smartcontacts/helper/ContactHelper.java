@@ -54,7 +54,7 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
     }
 
     public String getContactPhotoUri(String phone) {
-        String resultUri = initPhotoUri(phone);
+        String resultUri = initPhotoAndContactIdUri(phone);
         if (resultUri.equals(StringUtil.EMPTY)) {
             return null;
         }
@@ -65,7 +65,7 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
         return mContactIdCache.get(phone);
     }
 
-    public String initPhotoUri(String phone) {
+    public String initPhotoAndContactIdUri(String phone) {
         String resultUri = mPhotoUriCache.get(phone);
         if (resultUri == null) {
             resultUri = getContactIdFromNumber(phone);

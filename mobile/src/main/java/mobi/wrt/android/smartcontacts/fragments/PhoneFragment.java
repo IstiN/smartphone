@@ -5,8 +5,13 @@ import android.animation.ValueAnimator;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.CallLog;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
@@ -20,19 +25,26 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.fragment.AbstractFragment;
+import by.istin.android.xcore.utils.CursorUtils;
 import by.istin.android.xcore.utils.Holder;
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
+import mobi.wrt.android.smartcontacts.Application;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.anim.SimpleAnimationListener;
 import mobi.wrt.android.smartcontacts.app.BaseControllerActivity;
+import mobi.wrt.android.smartcontacts.helper.ContactHelper;
+import mobi.wrt.android.smartcontacts.utils.ColorUtils;
 
 /**
  * Created by IstiN on 31.01.2015.
@@ -50,7 +62,7 @@ public class PhoneFragment extends AbstractFragment {
 
     private View mPhone;
 
-    private int mInitalBottomMargin = 0;
+    private int mInitialBottomMargin = 0;
 
     private View mQuickPhoneCall;
     @Override
@@ -65,11 +77,11 @@ public class PhoneFragment extends AbstractFragment {
         tracker.track("phone");
         mQuickPhoneCall = view.findViewById(R.id.quick_phone_call);
         mEditText = (EditText) view.findViewById(R.id.edit_phone);
-        String phone = getPhone();
+        final String phone = getPhone();
         setNumber(phone);
         mPhone = view.findViewById(R.id.phone);
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mPhone.getLayoutParams();
-        mInitalBottomMargin = layoutParams.bottomMargin;
+        mInitialBottomMargin = layoutParams.bottomMargin;
         layoutParams.bottomMargin = -UiUtil.getDisplayHeight();
         mPhone.setLayoutParams(layoutParams);
         mPhone.setVisibility(View.INVISIBLE);
@@ -80,7 +92,7 @@ public class PhoneFragment extends AbstractFragment {
                 RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mPhone.getLayoutParams();
                 int height = mPhone.getHeight();
                 Log.xd(PhoneFragment.this, " height " + height);
-                layoutParams.bottomMargin = -height + mInitalBottomMargin;
+                layoutParams.bottomMargin = -height + mInitialBottomMargin;
                 mPhone.setLayoutParams(layoutParams);
                 mPhone.setVisibility(View.VISIBLE);
                 animate(0, 1, null);
@@ -158,10 +170,69 @@ public class PhoneFragment extends AbstractFragment {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void afterTextChanged(final Editable s) {
                 if (s.length() > 0) {
                     mBackspaceBtn.setVisibility(View.VISIBLE);
+                    if (s.length() > 2) {
+                        final FragmentActivity activity = getActivity();
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Uri uri = ContactsContract.Data.CONTENT_URI;
+                                String[] projection = new String[] {ContactsContract.PhoneLookup.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER};
+                                String selection = ContactsContract.CommonDataKinds.Phone.NUMBER + " like ?";
+                                String[] selectionArgs = { "%"+s.toString()+"%" };
+                                Cursor cursor = activity.getContentResolver().query(uri, projection, selection, selectionArgs, ContactsContract.PhoneLookup._ID + " ASC limit 0,1");
+                                if (!CursorUtils.isEmpty(cursor) && cursor.moveToFirst()) {
+                                    final String phoneNumber = CursorUtils.getString(ContactsContract.CommonDataKinds.Phone.NUMBER, cursor);
+                                    final String displayName = CursorUtils.getString(ContactsContract.PhoneLookup.DISPLAY_NAME, cursor);
+                                    ContactHelper.get(activity).initPhotoAndContactIdUri(phoneNumber);
+                                    activity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            mQuickPhoneCall.findViewById(R.id.clickableView).setTag(phoneNumber);
+                                            String title = StringUtil.isEmpty(displayName) ? phoneNumber : displayName;
+                                            ((TextView)mQuickPhoneCall.findViewById(R.id.name)).setText(title);
+                                            ((TextView)mQuickPhoneCall.findViewById(R.id.description)).setText(phoneNumber);
+                                            ContactHelper contactHelper = ContactHelper.get(ContextHolder.get());
+                                            Long contactId = contactHelper.getContactId(phoneNumber);
+                                            ImageView imageView = (ImageView) mQuickPhoneCall.findViewById(R.id.icon);
+                                            TextView characterView = (TextView) mQuickPhoneCall.findViewById(R.id.character);
+
+                                            imageView.setTag(contactId);
+                                            String contactPhotoUri = contactHelper.getContactPhotoUri(phoneNumber);
+                                            if (contactPhotoUri == null) {
+                                                if (contactId == null) {
+                                                    mQuickPhoneCall.setVisibility(View.INVISIBLE);
+                                                } else {
+                                                    mQuickPhoneCall.setVisibility(View.VISIBLE);
+                                                    characterView.setText(displayName == null ? "?" : String.valueOf(Character.toUpperCase(displayName.charAt(0))));
+                                                }
+                                                UiUtil.setBackground(imageView, ColorUtils.getColorCircle(imageView.getHeight(), displayName));
+                                            } else {
+                                                mQuickPhoneCall.setVisibility(View.VISIBLE);
+                                                characterView.setText(StringUtil.EMPTY);
+                                                UiUtil.setBackground(imageView, null);
+                                            }
+                                            Picasso.with(activity).load(contactPhotoUri).transform(Application.ROUNDED_TRANSFORMATION).into(imageView);
+                                        }
+                                    });
+                                } else {
+                                    activity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            mQuickPhoneCall.setVisibility(View.INVISIBLE);
+                                        }
+                                    });
+                                }
+                                CursorUtils.close(cursor);
+                            }
+                        }).start();
+                    } else {
+                        mQuickPhoneCall.setVisibility(View.INVISIBLE);
+                    }
                 } else {
+                    mQuickPhoneCall.setVisibility(View.INVISIBLE);
                     mBackspaceBtn.setVisibility(View.INVISIBLE);
                 }
             }
@@ -326,7 +397,7 @@ public class PhoneFragment extends AbstractFragment {
                 float slideOffset = (Float) valueAnimator.getAnimatedValue();
                 int height = mPhone.getHeight();
                 RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mPhone.getLayoutParams();
-                int bottomMargin = (int) (-height + mInitalBottomMargin + slideOffset * height);
+                int bottomMargin = (int) (-height + mInitialBottomMargin + slideOffset * height);
                 layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin, layoutParams.rightMargin, bottomMargin);
                 mPhone.setLayoutParams(layoutParams);
                 if (slideOffset < 0.57f) {

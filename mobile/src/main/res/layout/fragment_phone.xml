@@ -369,6 +369,7 @@
         android:layout_marginLeft="@dimen/default_margin_8"
         android:layout_marginRight="@dimen/default_margin_8"
         android:paddingBottom="@dimen/default_margin_8"
+        android:animateLayoutChanges="true"
         >
 
         <include layout="@layout/view_quick_phone_call"

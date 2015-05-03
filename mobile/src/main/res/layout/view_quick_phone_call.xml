@@ -12,7 +12,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="58dip"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        >
 
         <View
             android:id="@+id/clickableView"
@@ -67,7 +68,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:ellipsize="end"
-                android:paddingLeft="4dip"
                 android:paddingRight="16dip"
                 android:singleLine="true"
                 android:textColor="?attr/contactDescriptionColor"
