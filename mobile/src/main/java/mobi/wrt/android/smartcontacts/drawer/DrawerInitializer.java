@@ -118,7 +118,7 @@ public class DrawerInitializer {
                     //mLikeButton.setVisibility(View.INVISIBLE);
                     //mPlusOneButton.setVisibility(View.INVISIBLE);
                     //String url = BuildConfig.MARKET_URL + BuildConfig.APPLICATION_ID;
-                    mShareUrl = "https://www.facebook.com/groups/121829337899260/";
+                    mShareUrl = "https://google.com";
                     mPlusOneButton.initialize(mShareUrl, MainActivity.REQUEST_CODE_PLUS);
                     /*mPlusOneButton.initialize(url, new PlusOneButton.OnPlusOneClickListener() {
                         @Override

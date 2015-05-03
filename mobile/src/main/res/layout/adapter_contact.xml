@@ -35,15 +35,32 @@
         android:textColor="?attr/contactCharacterColor"
         android:layout_marginTop="8dip" />
 
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="17dip"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip"
+        android:layout_alignParentRight="true"
+        android:paddingTop="17dip"
+        android:tint="?attr/contactDescriptionColor"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="onStarClick"
+        />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/icon_size"
         android:layout_toRightOf="@id/icon"
+        android:layout_toLeftOf="@id/star"
         android:ellipsize="end"
         android:paddingTop="16dip"
         android:paddingRight="16dip"
         android:singleLine="true"
         android:textColor="?attr/contactNameColor"
         android:textSize="16sp" />
+
+
 </RelativeLayout>

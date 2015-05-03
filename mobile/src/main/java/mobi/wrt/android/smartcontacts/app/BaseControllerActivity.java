@@ -100,6 +100,22 @@ public class BaseControllerActivity extends AppCompatActivity {
         getTracker().track("onRecentContactClick:call");
     }
 
+    public void onStarClick(View view) {
+        Object tag = view.getTag();
+        final String meta = (String) tag;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String[] infos = meta.split("==");
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(ContactsContract.Contacts.STARRED, infos[0].equals("1") ? 0 : 1);
+                getContentResolver().update(ContactsContract.Contacts.CONTENT_URI, contentValues, ContactsContract.Contacts._ID + "= ?", new String[]{infos[1]});
+            }
+        }).start();
+        getTracker().track("onStarContactClick");
+    }
+
+
     public void onContactClick(final View view) {
         final Long id = (Long) view.getTag();
         new Thread(new Runnable() {

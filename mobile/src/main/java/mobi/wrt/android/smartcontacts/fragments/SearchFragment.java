@@ -175,6 +175,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
                 resultWithPhones.addAll(resultWithoutPhones);
                 setCursor(CursorUtils.listContentValuesToCursor(resultWithPhones,
                         ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_URI,
+                        ContactsContract.Contacts.STARRED,
                         ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.IS_SUPER_PRIMARY, ContactsContract.CommonDataKinds.Phone.TYPE));
             }
         }
@@ -335,7 +336,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
         return Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, StringUtil.encode(mSearchQuery));
     }
 
-    public static final String[] PROJECTION = new String[]{ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_URI};
+    public static final String[] PROJECTION = new String[]{ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.PHOTO_URI, ContactsContract.Contacts.STARRED};
 
     @Override
     public void onLoadFinished(Loader<SearchCursorModel> loader, SearchCursorModel cursor) {

@@ -36,11 +36,26 @@
         android:gravity="center"
         android:textColor="?attr/contactCharacterColor" />
 
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dip"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip"
+        android:layout_alignParentRight="true"
+        android:paddingTop="8dip"
+        android:tint="?attr/contactDescriptionColor"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="onStarClick"
+        />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/icon"
+        android:layout_toLeftOf="@id/star"
         android:ellipsize="end"
         android:paddingRight="16dip"
         android:paddingTop="4dip"
@@ -51,7 +66,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/name"
+        android:layout_below="@id/star"
         android:layout_toRightOf="@id/icon">
 
         <TextView

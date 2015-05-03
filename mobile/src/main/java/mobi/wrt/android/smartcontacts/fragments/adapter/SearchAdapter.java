@@ -1,5 +1,6 @@
 package mobi.wrt.android.smartcontacts.fragments.adapter;
 
+import android.graphics.drawable.Drawable;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
@@ -27,8 +28,14 @@ public class SearchAdapter extends CursorModelAdapter<RecyclerView.ViewHolder, S
     public static final int VIEW_TYPE_CONTACT = 1;
     public static final int VIEW_TYPE_NUMBER = 0;
 
+    private Drawable mStarDrawable;
+
+    private Drawable mStarOutlineDrawable;
+
     public SearchAdapter(SearchFragment.SearchCursorModel model) {
         super(model);
+        mStarDrawable = ContextHolder.get().getResources().getDrawable(R.drawable.ic_star);
+        mStarOutlineDrawable = ContextHolder.get().getResources().getDrawable(R.drawable.ic_star_outline);
     }
 
     public static class Holder extends RecyclerView.ViewHolder {
@@ -43,6 +50,8 @@ public class SearchAdapter extends CursorModelAdapter<RecyclerView.ViewHolder, S
 
         private TextView mCharacterView;
 
+        private ImageView mImageViewStar;
+
         private TextView mTypeView;
 
         public Holder(View itemView) {
@@ -52,6 +61,7 @@ public class SearchAdapter extends CursorModelAdapter<RecyclerView.ViewHolder, S
             mPhoneTextView = (TextView) itemView.findViewById(R.id.phone);
             mClickableView = itemView.findViewById(R.id.clickableView);
             mCharacterView = (TextView) itemView.findViewById(R.id.character);
+            mImageViewStar = (ImageView) itemView.findViewById(R.id.star);
             mTypeView = (TextView) itemView.findViewById(R.id.phone_type);
         }
 
@@ -144,6 +154,11 @@ public class SearchAdapter extends CursorModelAdapter<RecyclerView.ViewHolder, S
         holder.mPhoneTextView.setText(number);
         holder.mClickableView.setTag(StringUtil.isEmpty(number) ? cursorModel.getLong(ContactsContract.CommonDataKinds.Phone._ID) : number);
         holder.mImageView.setTag(id);
+        Integer isStarred = cursorModel.getInt(ContactsContract.Contacts.STARRED);
+        ImageView mImageViewStar = holder.mImageViewStar;
+        mImageViewStar.setImageDrawable(isStarred > 0 ? mStarDrawable : mStarOutlineDrawable);
+        mImageViewStar.setTag(isStarred + "==" + id);
+
         setType(cursorModel, number, holder.mTypeView);
         if (photoUri == null) {
             holder.mCharacterView.setText(name == null ? "?" : String.valueOf(Character.toUpperCase(name.charAt(0))));

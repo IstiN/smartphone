@@ -40,7 +40,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0 beta"
 
         buildConfigField "String", "MAT_ADVERTISER_ID", MAT_ADVERTISER_ID
         buildConfigField "String", "MAT_CONVERSION_KEY", MAT_CONVERSION_KEY
@@ -52,6 +52,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

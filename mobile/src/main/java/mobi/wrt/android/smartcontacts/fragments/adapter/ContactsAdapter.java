@@ -1,5 +1,6 @@
 package mobi.wrt.android.smartcontacts.fragments.adapter;
 
+import android.graphics.drawable.Drawable;
 import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import by.istin.android.xcore.ContextHolder;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
@@ -20,13 +22,21 @@ import mobi.wrt.android.smartcontacts.utils.ColorUtils;
  */
 public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, ContactsFragment.ContactsModel> {
 
+    private Drawable mStarDrawable;
+
+    private Drawable mStarOutlineDrawable;
+
     public ContactsAdapter(ContactsFragment.ContactsModel cursors, int topPadding, IFloatHeader floatHeader) {
         super(cursors, topPadding, floatHeader);
+        mStarDrawable = ContextHolder.get().getResources().getDrawable(R.drawable.ic_star);
+        mStarOutlineDrawable = ContextHolder.get().getResources().getDrawable(R.drawable.ic_star_outline);
     }
 
     public static class Holder extends RecyclerView.ViewHolder {
 
         private ImageView mImageView;
+
+        private ImageView mImageViewStar;
 
         private TextView mTextView;
 
@@ -37,6 +47,7 @@ public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, 
         public Holder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.icon);
+            mImageViewStar = (ImageView) itemView.findViewById(R.id.star);
             mTextView = (TextView) itemView.findViewById(R.id.name);
             mClickableView = itemView.findViewById(R.id.clickableView);
             mCharacterView = (TextView) itemView.findViewById(R.id.character);
@@ -56,9 +67,15 @@ public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, 
         ContactsFragment.ContactsModel cursorModel = getModelByPosition(position);
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
         String photoUri = cursorModel.getString(ContactsContract.Contacts.PHOTO_URI);
+        Integer isStarred = cursorModel.getInt(ContactsContract.Contacts.STARRED);
+
+        ImageView mImageViewStar = holder.mImageViewStar;
+        mImageViewStar.setImageDrawable(isStarred > 0 ? mStarDrawable : mStarOutlineDrawable);
+
         holder.mTextView.setText(name);
 
         Long id = cursorModel.getLong(ContactsContract.Contacts._ID);
+        mImageViewStar.setTag(isStarred+"=="+id);
         holder.mClickableView.setTag(id);
 
         holder.mImageView.setTag(id);
