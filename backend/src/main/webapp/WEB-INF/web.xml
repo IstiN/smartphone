@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>mobi.wrt.smartphone.backend.AuthServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfigServlet</servlet-name>
+        <servlet-class>mobi.wrt.smartphone.backend.ConfigServlet</servlet-class>
+    </servlet>
+    <welcome-file-list>
+        <welcome-file>auth</welcome-file>
+    </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>ConfigServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+</web-app>

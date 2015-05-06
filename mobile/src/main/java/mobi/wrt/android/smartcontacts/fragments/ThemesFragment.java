@@ -11,7 +11,9 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.fragment.AbstractFragment;
+import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.app.ThemesActivity;
 import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
@@ -31,6 +33,25 @@ public class ThemesFragment extends AbstractFragment {
         super.onViewCreated(view);
         GridView gridView = (GridView) view.findViewById(android.R.id.list);
         final ThemeUtils.ThemeValue[] values = ThemeUtils.ThemeValue.values();
+        int columnWidth = UiUtil.getDisplayWidth() / 2;
+        if (columnWidth < 240) {
+            columnWidth = 160;
+        } else if (columnWidth < 320) {
+            columnWidth = 240;
+        } else if (columnWidth < 480) {
+            columnWidth = 320;
+        } else if (columnWidth < 720) {
+            columnWidth = 480;
+        } else if (columnWidth < 1080) {
+            columnWidth = 720;
+        } else {
+            columnWidth = 1080;
+        }
+
+        ITracker.Impl.get(getActivity()).track("themes:width:"+ columnWidth);
+
+        final int finalImageWidth = columnWidth;
+
         gridView.setAdapter(new ArrayAdapter<ThemeUtils.ThemeValue>(getActivity(),
                 R.layout.adapter_theme,
                 android.R.id.text1, values) {
@@ -38,7 +59,8 @@ public class ThemesFragment extends AbstractFragment {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 ImageView imageView = (ImageView) view.findViewById(R.id.icon);
-                Picasso.with(getActivity()).load("https://dl.dropboxusercontent.com/u/16403954/smartphone/"+values[position].name()+".jpeg").into(imageView);
+                String path = "https://dl.dropboxusercontent.com/u/16403954/smartphone/themes/" + finalImageWidth + "/" + values[position].name() + ".jpeg";
+                Picasso.with(getActivity()).load(path).into(imageView);
                 return view;
             }
         });

@@ -1,1 +1,1 @@
-include ':mobile', ':wear', 'module_android_xcore:xcore-library:xcore'
+include ':mobile', ':wear', ':backend', 'module_android_xcore:xcore-library:xcore'
