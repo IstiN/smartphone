@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c0000000"
+    android:focusable="true"
+    android:clickable="true"
+    android:visibility="invisible"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mainAdsContainer"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="24dip"
+        android:layout_marginRight="24dip"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_margin_16"
+        >
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="72dip"
+            android:layout_height="72dip"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/default_margin_16"
+            android:layout_marginTop="-2dip"
+            android:textColor="?attr/contactNameColor"
+            android:layout_toRightOf="@id/icon"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/sublabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label"
+            android:paddingLeft="8dip"
+            android:textColor="?attr/contactDescriptionColor"
+            android:layout_toRightOf="@id/icon"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/hideAds"
+            android:paddingTop="16dip"
+            android:paddingLeft="12dip"
+            android:paddingBottom="16dp"
+            android:layout_alignParentRight="true"
+            android:textStyle="bold"
+            android:textColor="?attr/contactNameColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sublabel"
+            android:text="@android:string/cancel"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

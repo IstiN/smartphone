@@ -88,6 +88,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+
+        <mobi.wrt.android.smartcontacts.ads.AdsView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
     </RelativeLayout>
     <!-- The navigation drawer -->
 
