@@ -46,6 +46,7 @@ android {
         buildConfigField "String", "MAT_CONVERSION_KEY", MAT_CONVERSION_KEY
         buildConfigField "String", "FLURRY_KEY", FLURRY_KEY
         buildConfigField "String", "GOOGLE_ANALYTICS_KEY", GOOGLE_ANALYTICS_KEY
+        buildConfigField "String", "GOOGLE_SENDER_ID", GOOGLE_SENDER_ID
 
         manifestPlaceholders = [facebookId:Long.parseLong(FACEBOOK_APP_ID)]
     }

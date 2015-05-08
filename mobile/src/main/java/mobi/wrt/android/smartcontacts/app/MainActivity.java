@@ -35,21 +35,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 import by.istin.android.xcore.analytics.ITracker;
+import by.istin.android.xcore.utils.Intents;
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.ManifestMetadataUtils;
+import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.BuildConfig;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.ads.AdsProvider;
+import mobi.wrt.android.smartcontacts.drawer.DrawerInitializer;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
 import mobi.wrt.android.smartcontacts.fragments.PhoneFragment;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
 import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
+import mobi.wrt.android.smartcontacts.gcm.GCMUtils;
 import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
 import mobi.wrt.android.smartcontacts.view.DrawerArrowDrawable;
-import mobi.wrt.android.smartcontacts.drawer.DrawerInitializer;
 import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
 import mobi.wrt.android.smartcontacts.view.SlidingTabLayout;
 
@@ -91,6 +94,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
+        GCMUtils.register(this);
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                     @Override
@@ -363,11 +367,19 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     }
 
     private void proceedIntent(Intent intent) {
-        Uri data = intent.getData();
-        if (data != null && data.getScheme().equalsIgnoreCase("tel")) {
-            String path = data.getSchemeSpecificPart();
-            showPhone(path);
-            getTracker().track("onShowPhone:intent");
+        if (intent != null) {
+            String link = intent.getStringExtra("link");
+            if (!StringUtil.isEmpty(link)) {
+                Intents.openBrowser(this, link);
+                finish();
+                return;
+            }
+            Uri data = intent.getData();
+            if (data != null && data.getScheme().equalsIgnoreCase("tel")) {
+                String path = data.getSchemeSpecificPart();
+                showPhone(path);
+                getTracker().track("onShowPhone:intent");
+            }
         }
     }
 

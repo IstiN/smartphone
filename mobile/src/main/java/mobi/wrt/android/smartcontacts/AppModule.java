@@ -6,6 +6,7 @@ import by.istin.android.xcore.XCoreHelper;
 import by.istin.android.xcore.analytics.ITracker;
 import by.istin.android.xcore.source.impl.http.HttpAndroidDataSource;
 import mobi.wrt.android.smartcontacts.ads.AdsProcessor;
+import mobi.wrt.android.smartcontacts.gcm.RegisterDeviceProcessor;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 import mobi.wrt.android.smartcontacts.tracker.FlurryTracker;
 import mobi.wrt.android.smartcontacts.tracker.GoogleTracker;
@@ -19,6 +20,7 @@ public class AppModule extends XCoreHelper.BaseModule {
     protected void onCreate(Context context) {
         registerAppService(new ContactHelper());
         registerAppService(new AdsProcessor());
+        registerAppService(new RegisterDeviceProcessor());
         registerAppService(new HttpAndroidDataSource());
         ITracker tracker = ITracker.Impl.newInstance();
         if (!BuildConfig.DEBUG) {
