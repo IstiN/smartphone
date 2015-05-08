@@ -16,6 +16,7 @@ import java.util.List;
 import by.istin.android.xcore.fragment.CursorLoaderFragmentHelper;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
+import by.istin.android.xcore.utils.CursorUtils;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
@@ -47,10 +48,22 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
 
     public static class RecentModel extends CursorModel {
 
+        public static interface ICallsCallback {
+
+            void onCallAdd(byte[] callsLog, String cachedName, String phoneNumber);
+        }
+
         private boolean isLimit = true;
 
         public RecentModel(Cursor cursor) {
             super(cursor);
+        }
+
+        private ICallsCallback mCallsCallback;
+
+        public RecentModel(Cursor cursor, ICallsCallback callsCallback) {
+            super(cursor);
+            mCallsCallback = callsCallback;
         }
 
         public RecentModel(Cursor cursor, boolean isMoveToFirst) {
@@ -115,12 +128,21 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
             objects[DATE_POSITION] = HumanTimeUtil.humanFriendlyDate(date);
             addGroupHeaderIfNeed(matrixCursor, date);
             matrixCursor.addRow(objects);
+            matrixCursor.moveToLast();
+            if (mCallsCallback != null) {
+                mCallsCallback.onCallAdd(callsLog, CursorUtils.getString(CallLog.Calls.CACHED_NAME, matrixCursor),
+                        CursorUtils.getString(CallLog.Calls.NUMBER, matrixCursor)
+                        );
+            }
             callTypes.clear();
         }
 
         private String mLastHeader = null;
 
         public void addGroupHeaderIfNeed(MatrixCursor matrixCursor, Long date) {
+            if (mCallsCallback != null) {
+                return;
+            }
             String newHeader = HumanTimeUtil.humanFriendlyDateHeader(date);
             if (mLastHeader == null || !mLastHeader.equals(newHeader)) {
                 mLastHeader = newHeader;
@@ -166,11 +188,6 @@ public class RecentFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
     @Override
     public String[] getProjection() {
         return PROJECTION;
-    }
-
-    @Override
-    public Loader<RecentModel> onCreateLoader(int id, Bundle args) {
-        return super.onCreateLoader(id, args);
     }
 
     @Override

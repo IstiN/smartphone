@@ -81,9 +81,9 @@ public class Application extends CoreApplication {
         super.onCreate();
         if(BuildConfig.DEBUG){
             StrictMode.VmPolicy policy = new StrictMode.VmPolicy.Builder()
-                    .detectAll()
+            //        .detectAll()
                     .penaltyLog()
-                    .detectLeakedClosableObjects()
+            //        .detectLeakedClosableObjects()
                     .build();
             StrictMode.setVmPolicy(policy);
             StrictMode.noteSlowCall("xxx_slow");

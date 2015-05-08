@@ -1,10 +1,11 @@
 package mobi.wrt.android.smartcontacts.fragments;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.provider.BaseColumns;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
@@ -16,11 +17,15 @@ import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
 
-import by.istin.android.xcore.ContextHolder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
 import by.istin.android.xcore.fragment.CursorLoaderFragmentHelper;
 import by.istin.android.xcore.fragment.collection.RecyclerViewFragment;
 import by.istin.android.xcore.model.CursorModel;
 import by.istin.android.xcore.utils.CursorUtils;
+import by.istin.android.xcore.utils.StringUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.adapter.RecentAdapter;
 import mobi.wrt.android.smartcontacts.fragments.adapter.SmartAdapter;
@@ -45,13 +50,96 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
         }
 
         @Override
-        public void doInBackground(Context context) {
+        public void doInBackground(final Context context) {
             super.doInBackground(context);
-            Cursor lastCall = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, RecentFragment.PROJECTION, null, null, RecentFragment.ORDER + " LIMIT 1");
-            if (lastCall != null && lastCall.moveToFirst()) {
-                mLastCall = new RecentFragment.RecentModel(lastCall);
-                mLastCall.doInBackground(context);
-                mLastCall.moveToLast();
+            Cursor lastCall = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, RecentFragment.PROJECTION, null, null, RecentFragment.ORDER + " LIMIT " + RecentFragment.LIMIT);
+            if (lastCall != null && !CursorUtils.isEmpty(lastCall) && lastCall.moveToFirst()) {
+                final List<ContentValues> sortedStarredList = new ArrayList<>();
+                final List<ContentValues> sortedOtherList = new ArrayList<>();
+                final List<ContentValues> starredList = new ArrayList<>();
+                CursorUtils.convertToContentValues(this, starredList, CursorUtils.Converter.get());
+                CursorModel lastCallModel = new RecentFragment.RecentModel(lastCall, new RecentFragment.RecentModel.ICallsCallback() {
+                    @Override
+                    public void onCallAdd(byte[] callsLog, String cachedName, String phone) {
+                        if (callsLog == null) {
+                            return;
+                        }
+                        Long contactId = ContactHelper.get(context).getContactId(phone);
+                        if (contactId == null) {
+                            return;
+                        }
+                        ListIterator<ContentValues> contentValuesListIterator = starredList.listIterator();
+                        boolean isStarredContact = false;
+                        while (contentValuesListIterator.hasNext()) {
+                            ContentValues contentValues = contentValuesListIterator.next();
+                            Long id = contentValues.getAsLong(ContactsContract.Contacts._ID);
+                            if (id != null && id.equals(contactId)) {
+                                Integer oldCount = contentValues.getAsInteger(BaseColumns._COUNT);
+                                if (oldCount == null) {
+                                    oldCount = 0;
+                                }
+                                contentValues.put(BaseColumns._COUNT, oldCount + callsLog.length);
+                                addToSortedList(contentValues, sortedStarredList);
+                                isStarredContact = true;
+                                break;
+                            }
+                        }
+                        if (!isStarredContact) {
+                            ListIterator<ContentValues> sortedOtherListIterator = sortedOtherList.listIterator();
+                            boolean isFound = false;
+                            while (sortedOtherListIterator.hasNext()) {
+                                ContentValues contentValues = sortedOtherListIterator.next();
+                                if (contactId.equals(contentValues.getAsLong(ContactsContract.Contacts._ID))) {
+                                    contentValues.put(BaseColumns._COUNT, contentValues.getAsInteger(BaseColumns._COUNT) + callsLog.length);
+                                    sortedOtherList.remove(contentValues);
+                                    addToSortedList(contentValues, sortedOtherList);
+                                    isFound = true;
+                                    break;
+                                }
+                            }
+                            if (!isFound) {
+                                ContentValues contentValues = new ContentValues();
+                                contentValues.put(ContactsContract.Contacts._ID, contactId);
+                                contentValues.put(ContactsContract.Contacts.DISPLAY_NAME, cachedName);
+                                String value = ContactHelper.get(context).initPhotoAndContactIdUri(phone);
+                                contentValues.put(ContactsContract.Contacts.PHOTO_URI, value.equals(StringUtil.EMPTY) ? null : value);
+                                contentValues.put(BaseColumns._COUNT, callsLog.length);
+                                addToSortedList(contentValues, sortedOtherList);
+                            }
+                        }
+                    }
+
+                    private void addToSortedList(ContentValues contentValues, List<ContentValues> targetList) {
+                        targetList.remove(contentValues);
+                        if (targetList.isEmpty()) {
+                            targetList.add(contentValues);
+                        } else {
+                            int size = targetList.size();
+                            boolean isFound = false;
+                            for (int j = 0; j < size; j++) {
+                                ContentValues existingContentValues = targetList.get(j);
+                                if (existingContentValues.getAsInteger(BaseColumns._COUNT) < contentValues.getAsInteger(BaseColumns._COUNT)) {
+                                    targetList.add(j, contentValues);
+                                    isFound = true;
+                                    break;
+                                }
+                            }
+                            if (!isFound) {
+                                targetList.add(contentValues);
+                            }
+                        }
+                    }
+                });
+                lastCallModel.doInBackground(context);
+                lastCallModel.moveToFirst();
+                for (ContentValues contentValues : starredList) {
+                    if (!sortedStarredList.contains(contentValues)) {
+                        sortedStarredList.add(contentValues);
+                    }
+                }
+                sortedStarredList.addAll(sortedOtherList);
+                setCursor(CursorUtils.listContentValuesToCursor(sortedStarredList, PROJECTION));
+                mLastCall = lastCallModel;
             }
         }
 
@@ -119,6 +207,7 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
         this.count = cursor.getCount();
         final View recentCallView = getActivity().findViewById(R.id.recent_call);
+        cursor.mLastCall.moveToFirst();
         RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()), new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(final View v) {
