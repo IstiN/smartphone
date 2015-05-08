@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="choose_theme">Choose theme</string>
+    <string name="theme">Themes</string>
+    <string name="share">Share</string>
+    <string name="share_message">Share message</string>
+    <string name="join_to_group">Join group</string>
+    <string name="rate_app">Rate app</string>
+    <string name="ads_free_version">Ads free version</string>
+    <string name="about">About application</string>
+
+</resources>

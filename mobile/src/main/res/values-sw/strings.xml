@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Kibonyezi"</string>
+    <string name="launcherActivityLabel">"Nambari ya simu"</string>
+    <string name="dialerIconLabel">"Simu"</string>
+    <string name="recentCallsIconLabel">"Logi ya orodha ya kupiga simu"</string>
+    <string name="menu_sendTextMessage">"Tuma ujumbe wa maandishi"</string>
+    <string name="recentCalls_callNumber">"Pigia <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Hariri nambari kabla ya kupiga"</string>
+    <string name="recentCalls_addToContact">"Ongeza kwa anwani"</string>
+    <string name="recentCalls_removeFromRecentList">"Toa kwa orodha ya simu zilizopigwa"</string>
+    <string name="recentCalls_deleteAll">"Futa rekodi ya simu"</string>
+    <string name="recentCalls_trashVoicemail">"Futa ujumbe wa sauti"</string>
+    <string name="recentCalls_shareVoicemail">"Shiriki ujumbe wa sauti"</string>
+    <string name="recentCalls_empty">"Rekodi yako ya nambari za simu haina kitu."</string>
+    <string name="clearCallLogConfirmation_title">"Ungependa kufuta rekodi ya simu?"</string>
+    <string name="clearCallLogConfirmation">"Kumbukumbu zako zote za simu zitafutwa."</string>
+    <string name="clearCallLogProgress_title">"Inafuta rekodi ya simu ..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Ujumbe wa sauti"</item>
+    <item quantity="other">"Barua za sauti <xliff:g id="COUNT">%1$d</xliff:g>"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Cheza"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Barua mpya ya sauti kutoka <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Imeshindwa kucheza ujumbe wa sauti."</string>
+    <string name="voicemail_buffering">"Inaakibisha..."</string>
+    <string name="voicemail_fetching_content">"Inaleta barua ya sauti…"</string>
+    <string name="voicemail_fetching_timout">"Haikuweza kuleta barua ya sauti."</string>
+    <string name="call_log_voicemail_header">"Simu zilizo na ujumbe wa sauti tu"</string>
+    <string name="call_log_incoming_header">"Simu zinazoingia tu"</string>
+    <string name="call_log_outgoing_header">"Simu zinazotoka tu"</string>
+    <string name="call_log_missed_header">"Simu zisizojibiwa tu"</string>
+    <string name="voicemail_status_voicemail_not_available">"Imeshindwa kuunganisha kwenye seva ya ujumbe wa sauti."</string>
+    <string name="voicemail_status_messages_waiting">"Imeshindwa kuwasiliana na seva ya ujumbe wa sauti. Mawasiliano mapya ya sauti yanasubiri kusikilizwa."</string>
+    <string name="voicemail_status_configure_voicemail">"Sanidi ujumbe wako wa sauti."</string>
+    <string name="voicemail_status_audio_not_available">"Sauti haipatikani."</string>
+    <string name="voicemail_status_action_configure">"Sanidi"</string>
+    <string name="voicemail_status_action_call_server">"Pigia barua sauti"</string>
+    <string name="voicemail_speed_slowest">"Kasi ya taratibu zaidi"</string>
+    <string name="voicemail_speed_slower">"Kasi ya taratibu"</string>
+    <string name="voicemail_speed_normal">"Kasi ya kawaida"</string>
+    <string name="voicemail_speed_faster">"Kasi ya haraka"</string>
+    <string name="voicemail_speed_fastest">"Kasi ya haraka zaidi"</string>
+    <string name="call_log_item_count_and_date">"( <xliff:g id="COUNT">%1$d</xliff:g> ) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Chagua nambari"</string>
+    <string name="call_disambig_title">"Chagua nambari"</string>
+    <string name="make_primary">"Kumbuka chaguo hili"</string>
+    <string name="description_image_button_one">"moja"</string>
+    <string name="description_image_button_two">"mbili"</string>
+    <string name="description_image_button_three">"tatu"</string>
+    <string name="description_image_button_four">"nne"</string>
+    <string name="description_image_button_five">"tano"</string>
+    <string name="description_image_button_six">"sita"</string>
+    <string name="description_image_button_seven">"saba"</string>
+    <string name="description_image_button_eight">"nane"</string>
+    <string name="description_image_button_nine">"tisa"</string>
+    <string name="description_image_button_star">"nyota"</string>
+    <string name="description_image_button_zero">"sufuri"</string>
+    <string name="description_image_button_pound">"Pauni"</string>
+    <string name="description_search_button">"tafuta"</string>
+    <string name="description_dial_button">"piga simu"</string>
+    <string name="description_digits_edittext">"nambari ya kupiga"</string>
+    <string name="description_playback_start_stop">"Cheza au usimamishe uchezaji wa ujumbe wa sauti"</string>
+    <string name="description_playback_speakerphone">"Washa au uzime spika ya simu"</string>
+    <string name="description_playback_seek">"Tafuta sehemu ya kucheza ujumbe wa sauti"</string>
+    <string name="description_rate_decrease">"Punguza kasi ya kucheza ujumbe wa sauti"</string>
+    <string name="description_rate_increase">"Ongeza kasi ya kucheza ujumbe wa sauti"</string>
+    <string name="action_menu_call_history_description">"Historia ya Simu"</string>
+    <string name="action_menu_overflow_description">"Chaguo zaidi"</string>
+    <string name="action_menu_dialpad_button">"kitufe cha kupiga"</string>
+    <string name="menu_copy">"Nakili"</string>
+    <string name="menu_show_outgoing_only">"Onyesha zinazotoka pekee"</string>
+    <string name="menu_show_incoming_only">"Onyesha zinazoingia pekee"</string>
+    <string name="menu_show_missed_only">"Onyesha zilizokosa kupokewa pekee"</string>
+    <string name="menu_show_voicemails_only">"Onyesha barua za sauti pekee"</string>
+    <string name="menu_show_all_calls">"Onyesha simu zote"</string>
+    <string name="add_contact">"Ongeza kwenye anwani"</string>
+    <string name="add_2sec_pause">"Ongeza usitishaji wa sekunde 2"</string>
+    <string name="add_wait">"Ongeza kusubiri"</string>
+    <string name="menu_select_account">"Chagua Akaunti"</string>
+    <string name="dialer_settings_label">"Mipangilio"</string>
+    <string name="menu_newContact">"Anwani mpya"</string>
+    <string name="menu_allContacts">"Anwani zote"</string>
+    <string name="callDetailTitle">"Maelezo ya simu"</string>
+    <string name="toast_call_detail_error">"Haikuweza kusoma maelezo ya simu iliyoombwa."</string>
+    <string name="dialer_useDtmfDialpad">"Tumia kibao cha kuchapa cha sauti na kugusa"</string>
+    <string name="dialer_returnToInCallScreen">"Rudi kwa simu inayoendelea"</string>
+    <string name="dialer_addAnotherCall">"Ongeza simu"</string>
+    <string name="type_incoming">"Unapigiwa simu"</string>
+    <string name="type_outgoing">"Simu unayopiga"</string>
+    <string name="type_missed">"Simu isiyojibiwa"</string>
+    <string name="type_incoming_video">"Hangout ya Video inayoingia"</string>
+    <string name="type_outgoing_video">"Hangout ya Video inayotoka"</string>
+    <string name="type_missed_video">"Hangout ya Video ambayo haikupokewa"</string>
+    <string name="type_voicemail">"Barua za sauti"</string>
+    <string name="actionIncomingCall">"Simu zinazoingia"</string>
+    <string name="description_call_log_play_button">"Sikiliza ujumbe wa sauti"</string>
+    <string name="description_view_contact">"Angalia anwani <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Piga <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"Maelezo ya <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_new_voicemail">"Ujumbe mpya wa sauti."</string>
+    <string name="description_num_calls">"Simu <xliff:g id="NUMBEROFCALLS">%1$s</xliff:g>."</string>
+    <string name="description_video_call">"Hangout ya video."</string>
+    <string name="description_send_text_message">"Tuma ujumbe wa maandishi kwa <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Barua sauti ambayo haijasikizwa"</string>
+    <string name="description_start_voice_search">"Anza kutafuta kwa kutamka"</string>
+    <string name="menu_callNumber">"Piga simu <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Haijulikani"</string>
+    <string name="voicemail">"Ujumbe wa sauti"</string>
+    <string name="private_num">" Nambari isiyojulikana"</string>
+    <string name="payphone">"Simu ya kulipia"</string>
+    <string name="dialerKeyboardHintText">"Tumia kibodi kubonyeza"</string>
+    <string name="dialerDialpadHintText">"Piga ili kuongeza simu"</string>
+    <string name="callDetailsDurationFormat">"Dakika <xliff:g id="MINUTES">%s</xliff:g> sekunde <xliff:g id="SECONDS">%s</xliff:g>"</string>
+    <string name="dialog_phone_call_prohibited_message">"Simu haijapigwa"</string>
+    <string name="dialog_voicemail_not_ready_message">"Ili kusanidi ujumbe wa sauti, nenda kwa Menyu &gt; Mipangilio."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Kupigia simu ujumbe wa sauti, kwanza zima hali ya ndege."</string>
+    <string name="contact_list_loading">"Inapakia…"</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Inapakia kutoka SIM kadi..."</string>
+    <string name="simContacts_title">"Anwani za SIM kadi"</string>
+    <string name="add_contact_not_available">"Washa tena programu ya Anwani ili utumie kipengele hiki."</string>
+    <string name="voice_search_not_available">"Utafutaji kwa kutamka haupatikani."</string>
+    <string name="call_not_available">"Haiwezi kupiga simu kwa sababu programu ya Simu imezimwa."</string>
+    <string name="activity_not_available">"Hakuna shughuli iliyosakinishwa imepatikana ya kushughulikia kitendo kilichochaguliwa."</string>
+    <string name="dialer_hint_find_contact">"Andika jina au nambari ya simu"</string>
+    <string name="recentMissed_empty">"Huna simu za hivi majuzi ambazo hukuzipokea."</string>
+    <string name="recentVoicemails_empty">"Huna ujumbe wa sauti wa hivi majuzi."</string>
+    <string name="show_favorites_only">"Onyesha zinazopendwa tu"</string>
+    <string name="call_log_activity_title">"Historia"</string>
+    <string name="call_log_all_title">"Zote"</string>
+    <string name="call_log_missed_title">"Ambazo hazikupokewa"</string>
+    <string name="call_log_voicemail_title">"Ujumbe wa sauti"</string>
+    <string name="tab_speed_dial">"Unaowasiliana nao zaidi"</string>
+    <string name="tab_recents">"Zilizotumika majuzi"</string>
+    <string name="tab_all_contacts">"Anwani zote"</string>
+    <string name="favorite_hidden">"Imeondolowa kwenye vipendwa"</string>
+    <string name="favorite_hidden_undo">"Tendua"</string>
+    <string name="search_shortcut_call_number">"Piga simu <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Ongeza kwenye anwani"</string>
+    <string name="search_shortcut_make_video_call">"Piga Hangout ya video"</string>
+    <string name="recents_footer_text">"Angalia historia kamili ya simu zilizopigwa"</string>
+    <string name="num_missed_calls">"Simu <xliff:g id="NUMBER">%s</xliff:g> za karibuni ambazo hazikujibiwa"</string>
+    <string name="speed_dial_empty">"Kupiga simu kwa haraka kunahusisha kupiga simu kwa kugusa mara moja\n nambari na watu unaowapigia mara kwa mara\n."</string>
+    <string name="all_contacts_empty">"Hauna anwani zozote."</string>
+    <string name="contact_tooltip">"Gonga picha ili uone nambari zote au bonyeza na ushikilie ili upange upya"</string>
+    <string name="description_dismiss">"Ondoa"</string>
+    <string name="remove_contact">"Ondoa"</string>
+    <string name="favorites_menu_all_contacts">"ANWANI ZOTE"</string>
+    <string name="call_log_action_call_back">"PIGA SIMU"</string>
+    <string name="call_log_action_video_call">"HANGOUT YA VIDEO"</string>
+    <string name="call_log_action_voicemail">"SIKILIZA"</string>
+    <string name="call_log_action_details">"MAELEZO"</string>
+    <string name="description_incoming_missed_call">"Simu ambayo haikujibiwa kutoka kwa <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Simu iliyopokelewa kutoka kwa <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Simu kwa <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Piga simu kwa <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"Hangout ya video kwenda kwa <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Sikiliza ujumbe wa sauti kutoka kwa <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"Maelezo ya simu ya <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="toast_entry_removed">"Kumbukumbu ya simu imefutwa."</string>
+    <string name="toast_caller_id_reported">"Anwani imeripotiwa."</string>
+    <string name="call_log_action_report">"RIPOTI"</string>
+    <string name="call_log_header_today">"Leo"</string>
+    <string name="call_log_header_yesterday">"Jana"</string>
+    <string name="call_log_header_other">"Nzee zaidi"</string>
+    <string name="call_detail_list_header">"Orodha ya Simu"</string>
+    <string name="voicemail_speaker_on">"Washa spika."</string>
+    <string name="voicemail_speaker_off">"Zima spika."</string>
+    <string name="voicemail_play_faster">"Cheza kwa kasi zaidi."</string>
+    <string name="voicemail_play_slower">"Cheza polepole."</string>
+    <string name="voicemail_play_start_pause">"Anzisha au usitishe kucheza."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Mipangilio ya jumla"</string>
+    <string name="general_settings_description">"Onyesho la anwani, sauti, na majibu ya haraka"</string>
+    <string name="contact_display_options_category_title">"Chaguo za onyesho la anwani"</string>
+    <string name="sounds_and_vibrate_category_title">"Sauti na mtetemo"</string>
+    <string name="ringtone_title">"Mlio wa simu"</string>
+    <string name="vibrate_on_ring_title">"Tetema simu zinapoingia pia"</string>
+    <string name="dtmf_tone_enable_title">"Milio ya vitufe vya kupiga simu"</string>
+    <string name="other_settings_title">"Nyingine"</string>
+    <string name="respond_via_sms_setting_title">"Majibu ya haraka"</string>
+    <string name="call_settings_label">"Mipangilio ya kupiga simu"</string>
+    <string name="call_settings_description">"Ujumbe wa sauti, kusubirisha simu, na mengineyo"</string>
+</resources>

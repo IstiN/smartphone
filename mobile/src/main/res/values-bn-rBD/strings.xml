@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"ডায়ালার"</string>
+    <string name="launcherActivityLabel">"ফোন"</string>
+    <string name="dialerIconLabel">"ফোন"</string>
+    <string name="recentCallsIconLabel">"কল লগ"</string>
+    <string name="menu_sendTextMessage">"পাঠ্য বার্তা পাঠান"</string>
+    <string name="recentCalls_callNumber">"<xliff:g id="NAME">%s</xliff:g> কে কল করুন"</string>
+    <string name="recentCalls_editNumberBeforeCall">"কল করার আগে নম্বর সম্পাদনা করুন"</string>
+    <string name="recentCalls_addToContact">"পরিচিতিগুলিতে যোগ করুন"</string>
+    <string name="recentCalls_removeFromRecentList">"কল লগ থেকে সরান"</string>
+    <string name="recentCalls_deleteAll">"কল লগ সাফ করুন"</string>
+    <string name="recentCalls_trashVoicemail">"ভয়েসমেল মুছুন"</string>
+    <string name="recentCalls_shareVoicemail">"ভয়েসমেল ভাগ করুন"</string>
+    <string name="recentCalls_empty">"আপনার কল লগ খালি।"</string>
+    <string name="clearCallLogConfirmation_title">"কল লগ সাফ করবেন?"</string>
+    <string name="clearCallLogConfirmation">"আপনার সব কল রেকর্ড মুছে ফেলা হবে৷"</string>
+    <string name="clearCallLogProgress_title">"কল লগ সাফ করা হচ্ছে…"</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"ভয়েসমেল"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g>টি ভয়েসমেল"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"শুনুন"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"<xliff:g id="CALLER">%1$s</xliff:g> এর থেকে নতুন ভয়েসমেল"</string>
+    <string name="voicemail_playback_error">"ভয়েসমেল প্লে করা যায়নি৷"</string>
+    <string name="voicemail_buffering">"বাফারিং..."</string>
+    <string name="voicemail_fetching_content">"ভয়েসমেল প্রাপ্ত করা হচ্ছে…"</string>
+    <string name="voicemail_fetching_timout">"ভয়েসমেল প্রাপ্ত করা যায়নি৷"</string>
+    <string name="call_log_voicemail_header">"কেবলমাত্র ভয়েসমেলের সাথে কলগুলি"</string>
+    <string name="call_log_incoming_header">"কেবলমাত্র ইনকামিং কলগুলি"</string>
+    <string name="call_log_outgoing_header">"কেবলমাত্র আউটগোয়িং কলগুলি"</string>
+    <string name="call_log_missed_header">"কেবলমাত্র মিসড কলগুলি"</string>
+    <string name="voicemail_status_voicemail_not_available">"ভয়েসমেল সার্ভারে সংযোগ করা যায়নি৷"</string>
+    <string name="voicemail_status_messages_waiting">"ভয়েসমেল সার্ভারের সাথে সংযোগ স্থাপন করা যায়নি৷ নতুন ভয়েসমেলগুলি অপেক্ষায় রয়েছে৷"</string>
+    <string name="voicemail_status_configure_voicemail">"আপনার ভয়েসমেল সেট আপ করুন৷"</string>
+    <string name="voicemail_status_audio_not_available">"অডিও অনুপলব্ধ৷"</string>
+    <string name="voicemail_status_action_configure">"সেট আপ"</string>
+    <string name="voicemail_status_action_call_server">"ভয়েসমেলে কল করুন"</string>
+    <string name="voicemail_speed_slowest">"ধীরতম গতি"</string>
+    <string name="voicemail_speed_slower">"ধীর গতি"</string>
+    <string name="voicemail_speed_normal">"স্বাভাবিক গতি"</string>
+    <string name="voicemail_speed_faster">"দ্রুত গতি"</string>
+    <string name="voicemail_speed_fastest">"দ্রুততম গতি"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"নম্বর চয়ন করুন"</string>
+    <string name="call_disambig_title">"নম্বর চয়ন করুন"</string>
+    <string name="make_primary">"এই পছন্দটিকে মনে রাখুন"</string>
+    <string name="description_image_button_one">"এক"</string>
+    <string name="description_image_button_two">"দুই"</string>
+    <string name="description_image_button_three">"তিন"</string>
+    <string name="description_image_button_four">"চার"</string>
+    <string name="description_image_button_five">"পাঁচ"</string>
+    <string name="description_image_button_six">"ছয়"</string>
+    <string name="description_image_button_seven">"সাত"</string>
+    <string name="description_image_button_eight">"আট"</string>
+    <string name="description_image_button_nine">"নয়"</string>
+    <string name="description_image_button_star">"তারকা"</string>
+    <string name="description_image_button_zero">"শূন্য"</string>
+    <string name="description_image_button_pound">"পাউন্ড"</string>
+    <string name="description_search_button">"অনুসন্ধান"</string>
+    <string name="description_dial_button">"ডায়াল করুন"</string>
+    <string name="description_digits_edittext">"ডায়াল করার জন্য নম্বর"</string>
+    <string name="description_playback_start_stop">"প্লেব্যাক প্লে করুন বা থামান"</string>
+    <string name="description_playback_speakerphone">"স্পিকার চালু বা বন্ধ করুন"</string>
+    <string name="description_playback_seek">"প্লেব্যাক অবস্থান খুঁজুন"</string>
+    <string name="description_rate_decrease">"প্লেব্যাকের হার হ্রাস করুন"</string>
+    <string name="description_rate_increase">"প্লেব্যাকের হার বৃদ্ধি করুন"</string>
+    <string name="action_menu_call_history_description">"কল ইতিহাস"</string>
+    <string name="action_menu_overflow_description">"আরো বিকল্প"</string>
+    <string name="action_menu_dialpad_button">"ডায়াল প্যাড"</string>
+    <string name="menu_copy">"অনুলিপি করুন"</string>
+    <string name="menu_show_outgoing_only">"কেবলমাত্র আউটগোয়িং দেখান"</string>
+    <string name="menu_show_incoming_only">"কেবলমাত্র ইনকামিং দেখান"</string>
+    <string name="menu_show_missed_only">"কেবলমাত্র মিসড দেখান"</string>
+    <string name="menu_show_voicemails_only">"কেবলমাত্র ভয়েসমেলগুলি দেখান"</string>
+    <string name="menu_show_all_calls">"সমস্ত কল দেখান"</string>
+    <string name="add_contact">"পরিচিতিগুলিতে জুড়ুন"</string>
+    <string name="add_2sec_pause">"২- সেকেন্ড বিরতি যোগ করুন"</string>
+    <string name="add_wait">"অপেক্ষা যোগ করুন"</string>
+    <string name="menu_select_account">"অ্যাকাউন্ট নির্বাচন করুন"</string>
+    <string name="dialer_settings_label">"সেটিংস"</string>
+    <string name="menu_newContact">"নতুন পরিচিতি"</string>
+    <string name="menu_allContacts">"সকল পরিচিতি"</string>
+    <string name="callDetailTitle">"কলের বিবরণ"</string>
+    <string name="toast_call_detail_error">"অনুরোধ করা কলের জন্য বিবরণ পড়া যায়নি৷"</string>
+    <string name="dialer_useDtmfDialpad">"স্পর্শ স্বর কীপ্যাড ব্যবহার করুন"</string>
+    <string name="dialer_returnToInCallScreen">"প্রগতিতে থাকা কলে প্রত্যাবর্তন"</string>
+    <string name="dialer_addAnotherCall">"কল যোগ করুন"</string>
+    <string name="type_incoming">"ইনকামিং কল"</string>
+    <string name="type_outgoing">"আউটগোয়িং কল"</string>
+    <string name="type_missed">"মিসড কল"</string>
+    <string name="type_incoming_video">"ইনকামিং ভিডিও কল"</string>
+    <string name="type_outgoing_video">"আউটগোয়িং ভিডিও কল"</string>
+    <string name="type_missed_video">"মিস করা ভিডিও কল"</string>
+    <string name="type_voicemail">"ভয়েসমেল"</string>
+    <string name="actionIncomingCall">"ইনকামিং কলগুলি"</string>
+    <string name="description_call_log_play_button">"ভয়েসমেল প্লে করুন"</string>
+    <string name="description_view_contact">"<xliff:g id="NAME">%1$s</xliff:g> পরিচিতি দেখুন"</string>
+    <string name="description_call">"<xliff:g id="NAME">%1$s</xliff:g> কে কল করুন"</string>
+    <string name="description_contact_details">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> পরিচিতির বিশদ বিবরণ"</string>
+    <string name="description_new_voicemail">"নতুন ভয়েসমেল৷"</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g>টি কল৷"</string>
+    <string name="description_video_call">"ভিডিও কল।"</string>
+    <string name="description_send_text_message">"<xliff:g id="NAME">%1$s</xliff:g> কে পাঠ্য বার্তা পাঠান"</string>
+    <string name="description_call_log_unheard_voicemail">"না শোনা ভয়েসমেল"</string>
+    <string name="description_start_voice_search">"ভয়েস অনুসন্ধান শুরু করুন"</string>
+    <string name="menu_callNumber">"<xliff:g id="NUMBER">%s</xliff:g> এ কল করুন"</string>
+    <string name="unknown">"অজানা"</string>
+    <string name="voicemail">"ভয়েসমেল"</string>
+    <string name="private_num">"ব্যক্তিগত নম্বর"</string>
+    <string name="payphone">"পে ফোন"</string>
+    <string name="dialerKeyboardHintText">"ডায়াল করতে কীবোর্ড ব্যবহার করুন"</string>
+    <string name="dialerDialpadHintText">"একটি কল যোগ করার জন্য ডায়াল করুন"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> মিনিট <xliff:g id="SECONDS">%s</xliff:g> সেকেন্ড"</string>
+    <string name="dialog_phone_call_prohibited_message">"কল করা যায়নি"</string>
+    <string name="dialog_voicemail_not_ready_message">"ভয়েসমেল সেট আপ করতে, মেনু &gt; সেটিংস এ যান৷"</string>
+    <string name="dialog_voicemail_airplane_mode_message">"ভয়েসমেলে কল করতে, সবার আগে বিমানমোড বন্ধ করুন৷"</string>
+    <string name="contact_list_loading">"লোড হচ্ছে..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"সিম কার্ড থেকে লোড করা হচ্ছে…"</string>
+    <string name="simContacts_title">"সিম কার্ডের পরিচিতিগুলি"</string>
+    <string name="add_contact_not_available">"এই বৈশিষ্ট্যটি ব্যবহার করতে পরিচিতি অ্যাপ্লিকেশানটিকে পুনরায় সক্রিয় করুন৷"</string>
+    <string name="voice_search_not_available">"ভয়েস অনুসন্ধান অনুপলব্ধ৷"</string>
+    <string name="call_not_available">"কোনো ফোন কল করা যাবে না কারণ ফোন অ্যাপ্লিকেশানটি অক্ষম করা হয়েছে৷"</string>
+    <string name="activity_not_available">"নির্বাচিত ক্রিয়াটি নিয়ন্ত্রণ করার জন্য কোনো ইনস্টল করা কার্যকলাপ নেই৷"</string>
+    <string name="dialer_hint_find_contact">"একটি নাম বা ফোন নম্বর লিখুন"</string>
+    <string name="recentMissed_empty">"আপনার কোনো সাম্প্রতিক মিস কল নেই।"</string>
+    <string name="recentVoicemails_empty">"আপনার কোনো সাম্প্রতিক ভয়েসমেল নেই।"</string>
+    <string name="show_favorites_only">"কেবলমাত্র পছন্দসইগুলি দেখান"</string>
+    <string name="call_log_activity_title">"ইতিহাস"</string>
+    <string name="call_log_all_title">"সমস্ত"</string>
+    <string name="call_log_missed_title">"মিসড"</string>
+    <string name="call_log_voicemail_title">"ভয়েসমেল"</string>
+    <string name="tab_speed_dial">"দ্রুত ডায়াল"</string>
+    <string name="tab_recents">"সাম্প্রতিকগুলি"</string>
+    <string name="tab_all_contacts">"পরিচিতিগুলি"</string>
+    <string name="favorite_hidden">"পছন্দসই থেকে সরানো হয়েছে"</string>
+    <string name="favorite_hidden_undo">"পূর্বাবস্থায় ফিরুন"</string>
+    <string name="search_shortcut_call_number">"<xliff:g id="NUMBER">%s</xliff:g> কে কল করুন"</string>
+    <string name="search_shortcut_add_to_contacts">"পরিচিতিগুলিতে যোগ করুন"</string>
+    <string name="search_shortcut_make_video_call">"ভিডিও কল করুন"</string>
+    <string name="recents_footer_text">"সম্পূর্ণ কল ইতিহাস দেখুন"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g>টি নতুন মিসড কল"</string>
+    <string name="speed_dial_empty">"আপনি \nপ্রিয়জন এবং যে নম্বরগুলিতে\n ঘন ঘন কল করেন তার জন্য রয়েছে স্পিড ডায়াল, যা হল ওয়ান-টাচ ডায়ালিং।"</string>
+    <string name="all_contacts_empty">"আপনার কাছে কোনো পরিচিতি নেই৷"</string>
+    <string name="contact_tooltip">"সমস্ত নম্বর দেখার জন্য চিত্রে আলতো চাপুন বা পুনঃসজ্জিত করতে টিপে ধরে রাখুন৷"</string>
+    <string name="description_dismiss">"খারিজ"</string>
+    <string name="remove_contact">"সরান"</string>
+    <string name="favorites_menu_all_contacts">"সকল পরিচিতি"</string>
+    <string name="call_log_action_call_back">"কল করুন"</string>
+    <string name="call_log_action_video_call">"ভিডিও কল"</string>
+    <string name="call_log_action_voicemail">"শুনুন"</string>
+    <string name="call_log_action_details">"বিশদ বিবরণ"</string>
+    <string name="description_incoming_missed_call">"<xliff:g id="TIMEOFCALL">%3$s</xliff:g>, <xliff:g id="NAMEORNUMBER">%1$s</xliff:g> এর <xliff:g id="TYPEORLOCATION">%2$s</xliff:g> থেকে আসা কল মিস হয়ে গেছে৷"</string>
+    <string name="description_incoming_answered_call">"<xliff:g id="TIMEOFCALL">%3$s</xliff:g>, <xliff:g id="NAMEORNUMBER">%1$s</xliff:g> এর <xliff:g id="TYPEORLOCATION">%2$s</xliff:g> থেকে আসা কলের উত্তর দেওয়া হয়েছে৷"</string>
+    <string name="description_outgoing_call">"<xliff:g id="TIMEOFCALL">%3$s</xliff:g>, <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>কে <xliff:g id="TYPEORLOCATION">%2$s</xliff:g> এ কল করা হয়েছে৷"</string>
+    <string name="description_call_back_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>কে কল করুন"</string>
+    <string name="description_video_call_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> এর জন্য ভিডিও কল৷"</string>
+    <string name="description_voicemail_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> এর থেকে আসা ভয়েসমেল শোনা হয়েছে"</string>
+    <string name="description_details_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> এর কলের বিবরণ"</string>
+    <string name="toast_entry_removed">"কল লগের এন্ট্রি মুছে ফেলা হয়েছে৷"</string>
+    <string name="toast_caller_id_reported">"পরিচিতির প্রতিবেদন করা হয়েছে।"</string>
+    <string name="call_log_action_report">"প্রতিবেদন করুন"</string>
+    <string name="call_log_header_today">"আজ"</string>
+    <string name="call_log_header_yesterday">"গতকাল"</string>
+    <string name="call_log_header_other">"পুরোনো"</string>
+    <string name="call_detail_list_header">"কলের তালিকা"</string>
+    <string name="voicemail_speaker_on">"স্পিকার চালু করুন৷"</string>
+    <string name="voicemail_speaker_off">"স্পিকার বন্ধ করুন৷"</string>
+    <string name="voicemail_play_faster">"দ্রুত প্লে করুন৷"</string>
+    <string name="voicemail_play_slower">"ধীরে প্লে করুন৷"</string>
+    <string name="voicemail_play_start_pause">"প্লেব্যাক শুরু করুন বা বিরতি দিন৷"</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"সাধারণ সেটিংস"</string>
+    <string name="general_settings_description">"পরিচিতি প্রদর্শন, শব্দ এবং দ্রুত প্রতিক্রিয়াগুলি"</string>
+    <string name="contact_display_options_category_title">"পরিচিতি প্রদর্শনের বিকল্পগুলি"</string>
+    <string name="sounds_and_vibrate_category_title">"শব্দ ও কম্পন"</string>
+    <string name="ringtone_title">"ফোন রিংটোন"</string>
+    <string name="vibrate_on_ring_title">"এছাড়াও কল এলে কম্পিত করুন"</string>
+    <string name="dtmf_tone_enable_title">"ডায়ালপ্যাড টোনগুলি"</string>
+    <string name="other_settings_title">"অন্যান্য"</string>
+    <string name="respond_via_sms_setting_title">"দ্রুত প্রতিক্রিয়াগুলি"</string>
+    <string name="call_settings_label">"কল সেটিংস"</string>
+    <string name="call_settings_description">"ভয়েসমেল, কল অপেক্ষমান এবং অন্যান্য"</string>
+</resources>

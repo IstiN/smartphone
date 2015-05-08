@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"拨号"</string>
+    <string name="launcherActivityLabel">"电话"</string>
+    <string name="dialerIconLabel">"拨号"</string>
+    <string name="recentCallsIconLabel">"通话记录"</string>
+    <string name="menu_sendTextMessage">"发送短信"</string>
+    <string name="recentCalls_callNumber">"呼叫<xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"呼叫之前编辑号码"</string>
+    <string name="recentCalls_addToContact">"添加到通讯录"</string>
+    <string name="recentCalls_removeFromRecentList">"从通话记录中删除"</string>
+    <string name="recentCalls_deleteAll">"清除通话记录"</string>
+    <string name="recentCalls_trashVoicemail">"删除语音邮件"</string>
+    <string name="recentCalls_shareVoicemail">"分享语音邮件"</string>
+    <string name="recentCalls_empty">"您没有通话记录。"</string>
+    <string name="clearCallLogConfirmation_title">"要清除通话记录吗？"</string>
+    <string name="clearCallLogConfirmation">"系统将删除您的所有通话记录。"</string>
+    <string name="clearCallLogProgress_title">"正在清除通话记录..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"语音邮件"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> 封语音邮件"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"播放"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>，<xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"来自<xliff:g id="CALLER">%1$s</xliff:g>的新语音邮件"</string>
+    <string name="voicemail_playback_error">"无法播放语音邮件。"</string>
+    <string name="voicemail_buffering">"正在缓冲…"</string>
+    <string name="voicemail_fetching_content">"正在抓取语​​音邮件…"</string>
+    <string name="voicemail_fetching_timout">"无法抓取语音邮件。"</string>
+    <string name="call_log_voicemail_header">"只显示语音信箱留言"</string>
+    <string name="call_log_incoming_header">"只显示来电"</string>
+    <string name="call_log_outgoing_header">"只显示外拨电话"</string>
+    <string name="call_log_missed_header">"只显示未接来电"</string>
+    <string name="voicemail_status_voicemail_not_available">"无法连接到语音信箱服务器。"</string>
+    <string name="voicemail_status_messages_waiting">"无法连接到语音信箱服务器。新的语音邮件正在等待接收。"</string>
+    <string name="voicemail_status_configure_voicemail">"设置您的语音信箱。"</string>
+    <string name="voicemail_status_audio_not_available">"音频不可用。"</string>
+    <string name="voicemail_status_action_configure">"设置"</string>
+    <string name="voicemail_status_action_call_server">"呼叫语音信箱"</string>
+    <string name="voicemail_speed_slowest">"最慢"</string>
+    <string name="voicemail_speed_slower">"慢速"</string>
+    <string name="voicemail_speed_normal">"正常速度"</string>
+    <string name="voicemail_speed_faster">"快速"</string>
+    <string name="voicemail_speed_fastest">"最快"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"选择号码"</string>
+    <string name="call_disambig_title">"选择号码"</string>
+    <string name="make_primary">"记住此选择"</string>
+    <string name="description_image_button_one">"一"</string>
+    <string name="description_image_button_two">"二"</string>
+    <string name="description_image_button_three">"三"</string>
+    <string name="description_image_button_four">"四"</string>
+    <string name="description_image_button_five">"五"</string>
+    <string name="description_image_button_six">"六"</string>
+    <string name="description_image_button_seven">"七"</string>
+    <string name="description_image_button_eight">"八"</string>
+    <string name="description_image_button_nine">"九"</string>
+    <string name="description_image_button_star">"星形符号"</string>
+    <string name="description_image_button_zero">"零"</string>
+    <string name="description_image_button_pound">"英镑符号"</string>
+    <string name="description_search_button">"搜索"</string>
+    <string name="description_dial_button">"拨打"</string>
+    <string name="description_digits_edittext">"要拨打的号码"</string>
+    <string name="description_playback_start_stop">"开始或停止播放"</string>
+    <string name="description_playback_speakerphone">"打开或关闭扬声器"</string>
+    <string name="description_playback_seek">"拖动到播放位置"</string>
+    <string name="description_rate_decrease">"减慢播放速度"</string>
+    <string name="description_rate_increase">"加快播放速度"</string>
+    <string name="action_menu_call_history_description">"通话记录"</string>
+    <string name="action_menu_overflow_description">"更多选项"</string>
+    <string name="action_menu_dialpad_button">"拨号键盘"</string>
+    <string name="menu_copy">"复制"</string>
+    <string name="menu_show_outgoing_only">"仅显示外拨电话"</string>
+    <string name="menu_show_incoming_only">"只显示来电"</string>
+    <string name="menu_show_missed_only">"只显示未接来电"</string>
+    <string name="menu_show_voicemails_only">"只显示语音邮件"</string>
+    <string name="menu_show_all_calls">"显示所有通话"</string>
+    <string name="add_contact">"添加到通讯录"</string>
+    <string name="add_2sec_pause">"延长暂停时间2秒"</string>
+    <string name="add_wait">"延长等待时间"</string>
+    <string name="menu_select_account">"选择帐户"</string>
+    <string name="dialer_settings_label">"设置"</string>
+    <string name="menu_newContact">"新建联系人"</string>
+    <string name="menu_allContacts">"所有联系人"</string>
+    <string name="callDetailTitle">"通话详情"</string>
+    <string name="toast_call_detail_error">"无法读取所请求呼叫的详细信息。"</string>
+    <string name="dialer_useDtmfDialpad">"使用按键式键盘"</string>
+    <string name="dialer_returnToInCallScreen">"返回正在进行的通话"</string>
+    <string name="dialer_addAnotherCall">"添加通话"</string>
+    <string name="type_incoming">"来电"</string>
+    <string name="type_outgoing">"外拨电话"</string>
+    <string name="type_missed">"未接电话"</string>
+    <string name="type_incoming_video">"视频通话来电"</string>
+    <string name="type_outgoing_video">"拨出的视频通话"</string>
+    <string name="type_missed_video">"错过的视频通话"</string>
+    <string name="type_voicemail">"语音信箱"</string>
+    <string name="actionIncomingCall">"来电"</string>
+    <string name="description_call_log_play_button">"播放语音邮件"</string>
+    <string name="description_view_contact">"查看联系人<xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"呼叫<xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>的详细联系信息"</string>
+    <string name="description_new_voicemail">"有新的语音邮件。"</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g>次通话。"</string>
+    <string name="description_video_call">"视频通话。"</string>
+    <string name="description_send_text_message">"向<xliff:g id="NAME">%1$s</xliff:g>发送短信"</string>
+    <string name="description_call_log_unheard_voicemail">"未收听的语音邮件"</string>
+    <string name="description_start_voice_search">"开始语音搜索"</string>
+    <string name="menu_callNumber">"拨打 <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"未知"</string>
+    <string name="voicemail">"语音信箱"</string>
+    <string name="private_num">"私密号码"</string>
+    <string name="payphone">"公用电话"</string>
+    <string name="dialerKeyboardHintText">"使用键盘拨号"</string>
+    <string name="dialerDialpadHintText">"拨号以添加通话"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g>分<xliff:g id="SECONDS">%s</xliff:g>秒"</string>
+    <string name="dialog_phone_call_prohibited_message">"电话未拨出"</string>
+    <string name="dialog_voicemail_not_ready_message">"要设置语音信箱，请转到“菜单”&gt;“设置”。"</string>
+    <string name="dialog_voicemail_airplane_mode_message">"要呼叫语音信箱，请先关闭飞行模式。"</string>
+    <string name="contact_list_loading">"正在加载..."</string>
+    <string name="imei">"移动通信国际识别码"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"正从SIM卡中加载..."</string>
+    <string name="simContacts_title">"SIM卡联系人"</string>
+    <string name="add_contact_not_available">"请重新启用“通讯录”应用以便使用此功能。"</string>
+    <string name="voice_search_not_available">"无法使用语音搜索。"</string>
+    <string name="call_not_available">"“电话”应用已被停用，因此无法拨打电话。"</string>
+    <string name="activity_not_available">"没有任何已安装的应用可以处理所选操作。"</string>
+    <string name="dialer_hint_find_contact">"输入姓名或手机号"</string>
+    <string name="recentMissed_empty">"您最近没有未接电话。"</string>
+    <string name="recentVoicemails_empty">"您最近没有语音邮件。"</string>
+    <string name="show_favorites_only">"仅显示收藏的联系人"</string>
+    <string name="call_log_activity_title">"通话记录"</string>
+    <string name="call_log_all_title">"全部"</string>
+    <string name="call_log_missed_title">"未接电话"</string>
+    <string name="call_log_voicemail_title">"语音邮件"</string>
+    <string name="tab_speed_dial">"快速拨号"</string>
+    <string name="tab_recents">"最近"</string>
+    <string name="tab_all_contacts">"联系人"</string>
+    <string name="favorite_hidden">"已从收藏中移除"</string>
+    <string name="favorite_hidden_undo">"撤消"</string>
+    <string name="search_shortcut_call_number">"拨打<xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"添加到通讯录"</string>
+    <string name="search_shortcut_make_video_call">"发起视频通话"</string>
+    <string name="recents_footer_text">"查看全部通话记录"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g>个新的未接电话"</string>
+    <string name="speed_dial_empty">"使用快速拨号功能，轻轻一点即可拨打\n所收藏联系人的电话号码\n以及经常拨打的电话号码。"</string>
+    <string name="all_contacts_empty">"您没有联系人。"</string>
+    <string name="contact_tooltip">"点按图片可查看所有号码，按住图片可重新排序"</string>
+    <string name="description_dismiss">"关闭"</string>
+    <string name="remove_contact">"移除"</string>
+    <string name="favorites_menu_all_contacts">"所有联系人"</string>
+    <string name="call_log_action_call_back">"回电"</string>
+    <string name="call_log_action_video_call">"视频通话"</string>
+    <string name="call_log_action_voicemail">"听取"</string>
+    <string name="call_log_action_details">"详情"</string>
+    <string name="description_incoming_missed_call">"<xliff:g id="TIMEOFCALL">%3$s</xliff:g>来自<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>（<xliff:g id="TYPEORLOCATION">%2$s</xliff:g>）的未接电话。"</string>
+    <string name="description_incoming_answered_call">"<xliff:g id="TIMEOFCALL">%3$s</xliff:g>来自<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>（<xliff:g id="TYPEORLOCATION">%2$s</xliff:g>）的已接电话。"</string>
+    <string name="description_outgoing_call">"<xliff:g id="TIMEOFCALL">%3$s</xliff:g>与<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>（<xliff:g id="TYPEORLOCATION">%2$s</xliff:g>）的通话。"</string>
+    <string name="description_call_back_action">"给<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>回电"</string>
+    <string name="description_video_call_action">"向<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>发起的视频通话。"</string>
+    <string name="description_voicemail_action">"听取来自<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>的语音邮件"</string>
+    <string name="description_details_action">"与<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>的通话详情"</string>
+    <string name="toast_entry_removed">"通话记录条目已删除。"</string>
+    <string name="toast_caller_id_reported">"已举报联系人。"</string>
+    <string name="call_log_action_report">"举报"</string>
+    <string name="call_log_header_today">"今天"</string>
+    <string name="call_log_header_yesterday">"昨天"</string>
+    <string name="call_log_header_other">"更早"</string>
+    <string name="call_detail_list_header">"通话记录"</string>
+    <string name="voicemail_speaker_on">"打开扬声器。"</string>
+    <string name="voicemail_speaker_off">"关闭扬声器。"</string>
+    <string name="voicemail_play_faster">"快放。"</string>
+    <string name="voicemail_play_slower">"慢放。"</string>
+    <string name="voicemail_play_start_pause">"开始或暂停播放。"</string>
+    <string name="list_delimeter">"、 "</string>
+    <string name="general_settings_label">"常规设置"</string>
+    <string name="general_settings_description">"联系人显示、提示音和快速回复"</string>
+    <string name="contact_display_options_category_title">"联系人显示选项"</string>
+    <string name="sounds_and_vibrate_category_title">"提示音和振动"</string>
+    <string name="ringtone_title">"手机铃声"</string>
+    <string name="vibrate_on_ring_title">"有来电时响铃并振动"</string>
+    <string name="dtmf_tone_enable_title">"拨号键盘提示音"</string>
+    <string name="other_settings_title">"其他"</string>
+    <string name="respond_via_sms_setting_title">"快速回复"</string>
+    <string name="call_settings_label">"通话设置"</string>
+    <string name="call_settings_description">"语音信箱、来电等待及其他"</string>
+</resources>

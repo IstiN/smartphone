@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Marcador"</string>
+    <string name="launcherActivityLabel">"Teléfono"</string>
+    <string name="dialerIconLabel">"Teléfono"</string>
+    <string name="recentCallsIconLabel">"Llamadas"</string>
+    <string name="menu_sendTextMessage">"Enviar un mensaje de texto"</string>
+    <string name="recentCalls_callNumber">"Llamar a <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Editar número antes de llamar"</string>
+    <string name="recentCalls_addToContact">"Añadir a contactos"</string>
+    <string name="recentCalls_removeFromRecentList">"Eliminar del registro de llamadas"</string>
+    <string name="recentCalls_deleteAll">"Borrar registro de llamadas"</string>
+    <string name="recentCalls_trashVoicemail">"Eliminar mensaje de voz"</string>
+    <string name="recentCalls_shareVoicemail">"Compartir mensaje de voz"</string>
+    <string name="recentCalls_empty">"El registro de llamadas está vacío."</string>
+    <string name="clearCallLogConfirmation_title">"¿Borrar registro?"</string>
+    <string name="clearCallLogConfirmation">"Se eliminarán todos los registros de llamadas."</string>
+    <string name="clearCallLogProgress_title">"Borrando registro de llamadas..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Mensaje de voz"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> mensajes de voz"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Reproducir"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Nuevo mensaje de voz de <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"No se ha podido reproducir el mensaje."</string>
+    <string name="voicemail_buffering">"Almacenando en búfer..."</string>
+    <string name="voicemail_fetching_content">"Recuperando mensaje de voz..."</string>
+    <string name="voicemail_fetching_timout">"No se ha podido recuperar el mensaje."</string>
+    <string name="call_log_voicemail_header">"Solo llamadas con mensajes de voz"</string>
+    <string name="call_log_incoming_header">"Solo llamadas entrantes"</string>
+    <string name="call_log_outgoing_header">"Solo llamadas salientes"</string>
+    <string name="call_log_missed_header">"Solo llamadas perdidas"</string>
+    <string name="voicemail_status_voicemail_not_available">"No se puede conectar con el servidor del buzón de voz."</string>
+    <string name="voicemail_status_messages_waiting">"No se puede conectar al buzón de voz. Nuevos mensajes en espera"</string>
+    <string name="voicemail_status_configure_voicemail">"Configurar el buzón de voz"</string>
+    <string name="voicemail_status_audio_not_available">"Audio no disponible"</string>
+    <string name="voicemail_status_action_configure">"Configurar"</string>
+    <string name="voicemail_status_action_call_server">"Llamar a buzón de voz"</string>
+    <string name="voicemail_speed_slowest">"Más lenta"</string>
+    <string name="voicemail_speed_slower">"Lenta"</string>
+    <string name="voicemail_speed_normal">"Normal"</string>
+    <string name="voicemail_speed_faster">"Rápida"</string>
+    <string name="voicemail_speed_fastest">"Más rápida"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Elige un número"</string>
+    <string name="call_disambig_title">"Elige un número"</string>
+    <string name="make_primary">"Recordar esta opción"</string>
+    <string name="description_image_button_one">"uno"</string>
+    <string name="description_image_button_two">"dos"</string>
+    <string name="description_image_button_three">"tres"</string>
+    <string name="description_image_button_four">"cuatro"</string>
+    <string name="description_image_button_five">"cinco"</string>
+    <string name="description_image_button_six">"seis"</string>
+    <string name="description_image_button_seven">"siete"</string>
+    <string name="description_image_button_eight">"ocho"</string>
+    <string name="description_image_button_nine">"nueve"</string>
+    <string name="description_image_button_star">"estrella"</string>
+    <string name="description_image_button_zero">"cero"</string>
+    <string name="description_image_button_pound">"libra"</string>
+    <string name="description_search_button">"buscar"</string>
+    <string name="description_dial_button">"marcar"</string>
+    <string name="description_digits_edittext">"número que se va a marcar"</string>
+    <string name="description_playback_start_stop">"Iniciar o detener la reproducción"</string>
+    <string name="description_playback_speakerphone">"Activar o desactivar el altavoz"</string>
+    <string name="description_playback_seek">"Buscar posición de reproducción"</string>
+    <string name="description_rate_decrease">"Disminuir la velocidad de reproducción"</string>
+    <string name="description_rate_increase">"Aumentar la velocidad de reproducción"</string>
+    <string name="action_menu_call_history_description">"Historial de llamadas"</string>
+    <string name="action_menu_overflow_description">"Más opciones"</string>
+    <string name="action_menu_dialpad_button">"teclado"</string>
+    <string name="menu_copy">"Copiar"</string>
+    <string name="menu_show_outgoing_only">"Mostrar solo llamadas salientes"</string>
+    <string name="menu_show_incoming_only">"Mostrar solo llamadas entrantes"</string>
+    <string name="menu_show_missed_only">"Mostrar solo llamadas perdidas"</string>
+    <string name="menu_show_voicemails_only">"Solo mensajes de voz"</string>
+    <string name="menu_show_all_calls">"Mostrar todas las llamadas"</string>
+    <string name="add_contact">"Añadir a contactos"</string>
+    <string name="add_2sec_pause">"Añadir pausa de 2 segundos"</string>
+    <string name="add_wait">"Añadir espera"</string>
+    <string name="menu_select_account">"Seleccionar cuenta"</string>
+    <string name="dialer_settings_label">"Ajustes"</string>
+    <string name="menu_newContact">"Nuevo contacto"</string>
+    <string name="menu_allContacts">"Todos los contactos"</string>
+    <string name="callDetailTitle">"Detalles de la llamada"</string>
+    <string name="toast_call_detail_error">"No se han podido leer los detalles de la llamada solicitada."</string>
+    <string name="dialer_useDtmfDialpad">"Usar teclado táctil"</string>
+    <string name="dialer_returnToInCallScreen">"Volver a la llamada en curso"</string>
+    <string name="dialer_addAnotherCall">"Añadir llamada"</string>
+    <string name="type_incoming">"Llamada entrante"</string>
+    <string name="type_outgoing">"Llamada saliente"</string>
+    <string name="type_missed">"Llamada perdida"</string>
+    <string name="type_incoming_video">"Videollamada entrante"</string>
+    <string name="type_outgoing_video">"Videollamada realizada"</string>
+    <string name="type_missed_video">"Videollamada perdida"</string>
+    <string name="type_voicemail">"Buzón de voz"</string>
+    <string name="actionIncomingCall">"Llamadas entrantes"</string>
+    <string name="description_call_log_play_button">"Reproducir mensaje de voz"</string>
+    <string name="description_view_contact">"Ver contacto <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Llamar a <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"Información de contacto de <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_new_voicemail">"Nuevo mensaje de voz."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> llamadas."</string>
+    <string name="description_video_call">"Videollamada."</string>
+    <string name="description_send_text_message">"Enviar mensaje de texto a <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Mensaje de voz sin oír"</string>
+    <string name="description_start_voice_search">"Iniciar búsqueda por voz"</string>
+    <string name="menu_callNumber">"Llamar a <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Desconocidos"</string>
+    <string name="voicemail">"Buzón de voz"</string>
+    <string name="private_num">"Número privado"</string>
+    <string name="payphone">"Teléfono público"</string>
+    <string name="dialerKeyboardHintText">"Utilizar teclado para marcar"</string>
+    <string name="dialerDialpadHintText">"Añadir llamada"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> min y <xliff:g id="SECONDS">%s</xliff:g> s"</string>
+    <string name="dialog_phone_call_prohibited_message">"Llamada no enviada"</string>
+    <string name="dialog_voicemail_not_ready_message">"Para configurar el buzón de voz, toca la tecla de menú y, a continuación, toca Ajustes."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Para llamar al buzón de voz, debes desactivar el modo avión."</string>
+    <string name="contact_list_loading">"Cargando..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Cargando desde tarjeta SIM…"</string>
+    <string name="simContacts_title">"Contactos de tarjeta SIM"</string>
+    <string name="add_contact_not_available">"Vuelve a habilitar la aplicación Contactos para usar esta función."</string>
+    <string name="voice_search_not_available">"La búsqueda por voz no está disponible."</string>
+    <string name="call_not_available">"No se puede hacer llamadas porque se ha inhabilitado la aplicación Teléfono."</string>
+    <string name="activity_not_available">"Ninguna actividad instalada puede procesar la acción seleccionada."</string>
+    <string name="dialer_hint_find_contact">"Escribe un nombre o teléfono"</string>
+    <string name="recentMissed_empty">"No tienes llamadas perdidas recientes."</string>
+    <string name="recentVoicemails_empty">"No tienes mensajes recientes en el buzón de voz."</string>
+    <string name="show_favorites_only">"Mostrar solo favoritos"</string>
+    <string name="call_log_activity_title">"Historial"</string>
+    <string name="call_log_all_title">"Todo"</string>
+    <string name="call_log_missed_title">"Perdidas"</string>
+    <string name="call_log_voicemail_title">"Mensaje de voz"</string>
+    <string name="tab_speed_dial">"Marcación rápida"</string>
+    <string name="tab_recents">"Recientes"</string>
+    <string name="tab_all_contacts">"Contactos"</string>
+    <string name="favorite_hidden">"Eliminado de favoritos"</string>
+    <string name="favorite_hidden_undo">"Deshacer"</string>
+    <string name="search_shortcut_call_number">"Llamar a <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Añadir a contactos"</string>
+    <string name="search_shortcut_make_video_call">"Hacer videollamada"</string>
+    <string name="recents_footer_text">"Ver historial de llamadas completo"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> llamadas perdidas nuevas"</string>
+    <string name="speed_dial_empty">"La marcación rápida te permite llamar a\nlos números y contactos favoritos\n que llamas con frecuencia con solo marcar una tecla."</string>
+    <string name="all_contacts_empty">"No tienes contactos."</string>
+    <string name="contact_tooltip">"Toca la imagen para ver todos los números o mantenla pulsada para cambiar el orden"</string>
+    <string name="description_dismiss">"Ignorar"</string>
+    <string name="remove_contact">"Eliminar"</string>
+    <string name="favorites_menu_all_contacts">"TODOS LOS CONTACTOS"</string>
+    <string name="call_log_action_call_back">"DEVOLVER LLAMADA"</string>
+    <string name="call_log_action_video_call">"VIDEOLLAMADA"</string>
+    <string name="call_log_action_voicemail">"ESCUCHAR"</string>
+    <string name="call_log_action_details">"DETALLES"</string>
+    <string name="description_incoming_missed_call">"Llamada perdida de <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Llamada respondida de <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Llamar a <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Devolver llamada a <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"Videollamada a <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Escuchar el buzón de voz de <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"Detalles de llamada de <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="toast_entry_removed">"Entrada del registro de llamada eliminada."</string>
+    <string name="toast_caller_id_reported">"Información sobre contacto notificada."</string>
+    <string name="call_log_action_report">"INFORMAR"</string>
+    <string name="call_log_header_today">"Hoy"</string>
+    <string name="call_log_header_yesterday">"Ayer"</string>
+    <string name="call_log_header_other">"Más antiguo"</string>
+    <string name="call_detail_list_header">"Lista de llamadas"</string>
+    <string name="voicemail_speaker_on">"Activar altavoz."</string>
+    <string name="voicemail_speaker_off">"Desactivar altavoz."</string>
+    <string name="voicemail_play_faster">"Reproducir más rápido."</string>
+    <string name="voicemail_play_slower">"Reproducir más lento."</string>
+    <string name="voicemail_play_start_pause">"Iniciar o pausar reproducción."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Ajustes generales"</string>
+    <string name="general_settings_description">"Opciones para mostrar contactos, sonidos y respuestas rápidas"</string>
+    <string name="contact_display_options_category_title">"Opciones para mostrar contactos"</string>
+    <string name="sounds_and_vibrate_category_title">"Sonido y vibración"</string>
+    <string name="ringtone_title">"Tono del teléfono"</string>
+    <string name="vibrate_on_ring_title">"Vibrar también en llamadas"</string>
+    <string name="dtmf_tone_enable_title">"Tonos del teclado"</string>
+    <string name="other_settings_title">"Otros"</string>
+    <string name="respond_via_sms_setting_title">"Respuestas rápidas"</string>
+    <string name="call_settings_label">"Ajustes de llamada"</string>
+    <string name="call_settings_description">"Buzón de voz, llamada en espera y otras opciones"</string>
+</resources>

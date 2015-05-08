@@ -340,7 +340,7 @@ public class PhoneFragment extends AbstractFragment {
                             public void run() {
                                 TextView textView = (TextView) view.findViewById(R.id.paste);
                                 textView.setVisibility(View.VISIBLE);
-                                textView.setText(Html.fromHtml("<u>" + ContextHolder.get().getString(R.string.label_paste) + "</u>?"), TextView.BufferType.SPANNABLE);
+                                textView.setText(Html.fromHtml("<u>" + ContextHolder.get().getString(android.R.string.paste) + "</u>?"), TextView.BufferType.SPANNABLE);
                                 textView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {

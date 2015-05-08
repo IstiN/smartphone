@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Çevirici"</string>
+    <string name="launcherActivityLabel">"Telefon"</string>
+    <string name="dialerIconLabel">"Telefon"</string>
+    <string name="recentCallsIconLabel">"Çağrı kaydı"</string>
+    <string name="menu_sendTextMessage">"Kısa mesaj gönder"</string>
+    <string name="recentCalls_callNumber">"Ara: <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Önce numarayı düzenle"</string>
+    <string name="recentCalls_addToContact">"Kişilere ekle"</string>
+    <string name="recentCalls_removeFromRecentList">"Çağrı kaydından kaldır"</string>
+    <string name="recentCalls_deleteAll">"Çağrı kaydını temizle"</string>
+    <string name="recentCalls_trashVoicemail">"Sesli mesajı sil"</string>
+    <string name="recentCalls_shareVoicemail">"Sesli mesajı paylaş"</string>
+    <string name="recentCalls_empty">"Çağrı kaydınız boş."</string>
+    <string name="clearCallLogConfirmation_title">"Çağrı günlüğünü sil?"</string>
+    <string name="clearCallLogConfirmation">"Tüm çağrı kayıtlarınız silinecek."</string>
+    <string name="clearCallLogProgress_title">"Çağrı günlüğü temizleniyor..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Sesli mesaj"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> Sesli mesaj"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Oynat"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Yeni sesli mesj gönderen: <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Sesli mesaj yürütülemedi."</string>
+    <string name="voicemail_buffering">"Arabelleğe alınıyor..."</string>
+    <string name="voicemail_fetching_content">"Sesli mesaj getiriliyor..."</string>
+    <string name="voicemail_fetching_timout">"Sesli mesaj getirilemedi."</string>
+    <string name="call_log_voicemail_header">"Yalnızca sesli mesaj içeren çağrılar"</string>
+    <string name="call_log_incoming_header">"Yalnızca gelen çağrılar"</string>
+    <string name="call_log_outgoing_header">"Yalnızca giden çağrılar"</string>
+    <string name="call_log_missed_header">"Yalnızca cevapsız çağrılar"</string>
+    <string name="voicemail_status_voicemail_not_available">"Sesli mesaj sunucusuna bağlanılamıyor."</string>
+    <string name="voicemail_status_messages_waiting">"Sesli msj suncsuna bağlanılamıyor. Yeni sesli mesajlar bekliyor."</string>
+    <string name="voicemail_status_configure_voicemail">"Sesli mesajınızı yapılandırın."</string>
+    <string name="voicemail_status_audio_not_available">"Ses kullanılamıyor."</string>
+    <string name="voicemail_status_action_configure">"Yapılandır"</string>
+    <string name="voicemail_status_action_call_server">"Sesli mesaj ara"</string>
+    <string name="voicemail_speed_slowest">"En yavaş hız"</string>
+    <string name="voicemail_speed_slower">"Düşük hız"</string>
+    <string name="voicemail_speed_normal">"Normal hız"</string>
+    <string name="voicemail_speed_faster">"Yüksek hız"</string>
+    <string name="voicemail_speed_fastest">"En yüksek hız"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Sayı seçin"</string>
+    <string name="call_disambig_title">"Sayı seçin"</string>
+    <string name="make_primary">"Bu tercihi anımsa"</string>
+    <string name="description_image_button_one">"bir"</string>
+    <string name="description_image_button_two">"iki"</string>
+    <string name="description_image_button_three">"üç"</string>
+    <string name="description_image_button_four">"dört"</string>
+    <string name="description_image_button_five">"beş"</string>
+    <string name="description_image_button_six">"altı"</string>
+    <string name="description_image_button_seven">"yedi"</string>
+    <string name="description_image_button_eight">"sekiz"</string>
+    <string name="description_image_button_nine">"dokuz"</string>
+    <string name="description_image_button_star">"yıldız"</string>
+    <string name="description_image_button_zero">"sıfır"</string>
+    <string name="description_image_button_pound">"pound"</string>
+    <string name="description_search_button">"ara"</string>
+    <string name="description_dial_button">"çevir"</string>
+    <string name="description_digits_edittext">"çevrilecek numara"</string>
+    <string name="description_playback_start_stop">"Oynatmayı başlat veya durdur"</string>
+    <string name="description_playback_speakerphone">"Hoperlörü aç veya kapat"</string>
+    <string name="description_playback_seek">"Oynatma konumunu ayarla"</string>
+    <string name="description_rate_decrease">"Oynatma hızını azalt"</string>
+    <string name="description_rate_increase">"Oynatma hızını artır"</string>
+    <string name="action_menu_call_history_description">"Çağrı Geçmişi"</string>
+    <string name="action_menu_overflow_description">"Diğer seçenekler"</string>
+    <string name="action_menu_dialpad_button">"tuş takımı"</string>
+    <string name="menu_copy">"Kopyala"</string>
+    <string name="menu_show_outgoing_only">"Yalnızca gidenleri göster"</string>
+    <string name="menu_show_incoming_only">"Yalnızca gelenleri göster"</string>
+    <string name="menu_show_missed_only">"Yalnızca cevapsızları göster"</string>
+    <string name="menu_show_voicemails_only">"Yalnızca sesli msajları göster"</string>
+    <string name="menu_show_all_calls">"Tüm çağrıları göster"</string>
+    <string name="add_contact">"Rehbere ekle"</string>
+    <string name="add_2sec_pause">"2 saniyelik duraklama ekle"</string>
+    <string name="add_wait">"Bekleme ekle"</string>
+    <string name="menu_select_account">"Hesap Seç"</string>
+    <string name="dialer_settings_label">"Ayarlar"</string>
+    <string name="menu_newContact">"Yeni kişi"</string>
+    <string name="menu_allContacts">"Tüm kişiler"</string>
+    <string name="callDetailTitle">"Çağrı ayrıntıları"</string>
+    <string name="toast_call_detail_error">"İstenen çağrı için ayrıntılar okunamadı."</string>
+    <string name="dialer_useDtmfDialpad">"Telefon tuş takımını kullan"</string>
+    <string name="dialer_returnToInCallScreen">"Çağrıya dön"</string>
+    <string name="dialer_addAnotherCall">"Çağrı ekle"</string>
+    <string name="type_incoming">"Gelen çağrı"</string>
+    <string name="type_outgoing">"Giden çağrı"</string>
+    <string name="type_missed">"Cevapsız çağrı"</string>
+    <string name="type_incoming_video">"Gelen video görüşmesi isteği"</string>
+    <string name="type_outgoing_video">"Giden video görüşmesi isteği"</string>
+    <string name="type_missed_video">"Cevapsız video görüşmesi isteği"</string>
+    <string name="type_voicemail">"Sesli mesaj"</string>
+    <string name="actionIncomingCall">"Gelen çağrılar"</string>
+    <string name="description_call_log_play_button">"Sesli mesajı oynat"</string>
+    <string name="description_view_contact">"Kişiyi görüntüle: <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Sesli arama yap: <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> için kişi ayrıntıları"</string>
+    <string name="description_new_voicemail">"Yeni sesli mesaj."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> çağrı."</string>
+    <string name="description_video_call">"Video görüşmesi."</string>
+    <string name="description_send_text_message">"Şu kişiye kısa mesaj gönder: <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Dinlenilmemiş sesli mesaj"</string>
+    <string name="description_start_voice_search">"Sesli arama başlat"</string>
+    <string name="menu_callNumber">"Çağrı yap: <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Bilinmiyor"</string>
+    <string name="voicemail">"Sesli Mesaj"</string>
+    <string name="private_num">"Özel numara"</string>
+    <string name="payphone">"Ankesörlü telefon"</string>
+    <string name="dialerKeyboardHintText">"Çevirmek için klavyeyi kullan"</string>
+    <string name="dialerDialpadHintText">"Arama eklemek için çevir"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> dak <xliff:g id="SECONDS">%s</xliff:g> sn"</string>
+    <string name="dialog_phone_call_prohibited_message">"Çağrı yapılamadı"</string>
+    <string name="dialog_voicemail_not_ready_message">"Sesli mesajı yapılandırmak için Menü &gt; Ayarlar\'a gidin."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Sesli mesaja çağrı yapmak için öncelikle Uçak modunu kapatın."</string>
+    <string name="contact_list_loading">"Yükleniyor..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"SIM karttan yükleniyor..."</string>
+    <string name="simContacts_title">"SIM kart kişileri"</string>
+    <string name="add_contact_not_available">"Bu özelliği kullanmak için Kişiler uygulamasını yeniden etkinleştirin."</string>
+    <string name="voice_search_not_available">"Sesli arama kullanılamıyor."</string>
+    <string name="call_not_available">"Telefon uygulaması devre dışı bırakıldığından telefon edilemiyor."</string>
+    <string name="activity_not_available">"Seçilen işlemi gerçekleştirmek için kullanılabilir yüklü etkinlik yok."</string>
+    <string name="dialer_hint_find_contact">"Ad veya telefon numarası yazın"</string>
+    <string name="recentMissed_empty">"Yakın zamanda cevapsız çağrınız yok."</string>
+    <string name="recentVoicemails_empty">"Yakın zamanda sesli mesajınız yok."</string>
+    <string name="show_favorites_only">"Yalnızca favori kişileri göster"</string>
+    <string name="call_log_activity_title">"Geçmiş"</string>
+    <string name="call_log_all_title">"Tümü"</string>
+    <string name="call_log_missed_title">"Cevapsız"</string>
+    <string name="call_log_voicemail_title">"Sesli Mesaj"</string>
+    <string name="tab_speed_dial">"Hızlı Arama"</string>
+    <string name="tab_recents">"Son Kişiler"</string>
+    <string name="tab_all_contacts">"Kişiler"</string>
+    <string name="favorite_hidden">"Favorilerden kaldırıldı"</string>
+    <string name="favorite_hidden_undo">"Geri al"</string>
+    <string name="search_shortcut_call_number">"Telefon et: <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Kişilere ekle"</string>
+    <string name="search_shortcut_make_video_call">"Video görüşmesi yap"</string>
+    <string name="recents_footer_text">"Tüm çağrı geçmişini görüntüle"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> yeni cevapsız çağrı"</string>
+    <string name="speed_dial_empty">"Hızlı arama, sık telefon ettiğiniz \nfavori kişilerinizi ve numaralarınızı\ntek dokunuşla aramaktır."</string>
+    <string name="all_contacts_empty">"Kişiniz yok."</string>
+    <string name="contact_tooltip">"Tüm numaraları görmek için resme hafifçe vurun veya yeniden sıralamak için basılı tutun"</string>
+    <string name="description_dismiss">"Kapat"</string>
+    <string name="remove_contact">"Kaldır"</string>
+    <string name="favorites_menu_all_contacts">"TÜM KİŞİLER"</string>
+    <string name="call_log_action_call_back">"GERİ ARA"</string>
+    <string name="call_log_action_video_call">"VİDEO GÖRÜŞMESİ"</string>
+    <string name="call_log_action_voicemail">"DİNLE"</string>
+    <string name="call_log_action_details">"AYRINTILAR"</string>
+    <string name="description_incoming_missed_call">"Cevapsız çağrı: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Yanıtlanan çağrı: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Aranan numara: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Geri ara: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> olarak kayıtlı kişiye video görüşmesi isteğinde bulun."</string>
+    <string name="description_voicemail_action">"Şu numaradan gelen sesli mesajı dinle: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> için çağrı ayrıntıları"</string>
+    <string name="toast_entry_removed">"Çağrı kaydı girişi silindi."</string>
+    <string name="toast_caller_id_reported">"Kişi bildirildi."</string>
+    <string name="call_log_action_report">"BİLDİR"</string>
+    <string name="call_log_header_today">"Bugün"</string>
+    <string name="call_log_header_yesterday">"Dün"</string>
+    <string name="call_log_header_other">"Daha eski"</string>
+    <string name="call_detail_list_header">"Çağrı Listesi"</string>
+    <string name="voicemail_speaker_on">"Hoparlörü açın."</string>
+    <string name="voicemail_speaker_off">"Hoparlörü kapatın."</string>
+    <string name="voicemail_play_faster">"Daha hızlı çalın."</string>
+    <string name="voicemail_play_slower">"Daha yavaş çalın."</string>
+    <string name="voicemail_play_start_pause">"Çalmayı başlatın veya duraklatın."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Genel ayarlar"</string>
+    <string name="general_settings_description">"Kişi görüntüleme, sesler ve hızlı yanıtlar"</string>
+    <string name="contact_display_options_category_title">"Kişi görüntüleme seçenekleri"</string>
+    <string name="sounds_and_vibrate_category_title">"Sesler ve titreşim"</string>
+    <string name="ringtone_title">"Telefon zil sesi"</string>
+    <string name="vibrate_on_ring_title">"Çağrılarda ayrıca titret"</string>
+    <string name="dtmf_tone_enable_title">"Tuş takımı tonları"</string>
+    <string name="other_settings_title">"Diğer"</string>
+    <string name="respond_via_sms_setting_title">"Hızlı yanıtlar"</string>
+    <string name="call_settings_label">"Çağrı ayarları"</string>
+    <string name="call_settings_description">"Sesli mesaj, çağrı bekletme ve diğerleri"</string>
+</resources>

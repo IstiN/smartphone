@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"අංකිත මුහුණ"</string>
+    <string name="launcherActivityLabel">"දුරකථනය"</string>
+    <string name="dialerIconLabel">"දුරකථනය"</string>
+    <string name="recentCallsIconLabel">"ඇමතුම් ලොගය"</string>
+    <string name="menu_sendTextMessage">"කෙටි පණිවිඩය යවන්න"</string>
+    <string name="recentCalls_callNumber">"<xliff:g id="NAME">%s</xliff:g> අමතන්න"</string>
+    <string name="recentCalls_editNumberBeforeCall">"ඇමතීමට කලින් අංකය වෙනස් කරන්න"</string>
+    <string name="recentCalls_addToContact">"සම්බන්ධතා වලට එක් කරන්න"</string>
+    <string name="recentCalls_removeFromRecentList">"ඇමතුම් ලොගයෙන් ඉවත් කරන්න"</string>
+    <string name="recentCalls_deleteAll">"ඇමතුම් ලොගය හිස් කරන්න"</string>
+    <string name="recentCalls_trashVoicemail">"හඬ තැපෑල මකන්න"</string>
+    <string name="recentCalls_shareVoicemail">"හඬ තැපෑල බෙදාගන්න"</string>
+    <string name="recentCalls_empty">"ඔබගේ ඇමතුම් ලොගය හිස් ය."</string>
+    <string name="clearCallLogConfirmation_title">"ඇමතුම් ලොගය හිස් කරන්නද?"</string>
+    <string name="clearCallLogConfirmation">"ඔබගේ සියලුම ඇමතුම් වාර්තා මකා දැමෙනු ඇත."</string>
+    <string name="clearCallLogProgress_title">"ඇමතුම් ලොගය හිස් කරමින්…"</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"හඬ තැපෑල"</item>
+    <item quantity="other">"හඬ තැපැල් <xliff:g id="COUNT">%1$d</xliff:g>"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"ධාවනය කරන්න"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"<xliff:g id="CALLER">%1$s</xliff:g> වෙතින් නව හඬ තැපැලක්"</string>
+    <string name="voicemail_playback_error">"හඬ තැපෑල ධාවනය කළ නොහැක."</string>
+    <string name="voicemail_buffering">"අන්තරාචයනය වෙමින්..."</string>
+    <string name="voicemail_fetching_content">"හඬ තැපැල් ලබාගනිමින්..."</string>
+    <string name="voicemail_fetching_timout">"හඬ තැපෑල ලබාගැනීමට නොහැකි විය."</string>
+    <string name="call_log_voicemail_header">"හඬ තැපෑල සහිත ඇමතුම් පමණි"</string>
+    <string name="call_log_incoming_header">"එන ඇමතුම් පමණි"</string>
+    <string name="call_log_outgoing_header">"පිටතට යන ඇමතුම් පමණි"</string>
+    <string name="call_log_missed_header">"මඟ හැරුණු ඇමතුම් පමණි"</string>
+    <string name="voicemail_status_voicemail_not_available">"හඬ තැපැල් සේවාදායකය වෙත සම්බන්ධ විය නොහැක."</string>
+    <string name="voicemail_status_messages_waiting">"හඬ තැපැල් සේවාදායකය වෙත සම්බන්ධ විය නොහැක. නව හඬ තැපැල් රැඳී සිටී."</string>
+    <string name="voicemail_status_configure_voicemail">"ඔබගේ හඬ තැපැල් සකසා ගන්න."</string>
+    <string name="voicemail_status_audio_not_available">"ශබ්ද ලද නොහැක."</string>
+    <string name="voicemail_status_action_configure">"ස්ථාපනය කරන්න"</string>
+    <string name="voicemail_status_action_call_server">"හඬ තැපැල් අමතන්න"</string>
+    <string name="voicemail_speed_slowest">"ඉතාමත් මන්දගාමී වේගය"</string>
+    <string name="voicemail_speed_slower">"මන්දගාමී වේගය"</string>
+    <string name="voicemail_speed_normal">"සාමාන්‍ය වේගය"</string>
+    <string name="voicemail_speed_faster">"ඉතා වේගවත්"</string>
+    <string name="voicemail_speed_fastest">"ඉතාමත් වේගවත්"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"අංකය තෝරන්න"</string>
+    <string name="call_disambig_title">"අංකය තෝරන්න"</string>
+    <string name="make_primary">"මෙම තේරීම මතක තබාගන්න"</string>
+    <string name="description_image_button_one">"එක"</string>
+    <string name="description_image_button_two">"දෙක"</string>
+    <string name="description_image_button_three">"තුන"</string>
+    <string name="description_image_button_four">"හතර"</string>
+    <string name="description_image_button_five">"පහ"</string>
+    <string name="description_image_button_six">"හය"</string>
+    <string name="description_image_button_seven">"හත"</string>
+    <string name="description_image_button_eight">"අට"</string>
+    <string name="description_image_button_nine">"නවය"</string>
+    <string name="description_image_button_star">"තරුව"</string>
+    <string name="description_image_button_zero">"බිංදුව"</string>
+    <string name="description_image_button_pound">"හෑෂ්"</string>
+    <string name="description_search_button">"සෙවීම"</string>
+    <string name="description_dial_button">"අමතන්න"</string>
+    <string name="description_digits_edittext">"ඇමතීමට අංකය"</string>
+    <string name="description_playback_start_stop">"Playback ධාවනය කරන්න හෝ නවත්වන්න"</string>
+    <string name="description_playback_speakerphone">"ස්පීකර්ෆෝන් ක්‍රියා කරන්න හෝ නොකරන්න"</string>
+    <string name="description_playback_seek">"Playback ස්ථානය සොයාබලන්න"</string>
+    <string name="description_rate_decrease">"Playback අනුපාතය අඩුවේ"</string>
+    <string name="description_rate_increase">"Playback අනුපාතය වැඩිවේ"</string>
+    <string name="action_menu_call_history_description">"ඇමතුම් ඉතිහාසය"</string>
+    <string name="action_menu_overflow_description">"තවත් විකල්ප"</string>
+    <string name="action_menu_dialpad_button">"ඩයල් පෑඩය"</string>
+    <string name="menu_copy">"පිටපත්කරණය"</string>
+    <string name="menu_show_outgoing_only">"පිටතට යන ඒවා පමණක් පෙන්වන්න"</string>
+    <string name="menu_show_incoming_only">"එන ඒවා පමණක් පෙන්වන්න"</string>
+    <string name="menu_show_missed_only">"මඟ හැරුණු ඒවා පමණක් පෙන්වන්න"</string>
+    <string name="menu_show_voicemails_only">"හඬ තැපැල් පමණක් පෙන්වන්න"</string>
+    <string name="menu_show_all_calls">"සියලු ඇමතුම් පෙන්වන්න"</string>
+    <string name="add_contact">"සම්බන්ධතා වලට එක් කරන්න"</string>
+    <string name="add_2sec_pause">"තත්පර 2 ක විරාමයක් එක් කරන්න"</string>
+    <string name="add_wait">"රැඳී සිටීම එක් කරන්න"</string>
+    <string name="menu_select_account">"ගිණුම තෝරන්න"</string>
+    <string name="dialer_settings_label">"සැකසීම්"</string>
+    <string name="menu_newContact">"නව සම්බන්ධතාවයක්"</string>
+    <string name="menu_allContacts">"සියලුම සම්බන්ධතා"</string>
+    <string name="callDetailTitle">"ඇමතුම් විස්තර"</string>
+    <string name="toast_call_detail_error">"අයැදුම් කළ ඇමතුම සඳහා විස්තර කියවිය නොහැකි විය."</string>
+    <string name="dialer_useDtmfDialpad">"ස්පර්ශ නාද යතුරුපෑඩය භාවිතා කරන්න"</string>
+    <string name="dialer_returnToInCallScreen">"පවතින ඇමතුමට නැවත යන්න"</string>
+    <string name="dialer_addAnotherCall">"ඇමතුමක් එක් කරන්න"</string>
+    <string name="type_incoming">"එන ඇමතුම"</string>
+    <string name="type_outgoing">"පිටතට යන ඇමතුම"</string>
+    <string name="type_missed">"මඟ හැරුණු ඇමතුම"</string>
+    <string name="type_incoming_video">"පැමිණෙන වීඩියෝ ඇමතුම"</string>
+    <string name="type_outgoing_video">"පිටවන වීඩියෝ ඇමතුම"</string>
+    <string name="type_missed_video">"මගහැරුණු වීඩියෝ ඇමතුම"</string>
+    <string name="type_voicemail">"හඬ තැපෑල"</string>
+    <string name="actionIncomingCall">"එන ඇමතුම්"</string>
+    <string name="description_call_log_play_button">"හඬ තැපෑල ධාවනය කිරීම"</string>
+    <string name="description_view_contact">"<xliff:g id="NAME">%1$s</xliff:g> සම්බන්ධතාවය බලන්න"</string>
+    <string name="description_call">"<xliff:g id="NAME">%1$s</xliff:g> අමතන්න"</string>
+    <string name="description_contact_details">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> සඳහා ඇමතුම් විස්තර"</string>
+    <string name="description_new_voicemail">"නව හඬ තැපෑල."</string>
+    <string name="description_num_calls">"ඇමතුම් <xliff:g id="NUMBEROFCALLS">%1$s</xliff:g>."</string>
+    <string name="description_video_call">"වීඩියෝ ඇමතුම."</string>
+    <string name="description_send_text_message">"<xliff:g id="NAME">%1$s</xliff:g> වෙත කෙටි පණිවිඩයක් යවන්න"</string>
+    <string name="description_call_log_unheard_voicemail">"අසා නොමැති හඬ තැපෑල"</string>
+    <string name="description_start_voice_search">"හඬ සෙවීම අරඹන්න"</string>
+    <string name="menu_callNumber">"<xliff:g id="NUMBER">%s</xliff:g> අමතන්න"</string>
+    <string name="unknown">"නොදනී"</string>
+    <string name="voicemail">"හඬ තැපෑල"</string>
+    <string name="private_num">"පුද්ගලික අංකය"</string>
+    <string name="payphone">"ගෙවුම් දුරකථනය"</string>
+    <string name="dialerKeyboardHintText">"ඩයල් කිරීමට යතුරු පුවරුව භාවිතා කරන්න"</string>
+    <string name="dialerDialpadHintText">"ඇමතුමක් එක් කිරීමට අමතන්න"</string>
+    <string name="callDetailsDurationFormat">"මිනිත්තු <xliff:g id="MINUTES">%s</xliff:g> තත්පර <xliff:g id="SECONDS">%s</xliff:g>"</string>
+    <string name="dialog_phone_call_prohibited_message">"ඇමතුම යැව්වේ නැත"</string>
+    <string name="dialog_voicemail_not_ready_message">"හඬ තැපෑල සකස් කර ගැනීමට, මෙනු &gt; සැකසීම් වෙත යන්න."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"හඬ තැපෑල ඇමතීමට, මුලින්ම ගුවන්යානා ආකාරය වසා දමන්න."</string>
+    <string name="contact_list_loading">"පූරණය වෙමින්..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"SIM පතෙන් පූරණය කරමින්…"</string>
+    <string name="simContacts_title">"SIM පත් සම්බන්ධතා"</string>
+    <string name="add_contact_not_available">"මෙම අංගය භාවිතා කිරීමට සම්බන්ධතා යෙදුම නැවත සබල කරන්න."</string>
+    <string name="voice_search_not_available">"හඬ සෙවුම පවතින්නේ නැත"</string>
+    <string name="call_not_available">"දුරකථන යෙදුම අබල කර ඇති නිසා දුරකථන ඇමතුම ලබාගැනීම කළ නොහැක."</string>
+    <string name="activity_not_available">"තෝරාගන්නා ලද ක්‍රියාව හසුරුවීමට ස්ථාපනය කරන ලද ක්‍රියාකරකම් නොතිබේ."</string>
+    <string name="dialer_hint_find_contact">"නමක් හෝ දුරකථන අංකයක් ටයිප් කරන්න"</string>
+    <string name="recentMissed_empty">"ඔබට මෑත හමු නොවූ ඇමතුම් නොමැත."</string>
+    <string name="recentVoicemails_empty">"ඔබට මෑත හඬ තැපෑල නොමැත."</string>
+    <string name="show_favorites_only">"ප්‍රියතමයන් පමණක් පෙන්වන්න"</string>
+    <string name="call_log_activity_title">"ඉතිහාසය"</string>
+    <string name="call_log_all_title">"සියලු"</string>
+    <string name="call_log_missed_title">"මග හැරුණේය"</string>
+    <string name="call_log_voicemail_title">"හඬ තැපෑල"</string>
+    <string name="tab_speed_dial">"වේගවත් ඇමතීම"</string>
+    <string name="tab_recents">"මෑත"</string>
+    <string name="tab_all_contacts">"සම්බන්ධතා"</string>
+    <string name="favorite_hidden">"ප්‍රියතමයන්ගෙන් ඉවත් කරන්න"</string>
+    <string name="favorite_hidden_undo">"අස් කරන්න"</string>
+    <string name="search_shortcut_call_number">"<xliff:g id="NUMBER">%s</xliff:g> අමතන්න"</string>
+    <string name="search_shortcut_add_to_contacts">"සම්බන්ධතා වලට එක් කරන්න"</string>
+    <string name="search_shortcut_make_video_call">"වීඩියෝ ඇමතුමක් ලබාගන්න"</string>
+    <string name="recents_footer_text">"සම්පූර්ණ ඇමතුම් ඉතිහාසය බලන්න"</string>
+    <string name="num_missed_calls">"නව මඟ හැරුණු ඇමතුම් <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="speed_dial_empty">"ඔබ නිතර අමතන\n අංක සහ ප්‍රියතම ඒවා සඳහා\nඑක් ස්පර්ශයෙන් ඇමතීම වේගවත් ඇමතීමයි."</string>
+    <string name="all_contacts_empty">"ඔබ ළඟ සම්බන්ධතා කිසිවක් නොමැත."</string>
+    <string name="contact_tooltip">"සියලු අංක බැලීමට පින්තූරය ටට්ටු කරන්න නැතහොත් නැවත සැකසීමට ඔබා රඳවා සිටින්න"</string>
+    <string name="description_dismiss">"ඉවතලන්න"</string>
+    <string name="remove_contact">"ඉවත් කරන්න"</string>
+    <string name="favorites_menu_all_contacts">"සියලු සම්බන්ධතා"</string>
+    <string name="call_log_action_call_back">"නැවත අමතන්න"</string>
+    <string name="call_log_action_video_call">"වීඩියෝ ඇමතුම"</string>
+    <string name="call_log_action_voicemail">"අහනවා"</string>
+    <string name="call_log_action_details">"විස්තර"</string>
+    <string name="description_incoming_missed_call">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g> වෙතින් මඟහැරුණු ඇමතුම."</string>
+    <string name="description_incoming_answered_call">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g> වෙතින් පිළිතුරු දුන් ඇමතුම."</string>
+    <string name="description_outgoing_call">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g> වෙත අමතන්න."</string>
+    <string name="description_call_back_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> නැවත අමතන්න"</string>
+    <string name="description_video_call_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> වෙත වීඩියෝ ඇමතුම."</string>
+    <string name="description_voicemail_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> වෙතින් හඬ තැපෑලට සවන් දෙන්න"</string>
+    <string name="description_details_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> සඳහා ඇමතුම් විස්තර"</string>
+    <string name="toast_entry_removed">"ඇමතුම් ලෝග ඇතුළත් කිරීම මකන ලදි."</string>
+    <string name="toast_caller_id_reported">"සම්බන්ධතා වාර්තා කරන ලදි."</string>
+    <string name="call_log_action_report">"වාර්තාව"</string>
+    <string name="call_log_header_today">"අද"</string>
+    <string name="call_log_header_yesterday">"ඊයේ"</string>
+    <string name="call_log_header_other">"වඩා පරණ"</string>
+    <string name="call_detail_list_header">"ඇමතුම් ලැයිස්තුව"</string>
+    <string name="voicemail_speaker_on">"ශබ්දවාහිනී සක්‍රිය කරන්න."</string>
+    <string name="voicemail_speaker_off">"ශබ්දවාහිනී අක්‍රිය කරන්න."</string>
+    <string name="voicemail_play_faster">"වේගයෙන් ධාවනය කරන්න."</string>
+    <string name="voicemail_play_slower">"හෙමින් ධාවනය කරන්න."</string>
+    <string name="voicemail_play_start_pause">"නැවත ධාවනයෙදී ආරම්භ කරන්න හෝ විරාමය කරන්න."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"පොදු සැකසීම්"</string>
+    <string name="general_settings_description">"සම්බන්ධතා දර්ශනය, හඬ සහ වේගවත් ප්‍රතිචාරයන්"</string>
+    <string name="contact_display_options_category_title">"සම්බන්ධතා දර්ශනය කිරීමේ විකල්ප"</string>
+    <string name="sounds_and_vibrate_category_title">"හඬ සහ කම්පන"</string>
+    <string name="ringtone_title">"දුරකථන රිගින්ටෝනය"</string>
+    <string name="vibrate_on_ring_title">"ඇමතුම් සඳහා කම්පනයද කරන්න"</string>
+    <string name="dtmf_tone_enable_title">"ඩයල්පෑඩ ස්පර්ශක හඬ"</string>
+    <string name="other_settings_title">"වෙනත්"</string>
+    <string name="respond_via_sms_setting_title">"ක්ෂණික ප්‍රතිචාර"</string>
+    <string name="call_settings_label">"ඇමතුම් සැකසීම්"</string>
+    <string name="call_settings_description">"හඬ තැපෑල , ඇමතුමේ රැඳී සිටීම, සහ වෙනත්"</string>
+</resources>

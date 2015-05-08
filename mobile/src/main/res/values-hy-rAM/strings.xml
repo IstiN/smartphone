@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Համարհավաքիչ"</string>
+    <string name="launcherActivityLabel">"Հեռախոս"</string>
+    <string name="dialerIconLabel">"Հեռախոս"</string>
+    <string name="recentCallsIconLabel">"Զանգերի գրանցամատյան"</string>
+    <string name="menu_sendTextMessage">"Ուղարկել տեքստային հաղորդագրություն"</string>
+    <string name="recentCalls_callNumber">"Զանգել <xliff:g id="NAME">%s</xliff:g>-ին"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Խմբագրել համարը զանգելուց առաջ"</string>
+    <string name="recentCalls_addToContact">"Ավելացնել կոնտակտներում"</string>
+    <string name="recentCalls_removeFromRecentList">"Հեռացնել զանգերի գրանցամատյանից"</string>
+    <string name="recentCalls_deleteAll">"Մաքրել զանգերի գրանցամատյանը"</string>
+    <string name="recentCalls_trashVoicemail">"Ջնջել ձայնային փոստը"</string>
+    <string name="recentCalls_shareVoicemail">"Տարածել ձայնային փոստը"</string>
+    <string name="recentCalls_empty">"Ձեր զանգերի մատյանը դատարկ է:"</string>
+    <string name="clearCallLogConfirmation_title">"Մաքրե՞լ զանգերի գրանցամատյանը"</string>
+    <string name="clearCallLogConfirmation">"Ձեր բոլոր զանգերի գրառումները կջնջվեն:"</string>
+    <string name="clearCallLogProgress_title">"Զանգերի գրանցամատյանը մաքրվում է..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Ձայնային փոստ"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> ձայնային փոստ"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Նվագարկել"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Նոր ձայնային փոստ <xliff:g id="CALLER">%1$s</xliff:g>-ից"</string>
+    <string name="voicemail_playback_error">"Հնարավոր չէ նվագարկել ձայնային փոստը:"</string>
+    <string name="voicemail_buffering">"Պահնակավորում..."</string>
+    <string name="voicemail_fetching_content">"Ձայնային փոստի ստացում..."</string>
+    <string name="voicemail_fetching_timout">"Չհաջողվեց ստանալ ձայնային փոստը:"</string>
+    <string name="call_log_voicemail_header">"Միայն ձայնային փոստով զանգերը"</string>
+    <string name="call_log_incoming_header">"Միայն մուտքային զանգեր"</string>
+    <string name="call_log_outgoing_header">"Միայն ելքային զանգերը"</string>
+    <string name="call_log_missed_header">"Միայն բաց թողնված զանգերը"</string>
+    <string name="voicemail_status_voicemail_not_available">"Հնարավոր չէ կապ հաստատել ձայնային փոստի սերվերի հետ:"</string>
+    <string name="voicemail_status_messages_waiting">"Հնարավոր չէ կապ հաստատել ձայնային փոստի սերվերի հետ: Նոր ձայնային փոստերը սպասում են:"</string>
+    <string name="voicemail_status_configure_voicemail">"Կարգավորեք ձեր ձայնային փոստը:"</string>
+    <string name="voicemail_status_audio_not_available">"Ձայնանյութը հասանելի չէ:"</string>
+    <string name="voicemail_status_action_configure">"Կարգավորել"</string>
+    <string name="voicemail_status_action_call_server">"Միանալ ձայնային փոստին"</string>
+    <string name="voicemail_speed_slowest">"Ամենադանդաղ արագություն"</string>
+    <string name="voicemail_speed_slower">"Դանդաղ արագություն"</string>
+    <string name="voicemail_speed_normal">"Միջին արագություն"</string>
+    <string name="voicemail_speed_faster">"Արագ"</string>
+    <string name="voicemail_speed_fastest">"Շատ արագ"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Ընտրել համարը"</string>
+    <string name="call_disambig_title">"Ընտրել համարը"</string>
+    <string name="make_primary">"Հիշել այս ընտրությունը"</string>
+    <string name="description_image_button_one">"մեկ"</string>
+    <string name="description_image_button_two">"երկու"</string>
+    <string name="description_image_button_three">"երեք"</string>
+    <string name="description_image_button_four">"չորս"</string>
+    <string name="description_image_button_five">"հինգ"</string>
+    <string name="description_image_button_six">"վեց"</string>
+    <string name="description_image_button_seven">"յոթ"</string>
+    <string name="description_image_button_eight">"ութ"</string>
+    <string name="description_image_button_nine">"ինը"</string>
+    <string name="description_image_button_star">"աստղանշել"</string>
+    <string name="description_image_button_zero">"զրո"</string>
+    <string name="description_image_button_pound">"ֆունտ"</string>
+    <string name="description_search_button">"որոնել"</string>
+    <string name="description_dial_button">"համարարկել"</string>
+    <string name="description_digits_edittext">"համարհավաքման հեռախոսահամարը"</string>
+    <string name="description_playback_start_stop">"Միացնել կամ անջատել նվագարկումը"</string>
+    <string name="description_playback_speakerphone">"Միացնել կամ անջատել բարձրախոսը"</string>
+    <string name="description_playback_seek">"Փնտրել նվագարկման դիրքը"</string>
+    <string name="description_rate_decrease">"Իջեցնել նվագարկման վարկանիշը"</string>
+    <string name="description_rate_increase">"Բարձրացնել նվագարկման վարկանիշը"</string>
+    <string name="action_menu_call_history_description">"Զանգերի պատմությունը"</string>
+    <string name="action_menu_overflow_description">"Այլ ընտրանքներ"</string>
+    <string name="action_menu_dialpad_button">"թվաշար"</string>
+    <string name="menu_copy">"Պատճենել"</string>
+    <string name="menu_show_outgoing_only">"Ցույց տալ միայն ելքայինները"</string>
+    <string name="menu_show_incoming_only">"Ցույց տալ միայն մուտքայինները"</string>
+    <string name="menu_show_missed_only">"Ցույց տալ միայն բաց թողնվածները"</string>
+    <string name="menu_show_voicemails_only">"Ցուցադրել միայն ձայնային փոստերը"</string>
+    <string name="menu_show_all_calls">"Ցուցադրել բոլոր զանգերը"</string>
+    <string name="add_contact">"Ավելացնել կոնտակտներում"</string>
+    <string name="add_2sec_pause">"Ավելացնել 2 վայրկյան դադար"</string>
+    <string name="add_wait">"Ավելացնել սպասում"</string>
+    <string name="menu_select_account">"Ընտրեք հաշիվ"</string>
+    <string name="dialer_settings_label">"Կարգավորումներ"</string>
+    <string name="menu_newContact">"Նոր կոնտակտ"</string>
+    <string name="menu_allContacts">"Բոլոր կոնտակտները"</string>
+    <string name="callDetailTitle">"Զանգի մանրամասները"</string>
+    <string name="toast_call_detail_error">"Չհաջողվեց կարդալ հայցվող զանգի մանրամասները:"</string>
+    <string name="dialer_useDtmfDialpad">"Օգտագործել հնչերանգներով ստեղնաշարը"</string>
+    <string name="dialer_returnToInCallScreen">"Վերադառնալ ընթացիկ զանգին"</string>
+    <string name="dialer_addAnotherCall">"Ավելացնել զանգ"</string>
+    <string name="type_incoming">"Մուտքային զանգ"</string>
+    <string name="type_outgoing">"Ելքային զանգ"</string>
+    <string name="type_missed">"Բաց թողնված զանգ"</string>
+    <string name="type_incoming_video">"Մուտքային տեսազանգ"</string>
+    <string name="type_outgoing_video">"Ելքային տեսազանգ"</string>
+    <string name="type_missed_video">"Բաց թողնված տեսազանգ"</string>
+    <string name="type_voicemail">"Ձայնային փոստ"</string>
+    <string name="actionIncomingCall">"Մուտքային զանգեր"</string>
+    <string name="description_call_log_play_button">"Նվագարկել ձայնային փոստը"</string>
+    <string name="description_view_contact">"Դիտել <xliff:g id="NAME">%1$s</xliff:g> կոնտակտը"</string>
+    <string name="description_call">"Զանգել <xliff:g id="NAME">%1$s</xliff:g>-ին"</string>
+    <string name="description_contact_details">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>-ի կոնտակտային տվյալները"</string>
+    <string name="description_new_voicemail">"Նոր ձայնային հաղորդագրություն:"</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> զանգ:"</string>
+    <string name="description_video_call">"Տեսազանգ"</string>
+    <string name="description_send_text_message">"Ուղարկել տեքստային հաղորդագրություն <xliff:g id="NAME">%1$s</xliff:g>-ին"</string>
+    <string name="description_call_log_unheard_voicemail">"Չլսված ձայնային փոստ"</string>
+    <string name="description_start_voice_search">"Սկսկեք ձայնային որոնումը"</string>
+    <string name="menu_callNumber">"Զանգել <xliff:g id="NUMBER">%s</xliff:g>-ին"</string>
+    <string name="unknown">"Անհայտ"</string>
+    <string name="voicemail">"Ձայնային փոստ"</string>
+    <string name="private_num">"Անձնական համարը"</string>
+    <string name="payphone">"Վճարել հեռախոսը"</string>
+    <string name="dialerKeyboardHintText">"Օգտագործել ստեղնաշարը` համարհավաքելու համար"</string>
+    <string name="dialerDialpadHintText">"Համարհավաքել՝ զանգելու համար"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g>:<xliff:g id="SECONDS">%s</xliff:g>"</string>
+    <string name="dialog_phone_call_prohibited_message">"Զանգը չի առաքվել"</string>
+    <string name="dialog_voicemail_not_ready_message">"Ձայնային փոստը կարգավորելու համար գնացեք Ցանկ &gt; Կարգավորումներ:"</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Ձայնային փոստին զանգելու համար նախ անջատեք թռիչքային ռեժիմը:"</string>
+    <string name="contact_list_loading">"Բեռնում..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"SIM քարտը բեռնվում է..."</string>
+    <string name="simContacts_title">"SIM քարտի կոնտակտները"</string>
+    <string name="add_contact_not_available">"Կրկին միացրեք Կոնտակտների ծրագիրը` այս գործառույթն օգտագործելու համար:"</string>
+    <string name="voice_search_not_available">"Ձայնային որոնումն անհասանելի է:"</string>
+    <string name="call_not_available">"Հնարավոր չէ զանգահարել, քանի որ Հեռախոս հավելվածն անջատված է:"</string>
+    <string name="activity_not_available">"Ընտրված գործողությունը կարգավորելու համար ոչ մի տեղադրված գործունեություն հասանելի չէ:"</string>
+    <string name="dialer_hint_find_contact">"Մուտքագրեք անունը կամ հեռախոսահամարը"</string>
+    <string name="recentMissed_empty">"Վերջերս բաց թողած զանգեր չունեք:"</string>
+    <string name="recentVoicemails_empty">"Վերջերս ստացված ձայնային փոստ չունեք:"</string>
+    <string name="show_favorites_only">"Ցույց տալ միայն ընտրյալները"</string>
+    <string name="call_log_activity_title">"Պատմություն"</string>
+    <string name="call_log_all_title">"Բոլորը"</string>
+    <string name="call_log_missed_title">"Բաց թողնված"</string>
+    <string name="call_log_voicemail_title">"Ձայնափոստ"</string>
+    <string name="tab_speed_dial">"Արագ համարհավաքում"</string>
+    <string name="tab_recents">"Վերջինները"</string>
+    <string name="tab_all_contacts">"Կոնտակտներ"</string>
+    <string name="favorite_hidden">"Հեռացված է ընտրյալներից"</string>
+    <string name="favorite_hidden_undo">"Հետարկել"</string>
+    <string name="search_shortcut_call_number">"Զանգել <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Ավելացնել կոնտակտներում"</string>
+    <string name="search_shortcut_make_video_call">"Կատարել տեսազանգ"</string>
+    <string name="recents_footer_text">"Դիտել բոլոր զանգերի պատմությունը"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> նոր բաց թողնված զանգ"</string>
+    <string name="speed_dial_empty">"Արագ համարհավաքումը մեկ հպումով կհավաքի\nընտրանու կամ այնպիսի համարները\n, որոնց հաճախակի եք զանգահարում:"</string>
+    <string name="all_contacts_empty">"Դուք կոնտակտներ չունեք:"</string>
+    <string name="contact_tooltip">"Հպեք նկարին՝ բոլոր համարները տեսնելու, կամ հպեք ու պահեք՝ վերադասավորելու համար:"</string>
+    <string name="description_dismiss">"Անտեսել"</string>
+    <string name="remove_contact">"Հեռացնել"</string>
+    <string name="favorites_menu_all_contacts">"ԲՈԼՈՐ ԿՈՆՏԱԿՏՆԵՐԸ"</string>
+    <string name="call_log_action_call_back">"ՀԵՏ ԶԱՆԳԵԼ"</string>
+    <string name="call_log_action_video_call">"ՏԵՍԱԶԱՆԳ"</string>
+    <string name="call_log_action_voicemail">"ԼՍԵԼ"</string>
+    <string name="call_log_action_details">"ՄԱՆՐԱՄԱՍՆԵՐ"</string>
+    <string name="description_incoming_missed_call">"Բաց թողնված զանգ՝ <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>:"</string>
+    <string name="description_incoming_answered_call">"Ընդունված զանգ՝ <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>:"</string>
+    <string name="description_outgoing_call">"Կատարված զանգ՝ <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>:"</string>
+    <string name="description_call_back_action">"Հետ զանգել <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>-ին"</string>
+    <string name="description_video_call_action">"Կատարված տեսազանգ՝ <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>:"</string>
+    <string name="description_voicemail_action">"Լսել ձայնային փոստը <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>-ից"</string>
+    <string name="description_details_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> զանգի մասին տվյալներ"</string>
+    <string name="toast_entry_removed">"Գրառումը ջնջվեց:"</string>
+    <string name="toast_caller_id_reported">"Կոնտակտի մասին զեկուցվեց:"</string>
+    <string name="call_log_action_report">"ԶԵԿՈՒՑԵԼ"</string>
+    <string name="call_log_header_today">"Այսօր"</string>
+    <string name="call_log_header_yesterday">"Երեկ"</string>
+    <string name="call_log_header_other">"Ավելի հին"</string>
+    <string name="call_detail_list_header">"Զանգերի ցանկ"</string>
+    <string name="voicemail_speaker_on">"Միացնել բարձրախոսը:"</string>
+    <string name="voicemail_speaker_off">"Անջատել բարձրախոսը:"</string>
+    <string name="voicemail_play_faster">"Նվագարկել ավելի արագ:"</string>
+    <string name="voicemail_play_slower">"Նվագարկել ավելի դանդաղ:"</string>
+    <string name="voicemail_play_start_pause">"Սկսել կամ դադարեցնել նվագարկումը:"</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Հիմնական կարգավորումներ"</string>
+    <string name="general_settings_description">"Կոնտակնտների ցուցադրում, ձայներ և արագ պատասխաններ"</string>
+    <string name="contact_display_options_category_title">"Կոնտակտի ցուցադրման ընտրանքները"</string>
+    <string name="sounds_and_vibrate_category_title">"Զանգերանգ և թրթռազանգ"</string>
+    <string name="ringtone_title">"Հեռախոսի զանգերանգ"</string>
+    <string name="vibrate_on_ring_title">"Նաև թրթռալ զանգերի ժամանակ"</string>
+    <string name="dtmf_tone_enable_title">"Թվաշարի ձայներանգներ"</string>
+    <string name="other_settings_title">"Այլ"</string>
+    <string name="respond_via_sms_setting_title">"Արագ պատասխաններ"</string>
+    <string name="call_settings_label">"Զանգի կարգավորումները"</string>
+    <string name="call_settings_description">"Ձայնային փոստը, սպասվող զանգը և այլն"</string>
+</resources>

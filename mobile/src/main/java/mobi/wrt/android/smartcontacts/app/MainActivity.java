@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.internal.widget.TintManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -211,11 +210,11 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return getString(R.string.speed_dial);
+                        return getString(R.string.tab_speed_dial);
                     case 1:
-                        return getString(R.string.recent);
+                        return getString(R.string.tab_recents);
                     case 2:
-                        return getString(R.string.contacts);
+                        return getString(R.string.tab_all_contacts);
                 }
                 return null;
             }

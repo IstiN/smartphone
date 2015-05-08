@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Oppringer"</string>
+    <string name="launcherActivityLabel">"Telefon"</string>
+    <string name="dialerIconLabel">"Telefon"</string>
+    <string name="recentCallsIconLabel">"Logg"</string>
+    <string name="menu_sendTextMessage">"Send SMS-melding"</string>
+    <string name="recentCalls_callNumber">"Ring <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Rediger nummer før anrop"</string>
+    <string name="recentCalls_addToContact">"Legg til kontakter"</string>
+    <string name="recentCalls_removeFromRecentList">"Fjern fra anropslogg"</string>
+    <string name="recentCalls_deleteAll">"Tøm anropslogg"</string>
+    <string name="recentCalls_trashVoicemail">"Slett talepost"</string>
+    <string name="recentCalls_shareVoicemail">"Del talepost"</string>
+    <string name="recentCalls_empty">"Samtaleloggen din er tom."</string>
+    <string name="clearCallLogConfirmation_title">"Tømme samtaleloggen?"</string>
+    <string name="clearCallLogConfirmation">"Alle samtalelogger kommer til å slettes."</string>
+    <string name="clearCallLogProgress_title">"Tømmer anropsloggen …"</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Talepostkasse"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> talemeldinger"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Spill av"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Nye talemeldinger fra <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Kunne ikke spille av talemelding."</string>
+    <string name="voicemail_buffering">"Bufrer …"</string>
+    <string name="voicemail_fetching_content">"Henter talepost …"</string>
+    <string name="voicemail_fetching_timout">"Kunne ikke hente talepost."</string>
+    <string name="call_log_voicemail_header">"Bare anrop som gikk til talepostkasse"</string>
+    <string name="call_log_incoming_header">"Bare innkommende anrop"</string>
+    <string name="call_log_outgoing_header">"Bare utgående anrop"</string>
+    <string name="call_log_missed_header">"Bare ubesvarte anrop"</string>
+    <string name="voicemail_status_voicemail_not_available">"Kan ikke koble til taleposttjener."</string>
+    <string name="voicemail_status_messages_waiting">"Kan ikke koble til taleposttjener. Nye talemeldinger venter."</string>
+    <string name="voicemail_status_configure_voicemail">"Konfigurer talepost."</string>
+    <string name="voicemail_status_audio_not_available">"Lyd er ikke tilgjengelig."</string>
+    <string name="voicemail_status_action_configure">"Konfigurer"</string>
+    <string name="voicemail_status_action_call_server">"Ring talepostkasse"</string>
+    <string name="voicemail_speed_slowest">"Laveste hastighet"</string>
+    <string name="voicemail_speed_slower">"Lav hastighet"</string>
+    <string name="voicemail_speed_normal">"Normal hastighet"</string>
+    <string name="voicemail_speed_faster">"Høy hastighet"</string>
+    <string name="voicemail_speed_fastest">"Høyeste hastighet"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Velg nummer"</string>
+    <string name="call_disambig_title">"Velg nummer"</string>
+    <string name="make_primary">"Husk dette valget"</string>
+    <string name="description_image_button_one">"en"</string>
+    <string name="description_image_button_two">"to"</string>
+    <string name="description_image_button_three">"tre"</string>
+    <string name="description_image_button_four">"fire"</string>
+    <string name="description_image_button_five">"fem"</string>
+    <string name="description_image_button_six">"seks"</string>
+    <string name="description_image_button_seven">"sju"</string>
+    <string name="description_image_button_eight">"åtte"</string>
+    <string name="description_image_button_nine">"ni"</string>
+    <string name="description_image_button_star">"stjerne"</string>
+    <string name="description_image_button_zero">"null"</string>
+    <string name="description_image_button_pound">"firkant"</string>
+    <string name="description_search_button">"søk"</string>
+    <string name="description_dial_button">"ring"</string>
+    <string name="description_digits_edittext">"ring til"</string>
+    <string name="description_playback_start_stop">"Spill av eller stopp avspillingen"</string>
+    <string name="description_playback_speakerphone">"Slå høyttaleren på eller av"</string>
+    <string name="description_playback_seek">"Søk etter avspillingsposisjon"</string>
+    <string name="description_rate_decrease">"Reduser avspillingshastigheten"</string>
+    <string name="description_rate_increase">"Øk avspillingshastigheten"</string>
+    <string name="action_menu_call_history_description">"Anropslogg"</string>
+    <string name="action_menu_overflow_description">"Flere alternativer"</string>
+    <string name="action_menu_dialpad_button">"tastatur"</string>
+    <string name="menu_copy">"Kopiér"</string>
+    <string name="menu_show_outgoing_only">"Vis bare utgående"</string>
+    <string name="menu_show_incoming_only">"Vis bare innkommende"</string>
+    <string name="menu_show_missed_only">"Vis bare tapte"</string>
+    <string name="menu_show_voicemails_only">"Vis bare talemeldinger"</string>
+    <string name="menu_show_all_calls">"Vis alle samtaler"</string>
+    <string name="add_contact">"Legg til i kontakter"</string>
+    <string name="add_2sec_pause">"Legg til pause på 2 sek."</string>
+    <string name="add_wait">"Legg til Vent"</string>
+    <string name="menu_select_account">"Velg konto"</string>
+    <string name="dialer_settings_label">"Innstillinger"</string>
+    <string name="menu_newContact">"Ny kontakt"</string>
+    <string name="menu_allContacts">"Alle kontakter"</string>
+    <string name="callDetailTitle">"Samtaleinformasjon"</string>
+    <string name="toast_call_detail_error">"Kunne ikke lese informasjon for forespurt samtale."</string>
+    <string name="dialer_useDtmfDialpad">"Bruk tonetastatur"</string>
+    <string name="dialer_returnToInCallScreen">"Gå tilbake til pågående samtale"</string>
+    <string name="dialer_addAnotherCall">"Legg til en samtale"</string>
+    <string name="type_incoming">"Innkommende samtale"</string>
+    <string name="type_outgoing">"Utgående samtale"</string>
+    <string name="type_missed">"Tapt anrop"</string>
+    <string name="type_incoming_video">"Innkommende videoanrop"</string>
+    <string name="type_outgoing_video">"Utgående videoanrop"</string>
+    <string name="type_missed_video">"Ubesvart videoanrop"</string>
+    <string name="type_voicemail">"Talepostkasse"</string>
+    <string name="actionIncomingCall">"Innkommende samtaler"</string>
+    <string name="description_call_log_play_button">"Spill av talemelding"</string>
+    <string name="description_view_contact">"Se kontakten <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Ring til <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"Kontaktinformasjon for <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_new_voicemail">"Ny talemelding."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> samtaler."</string>
+    <string name="description_video_call">"Videoanrop."</string>
+    <string name="description_send_text_message">"Send tekstmelding til <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Ikke avspilt talepost"</string>
+    <string name="description_start_voice_search">"Start talesøk"</string>
+    <string name="menu_callNumber">"Ring <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Ukjent"</string>
+    <string name="voicemail">"Telefonsvarer"</string>
+    <string name="private_num">"Skjult nummer"</string>
+    <string name="payphone">"Telefonkiosk"</string>
+    <string name="dialerKeyboardHintText">"Bruk tastaturet for å ringe"</string>
+    <string name="dialerDialpadHintText">"Ring for å legge til en samtale"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> min <xliff:g id="SECONDS">%s</xliff:g> sek"</string>
+    <string name="dialog_phone_call_prohibited_message">"Anrop ikke utført"</string>
+    <string name="dialog_voicemail_not_ready_message">"Du konfigurerer talepost ved å gå til Meny &amp;gt Innstillinger"</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Du må slå av flymodus før du kan sjekke talepostkassen."</string>
+    <string name="contact_list_loading">"Laster inn …"</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Henter fra SIM-kort…"</string>
+    <string name="simContacts_title">"Kontakter på SIM-kort"</string>
+    <string name="add_contact_not_available">"Aktivér Kontakter-appen på nytt for å bruke denne funksjonen."</string>
+    <string name="voice_search_not_available">"Talesøk er ikke tilgjengelig."</string>
+    <string name="call_not_available">"Kan ikke ringe fordi Telefon-appen er deaktivert."</string>
+    <string name="activity_not_available">"Det er ingen installert aktivitet tilgjengelig for å håndtere den valgte handlingen."</string>
+    <string name="dialer_hint_find_contact">"Skriv inn et navn eller telefonnummer"</string>
+    <string name="recentMissed_empty">"Du har ingen nylig tapte anrop."</string>
+    <string name="recentVoicemails_empty">"Du har ingen nylige talepostmeldinger."</string>
+    <string name="show_favorites_only">"Vis bare favoritter"</string>
+    <string name="call_log_activity_title">"Logg"</string>
+    <string name="call_log_all_title">"Alle"</string>
+    <string name="call_log_missed_title">"Ikke besvart"</string>
+    <string name="call_log_voicemail_title">"Talemeldinger"</string>
+    <string name="tab_speed_dial">"Hurtigoppringing"</string>
+    <string name="tab_recents">"Sist brukte"</string>
+    <string name="tab_all_contacts">"Kontakter"</string>
+    <string name="favorite_hidden">"Fjernet fra favoritter"</string>
+    <string name="favorite_hidden_undo">"Angre"</string>
+    <string name="search_shortcut_call_number">"Ring <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Legg til i kontakter"</string>
+    <string name="search_shortcut_make_video_call">"Start en videosamtale"</string>
+    <string name="recents_footer_text">"Se hele anropsloggen"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> nye tapte anrop"</string>
+    <string name="speed_dial_empty">"Med hurtigvalg kan du ringe til \nfavoritter og numre\n du bruker ofte, med bare ett trykk."</string>
+    <string name="all_contacts_empty">"Du har ingen kontakter."</string>
+    <string name="contact_tooltip">"Trykk på bildet for å se alle telefonnumrene, eller trykk og hold inne for å endre rekkefølgen"</string>
+    <string name="description_dismiss">"Fjern"</string>
+    <string name="remove_contact">"Fjern"</string>
+    <string name="favorites_menu_all_contacts">"ALLE KONTAKTER"</string>
+    <string name="call_log_action_call_back">"RING TILBAKE"</string>
+    <string name="call_log_action_video_call">"VIDEOANROP"</string>
+    <string name="call_log_action_voicemail">"LYTT"</string>
+    <string name="call_log_action_details">"DETALJER"</string>
+    <string name="description_incoming_missed_call">"Tapt anrop fra <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Besvart anrop fra <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Ring til <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Ring tilbake til <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"Videosamtale startet med <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Lytt til talepostkasse fra <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"Samtaledetaljer for <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="toast_entry_removed">"Oppføringen i samtaleloggen slettet."</string>
+    <string name="toast_caller_id_reported">"Kontakten er rapportert."</string>
+    <string name="call_log_action_report">"RAPPORTÉR"</string>
+    <string name="call_log_header_today">"I dag"</string>
+    <string name="call_log_header_yesterday">"I går"</string>
+    <string name="call_log_header_other">"Eldre"</string>
+    <string name="call_detail_list_header">"Samtaleliste"</string>
+    <string name="voicemail_speaker_on">"Slå på høyttaleren."</string>
+    <string name="voicemail_speaker_off">"Slå av høyttaleren."</string>
+    <string name="voicemail_play_faster">"Spill av raskere."</string>
+    <string name="voicemail_play_slower">"Spill av saktere."</string>
+    <string name="voicemail_play_start_pause">"Start eller stopp avspillingen."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Generelle innstillinger"</string>
+    <string name="general_settings_description">"Visning av kontakter, lyder og hurtigsvar"</string>
+    <string name="contact_display_options_category_title">"Visningsalternativer for kontakter"</string>
+    <string name="sounds_and_vibrate_category_title">"Lyder og vibrering"</string>
+    <string name="ringtone_title">"Telefonringetone"</string>
+    <string name="vibrate_on_ring_title">"Vibrer også når det ringer"</string>
+    <string name="dtmf_tone_enable_title">"Tastetoner for tastaturet"</string>
+    <string name="other_settings_title">"Annet"</string>
+    <string name="respond_via_sms_setting_title">"Hurtigsvar"</string>
+    <string name="call_settings_label">"Samtaleinnstillinger"</string>
+    <string name="call_settings_description">"Talepostkasse, samtale venter og mer"</string>
+</resources>

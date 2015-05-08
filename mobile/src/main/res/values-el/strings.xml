@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Πρόγραμμα κλήσης"</string>
+    <string name="launcherActivityLabel">"Τηλέφωνο"</string>
+    <string name="dialerIconLabel">"Τηλέφωνο"</string>
+    <string name="recentCallsIconLabel">"Αρχείο"</string>
+    <string name="menu_sendTextMessage">"Αποστολή μηνύματος κειμένου"</string>
+    <string name="recentCalls_callNumber">"Κλήση <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Επεξεργασία αριθμού πριν την κλήση"</string>
+    <string name="recentCalls_addToContact">"Προσθήκη στις επαφές"</string>
+    <string name="recentCalls_removeFromRecentList">"Κατάργηση από το αρχείο καταγραφής κλήσεων"</string>
+    <string name="recentCalls_deleteAll">"Εκκαθάριση αρχείου καταγραφής κλήσεων"</string>
+    <string name="recentCalls_trashVoicemail">"Διαγραφή αυτόματου τηλεφωνητή"</string>
+    <string name="recentCalls_shareVoicemail">"Κοινή χρήση αυτόμ. τηλεφωνητή"</string>
+    <string name="recentCalls_empty">"Το αρχείο καταγραφής κλήσεων είναι κενό."</string>
+    <string name="clearCallLogConfirmation_title">"Εκκαθάριση αρχείου;"</string>
+    <string name="clearCallLogConfirmation">"Όλα τα αρχεία κλήσεων θα διαγραφούν."</string>
+    <string name="clearCallLogProgress_title">"Εκκαθάριση αρχ. καταγραφής κλήσεων…"</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Αυτόματος τηλεφωνητής"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> μηνύμ. αυτόμ. τηλεφωνητή"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Αναπαραγωγή"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Νέα μην. αυτ. τηλεφ. από <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Δεν αναπαράχθηκαν τα μην. αυτ. τηλεφ."</string>
+    <string name="voicemail_buffering">"Αποθ. στη πρ. μνήμη"</string>
+    <string name="voicemail_fetching_content">"Ανάκτηση μην. αυτ. τηελφ."</string>
+    <string name="voicemail_fetching_timout">"Δεν ανακτήθηκαν τα μην. αυτ. τηλεφ."</string>
+    <string name="call_log_voicemail_header">"Μόνο κλήσεις με ηχητικά μηνύματα"</string>
+    <string name="call_log_incoming_header">"Μόνο εισερχόμενες κλήσεις"</string>
+    <string name="call_log_outgoing_header">"Μόνο εξερχόμενες κλήσεις"</string>
+    <string name="call_log_missed_header">"Μόνο αναπάντητες κλήσεις"</string>
+    <string name="voicemail_status_voicemail_not_available">"Αδυναμία σύνδεσης με τον διακομιστή αυτόματου τηλεφωνητή."</string>
+    <string name="voicemail_status_messages_waiting">"Αδύν. η σύνδ. με διακομ. αυτόμ. τηλεφ. Υπάρχ. νέα μηνύματα."</string>
+    <string name="voicemail_status_configure_voicemail">"Ρύθμιση του τηλεφωνητή σας."</string>
+    <string name="voicemail_status_audio_not_available">"Ο ήχος δεν είναι διαθέσιμος."</string>
+    <string name="voicemail_status_action_configure">"Ρύθμιση"</string>
+    <string name="voicemail_status_action_call_server">"Κλήση αυτόμ. τηλεφ."</string>
+    <string name="voicemail_speed_slowest">"Μικρότερη δυνατή ταχύτητα"</string>
+    <string name="voicemail_speed_slower">"Χαμηλή ταχύτητα"</string>
+    <string name="voicemail_speed_normal">"Κανονική ταχύτητα"</string>
+    <string name="voicemail_speed_faster">"Μεγάλη ταχύτητα"</string>
+    <string name="voicemail_speed_fastest">"Μεγαλύτερη δυνατή ταχύτητα"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Επιλέξτε αριθμό"</string>
+    <string name="call_disambig_title">"Επιλέξτε αριθμό"</string>
+    <string name="make_primary">"Διατήρηση αυτής της ρύθμισης"</string>
+    <string name="description_image_button_one">"ένα"</string>
+    <string name="description_image_button_two">"δύο"</string>
+    <string name="description_image_button_three">"τρία"</string>
+    <string name="description_image_button_four">"τέσσερα"</string>
+    <string name="description_image_button_five">"πέντε"</string>
+    <string name="description_image_button_six">"έξι"</string>
+    <string name="description_image_button_seven">"επτά"</string>
+    <string name="description_image_button_eight">"οχτώ"</string>
+    <string name="description_image_button_nine">"εννιά"</string>
+    <string name="description_image_button_star">"αστέρι"</string>
+    <string name="description_image_button_zero">"μηδέν"</string>
+    <string name="description_image_button_pound">"σύμβολο δίεσης"</string>
+    <string name="description_search_button">"αναζήτηση"</string>
+    <string name="description_dial_button">"κλήση"</string>
+    <string name="description_digits_edittext">"αριθμός για κλήση"</string>
+    <string name="description_playback_start_stop">"Αναπαραγωγή ή διακοπή αναπαραγωγής"</string>
+    <string name="description_playback_speakerphone">"Ενεργοποίηση ή απενεργοποίηση μεγαφώνου"</string>
+    <string name="description_playback_seek">"Αναζήτηση θέσης αναπαραγωγής"</string>
+    <string name="description_rate_decrease">"Μείωση ρυθμού αναπαραγωγής"</string>
+    <string name="description_rate_increase">"Αύξηση ρυθμού αναπαραγωγής"</string>
+    <string name="action_menu_call_history_description">"Ιστορικό κλήσεων"</string>
+    <string name="action_menu_overflow_description">"Περισσότερες επιλογές"</string>
+    <string name="action_menu_dialpad_button">"πληκτρολόγιο κλήσης"</string>
+    <string name="menu_copy">"Αντιγραφή"</string>
+    <string name="menu_show_outgoing_only">"Εμφάνιση μόνο εξερχόμενων"</string>
+    <string name="menu_show_incoming_only">"Εμφάνιση μόνο εισερχόμενων"</string>
+    <string name="menu_show_missed_only">"Εμφάνιση μόνο αναπάντητων"</string>
+    <string name="menu_show_voicemails_only">"Εμφ. μόνο μην. αυτόμ. τηλεφων."</string>
+    <string name="menu_show_all_calls">"Εμφάνιση όλων"</string>
+    <string name="add_contact">"Προσθήκη στις επαφές"</string>
+    <string name="add_2sec_pause">"Προσθήκη παύσης 2 δευτερολέπτων"</string>
+    <string name="add_wait">"Προσθήκη αναμονής"</string>
+    <string name="menu_select_account">"Επιλογή λογαριασμού"</string>
+    <string name="dialer_settings_label">"Ρυθμίσεις"</string>
+    <string name="menu_newContact">"Νέα επαφή"</string>
+    <string name="menu_allContacts">"Όλες οι επαφές"</string>
+    <string name="callDetailTitle">"Λεπτομέρειες κλήσης"</string>
+    <string name="toast_call_detail_error">"Δεν είναι δυνατή η ανάγνωση λεπτομερειών της κλήσης που ζητήθηκε."</string>
+    <string name="dialer_useDtmfDialpad">"Χρησιμοποιήστε το πληκτρολόγιο αφής ηχητικών τόνων"</string>
+    <string name="dialer_returnToInCallScreen">"Επιστροφή στην κλήση που βρίσκεται σε εξέλιξη"</string>
+    <string name="dialer_addAnotherCall">"Προσθήκη κλήσης"</string>
+    <string name="type_incoming">"Εισερχόμενη κλήση"</string>
+    <string name="type_outgoing">"Εξερχόμενη κλήση"</string>
+    <string name="type_missed">"Αναπάντητη κλήση"</string>
+    <string name="type_incoming_video">"Εισερχόμενη βιντεοκλήση"</string>
+    <string name="type_outgoing_video">"Εξερχόμενη βιντεοκλήση"</string>
+    <string name="type_missed_video">"Αναπάντητη βιντεοκλήση"</string>
+    <string name="type_voicemail">"Αυτόματος τηλεφωνητής"</string>
+    <string name="actionIncomingCall">"Εισερχόμενες κλήσεις"</string>
+    <string name="description_call_log_play_button">"Αναπαραγωγή μηνύματος αυτόματου τηλεφωνητή"</string>
+    <string name="description_view_contact">"Προβολή επαφής <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Κλήση του χρήστη <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"Στοιχεία επικοινωνίας του <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_new_voicemail">"Νέο μήνυμα στον αυτόματο τηλεφωνητή."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> κλήσεις."</string>
+    <string name="description_video_call">"Βιντεοκλήση."</string>
+    <string name="description_send_text_message">"Αποστολή μηνύματος κειμένου στον χρήστη <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Μηνύματα αυτόματου τηλεφωνητή που δεν έχετε ακούσει"</string>
+    <string name="description_start_voice_search">"Έναρξη φωνητικής αναζήτησης"</string>
+    <string name="menu_callNumber">"Κλήση του αριθμού <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Άγνωστος"</string>
+    <string name="voicemail">"Αυτόματος τηλεφωνητής"</string>
+    <string name="private_num">"Απόκρυψη"</string>
+    <string name="payphone">"Καρτοτηλέφωνο"</string>
+    <string name="dialerKeyboardHintText">"Χρησιμοποιήστε το πληκτρολόγιο για να καλέσετε έναν αριθμό"</string>
+    <string name="dialerDialpadHintText">"Καλέστε έναν αρ. για προσθ. μιας κλήσ."</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> λεπτά <xliff:g id="SECONDS">%s</xliff:g> δευτερόλεπτα"</string>
+    <string name="dialog_phone_call_prohibited_message">"Η κλήση δεν πραγματοποιήθηκε"</string>
+    <string name="dialog_voicemail_not_ready_message">"Για τη r;yumish του αυτόματου τηλεφωνητή, μεταβείτε στο στοιχείο Μενού &gt; Ρυθμίσεις."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Για κλήση αυτόματου τηλεφωνητή, πρώτα απενεργοποιήστε τη λειτουργία πτήσης."</string>
+    <string name="contact_list_loading">"Φόρτωση…"</string>
+    <string name="imei">"Αριθμός ΙΜΕΙ"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Φόρτωση από κάρτα SIM…"</string>
+    <string name="simContacts_title">"Επαφές στην κάρτα SIM"</string>
+    <string name="add_contact_not_available">"Ενεργοποιήστε ξανά την εφαρμογή Επαφές για να χρησιμοποιήσετε αυτήν τη λειτουργία."</string>
+    <string name="voice_search_not_available">"Η φωνητική αναζήτηση δεν είναι διαθέσιμη."</string>
+    <string name="call_not_available">"Δεν είναι δυνατή η πραγματοποίηση τηλεφωνικής κλήσης επειδή η εφαρμογή \"Τηλέφωνο\" έχει απενεργοποιηθεί."</string>
+    <string name="activity_not_available">"Δεν υπάρχει διαθέσιμη εγκατεστημένη δραστηριότητα για το χειρισμό της επιλεγμένης ενέργειας."</string>
+    <string name="dialer_hint_find_contact">"Εισαγάγετε όνομα ή τηλέφωνο"</string>
+    <string name="recentMissed_empty">"Δεν υπάρχουν πρόσφατες αναπάντητες κλήσεις."</string>
+    <string name="recentVoicemails_empty">"Δεν υπάρχουν πρόσφατα μηνύματα στον αυτόματο τηλεφωνητή."</string>
+    <string name="show_favorites_only">"Εμφάνιση μόνο των αγαπημένων"</string>
+    <string name="call_log_activity_title">"Ιστορικό"</string>
+    <string name="call_log_all_title">"Όλα"</string>
+    <string name="call_log_missed_title">"Αναπάντητη"</string>
+    <string name="call_log_voicemail_title">"Φωνητικό μήνυμα"</string>
+    <string name="tab_speed_dial">"Ταχεία κλήση"</string>
+    <string name="tab_recents">"Πρόσφατα"</string>
+    <string name="tab_all_contacts">"Επαφές"</string>
+    <string name="favorite_hidden">"Καταργήθηκε από τα αγαπημένα"</string>
+    <string name="favorite_hidden_undo">"Αναίρεση"</string>
+    <string name="search_shortcut_call_number">"Κλήση του αριθμού <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Προσθήκη στις επαφές"</string>
+    <string name="search_shortcut_make_video_call">"Πραγματοποίηση βιντεοκλήσης"</string>
+    <string name="recents_footer_text">"Προβολή πλήρους ιστορικού κλήσεων"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> νέες αναπάντητες κλήσεις"</string>
+    <string name="speed_dial_empty">"Η ταχεία κλήση είναι κλήση με ένα άγγιγμα\nγια τα αγαπημένα και τους αριθμούς\n που καλείτε συχνά."</string>
+    <string name="all_contacts_empty">"Δεν υπάρχουν επαφές."</string>
+    <string name="contact_tooltip">"Πατήστε την εικόνα για να δείτε όλους τους αριθμούς ή πατήστε παρατεταμένα για αναδιάταξη"</string>
+    <string name="description_dismiss">"Παράβλεψη"</string>
+    <string name="remove_contact">"Κατάργηση"</string>
+    <string name="favorites_menu_all_contacts">"ΟΛΕΣ ΟΙ ΕΠΑΦΕΣ"</string>
+    <string name="call_log_action_call_back">"ΕΠΑΝΑΚΛΗΣΗ"</string>
+    <string name="call_log_action_video_call">"ΒΙΝΤΕΟΚΛΗΣΗ"</string>
+    <string name="call_log_action_voicemail">"ΑΚΡΟΑΣΗ"</string>
+    <string name="call_log_action_details">"ΛΕΠΤΟΜΕΡΕΙΕΣ"</string>
+    <string name="description_incoming_missed_call">"Αναπάντητη κλήση από <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Ληφθείσα κλήση από <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Κλήση στον αριθμό <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Επανάκληση <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"Βιντεοκλήση προς <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Ακρόαση μηνύματος αυτόματου τηλεφωνητή από το χρήστη <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"Λεπτομέρειες κλήσης για <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="toast_entry_removed">"Το αρχείο καταγραφής κλήσεων διαγράφηκε."</string>
+    <string name="toast_caller_id_reported">"Αναφέρθηκε επαφή."</string>
+    <string name="call_log_action_report">"ΑΝΑΦΟΡΑ"</string>
+    <string name="call_log_header_today">"Σήμερα"</string>
+    <string name="call_log_header_yesterday">"Χθες"</string>
+    <string name="call_log_header_other">"Παλαιότερες"</string>
+    <string name="call_detail_list_header">"Λίστα κλήσεων"</string>
+    <string name="voicemail_speaker_on">"Ενεργοποίηση ηχείου."</string>
+    <string name="voicemail_speaker_off">"Απενεργοποίηση ηχείου."</string>
+    <string name="voicemail_play_faster">"Αναπαραγωγή πιο γρήγορα."</string>
+    <string name="voicemail_play_slower">"Αναπαραγωγή πιο αργά."</string>
+    <string name="voicemail_play_start_pause">"Έναρξη ή παύση αναπαραγωγής."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Γενικές ρυθμίσεις"</string>
+    <string name="general_settings_description">"Εμφάνιση επαφής, ήχοι και γρήγορες απαντήσεις"</string>
+    <string name="contact_display_options_category_title">"Επιλογές εμφάνισης επαφών"</string>
+    <string name="sounds_and_vibrate_category_title">"Ήχοι και δόνηση"</string>
+    <string name="ringtone_title">"Ήχος κλήσης τηλεφώνου"</string>
+    <string name="vibrate_on_ring_title">"Επίσης δόνηση για κλήσεις"</string>
+    <string name="dtmf_tone_enable_title">"Τόνοι πληκτρολογίου κλήσης"</string>
+    <string name="other_settings_title">"Άλλο"</string>
+    <string name="respond_via_sms_setting_title">"Γρήγορες απαντήσεις"</string>
+    <string name="call_settings_label">"Ρυθμίσεις κλήσεων"</string>
+    <string name="call_settings_description">"Αυτόματος τηλεφωνητής, αναμονή κλήσης και άλλες"</string>
+</resources>

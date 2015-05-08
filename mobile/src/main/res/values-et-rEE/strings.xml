@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Dialer"</string>
+    <string name="launcherActivityLabel">"Telefon"</string>
+    <string name="dialerIconLabel">"Telefon"</string>
+    <string name="recentCallsIconLabel">"Kõnelogi"</string>
+    <string name="menu_sendTextMessage">"Tekstsõnumi saatmine"</string>
+    <string name="recentCalls_callNumber">"Helista kasutajale <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Muuda enne helistamist numbrit"</string>
+    <string name="recentCalls_addToContact">"Lisa kontaktidesse"</string>
+    <string name="recentCalls_removeFromRecentList">"Eemalda kõnelogist"</string>
+    <string name="recentCalls_deleteAll">"Kustuta kõnelogi"</string>
+    <string name="recentCalls_trashVoicemail">"Kustuta kõnepost"</string>
+    <string name="recentCalls_shareVoicemail">"Jaga kõneposti"</string>
+    <string name="recentCalls_empty">"Teie kõnelogi on tühi."</string>
+    <string name="clearCallLogConfirmation_title">"Kustutada kõnelogi?"</string>
+    <string name="clearCallLogConfirmation">"Kõik teie kõnesalvestised kustutatakse."</string>
+    <string name="clearCallLogProgress_title">"Kõnelogi kustutamine ..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Kõnepost"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> kõnepostisõnumit"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Esitamine"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Uus kõnepostisõnum kasutajalt <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Kõnepostisõnumi esitamine ebaõnnestus."</string>
+    <string name="voicemail_buffering">"Puhverdamine ..."</string>
+    <string name="voicemail_fetching_content">"Kõneposti toomine ..."</string>
+    <string name="voicemail_fetching_timout">"Kõneposti toomine ebaõnnestus."</string>
+    <string name="call_log_voicemail_header">"Ainult kõnepostiga kõned"</string>
+    <string name="call_log_incoming_header">"Ainult sissetulevad kõned"</string>
+    <string name="call_log_outgoing_header">"Ainult väljuvad kõned"</string>
+    <string name="call_log_missed_header">"Ainult vastamata kõned"</string>
+    <string name="voicemail_status_voicemail_not_available">"Kõnepostiserveriga ei saa ühendust."</string>
+    <string name="voicemail_status_messages_waiting">"Kõnepostiserveriga ei saa ühendust. Uued kõnepostisõnumid ootel."</string>
+    <string name="voicemail_status_configure_voicemail">"Seadistage oma kõnepost."</string>
+    <string name="voicemail_status_audio_not_available">"Heli pole saadaval."</string>
+    <string name="voicemail_status_action_configure">"Seadistamine"</string>
+    <string name="voicemail_status_action_call_server">"Helista kõneposti"</string>
+    <string name="voicemail_speed_slowest">"Aeglaseim kiirus"</string>
+    <string name="voicemail_speed_slower">"Aeglane kiirus"</string>
+    <string name="voicemail_speed_normal">"Tavaline kiirus"</string>
+    <string name="voicemail_speed_faster">"Kiire kiirus"</string>
+    <string name="voicemail_speed_fastest">"Kiireim kiirus"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Valige number"</string>
+    <string name="call_disambig_title">"Valige number"</string>
+    <string name="make_primary">"Pea see valik meeles"</string>
+    <string name="description_image_button_one">"üks"</string>
+    <string name="description_image_button_two">"kaks"</string>
+    <string name="description_image_button_three">"kolm"</string>
+    <string name="description_image_button_four">"neli"</string>
+    <string name="description_image_button_five">"viis"</string>
+    <string name="description_image_button_six">"kuus"</string>
+    <string name="description_image_button_seven">"seitse"</string>
+    <string name="description_image_button_eight">"kaheksa"</string>
+    <string name="description_image_button_nine">"üheksa"</string>
+    <string name="description_image_button_star">"tärn"</string>
+    <string name="description_image_button_zero">"null"</string>
+    <string name="description_image_button_pound">"nael"</string>
+    <string name="description_search_button">"otsing"</string>
+    <string name="description_dial_button">"Helista"</string>
+    <string name="description_digits_edittext">"number valimiseks"</string>
+    <string name="description_playback_start_stop">"Taasesituse alustamine või peatamine"</string>
+    <string name="description_playback_speakerphone">"Valjuhääldi sisse- või väljalülitamine"</string>
+    <string name="description_playback_seek">"Taasesituse positsiooni otsimine"</string>
+    <string name="description_rate_decrease">"Taasesituse kiiruse vähendamine"</string>
+    <string name="description_rate_increase">"Taasesituse kiiruse suurendamine"</string>
+    <string name="action_menu_call_history_description">"Kõneajalugu"</string>
+    <string name="action_menu_overflow_description">"Rohkem valikuid"</string>
+    <string name="action_menu_dialpad_button">"valimisklahvistik"</string>
+    <string name="menu_copy">"Kopeeri"</string>
+    <string name="menu_show_outgoing_only">"Kuva ainult väljuvad"</string>
+    <string name="menu_show_incoming_only">"Kuva ainult sissetulevad"</string>
+    <string name="menu_show_missed_only">"Kuva ainult vastamata"</string>
+    <string name="menu_show_voicemails_only">"Kuva ainult kõnepostisõnumeid"</string>
+    <string name="menu_show_all_calls">"Kuva kõik kõned"</string>
+    <string name="add_contact">"Lisa kontaktide hulka"</string>
+    <string name="add_2sec_pause">"Lisa 2-sekundiline paus"</string>
+    <string name="add_wait">"Lisa ootama"</string>
+    <string name="menu_select_account">"Konto valimine"</string>
+    <string name="dialer_settings_label">"Seaded"</string>
+    <string name="menu_newContact">"Uus kontakt"</string>
+    <string name="menu_allContacts">"Kõik kontaktid"</string>
+    <string name="callDetailTitle">"Kõne üksikasjad"</string>
+    <string name="toast_call_detail_error">"Taotletud kõne üksikasju ei saa lugeda."</string>
+    <string name="dialer_useDtmfDialpad">"Kasuta puutetooniga klahvistikku"</string>
+    <string name="dialer_returnToInCallScreen">"Tagasi käimasolevale kõnele"</string>
+    <string name="dialer_addAnotherCall">"Lisa kõne"</string>
+    <string name="type_incoming">"Sissetulev kõne"</string>
+    <string name="type_outgoing">"Väljuv kõne"</string>
+    <string name="type_missed">"Vastamata kõne"</string>
+    <string name="type_incoming_video">"Sissetulev videokõne"</string>
+    <string name="type_outgoing_video">"Väljaminev videokõne"</string>
+    <string name="type_missed_video">"Vastamata videokõne"</string>
+    <string name="type_voicemail">"Kõnepost"</string>
+    <string name="actionIncomingCall">"Sissetulevad kõned"</string>
+    <string name="description_call_log_play_button">"Esita kõnepostisõnum"</string>
+    <string name="description_view_contact">"Kuva kontakt <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Helista: <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"Kontakti <xliff:g id="NAMEORNUMBER">%1$s</xliff:g> üksikasjad"</string>
+    <string name="description_new_voicemail">"Uus kõnepost."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> kõnet."</string>
+    <string name="description_video_call">"Videokõne."</string>
+    <string name="description_send_text_message">"Saada tekstsõnum kontaktile <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Kuulamata kõnepostisõnum"</string>
+    <string name="description_start_voice_search">"Häälotsingu alustamine"</string>
+    <string name="menu_callNumber">"Helista: <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Tundmatu"</string>
+    <string name="voicemail">"Kõnepost"</string>
+    <string name="private_num">"Varjatud number"</string>
+    <string name="payphone">"Telefoniautomaat"</string>
+    <string name="dialerKeyboardHintText">"Kasutage valimiseks klaviatuuri"</string>
+    <string name="dialerDialpadHintText">"Valige kõne lisamiseks"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> min <xliff:g id="SECONDS">%s</xliff:g> s"</string>
+    <string name="dialog_phone_call_prohibited_message">"Kõnet ei tehtud"</string>
+    <string name="dialog_voicemail_not_ready_message">"Kõneposti seadistamiseks minge valikusse Menüü &gt; Seaded."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Kõneposti kuulamiseks lülitage lennurežiim välja."</string>
+    <string name="contact_list_loading">"Laadimine ..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Laadimine SIM-kaardilt ..."</string>
+    <string name="simContacts_title">"SIM-kaardi kontaktid"</string>
+    <string name="add_contact_not_available">"Funktsiooni kasutamiseks lubage uuesti rakendus Kontaktid."</string>
+    <string name="voice_search_not_available">"Häälotsing pole saadaval"</string>
+    <string name="call_not_available">"Helistada ei saa, sest telefonirakendus on keelatud."</string>
+    <string name="activity_not_available">"Pole installitud ühtegi rakendust, mis suudaks käsitleda valitud tegevust."</string>
+    <string name="dialer_hint_find_contact">"Sisestage nimi/telefoninumber"</string>
+    <string name="recentMissed_empty">"Teil pole hiljutisi vastamata kõnesid."</string>
+    <string name="recentVoicemails_empty">"Teil pole hiljutisi kõnepostisõnumeid."</string>
+    <string name="show_favorites_only">"Kuva ainult lemmikud"</string>
+    <string name="call_log_activity_title">"Ajalugu"</string>
+    <string name="call_log_all_title">"Kõik"</string>
+    <string name="call_log_missed_title">"Vastamata"</string>
+    <string name="call_log_voicemail_title">"Kõnepost"</string>
+    <string name="tab_speed_dial">"Kiirvalimine"</string>
+    <string name="tab_recents">"Hiljutised"</string>
+    <string name="tab_all_contacts">"Kontaktid"</string>
+    <string name="favorite_hidden">"Eemaldatud lemmikute hulgast"</string>
+    <string name="favorite_hidden_undo">"Võta tagasi"</string>
+    <string name="search_shortcut_call_number">"Helista <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Lisa kontaktidesse"</string>
+    <string name="search_shortcut_make_video_call">"Videokõne tegemine"</string>
+    <string name="recents_footer_text">"Kogu kõneajaloo vaatamine"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> uus/uut vastamata kõne(t)"</string>
+    <string name="speed_dial_empty">"Kiirvalimine on ühe puutega nende\nlemmikute ja numbrite valimine,\n kellele sageli helistate."</string>
+    <string name="all_contacts_empty">"Teil pole ühtegi kontakti."</string>
+    <string name="contact_tooltip">"Puudutage kujutist, et näha kõiki numbreid, või vajutage ja hoidke all ümberkorraldamiseks"</string>
+    <string name="description_dismiss">"Loobu"</string>
+    <string name="remove_contact">"Eemalda"</string>
+    <string name="favorites_menu_all_contacts">"KÕIK KONTAKTID"</string>
+    <string name="call_log_action_call_back">"HELISTA TAGASI"</string>
+    <string name="call_log_action_video_call">"VIDEOKÕNE"</string>
+    <string name="call_log_action_voicemail">"KUULA"</string>
+    <string name="call_log_action_details">"ÜKSIKASJAD"</string>
+    <string name="description_incoming_missed_call">"Vastamata kõne: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Vastatud kõne: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Helistamine: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Tagasi helistamine: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"Videokõne kontaktile <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Kontakti <xliff:g id="NAMEORNUMBER">%1$s</xliff:g> kõneposti kuulamine"</string>
+    <string name="description_details_action">"Kontakti <xliff:g id="NAMEORNUMBER">%1$s</xliff:g> kõne üksikasjad"</string>
+    <string name="toast_entry_removed">"Kõnelogi kanne on kustutatud."</string>
+    <string name="toast_caller_id_reported">"Kontaktist on teavitatud."</string>
+    <string name="call_log_action_report">"TEAVITA"</string>
+    <string name="call_log_header_today">"Täna"</string>
+    <string name="call_log_header_yesterday">"Eile"</string>
+    <string name="call_log_header_other">"Vanem"</string>
+    <string name="call_detail_list_header">"Kõneloend"</string>
+    <string name="voicemail_speaker_on">"Kõlari sisselülitamine."</string>
+    <string name="voicemail_speaker_off">"Kõlari väljalülitamine."</string>
+    <string name="voicemail_play_faster">"Kiirem esitus."</string>
+    <string name="voicemail_play_slower">"Aeglasem esitus."</string>
+    <string name="voicemail_play_start_pause">"Esituse alustamine või peatamine."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Üldseaded"</string>
+    <string name="general_settings_description">"Kontakti kuva, helid ja kiirvastused"</string>
+    <string name="contact_display_options_category_title">"Kontaktide kuvavalikud"</string>
+    <string name="sounds_and_vibrate_category_title">"Helid ja vibreerimine"</string>
+    <string name="ringtone_title">"Telefoni helin"</string>
+    <string name="vibrate_on_ring_title">"Vibreeri ka kõnede puhul"</string>
+    <string name="dtmf_tone_enable_title">"Valimisklahvistiku toonid"</string>
+    <string name="other_settings_title">"Muu"</string>
+    <string name="respond_via_sms_setting_title">"Kiirvastused"</string>
+    <string name="call_settings_label">"Kõneseaded"</string>
+    <string name="call_settings_description">"Kõnepost, ootel kõne ja muud"</string>
+</resources>

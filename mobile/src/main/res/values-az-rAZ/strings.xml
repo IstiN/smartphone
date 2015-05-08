@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Nömrə yığan"</string>
+    <string name="launcherDialer">"Telefon"</string>
+    <string name="dialerIconLabel">"Telefon"</string>
+    <string name="recentCallsIconLabel">"Zəng jurnalı"</string>
+    <string name="menu_sendTextMessage">"Mətnli mesaj göndərin"</string>
+    <string name="recentCalls_callNumber">"Zəng <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Zəng etmədən öncə nömrəyə düzəliş edin"</string>
+    <string name="recentCalls_addToContact">"Kontaktlara əlavə edin"</string>
+    <string name="recentCalls_removeFromRecentList">"Zəng jurnalından silin"</string>
+    <string name="recentCalls_deleteAll">"Zəng jurnalını təmizləyin"</string>
+    <string name="recentCalls_trashVoicemail">"Səsli məktubu silin"</string>
+    <string name="recentCalls_shareVoicemail">"Səsli məktubu paylaşın"</string>
+    <string name="recentCalls_empty">"Zəng jurnalı boşdur."</string>
+    <string name="clearCallLogConfirmation_title">"Zəng jurnalı silinsin?"</string>
+    <string name="clearCallLogConfirmation">"Bütün zəng qeydləriniz silinəcək."</string>
+    <string name="clearCallLogProgress_title">"Zəng jurnalı silinir..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Səsli məktub"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> Səsli məktub"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Oxudun"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"<xliff:g id="CALLER">%1$s</xliff:g> adlı şəxsdən yeni səsli məktub"</string>
+    <string name="voicemail_playback_error">"Səsli məktub oxudula bilmədi."</string>
+    <string name="voicemail_buffering">"Buferlənir..."</string>
+    <string name="voicemail_fetching_content">"Səsli məktub əldə edilir..."</string>
+    <string name="voicemail_fetching_timout">"Səsli məktub əldə edilə bilmədi."</string>
+    <string name="call_log_voicemail_header">"Yalnız səsli məktublu zənglər"</string>
+    <string name="call_log_incoming_header">"Yalnız daxil olan zənglər"</string>
+    <string name="call_log_outgoing_header">"Yalnız gedən zənglər"</string>
+    <string name="call_log_missed_header">"Yalnız buraxılmış zənglər"</string>
+    <string name="voicemail_status_voicemail_not_available">"Səsli poçt serverinə birləşmək olmur."</string>
+    <string name="voicemail_status_messages_waiting">"Səsli poçt serveri ilə bağlantı yaratmaq olmur. Yeni səsli poçtlar gözlənilir."</string>
+    <string name="voicemail_status_configure_voicemail">"Səsli poçtunuzu quraşdırın."</string>
+    <string name="voicemail_status_audio_not_available">"Audio əlçatımlı deyil."</string>
+    <string name="voicemail_status_action_configure">"Quraşdırın"</string>
+    <string name="voicemail_status_action_call_server">"Səsli poçta zəng edin"</string>
+    <string name="voicemail_speed_slowest">"Ən alçaq sürət"</string>
+    <string name="voicemail_speed_slower">"Zəif sürət"</string>
+    <string name="voicemail_speed_normal">"Normal sürət"</string>
+    <string name="voicemail_speed_faster">"Yüksək sürət"</string>
+    <string name="voicemail_speed_fastest">"Ən yüksək sürət"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Nömrə seçin"</string>
+    <string name="call_disambig_title">"Nömrə seçin"</string>
+    <string name="make_primary">"Bu seçimi yadda saxla"</string>
+    <string name="description_image_button_one">"bir"</string>
+    <string name="description_image_button_two">"iki"</string>
+    <string name="description_image_button_three">"üç"</string>
+    <string name="description_image_button_four">"dörd"</string>
+    <string name="description_image_button_five">"beş"</string>
+    <string name="description_image_button_six">"altı"</string>
+    <string name="description_image_button_seven">"yeddi"</string>
+    <string name="description_image_button_eight">"səkkiz"</string>
+    <string name="description_image_button_nine">"doqquz"</string>
+    <string name="description_image_button_star">"ulduz"</string>
+    <string name="description_image_button_zero">"sıfır"</string>
+    <string name="description_image_button_pound">"funt"</string>
+    <string name="description_voicemail_button">"Səsli məktub"</string>
+    <string name="description_search_button">"axtarış"</string>
+    <string name="description_dial_button">"nömrə yığın"</string>
+    <string name="description_delete_button">"backspace"</string>
+    <string name="description_digits_edittext">"yığmaq üçün nömrə"</string>
+    <string name="action_menu_call_history_description">"Çağrı Tarixçəsi"</string>
+    <string name="action_menu_overflow_description">"Daha çox seçim"</string>
+    <string name="action_menu_dialpad_button">"nömrə yığımı paneli"</string>
+    <string name="menu_copy">"Kopyalayın"</string>
+    <string name="menu_show_outgoing_only">"Yalnız gedəni göstərin"</string>
+    <string name="menu_show_incoming_only">"Yalnız gələni göstərin"</string>
+    <string name="menu_show_missed_only">"Yalnız buraxılmışı göstərin"</string>
+    <string name="menu_show_voicemails_only">"Yalnız səsli mesajları göstərin"</string>
+    <string name="menu_show_all_calls">"Bütün zəngləri göstərin"</string>
+    <string name="add_2sec_pause">"2 saniyəlik pauza əlavə edin"</string>
+    <string name="add_wait">"Gözləmə əlavə edin"</string>
+    <string name="call_settings">"Ayarlar"</string>
+    <string name="menu_newContact">"Yeni kontakt"</string>
+    <string name="menu_allContacts">"Bütün kontaktlar"</string>
+    <string name="callDetailTitle">"Zəng detalları"</string>
+    <string name="toast_call_detail_error">"Sorğu göndərilmiş zəng üçün detallar oxuna bilmədi."</string>
+    <string name="dialer_useDtmfDialpad">"Toxunma ton klaviaturasını istifadə edin"</string>
+    <string name="dialer_returnToInCallScreen">"Davam edən zəngə qayıdın"</string>
+    <string name="dialer_addAnotherCall">"Zəng əlavə edin"</string>
+    <string name="type_incoming">"Gələn zəng"</string>
+    <string name="type_outgoing">"Gedən zəng"</string>
+    <string name="type_missed">"Buraxılmış zəng"</string>
+    <string name="type_voicemail">"Səsli poçt"</string>
+    <string name="actionIncomingCall">"Gələn zənglər"</string>
+    <string name="description_call_log_play_button">"Səsli məktubu oxudun"</string>
+    <string name="description_call_log_incoming_call">"Gələn zəng"</string>
+    <string name="description_call_log_outgoing_call">"Gedən zəng"</string>
+    <string name="description_call_log_missed_call">"Buraxılmış zəng"</string>
+    <string name="description_call_log_voicemail">"Səsli məktub"</string>
+    <string name="description_add_contact">"Kontakt əlavə edin"</string>
+    <string name="description_view_contact">"<xliff:g id="NAME">%1$s</xliff:g> adlı kontakta baxın"</string>
+    <string name="description_call">"Zəng edin: <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_send_text_message">"<xliff:g id="NAME">%1$s</xliff:g> mesaj göndər"</string>
+    <string name="description_call_log_unheard_voicemail">"Eşidilməmiş səsli mesaj"</string>
+    <string name="description_start_voice_search">"Səs axtarışına başlayın"</string>
+    <string name="call_log_empty_gecode">"-"</string>
+    <string name="menu_callNumber">"<xliff:g id="NUMBER">%s</xliff:g> zəng edin"</string>
+    <string name="unknown">"Naməlum"</string>
+    <string name="voicemail">"Səsli poçt"</string>
+    <string name="private_num">"Şəxsi nömrə"</string>
+    <string name="payphone">"Telefon ödənişi"</string>
+    <string name="dialerKeyboardHintText">"Nömrə yığmaq üçün klaviaturadan istifadə ediin"</string>
+    <string name="dialerDialpadHintText">"Zəng əlavə etmək üçün nömrə yığın"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> dəqiqə <xliff:g id="SECONDS">%s</xliff:g> saniyə"</string>
+    <string name="dialog_phone_call_prohibited_message">"Zəng edilmədi"</string>
+    <string name="dialog_voicemail_not_ready_message">"Səsli poçtu ayarlamaq üçün Menyu, sonra isə &gt; Ayarlara daxil olun."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Səsli poçta zəng etmək üçün Təyyarə rejimini söndürün."</string>
+    <string name="contact_list_loading">"Yüklənir…"</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"SIM kartdan yüklənir..."</string>
+    <string name="simContacts_title">"SIM kart kontaktları"</string>
+    <string name="add_contact_not_available">"Bu özəlliyi istifadə etmək üçün Adamlar tətbiqinə yenidən icazə verin."</string>
+    <!-- no translation found for dialer_hint_find_contact (8798845521253672403) -->
+    <skip />
+    <string name="call_log_all_title">"Bütün"</string>
+    <string name="call_log_missed_title">"Buraxılmış"</string>
+    <string name="recentMissed_empty">"Buraxılmış zəng yoxdur"</string>
+    <string name="recentVoicemails_empty">"Səsli məktub yoxdur."</string>
+    <string name="show_all_contacts">"Bütün kontaktları göstər"</string>
+    <string name="show_favorites_only">"Yalnız seçilmişləri göstər"</string>
+    <string name="call_log_activity_title">"Tarixçə"</string>
+    <string name="dialpad_0_number">"0"</string>
+    <string name="dialpad_1_number">"1"</string>
+    <string name="dialpad_2_number">"2"</string>
+    <string name="dialpad_3_number">"3"</string>
+    <string name="dialpad_4_number">"4"</string>
+    <string name="dialpad_5_number">"5"</string>
+    <string name="dialpad_6_number">"6"</string>
+    <string name="dialpad_7_number">"7"</string>
+    <string name="dialpad_8_number">"8"</string>
+    <string name="dialpad_9_number">"9"</string>
+    <string name="show_all_contacts_title">"Bütün kontaktlar"</string>
+    <string name="show_all_contacts_button_text">"Bütün kontaktlar"</string>
+    <!-- no translation found for favorite_hidden (5011234945140912047) -->
+    <skip />
+    <string name="favorite_hidden_undo">"Geri qaytar"</string>
+    <string name="search_shortcut_call_number">"<xliff:g id="NUMBER">%s</xliff:g> nömrəsinə zəng edin"</string>
+    <string name="search_shortcut_add_to_contacts">"Kontaktlara əlavə edin"</string>
+</resources>

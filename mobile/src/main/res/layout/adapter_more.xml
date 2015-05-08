@@ -21,7 +21,7 @@
             android:singleLine="true"
             android:textStyle="bold"
             android:textColor="?attr/groupHeaderColor"
-            android:text="@string/more"
+            android:text="@string/recents_footer_text"
             android:gravity="center"
             android:textSize="16sp" />
     </RelativeLayout>

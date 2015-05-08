@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Skambučiai"</string>
+    <string name="launcherActivityLabel">"Telefonas"</string>
+    <string name="dialerIconLabel">"Telefonas"</string>
+    <string name="recentCallsIconLabel">"Skambučių žurnalas"</string>
+    <string name="menu_sendTextMessage">"Siųsti teksto pranešimą"</string>
+    <string name="recentCalls_callNumber">"Skambinti <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Redaguoti numerį prieš skambutį"</string>
+    <string name="recentCalls_addToContact">"Pridėti prie adresatų"</string>
+    <string name="recentCalls_removeFromRecentList">"Pašalinti iš skambučių žurnalo"</string>
+    <string name="recentCalls_deleteAll">"Išvalyti skambučių žurnalą"</string>
+    <string name="recentCalls_trashVoicemail">"Ištrinti balso pašto pran."</string>
+    <string name="recentCalls_shareVoicemail">"Bendrinti balso paštą"</string>
+    <string name="recentCalls_empty">"Skambučių žurnalas yra tuščias."</string>
+    <string name="clearCallLogConfirmation_title">"Išv. skamb. žurnalą?"</string>
+    <string name="clearCallLogConfirmation">"Visi jūsų skambučių įrašai bus ištrinti."</string>
+    <string name="clearCallLogProgress_title">"Valomas skambučių žurnalas…"</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Balso paštas"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> balso pašto pranešim."</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Paleisti"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Nauji b. pašto pran. iš <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Nepavyko paleisti balso pašto praneš."</string>
+    <string name="voicemail_buffering">"Rašoma į buferį…"</string>
+    <string name="voicemail_fetching_content">"Gaunamas balso paštas…"</string>
+    <string name="voicemail_fetching_timout">"Nepavyko gauti balso pašto pranešimo."</string>
+    <string name="call_log_voicemail_header">"Tik skambučiai su balso paštu"</string>
+    <string name="call_log_incoming_header">"Tik gaunami skambučiai"</string>
+    <string name="call_log_outgoing_header">"Tik siunčiami skambučiai"</string>
+    <string name="call_log_missed_header">"Tik praleisti skambučiai"</string>
+    <string name="voicemail_status_voicemail_not_available">"Neįmanoma prisijungti prie balso pašto serverio."</string>
+    <string name="voicemail_status_messages_waiting">"Neįm. prisij. prie bal. pšt. serv. Laukia nauji b. pšt. praneš."</string>
+    <string name="voicemail_status_configure_voicemail">"Nustatyti balso paštą."</string>
+    <string name="voicemail_status_audio_not_available">"Garsas negalimas."</string>
+    <string name="voicemail_status_action_configure">"Nustatyti"</string>
+    <string name="voicemail_status_action_call_server">"Skamb. į balso pšt."</string>
+    <string name="voicemail_speed_slowest">"Mažiausias greitis"</string>
+    <string name="voicemail_speed_slower">"Mažas greitis"</string>
+    <string name="voicemail_speed_normal">"Normalus greitis"</string>
+    <string name="voicemail_speed_faster">"Didelis greitis"</string>
+    <string name="voicemail_speed_fastest">"Didžiausias greitis"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Pasirinkite numerį"</string>
+    <string name="call_disambig_title">"Pasirinkite numerį"</string>
+    <string name="make_primary">"Atsiminti šį pasirinkimą"</string>
+    <string name="description_image_button_one">"vienas"</string>
+    <string name="description_image_button_two">"du"</string>
+    <string name="description_image_button_three">"trys"</string>
+    <string name="description_image_button_four">"keturi"</string>
+    <string name="description_image_button_five">"penki"</string>
+    <string name="description_image_button_six">"šeši"</string>
+    <string name="description_image_button_seven">"septyni"</string>
+    <string name="description_image_button_eight">"aštuoni"</string>
+    <string name="description_image_button_nine">"devyni"</string>
+    <string name="description_image_button_star">"žvaigždutė"</string>
+    <string name="description_image_button_zero">"nulis"</string>
+    <string name="description_image_button_pound">"svaras"</string>
+    <string name="description_search_button">"ieškoti"</string>
+    <string name="description_dial_button">"rinkti numerį"</string>
+    <string name="description_digits_edittext">"renkamas numeris"</string>
+    <string name="description_playback_start_stop">"Paleisti arba sustabdyti atkūrimą"</string>
+    <string name="description_playback_speakerphone">"Įjungti arba išjungti garsiakalbį"</string>
+    <string name="description_playback_seek">"Ieškoti atkūrimo pozicijos"</string>
+    <string name="description_rate_decrease">"Sumažinti atkūrimo spartą"</string>
+    <string name="description_rate_increase">"Padidinti atkūrimo spartą"</string>
+    <string name="action_menu_call_history_description">"Skambučių istorija"</string>
+    <string name="action_menu_overflow_description">"Daugiau parinkčių"</string>
+    <string name="action_menu_dialpad_button">"skambinimo skydelis"</string>
+    <string name="menu_copy">"Kopijuoti"</string>
+    <string name="menu_show_outgoing_only">"Rodyti tik išsiunčiamus"</string>
+    <string name="menu_show_incoming_only">"Rodyti tik gaunamus"</string>
+    <string name="menu_show_missed_only">"Rodyti tik praleistus"</string>
+    <string name="menu_show_voicemails_only">"Rodyti tik balso pšt. praneš."</string>
+    <string name="menu_show_all_calls">"Rodyti visus skambučius"</string>
+    <string name="add_contact">"Pridėti prie kontaktų"</string>
+    <string name="add_2sec_pause">"Pridėti 2 sek. pauzę"</string>
+    <string name="add_wait">"Pridėti laukimą"</string>
+    <string name="menu_select_account">"Pasirinkti paskyrą"</string>
+    <string name="dialer_settings_label">"Nustatymai"</string>
+    <string name="menu_newContact">"Naujas kontaktas"</string>
+    <string name="menu_allContacts">"Visi kontaktai"</string>
+    <string name="callDetailTitle">"Išsami skambučio informacija"</string>
+    <string name="toast_call_detail_error">"Nepavyko nuskaityti išsamios skambučio, dėl kurio buvo pateikta užklausa, informacijos."</string>
+    <string name="dialer_useDtmfDialpad">"Naudoti jutiklinę klaviatūrą"</string>
+    <string name="dialer_returnToInCallScreen">"Grįžti prie vykdomo skambučio"</string>
+    <string name="dialer_addAnotherCall">"Pridėti skambutį"</string>
+    <string name="type_incoming">"Gaunamasis skambutis"</string>
+    <string name="type_outgoing">"Sunčiamasis skambutis"</string>
+    <string name="type_missed">"Praleistas skambutis"</string>
+    <string name="type_incoming_video">"Gaunamasis vaizdo skambutis"</string>
+    <string name="type_outgoing_video">"Siunčiamasis vaizdo skambutis"</string>
+    <string name="type_missed_video">"Praleistas vaizdo skambutis"</string>
+    <string name="type_voicemail">"Balso paštas"</string>
+    <string name="actionIncomingCall">"Gaunami skambučiai"</string>
+    <string name="description_call_log_play_button">"Paleisti balso pašto pranešimus"</string>
+    <string name="description_view_contact">"Žiūrėti kontaktą <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Skambinti <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"Išsami kontaktinė informacija: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_new_voicemail">"Naujas balso pašto pranešimas."</string>
+    <string name="description_num_calls">"Skambučių: <xliff:g id="NUMBEROFCALLS">%1$s</xliff:g>."</string>
+    <string name="description_video_call">"Vaizdo skambutis."</string>
+    <string name="description_send_text_message">"Siųsti teksto pranešimą <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Neklausytas balso pašto pranešimas"</string>
+    <string name="description_start_voice_search">"Pradėti paiešką balsu"</string>
+    <string name="menu_callNumber">"Skambinti <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Nežinomas"</string>
+    <string name="voicemail">"Balso paštas"</string>
+    <string name="private_num">"Privatus numeris"</string>
+    <string name="payphone">"Mokamas telefonas"</string>
+    <string name="dialerKeyboardHintText">"Naudokite klaviatūrą ir rinkite numerius"</string>
+    <string name="dialerDialpadHintText">"Rinkti numerį ir pridėti skambutį"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> min. <xliff:g id="SECONDS">%s</xliff:g> sek."</string>
+    <string name="dialog_phone_call_prohibited_message">"Skambutis neišsiųstas"</string>
+    <string name="dialog_voicemail_not_ready_message">"Jei norite nustatyti balso paštą, eikite į „Meniu“ &gt; „Nustatymai“."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Jei norite skambinti į balso paštą, išjunkite lėktuvo režimą."</string>
+    <string name="contact_list_loading">"Įkeliama..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Įkeliama iš SIM kortelės..."</string>
+    <string name="simContacts_title">"SIM kortelės adresatai"</string>
+    <string name="add_contact_not_available">"Iš naujo įgalinkite Kontaktų programą, kad galėtumėte naudoti šią funkciją."</string>
+    <string name="voice_search_not_available">"Paieška balsu negalima."</string>
+    <string name="call_not_available">"Negalima skambinti telefonu, nes Telefono programa išjungta."</string>
+    <string name="activity_not_available">"Nepasiekiama jokia įdiegta veikla pasirinktam veiksmui atlikti."</string>
+    <string name="dialer_hint_find_contact">"Įveskite vardą arba tel. nr."</string>
+    <string name="recentMissed_empty">"Nėra neseniai praleistų skambučių."</string>
+    <string name="recentVoicemails_empty">"Nėra neseniai gautų balso pašto pranešimų."</string>
+    <string name="show_favorites_only">"Rodyti tik mėgstamiausius"</string>
+    <string name="call_log_activity_title">"Istorija"</string>
+    <string name="call_log_all_title">"Visi"</string>
+    <string name="call_log_missed_title">"Praleisti"</string>
+    <string name="call_log_voicemail_title">"Balso paštas"</string>
+    <string name="tab_speed_dial">"Spartusis rinkimas"</string>
+    <string name="tab_recents">"Naujausi"</string>
+    <string name="tab_all_contacts">"Kontaktai"</string>
+    <string name="favorite_hidden">"Pašalintas iš adresyno"</string>
+    <string name="favorite_hidden_undo">"Anuliuoti"</string>
+    <string name="search_shortcut_call_number">"Skambinti numeriu <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Pridėti prie kontaktų"</string>
+    <string name="search_shortcut_make_video_call">"Atlikti vaizdo skambutį"</string>
+    <string name="recents_footer_text">"Visos skambučių istorijos peržiūra"</string>
+    <string name="num_missed_calls">"Naujų praleistų skambučių: <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="speed_dial_empty">"Greitasis numerio rinkimas yra numerio rinkimas vienu palietimu. Jis naudojamas skambinant \nį mėgstamiausių sąrašą įtrauktiems asmenims ir numeriais\n, kuriais dažnai skambinate."</string>
+    <string name="all_contacts_empty">"Nėra kontaktų."</string>
+    <string name="contact_tooltip">"Palieskite vaizdą, kad pamatytumėte visus skaičius, arba paspauskite ir palaikykite, kad pakeistumėte tvarką"</string>
+    <string name="description_dismiss">"Atsisakyti"</string>
+    <string name="remove_contact">"Pašalinti"</string>
+    <string name="favorites_menu_all_contacts">"VISI KONTAKTAI"</string>
+    <string name="call_log_action_call_back">"ATSKAMBINTI"</string>
+    <string name="call_log_action_video_call">"VAIZDO SKAMBUTIS"</string>
+    <string name="call_log_action_voicemail">"KLAUSYTI"</string>
+    <string name="call_log_action_details">"IŠSAMI INFORMACIJA"</string>
+    <string name="description_incoming_missed_call">"Praleistas skambutis: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Atsakytas skambutis: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Atliktas skambutis: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Atskambinti <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"Atliktas vaizdo skambutis: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Klausyti balso pašto nuo <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"Išsami skambučio informacija (<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>)"</string>
+    <string name="toast_entry_removed">"Skambučių žurnalo įrašas ištrintas."</string>
+    <string name="toast_caller_id_reported">"Pranešta apie kontaktą."</string>
+    <string name="call_log_action_report">"PRANEŠTI"</string>
+    <string name="call_log_header_today">"Šiandien"</string>
+    <string name="call_log_header_yesterday">"Vakar"</string>
+    <string name="call_log_header_other">"Senesni"</string>
+    <string name="call_detail_list_header">"Skambučių sąrašas"</string>
+    <string name="voicemail_speaker_on">"Įjungti garsiakalbį."</string>
+    <string name="voicemail_speaker_off">"Išjungti garsiakalbį."</string>
+    <string name="voicemail_play_faster">"Leisti greičiau."</string>
+    <string name="voicemail_play_slower">"Leisti lėčiau."</string>
+    <string name="voicemail_play_start_pause">"Pradėti arba pristabdyti atkūrimą."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Bendrieji nustatymai"</string>
+    <string name="general_settings_description">"Kontaktų pateikimas, garsai ir greiti atsakai"</string>
+    <string name="contact_display_options_category_title">"Kontaktų rodymo parinktys"</string>
+    <string name="sounds_and_vibrate_category_title">"Garsai ir vibravimas"</string>
+    <string name="ringtone_title">"Telefono skambėjimo tonas"</string>
+    <string name="vibrate_on_ring_title">"Taip pat vibruoti, kai skamb."</string>
+    <string name="dtmf_tone_enable_title">"Skambinimo skydelio garsai"</string>
+    <string name="other_settings_title">"Kita"</string>
+    <string name="respond_via_sms_setting_title">"Greiti atsakai"</string>
+    <string name="call_settings_label">"Skambučių nustatymai"</string>
+    <string name="call_settings_description">"Balso paštas, laukiamas skambutis ir kt."</string>
+</resources>

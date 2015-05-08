@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Telefonoa"</string>
+    <string name="launcherActivityLabel">"Deitu"</string>
+    <string name="dialerIconLabel">"Telefonoa"</string>
+    <string name="recentCallsIconLabel">"Deien erregistroa"</string>
+    <string name="menu_sendTextMessage">"Bidali testu-mezua"</string>
+    <string name="recentCalls_callNumber">"Deitu <xliff:g id="NAME">%s</xliff:g> erabiltzaileari"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Editatu zenbakia deitu aurretik"</string>
+    <string name="recentCalls_addToContact">"Gehitu kontaktuetan"</string>
+    <string name="recentCalls_removeFromRecentList">"Kendu deien erregistrotik"</string>
+    <string name="recentCalls_deleteAll">"Garbitu deien erregistroa"</string>
+    <string name="recentCalls_trashVoicemail">"Ezabatu ahots-mezua"</string>
+    <string name="recentCalls_shareVoicemail">"Partekatu ahots-mezua"</string>
+    <string name="recentCalls_empty">"Deien erregistroa hutsik dago."</string>
+    <string name="clearCallLogConfirmation_title">"Deien erregistroa garbitu nahi duzu?"</string>
+    <string name="clearCallLogConfirmation">"Deien erregistro guztiak ezabatuko dira."</string>
+    <string name="clearCallLogProgress_title">"Deien erregistroa garbitzen…"</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Erantzungailua"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> ahots-mezu erantzungailuan"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Erreproduzitu"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"<xliff:g id="CALLER">%1$s</xliff:g> deitzailearen ahots-mezu berria"</string>
+    <string name="voicemail_playback_error">"Ezin da erantzungailua erreproduzitu."</string>
+    <string name="voicemail_buffering">"Buferreratzen…"</string>
+    <string name="voicemail_fetching_content">"Erantzungailuko edukia eskuratzen…"</string>
+    <string name="voicemail_fetching_timout">"Ezin da erantzungailuko edukia eskuratu."</string>
+    <string name="call_log_voicemail_header">"Erantzungailuko deiak soilik"</string>
+    <string name="call_log_incoming_header">"Sarrerako deiak soilik"</string>
+    <string name="call_log_outgoing_header">"Irteerako deiak soilik"</string>
+    <string name="call_log_missed_header">"Dei galduak soilik"</string>
+    <string name="voicemail_status_voicemail_not_available">"Ezin da erantzungailuaren zerbitzariarekin konektatu."</string>
+    <string name="voicemail_status_messages_waiting">"Ezin da erantzungailuaren zerbitz. konektatu. Ahots-mezuak zain."</string>
+    <string name="voicemail_status_configure_voicemail">"Konfiguratu erantzungailua."</string>
+    <string name="voicemail_status_audio_not_available">"Audioa ez dago erabilgarri."</string>
+    <string name="voicemail_status_action_configure">"Konfiguratu"</string>
+    <string name="voicemail_status_action_call_server">"Deitu erantzungail."</string>
+    <string name="voicemail_speed_slowest">"Abiadurarik txikiena"</string>
+    <string name="voicemail_speed_slower">"Abiadura txikia"</string>
+    <string name="voicemail_speed_normal">"Abiadura normala"</string>
+    <string name="voicemail_speed_faster">"Abiadura handia"</string>
+    <string name="voicemail_speed_fastest">"Abiadurarik handiena"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Aukeratu zenbakia"</string>
+    <string name="call_disambig_title">"Aukeratu zenbakia"</string>
+    <string name="make_primary">"Gogoratu aukera hau"</string>
+    <string name="description_image_button_one">"bat"</string>
+    <string name="description_image_button_two">"bi"</string>
+    <string name="description_image_button_three">"hiru"</string>
+    <string name="description_image_button_four">"lau"</string>
+    <string name="description_image_button_five">"bost"</string>
+    <string name="description_image_button_six">"sei"</string>
+    <string name="description_image_button_seven">"zazpi"</string>
+    <string name="description_image_button_eight">"zortzi"</string>
+    <string name="description_image_button_nine">"bederatzi"</string>
+    <string name="description_image_button_star">"izarra"</string>
+    <string name="description_image_button_zero">"zero"</string>
+    <string name="description_image_button_pound">"traola"</string>
+    <string name="description_search_button">"bilatu"</string>
+    <string name="description_dial_button">"markatu"</string>
+    <string name="description_digits_edittext">"markatu beharreko zenbakia"</string>
+    <string name="description_playback_start_stop">"Erreproduzitu edo pausatu erreprodukzioa"</string>
+    <string name="description_playback_speakerphone">"Aktibatu edo desaktibatu bozgorailua"</string>
+    <string name="description_playback_seek">"Bilatu erreprodukzioaren posizioa"</string>
+    <string name="description_rate_decrease">"Mantsotu erreprodukzioaren abiadura"</string>
+    <string name="description_rate_increase">"Bizkortu erreprodukzioaren abiadura"</string>
+    <string name="action_menu_call_history_description">"Deien historia"</string>
+    <string name="action_menu_overflow_description">"Aukera gehiago"</string>
+    <string name="action_menu_dialpad_button">"markagailua"</string>
+    <string name="menu_copy">"Kopiatu"</string>
+    <string name="menu_show_outgoing_only">"Erakutsi irteerakoak soilik"</string>
+    <string name="menu_show_incoming_only">"Erakutsi sarrerakoak soilik"</string>
+    <string name="menu_show_missed_only">"Erakutsi galduak soilik"</string>
+    <string name="menu_show_voicemails_only">"Erakutsi erantzungailukoak soilik"</string>
+    <string name="menu_show_all_calls">"Erakutsi dei guztiak"</string>
+    <string name="add_contact">"Gehitu kontaktuetan"</string>
+    <string name="add_2sec_pause">"Gehitu 2 segundoko pausa"</string>
+    <string name="add_wait">"Gehitu itxaronaldia"</string>
+    <string name="menu_select_account">"Hautatu kontua"</string>
+    <string name="dialer_settings_label">"Ezarpenak"</string>
+    <string name="menu_newContact">"Kontaktu berria"</string>
+    <string name="menu_allContacts">"Kontaktu guztiak"</string>
+    <string name="callDetailTitle">"Deiaren xehetasunak"</string>
+    <string name="toast_call_detail_error">"Ezin izan dira eskatutako deiaren xehetasunak irakurri."</string>
+    <string name="dialer_useDtmfDialpad">"Erabili ukipen-tonuak dituen teklatua"</string>
+    <string name="dialer_returnToInCallScreen">"Itzuli abian den deira"</string>
+    <string name="dialer_addAnotherCall">"Gehitu deia"</string>
+    <string name="type_incoming">"Sarrerako deia"</string>
+    <string name="type_outgoing">"Irteerako deia"</string>
+    <string name="type_missed">"Dei galdua"</string>
+    <string name="type_incoming_video">"Sarrerako bideo-deia"</string>
+    <string name="type_outgoing_video">"Irteerako bideo-deia"</string>
+    <string name="type_missed_video">"Bideo-dei galdua"</string>
+    <string name="type_voicemail">"Erantzungailua"</string>
+    <string name="actionIncomingCall">"Sarrerako deiak"</string>
+    <string name="description_call_log_play_button">"Erreproduzitu erantzungailuko ahots-mezuak"</string>
+    <string name="description_view_contact">"Ikusi <xliff:g id="NAME">%1$s</xliff:g> kontaktua"</string>
+    <string name="description_call">"Deitu <xliff:g id="NAME">%1$s</xliff:g> erabiltzaileari"</string>
+    <string name="description_contact_details">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> kontaktuaren xehetasunak"</string>
+    <string name="description_new_voicemail">"Ahots-mezu berria erantzungailuan."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> dei."</string>
+    <string name="description_video_call">"Bideo-deia."</string>
+    <string name="description_send_text_message">"Bidali testu-mezua honi: <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Entzun ez diren erantzungailuko ahots-mezuak"</string>
+    <string name="description_start_voice_search">"Hasi ahots bidezko bilaketa"</string>
+    <string name="menu_callNumber">"Deitu <xliff:g id="NUMBER">%s</xliff:g> zenbakira"</string>
+    <string name="unknown">"Ezezaguna"</string>
+    <string name="voicemail">"Erantzungailua"</string>
+    <string name="private_num">"Zenbaki pribatua"</string>
+    <string name="payphone">"Telefono publikoa"</string>
+    <string name="dialerKeyboardHintText">"Erabili teklatua markatzeko"</string>
+    <string name="dialerDialpadHintText">"Markatu dei bat gehitzeko"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> minutu <xliff:g id="SECONDS">%s</xliff:g> segundo"</string>
+    <string name="dialog_phone_call_prohibited_message">"Ez da deia egin"</string>
+    <string name="dialog_voicemail_not_ready_message">"Erantzungailua konfiguratzeko, joan Menua &gt; Ezarpenak atalera."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Erantzungailua entzuteko, Hegaldi modua desaktibatu behar duzu."</string>
+    <string name="contact_list_loading">"Kargatzen…"</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"SIM txarteletik kargatzen…"</string>
+    <string name="simContacts_title">"SIM txarteleko kontaktuak"</string>
+    <string name="add_contact_not_available">"Eginbide hau erabiltzeko, gaitu Kontaktuak aplikazioa berriro."</string>
+    <string name="voice_search_not_available">"Ahots bidezko bilaketa ez dago erabilgarri."</string>
+    <string name="call_not_available">"Ezin da telefono-deirik egin Telefonoa aplikazioa desgaitu egin delako."</string>
+    <string name="activity_not_available">"Ez dago hautatutako ekintza gauza dezakeen jarduerarik erabilgarri."</string>
+    <string name="dialer_hint_find_contact">"Idatzi izena edo telefono-zk."</string>
+    <string name="recentMissed_empty">"Ez duzu azkenaldian galdutako deirik."</string>
+    <string name="recentVoicemails_empty">"Ez duzu azkenaldiko ahots-mezurik."</string>
+    <string name="show_favorites_only">"Erakutsi gogokoak soilik"</string>
+    <string name="call_log_activity_title">"Historia"</string>
+    <string name="call_log_all_title">"Guztiak"</string>
+    <string name="call_log_missed_title">"Galduak"</string>
+    <string name="call_log_voicemail_title">"Erantzungailuko deiak"</string>
+    <string name="tab_speed_dial">"Markatze bizkorra"</string>
+    <string name="tab_recents">"Azkenak"</string>
+    <string name="tab_all_contacts">"Kontaktuak"</string>
+    <string name="favorite_hidden">"Gogokoetatik kendu da"</string>
+    <string name="favorite_hidden_undo">"Desegin"</string>
+    <string name="search_shortcut_call_number">"Deitu <xliff:g id="NUMBER">%s</xliff:g> zenbakira"</string>
+    <string name="search_shortcut_add_to_contacts">"Gehitu kontaktuetan"</string>
+    <string name="search_shortcut_make_video_call">"Egin bideo-deia"</string>
+    <string name="recents_footer_text">"Ikusi deien historia osoa"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> dei galdu berri"</string>
+    <string name="speed_dial_empty">"Maiz deitzen diezun kontaktuei\ntekla bakarra sakatuta deitzeko\nbalio du Markatze bizkorrak."</string>
+    <string name="all_contacts_empty">"Ez duzu kontakturik."</string>
+    <string name="contact_tooltip">"Zenbaki guztiak ikusteko, ukitu irudia eta, berrantolatzeko, eduki sakatuta"</string>
+    <string name="description_dismiss">"Baztertu"</string>
+    <string name="remove_contact">"Kendu"</string>
+    <string name="favorites_menu_all_contacts">"KONTAKTU GUZTIAK"</string>
+    <string name="call_log_action_call_back">"ITZULI DEIA"</string>
+    <string name="call_log_action_video_call">"EGIN BIDEO-DEIA"</string>
+    <string name="call_log_action_voicemail">"ENTZUN"</string>
+    <string name="call_log_action_details">"XEHETASUNAK"</string>
+    <string name="description_incoming_missed_call">"Deitzaile honen dei galdua: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g> (<xliff:g id="TIMEOFCALL">%3$s</xliff:g>)."</string>
+    <string name="description_incoming_answered_call">"Deitzaile honen erantzundako deia: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g> (<xliff:g id="TIMEOFCALL">%3$s</xliff:g>)."</string>
+    <string name="description_outgoing_call">"Honi egindako deia: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g> (<xliff:g id="TIMEOFCALL">%3$s</xliff:g>)."</string>
+    <string name="description_call_back_action">"Itzuli deia <xliff:g id="NAMEORNUMBER">%1$s</xliff:g> deitzaileari"</string>
+    <string name="description_video_call_action">"Bideo-deia egin da (<xliff:g id="NAMEORNUMBER">%1$s</xliff:g>)."</string>
+    <string name="description_voicemail_action">"Deitzaile honek erantzungailuan utzitako ahots-mezuak entzutea: <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> kontaktuaren xehetasunak"</string>
+    <string name="toast_entry_removed">"Deien erregistroko sarrera ezabatu da."</string>
+    <string name="toast_caller_id_reported">"Kontaktua salatu egin da."</string>
+    <string name="call_log_action_report">"SALATU"</string>
+    <string name="call_log_header_today">"Gaur"</string>
+    <string name="call_log_header_yesterday">"Atzo"</string>
+    <string name="call_log_header_other">"Zaharrak"</string>
+    <string name="call_detail_list_header">"Deiak"</string>
+    <string name="voicemail_speaker_on">"Aktibatu bozgorailua."</string>
+    <string name="voicemail_speaker_off">"Desaktibatu bozgorailua."</string>
+    <string name="voicemail_play_faster">"Erreproduzitu bizkorrago."</string>
+    <string name="voicemail_play_slower">"Erreproduzitu mantsoago."</string>
+    <string name="voicemail_play_start_pause">"Hasi edo gelditu erreprodukzioa."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Ezarpen orokorrak"</string>
+    <string name="general_settings_description">"Kontaktuak bistaratzeko aukera, soinuak eta erantzun bizkorrak"</string>
+    <string name="contact_display_options_category_title">"Kontaktuak bistaratzeko aukerak"</string>
+    <string name="sounds_and_vibrate_category_title">"Soinuak eta dardara"</string>
+    <string name="ringtone_title">"Telefonoaren tonua"</string>
+    <string name="vibrate_on_ring_title">"Dardara deiak jasotzean ere"</string>
+    <string name="dtmf_tone_enable_title">"Markagailuaren tonuak"</string>
+    <string name="other_settings_title">"Beste batzuk"</string>
+    <string name="respond_via_sms_setting_title">"Erantzun bizkorrak"</string>
+    <string name="call_settings_label">"Deien ezarpenak"</string>
+    <string name="call_settings_description">"Erantzungailua, deia zain uzteko eginbidea eta beste batzuk"</string>
+</resources>

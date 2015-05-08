@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Aplikasi Telepon"</string>
+    <string name="launcherActivityLabel">"Telepon"</string>
+    <string name="dialerIconLabel">"Telepon"</string>
+    <string name="recentCallsIconLabel">"Log panggilan"</string>
+    <string name="menu_sendTextMessage">"Kirim SMS"</string>
+    <string name="recentCalls_callNumber">"Telepon <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Edit nomor sebelum memanggil"</string>
+    <string name="recentCalls_addToContact">"Tambahkan ke kontak"</string>
+    <string name="recentCalls_removeFromRecentList">"Hapus dari log panggilan"</string>
+    <string name="recentCalls_deleteAll">"Hapus log panggilan"</string>
+    <string name="recentCalls_trashVoicemail">"Hapus pesan suara"</string>
+    <string name="recentCalls_shareVoicemail">"Bagikan kotak pesan"</string>
+    <string name="recentCalls_empty">"Log panggilan Anda kosong."</string>
+    <string name="clearCallLogConfirmation_title">"Hapus log panggilan?"</string>
+    <string name="clearCallLogConfirmation">"Semua catatan panggilan Anda akan dihapus."</string>
+    <string name="clearCallLogProgress_title">"Menghapus log panggilan..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Pesan suara"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> Pesan suara"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Putar"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Pesan suara baru dari <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Tidak dapat memutar pesan suara."</string>
+    <string name="voicemail_buffering">"Menyangga…"</string>
+    <string name="voicemail_fetching_content">"Mengambil pesan suara…"</string>
+    <string name="voicemail_fetching_timout">"Tidak dapat mengambil pesan suara."</string>
+    <string name="call_log_voicemail_header">"Hanya panggilan dengan pesan suara"</string>
+    <string name="call_log_incoming_header">"Hanya panggilan masuk"</string>
+    <string name="call_log_outgoing_header">"Hanya panggilan keluar"</string>
+    <string name="call_log_missed_header">"Hanya panggilan tak terjawab"</string>
+    <string name="voicemail_status_voicemail_not_available">"Tidak dapat tersambung ke server kotak pesan."</string>
+    <string name="voicemail_status_messages_waiting">"Tak dpt trsmbung ke srvr ktk pesan. Ktk pesan baru sdg menunggu."</string>
+    <string name="voicemail_status_configure_voicemail">"Siapkan kotak pesan Anda."</string>
+    <string name="voicemail_status_audio_not_available">"Audio tidak tersedia."</string>
+    <string name="voicemail_status_action_configure">"Siapkan"</string>
+    <string name="voicemail_status_action_call_server">"Telepon pesan suara"</string>
+    <string name="voicemail_speed_slowest">"Kecepatan paling rendah"</string>
+    <string name="voicemail_speed_slower">"Kecepatan rendah"</string>
+    <string name="voicemail_speed_normal">"Kecepatan normal"</string>
+    <string name="voicemail_speed_faster">"Kecepatan tinggi"</string>
+    <string name="voicemail_speed_fastest">"Kecepatan tertinggi"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Pilih nomor"</string>
+    <string name="call_disambig_title">"Pilih nomor"</string>
+    <string name="make_primary">"Ingat pilihan ini"</string>
+    <string name="description_image_button_one">"satu"</string>
+    <string name="description_image_button_two">"dua"</string>
+    <string name="description_image_button_three">"tiga"</string>
+    <string name="description_image_button_four">"empat"</string>
+    <string name="description_image_button_five">"lima"</string>
+    <string name="description_image_button_six">"enam"</string>
+    <string name="description_image_button_seven">"tujuh"</string>
+    <string name="description_image_button_eight">"delapan"</string>
+    <string name="description_image_button_nine">"sembilan"</string>
+    <string name="description_image_button_star">"bintangi"</string>
+    <string name="description_image_button_zero">"nol"</string>
+    <string name="description_image_button_pound">"pound"</string>
+    <string name="description_search_button">"telusuri"</string>
+    <string name="description_dial_button">"panggil"</string>
+    <string name="description_digits_edittext">"nomor untuk dipanggil"</string>
+    <string name="description_playback_start_stop">"Memutar atau menghentikan pemutaran"</string>
+    <string name="description_playback_speakerphone">"Mengaktifkan/menonaktifkan pengeras suara ponsel"</string>
+    <string name="description_playback_seek">"Mencari posisi pemutaran"</string>
+    <string name="description_rate_decrease">"Menurunkan laju pemutaran"</string>
+    <string name="description_rate_increase">"Meningkatkan laju pemutaran"</string>
+    <string name="action_menu_call_history_description">"Riwayat Panggilan"</string>
+    <string name="action_menu_overflow_description">"Opsi lainnya"</string>
+    <string name="action_menu_dialpad_button">"tombol nomor"</string>
+    <string name="menu_copy">"Salin"</string>
+    <string name="menu_show_outgoing_only">"Tampilkan panggilan keluar"</string>
+    <string name="menu_show_incoming_only">"Tampilkan panggilan masuk saja"</string>
+    <string name="menu_show_missed_only">"Tampilkan panggilan terlewat"</string>
+    <string name="menu_show_voicemails_only">"Tampilkan pesan suara saja"</string>
+    <string name="menu_show_all_calls">"Tampilkan semua panggilan"</string>
+    <string name="add_contact">"Tambahkan ke kontak"</string>
+    <string name="add_2sec_pause">"Tambahkan jeda 2 dtk"</string>
+    <string name="add_wait">"Tambahkan tunggu"</string>
+    <string name="menu_select_account">"Pilih Akun"</string>
+    <string name="dialer_settings_label">"Setelan"</string>
+    <string name="menu_newContact">"Kontak baru"</string>
+    <string name="menu_allContacts">"Semua kontak"</string>
+    <string name="callDetailTitle">"Detail panggilan"</string>
+    <string name="toast_call_detail_error">"Tidak dapat membaca detail untuk panggilan yang diminta."</string>
+    <string name="dialer_useDtmfDialpad">"Gunakan keypad nada sentuh"</string>
+    <string name="dialer_returnToInCallScreen">"Kembali ke panggilan sedang berlangsung"</string>
+    <string name="dialer_addAnotherCall">"Tambahkan panggilan"</string>
+    <string name="type_incoming">"Panggilan masuk"</string>
+    <string name="type_outgoing">"Panggilan keluar"</string>
+    <string name="type_missed">"Panggilan tak terjawab"</string>
+    <string name="type_incoming_video">"Video call masuk"</string>
+    <string name="type_outgoing_video">"Video call keluar"</string>
+    <string name="type_missed_video">"Video call tak terjawab"</string>
+    <string name="type_voicemail">"Kotak Pesan"</string>
+    <string name="actionIncomingCall">"Panggilan masuk"</string>
+    <string name="description_call_log_play_button">"Putar pesan suara"</string>
+    <string name="description_view_contact">"Lihat kontak <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call">"Telepon <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_contact_details">"Detail kontak untuk <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_new_voicemail">"Pesan suara baru."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> panggilan."</string>
+    <string name="description_video_call">"Video call."</string>
+    <string name="description_send_text_message">"Kirim SMS ke <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Pesan suara yang belum didengar"</string>
+    <string name="description_start_voice_search">"Memulai penelusuran suara"</string>
+    <string name="menu_callNumber">"Telepon <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Tidak diketahui"</string>
+    <string name="voicemail">"Kotak Pesan"</string>
+    <string name="private_num">"Nomor pribadi"</string>
+    <string name="payphone">"Telepon berbayar"</string>
+    <string name="dialerKeyboardHintText">"Gunakan keyboard untuk memanggil"</string>
+    <string name="dialerDialpadHintText">"Telepon untuk menambahkan panggilan"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> menit <xliff:g id="SECONDS">%s</xliff:g> detik"</string>
+    <string name="dialog_phone_call_prohibited_message">"Panggilan tidak terkirim"</string>
+    <string name="dialog_voicemail_not_ready_message">"Untuk menyiapkan kotak pesan, buka Menu &gt; Setelan."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Untuk memanggil pesan suara, pertama-tama matikan mode Pesawat."</string>
+    <string name="contact_list_loading">"Memuat..."</string>
+    <string name="imei">"IMEI"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Memuat dari kartu SIM..."</string>
+    <string name="simContacts_title">"Kontak pada kartu SIM"</string>
+    <string name="add_contact_not_available">"Aktifkan ulang aplikasi Kontak untuk menggunakan fitur ini."</string>
+    <string name="voice_search_not_available">"Penelusuran suara tidak tersedia."</string>
+    <string name="call_not_available">"Tidak dapat melakukan panggilan telepon karena aplikasi Telepon telah dinonaktifkan."</string>
+    <string name="activity_not_available">"Tidak ada aktivitas terpasang yang tersedia untuk menangani tindakan yang dipilih."</string>
+    <string name="dialer_hint_find_contact">"Ketikkan nama/nomor ponsel"</string>
+    <string name="recentMissed_empty">"Tidak ada panggilan tidak terjawab baru-baru ini."</string>
+    <string name="recentVoicemails_empty">"Tidak ada kotak pesan baru-baru ini."</string>
+    <string name="show_favorites_only">"Hanya tampilkan favorit"</string>
+    <string name="call_log_activity_title">"Riwayat"</string>
+    <string name="call_log_all_title">"Semua"</string>
+    <string name="call_log_missed_title">"Tak Dijawab"</string>
+    <string name="call_log_voicemail_title">"PesanSuara"</string>
+    <string name="tab_speed_dial">"Panggilan Cepat"</string>
+    <string name="tab_recents">"Terbaru"</string>
+    <string name="tab_all_contacts">"Kontak"</string>
+    <string name="favorite_hidden">"Dihapus dari favorit"</string>
+    <string name="favorite_hidden_undo">"Batalkan"</string>
+    <string name="search_shortcut_call_number">"Telepon <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Tambahkan ke kontak"</string>
+    <string name="search_shortcut_make_video_call">"Lakukan video call"</string>
+    <string name="recents_footer_text">"Lihat riwayat panggilan telepon lengkap"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> panggilan tidak terjawab baru"</string>
+    <string name="speed_dial_empty">"Teleponan cepat adalah satu sentuhan guna menelepon\nfavorit dan nomor\n yang sering Anda telepon."</string>
+    <string name="all_contacts_empty">"Anda tidak memiliki kontak."</string>
+    <string name="contact_tooltip">"Ketuk gambar untuk melihat semua nomor atau tekan terus untuk mengatur ulang"</string>
+    <string name="description_dismiss">"Tutup"</string>
+    <string name="remove_contact">"Hapus"</string>
+    <string name="favorites_menu_all_contacts">"SEMUA KONTAK"</string>
+    <string name="call_log_action_call_back">"HUBUNGI KEMBALI"</string>
+    <string name="call_log_action_video_call">"VIDEO CALL"</string>
+    <string name="call_log_action_voicemail">"DENGAR"</string>
+    <string name="call_log_action_details">"DETAIL"</string>
+    <string name="description_incoming_missed_call">"Panggilan telepon tak terjawab dari <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Panggilan telepon terjawab dari <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Panggilan telepon ke <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"Telepon kembali <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_video_call_action">"Video call ke <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Dengarkan kotak pesan dari <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"Detail panggilan telepon untuk <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="toast_entry_removed">"Entri log panggilan telepon dihapus."</string>
+    <string name="toast_caller_id_reported">"Kontak dilaporkan."</string>
+    <string name="call_log_action_report">"LAPORKAN"</string>
+    <string name="call_log_header_today">"Hari ini"</string>
+    <string name="call_log_header_yesterday">"Kemarin"</string>
+    <string name="call_log_header_other">"Lebih lama"</string>
+    <string name="call_detail_list_header">"Daftar Panggilan"</string>
+    <string name="voicemail_speaker_on">"Aktifkan pengeras suara."</string>
+    <string name="voicemail_speaker_off">"Nonaktifkan pengeras suara."</string>
+    <string name="voicemail_play_faster">"Putar lebih cepat."</string>
+    <string name="voicemail_play_slower">"Putar lebih lambat."</string>
+    <string name="voicemail_play_start_pause">"Mulai atau jeda pemutaran."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Setelan umum"</string>
+    <string name="general_settings_description">"Tampilan kontak, suara, dan respons cepat"</string>
+    <string name="contact_display_options_category_title">"Opsi tampilan kontak"</string>
+    <string name="sounds_and_vibrate_category_title">"Suara dan getaran"</string>
+    <string name="ringtone_title">"Nada dering ponsel"</string>
+    <string name="vibrate_on_ring_title">"Juga getar saat ada panggilan"</string>
+    <string name="dtmf_tone_enable_title">"Nada tombol nomor"</string>
+    <string name="other_settings_title">"Lainnya"</string>
+    <string name="respond_via_sms_setting_title">"Respons cepat"</string>
+    <string name="call_settings_label">"Setelan panggilan"</string>
+    <string name="call_settings_description">"Kotak pesan, nada tunggu, dan lainnya"</string>
+</resources>

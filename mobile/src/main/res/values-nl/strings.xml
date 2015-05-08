@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applicationLabel">"Dialer"</string>
+    <string name="launcherActivityLabel">"Telefoon"</string>
+    <string name="dialerIconLabel">"Telefoon"</string>
+    <string name="recentCallsIconLabel">"Gesprek"</string>
+    <string name="menu_sendTextMessage">"Sms verzenden"</string>
+    <string name="recentCalls_callNumber">"<xliff:g id="NAME">%s</xliff:g> bellen"</string>
+    <string name="recentCalls_editNumberBeforeCall">"Nummer bewerken voor bellen"</string>
+    <string name="recentCalls_addToContact">"Toevoegen aan contacten"</string>
+    <string name="recentCalls_removeFromRecentList">"Verwijderen uit Gesprekken"</string>
+    <string name="recentCalls_deleteAll">"Gesprekken wissen"</string>
+    <string name="recentCalls_trashVoicemail">"Voicemail verwijderen"</string>
+    <string name="recentCalls_shareVoicemail">"Voicemail delen"</string>
+    <string name="recentCalls_empty">"Uw oproeplijst is leeg."</string>
+    <string name="clearCallLogConfirmation_title">"Oproeplog wissen?"</string>
+    <string name="clearCallLogConfirmation">"Al uw oproepgegevens worden verwijderd."</string>
+    <string name="clearCallLogProgress_title">"Gesprekkenlijst wissen..."</string>
+  <plurals name="notification_voicemail_title">
+    <item quantity="one">"Voicemail"</item>
+    <item quantity="other">"<xliff:g id="COUNT">%1$d</xliff:g> voicemails"</item>
+  </plurals>
+    <string name="notification_action_voicemail_play">"Afspelen"</string>
+    <string name="notification_voicemail_callers_list">"<xliff:g id="NEWER_CALLERS">%1$s</xliff:g>, <xliff:g id="OLDER_CALLER">%2$s</xliff:g>"</string>
+    <string name="notification_new_voicemail_ticker">"Nieuwe voicemail van <xliff:g id="CALLER">%1$s</xliff:g>"</string>
+    <string name="voicemail_playback_error">"Kan voicemail niet afspelen."</string>
+    <string name="voicemail_buffering">"In buffer opslaan…"</string>
+    <string name="voicemail_fetching_content">"Voicemail ophalen…"</string>
+    <string name="voicemail_fetching_timout">"Kan voicemail niet ophalen."</string>
+    <string name="call_log_voicemail_header">"Alleen oproepen met voicemail"</string>
+    <string name="call_log_incoming_header">"Alleen inkomende oproepen"</string>
+    <string name="call_log_outgoing_header">"Alleen uitgaande oproepen"</string>
+    <string name="call_log_missed_header">"Alleen gemiste oproepen"</string>
+    <string name="voicemail_status_voicemail_not_available">"Kan geen verbinding maken met de voicemailserver."</string>
+    <string name="voicemail_status_messages_waiting">"Kan niet verbinden met voicemailservers. Er is nieuwe voicemail."</string>
+    <string name="voicemail_status_configure_voicemail">"Stel uw voicemail in."</string>
+    <string name="voicemail_status_audio_not_available">"Audio niet beschikbaar."</string>
+    <string name="voicemail_status_action_configure">"Instellen"</string>
+    <string name="voicemail_status_action_call_server">"Bellen met voicemail"</string>
+    <string name="voicemail_speed_slowest">"Laagste snelheid"</string>
+    <string name="voicemail_speed_slower">"Lage snelheid"</string>
+    <string name="voicemail_speed_normal">"Normale snelheid"</string>
+    <string name="voicemail_speed_faster">"Hoge snelheid"</string>
+    <string name="voicemail_speed_fastest">"Hoogste snelheid"</string>
+    <string name="call_log_item_count_and_date">"(<xliff:g id="COUNT">%1$d</xliff:g>) <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="sms_disambig_title">"Nummer kiezen"</string>
+    <string name="call_disambig_title">"Nummer kiezen"</string>
+    <string name="make_primary">"Deze keuze onthouden"</string>
+    <string name="description_image_button_one">"één"</string>
+    <string name="description_image_button_two">"twee"</string>
+    <string name="description_image_button_three">"drie"</string>
+    <string name="description_image_button_four">"vier"</string>
+    <string name="description_image_button_five">"vijf"</string>
+    <string name="description_image_button_six">"zes"</string>
+    <string name="description_image_button_seven">"zeven"</string>
+    <string name="description_image_button_eight">"acht"</string>
+    <string name="description_image_button_nine">"negen"</string>
+    <string name="description_image_button_star">"ster"</string>
+    <string name="description_image_button_zero">"nul"</string>
+    <string name="description_image_button_pound">"hekje"</string>
+    <string name="description_search_button">"zoeken"</string>
+    <string name="description_dial_button">"bellen"</string>
+    <string name="description_digits_edittext">"nummer om te bellen"</string>
+    <string name="description_playback_start_stop">"Afspelen starten of stoppen"</string>
+    <string name="description_playback_speakerphone">"Luidsprekertelefoon in- of uitschakelen"</string>
+    <string name="description_playback_seek">"Afspeelpositie zoeken"</string>
+    <string name="description_rate_decrease">"Afspeelsnelheid verlagen"</string>
+    <string name="description_rate_increase">"Afspeelsnelheid verhogen"</string>
+    <string name="action_menu_call_history_description">"Oproepgeschiedenis"</string>
+    <string name="action_menu_overflow_description">"Meer opties"</string>
+    <string name="action_menu_dialpad_button">"toetsenblok"</string>
+    <string name="menu_copy">"Kopiëren"</string>
+    <string name="menu_show_outgoing_only">"Alleen uitgaand weergeven"</string>
+    <string name="menu_show_incoming_only">"Alleen inkomend weergeven"</string>
+    <string name="menu_show_missed_only">"Alleen gemist weergeven"</string>
+    <string name="menu_show_voicemails_only">"Alleen voicemails weergeven"</string>
+    <string name="menu_show_all_calls">"Alle oproepen weergeven"</string>
+    <string name="add_contact">"Toevoegen aan contacten"</string>
+    <string name="add_2sec_pause">"Pauze van 2 seconden toevoegen"</string>
+    <string name="add_wait">"Wachten toevoegen"</string>
+    <string name="menu_select_account">"Account selecteren"</string>
+    <string name="dialer_settings_label">"Instellingen"</string>
+    <string name="menu_newContact">"Nieuw contact"</string>
+    <string name="menu_allContacts">"Alle contacten"</string>
+    <string name="callDetailTitle">"Gespreksgegevens"</string>
+    <string name="toast_call_detail_error">"Kan geen gegevens over het gevraagde gesprek vinden."</string>
+    <string name="dialer_useDtmfDialpad">"Toetsen voor toonkiezen gebruiken"</string>
+    <string name="dialer_returnToInCallScreen">"Terug naar actief gesprek"</string>
+    <string name="dialer_addAnotherCall">"Oproep toevoegen"</string>
+    <string name="type_incoming">"Inkomende oproep"</string>
+    <string name="type_outgoing">"Uitgaand gesprek"</string>
+    <string name="type_missed">"Oproep gemist"</string>
+    <string name="type_incoming_video">"Binnenkomend videogesprek"</string>
+    <string name="type_outgoing_video">"Uitgaand videogesprek"</string>
+    <string name="type_missed_video">"Gemist videogesprek"</string>
+    <string name="type_voicemail">"Voicemail"</string>
+    <string name="actionIncomingCall">"Inkomende oproepen"</string>
+    <string name="description_call_log_play_button">"Voicemail afspelen"</string>
+    <string name="description_view_contact">"Contact <xliff:g id="NAME">%1$s</xliff:g> bekijken"</string>
+    <string name="description_call">"<xliff:g id="NAME">%1$s</xliff:g> bellen"</string>
+    <string name="description_contact_details">"Contactgegevens voor <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_new_voicemail">"Nieuwe voicemail."</string>
+    <string name="description_num_calls">"<xliff:g id="NUMBEROFCALLS">%1$s</xliff:g> telefoongesprekken."</string>
+    <string name="description_video_call">"Videogesprek."</string>
+    <string name="description_send_text_message">"Sms verzenden naar <xliff:g id="NAME">%1$s</xliff:g>"</string>
+    <string name="description_call_log_unheard_voicemail">"Niet-beluisterde voicemail"</string>
+    <string name="description_start_voice_search">"Gesproken zoekopdracht"</string>
+    <string name="menu_callNumber">"Bel <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="unknown">"Onbekend"</string>
+    <string name="voicemail">"Voicemail"</string>
+    <string name="private_num">"Privénummer"</string>
+    <string name="payphone">"Betaaltelefoon"</string>
+    <string name="dialerKeyboardHintText">"Toetsen gebruiken om te bellen"</string>
+    <string name="dialerDialpadHintText">"Oproep toevoegen"</string>
+    <string name="callDetailsDurationFormat">"<xliff:g id="MINUTES">%s</xliff:g> min. <xliff:g id="SECONDS">%s</xliff:g> sec."</string>
+    <string name="dialog_phone_call_prohibited_message">"Oproep niet uitgevoerd"</string>
+    <string name="dialog_voicemail_not_ready_message">"Voor het instellen van voicemail, gaat u naar \'Menu\' &gt; \'Instellingen\'."</string>
+    <string name="dialog_voicemail_airplane_mode_message">"Als u uw voicemail wilt bellen, moet u eerst de Vliegmodus uitschakelen."</string>
+    <string name="contact_list_loading">"Laden..."</string>
+    <string name="imei">"IMEI-nummer"</string>
+    <string name="meid">"MEID"</string>
+    <string name="simContacts_emptyLoading">"Laden vanaf SIM-kaart..."</string>
+    <string name="simContacts_title">"Contacten op SIM-kaart"</string>
+    <string name="add_contact_not_available">"Schakel de app Contacten opnieuw in om deze functie te gebruiken."</string>
+    <string name="voice_search_not_available">"Gesproken zoekopdrachten zijn niet beschikbaar"</string>
+    <string name="call_not_available">"Kan niet bellen omdat de Telefoon-app is uitgeschakeld."</string>
+    <string name="activity_not_available">"Geen geïnstalleerde activiteit beschikbaar om de geselecteerde actie te verwerken."</string>
+    <string name="dialer_hint_find_contact">"Typ een naam of telefoonnummer"</string>
+    <string name="recentMissed_empty">"U heeft geen recente gemiste oproepen."</string>
+    <string name="recentVoicemails_empty">"U heeft geen recente voicemails."</string>
+    <string name="show_favorites_only">"Alleen favorieten weergeven"</string>
+    <string name="call_log_activity_title">"Geschiedenis"</string>
+    <string name="call_log_all_title">"Alle"</string>
+    <string name="call_log_missed_title">"Gemist"</string>
+    <string name="call_log_voicemail_title">"Voicemail"</string>
+    <string name="tab_speed_dial">"Snelkeuze"</string>
+    <string name="tab_recents">"Recent"</string>
+    <string name="tab_all_contacts">"Contacten"</string>
+    <string name="favorite_hidden">"Verwijderd uit favorieten"</string>
+    <string name="favorite_hidden_undo">"Ongedaan maken"</string>
+    <string name="search_shortcut_call_number">"Bel <xliff:g id="NUMBER">%s</xliff:g>"</string>
+    <string name="search_shortcut_add_to_contacts">"Toevoegen aan contacten"</string>
+    <string name="search_shortcut_make_video_call">"Videogesprek starten"</string>
+    <string name="recents_footer_text">"Volledige oproepgeschiedenis bekijken"</string>
+    <string name="num_missed_calls">"<xliff:g id="NUMBER">%s</xliff:g> nieuwe gemiste oproepen"</string>
+    <string name="speed_dial_empty">"Snelkeuze is kiezen met één tik op een toets\nvoor favorieten en nummers\ndie u vaak belt."</string>
+    <string name="all_contacts_empty">"U heeft geen contacten."</string>
+    <string name="contact_tooltip">"Tik op de afbeelding om alle nummers te bekijken of raak deze lang aan om de volgorde van nummers te wijzigen"</string>
+    <string name="description_dismiss">"Sluiten"</string>
+    <string name="remove_contact">"Verwijderen"</string>
+    <string name="favorites_menu_all_contacts">"ALLE CONTACTEN"</string>
+    <string name="call_log_action_call_back">"TERUGBELLEN"</string>
+    <string name="call_log_action_video_call">"VIDEOGESPREK"</string>
+    <string name="call_log_action_voicemail">"LUISTEREN"</string>
+    <string name="call_log_action_details">"DETAILS"</string>
+    <string name="description_incoming_missed_call">"Gemiste oproep van <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_incoming_answered_call">"Beantwoorde oproep van <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_outgoing_call">"Oproep aan <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>, <xliff:g id="TYPEORLOCATION">%2$s</xliff:g>, <xliff:g id="TIMEOFCALL">%3$s</xliff:g>."</string>
+    <string name="description_call_back_action">"<xliff:g id="NAMEORNUMBER">%1$s</xliff:g> terugbellen"</string>
+    <string name="description_video_call_action">"Videogesprek naar <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>."</string>
+    <string name="description_voicemail_action">"Voicemail beluisteren van <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="description_details_action">"Oproepgegevens voor <xliff:g id="NAMEORNUMBER">%1$s</xliff:g>"</string>
+    <string name="toast_entry_removed">"Vermelding in gesprekkenlijst verwijderd."</string>
+    <string name="toast_caller_id_reported">"Contact gemeld."</string>
+    <string name="call_log_action_report">"MELDEN"</string>
+    <string name="call_log_header_today">"Vandaag"</string>
+    <string name="call_log_header_yesterday">"Gisteren"</string>
+    <string name="call_log_header_other">"Ouder"</string>
+    <string name="call_detail_list_header">"Oproeplijst"</string>
+    <string name="voicemail_speaker_on">"Luidspreker inschakelen."</string>
+    <string name="voicemail_speaker_off">"Luidspreker uitschakelen."</string>
+    <string name="voicemail_play_faster">"Sneller afspelen."</string>
+    <string name="voicemail_play_slower">"Langzamer afspelen."</string>
+    <string name="voicemail_play_start_pause">"Afspelen starten of onderbreken."</string>
+    <string name="list_delimeter">", "</string>
+    <string name="general_settings_label">"Algemene instellingen"</string>
+    <string name="general_settings_description">"Weergave van contacten, geluiden en snelle reacties"</string>
+    <string name="contact_display_options_category_title">"Weegaveopties voor contacten"</string>
+    <string name="sounds_and_vibrate_category_title">"Geluiden en trillen"</string>
+    <string name="ringtone_title">"Beltoon telefoon"</string>
+    <string name="vibrate_on_ring_title">"Ook trillen voor oproepen"</string>
+    <string name="dtmf_tone_enable_title">"Tonen bij toetsaanslag"</string>
+    <string name="other_settings_title">"Anders"</string>
+    <string name="respond_via_sms_setting_title">"Snelle reacties"</string>
+    <string name="call_settings_label">"Oproepinstellingen"</string>
+    <string name="call_settings_description">"Voicemail, wisselgesprek en overige instellingen"</string>
+</resources>
