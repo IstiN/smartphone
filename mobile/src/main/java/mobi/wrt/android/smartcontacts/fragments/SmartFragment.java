@@ -207,23 +207,36 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
         this.count = cursor.getCount();
         final View recentCallView = getActivity().findViewById(R.id.recent_call);
-        cursor.mLastCall.moveToFirst();
-        RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()), new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(final View v) {
-                ViewGroup itemView = (ViewGroup) v.getParent();
-                final Long id = (Long) itemView.getTag();
-                Context context = itemView.getContext();
-                ContactHelper.get(context).removeCallLog(context, id, new Runnable() {
-                    @Override
-                    public void run() {
-                        CursorLoaderFragmentHelper.restartLoader(SmartFragment.this);
-                    }
-                });
-                return true;
-            }
-        });
+        if (!CursorUtils.isEmpty(cursor.mLastCall)) {
+            cursor.mLastCall.moveToFirst();
+            RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()), new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(final View v) {
+                    ViewGroup itemView = (ViewGroup) v.getParent();
+                    final Long id = (Long) itemView.getTag();
+                    Context context = itemView.getContext();
+                    ContactHelper.get(context).removeCallLog(context, id, new Runnable() {
+                        @Override
+                        public void run() {
+                            CursorLoaderFragmentHelper.restartLoader(SmartFragment.this);
+                        }
+                    });
+                    return true;
+                }
+            });
+            recentCallView.setVisibility(View.VISIBLE);
+        } else {
+            recentCallView.setVisibility(View.GONE);
+        }
         super.onLoadFinished(loader, cursor);
+        View view = getView();
+        if (view != null) {
+            if (count == 0) {
+                view.findViewById(android.R.id.empty).setVisibility(View.VISIBLE);
+            } else {
+                view.findViewById(android.R.id.empty).setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override

@@ -621,7 +621,7 @@
     <string name="num_missed_calls"><xliff:g id="number">%s</xliff:g> new missed calls</string>
 
     <!-- Shown when there are no speed dial favorites. -->
-    <string name="speed_dial_empty">Speed dial is one touch dialing\nfor favorites and numbers\n you call frequently.</string>
+    <string name="speed_dial_empty">Speed dial is one touch dialing\nfor favorites and numbers\nyou call frequently.</string>
 
     <!-- Shown when there are no contacts in the all contacts list. -->
     <string name="all_contacts_empty">You have no contacts.</string>

@@ -24,7 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Empty"
+        android:drawableTop="@drawable/ic_empty_call_log"
+        android:text="@string/recentCalls_empty"
+        android:textColor="?attr/contactDescriptionColor"
+        android:layout_marginTop="@dimen/default_margin_24"
+        android:drawablePadding="24dip"
         android:visibility="gone" />
 
 </RelativeLayout>

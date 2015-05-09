@@ -23,7 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Empty"
+        android:drawableTop="@drawable/ic_empty_speeddial"
+        android:textColor="?attr/contactDescriptionColor"
+        android:text="@string/speed_dial_empty"
         android:visibility="gone" />
 
 </RelativeLayout>
