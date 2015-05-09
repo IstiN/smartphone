@@ -50,6 +50,10 @@ android {
 
         manifestPlaceholders = [facebookId:Long.parseLong(FACEBOOK_APP_ID)]
     }
+    lintOptions {
+        disable 'MissingTranslation', 'ExtraTranslation'
+        abortOnError false
+    }
     buildTypes {
         release {
             minifyEnabled false
