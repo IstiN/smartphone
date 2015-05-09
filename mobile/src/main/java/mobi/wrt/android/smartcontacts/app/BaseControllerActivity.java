@@ -46,7 +46,7 @@ public class BaseControllerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ThemeUtils.onActivityCreate(this);
+        ThemeUtils.onContextCreate(this);
         refreshStatusBar();
     }
 

@@ -1,6 +1,7 @@
 package mobi.wrt.android.smartcontacts.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import by.istin.android.xcore.preference.PreferenceHelper;
@@ -72,10 +73,10 @@ public class ThemeUtils {
         }
     }
 
-    public static int onActivityCreate(Activity activity) {
-        int themeOrdinal = PreferenceHelper.getInt(CURRENT_THEME_KEY, 0);
+    public static int onContextCreate(Context context) {
+        int themeOrdinal = PreferenceHelper.getInt(CURRENT_THEME_KEY, ThemeValue.LIGHT_BLUE_LIGHT.ordinal());
         int mThemeStyle = ThemeValue.values()[themeOrdinal].mThemeStyle;
-        activity.setTheme(mThemeStyle);
+        context.setTheme(mThemeStyle);
         return mThemeStyle;
     }
 
