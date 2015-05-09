@@ -1,6 +1,6 @@
 package mobi.wrt.android.smartcontacts.drawer;
 
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.text.Html;
+import android.text.format.DateUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,14 +24,24 @@ import com.facebook.share.widget.LikeView;
 import com.google.android.gms.plus.PlusOneButton;
 import com.squareup.picasso.Picasso;
 
-import by.istin.android.xcore.ui.DialogBuilder;
+import java.util.ArrayList;
+import java.util.List;
+
+import by.istin.android.xcore.ContextHolder;
+import by.istin.android.xcore.Core;
+import by.istin.android.xcore.analytics.ITracker;
+import by.istin.android.xcore.callable.ISuccess;
+import by.istin.android.xcore.preference.PreferenceHelper;
+import by.istin.android.xcore.source.DataSourceRequest;
+import by.istin.android.xcore.source.impl.http.HttpAndroidDataSource;
 import by.istin.android.xcore.utils.CursorUtils;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
+import mobi.wrt.android.smartcontacts.BuildConfig;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.app.MainActivity;
-import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
+import mobi.wrt.android.smartcontacts.config.ConfigProcessor;
 
 /**
  * Created by uladzimir_klyshevich on 4/23/15.
@@ -41,7 +53,7 @@ public class DrawerInitializer {
             + ContactsContract.Contacts.Data.MIMETYPE + "=? OR "
             + ContactsContract.Contacts.Data.MIMETYPE + "=? OR "
             + ContactsContract.Contacts.Data.MIMETYPE + "=?";
-    final static Uri PROFILE_URI = Uri.withAppendedPath(
+    private final static Uri PROFILE_URI = Uri.withAppendedPath(
             ContactsContract.Profile.CONTENT_URI,
             ContactsContract.Contacts.Data.CONTENT_DIRECTORY);
     public static final String[] SELECTION_ARGS = new String[]{
@@ -50,7 +62,11 @@ public class DrawerInitializer {
             ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE,
             ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE
     };
-    final String[] PROJECTION = {
+    public static final String LIKED_TIME_KEY = "liked_time_key";
+    public static final String PLUS_ONE_TIME_KEY = "plus_one_time_key";
+    public static final long DELAY_FOR_HIDE_TIME = 2 * DateUtils.MINUTE_IN_MILLIS;
+
+    private final String[] PROJECTION = {
             ContactsContract.CommonDataKinds.Email.ADDRESS,
             ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
             ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
@@ -61,12 +77,14 @@ public class DrawerInitializer {
             ContactsContract.Contacts.Data.MIMETYPE
     };
 
-    private static final int PLUS_ONE_REQUEST_CODE = 0;
-
+    private List<MenuItem> mCurrentMenuItems = new ArrayList<>();
     private View mHeader;
     private PlusOneButton mPlusOneButton;
     private LikeView mLikeButton;
-    private String mShareUrl;
+
+    private ConfigProcessor.Config mConfig;
+
+    private ArrayAdapter<MenuItem> mAdapter;
 
 
     public void init(final FragmentActivity activity, final ListView listView) {
@@ -94,108 +112,86 @@ public class DrawerInitializer {
             public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
                 if (mHeader == null) {
                     mHeader = View.inflate(activity, R.layout.view_drawer_header, null);
+                    mPlusOneButton = (PlusOneButton) mHeader.findViewById(R.id.plus_one_button);
+                    mLikeButton = (LikeView) mHeader.findViewById(R.id.facebook_button);
+
+
                     listView.addHeaderView(mHeader, null, false);
-                    final MenuItem[] values = MenuItem.values();
-                    listView.setAdapter(new ArrayAdapter<MenuItem>(activity,
-                            R.layout.adapter_left_menu,
-                            android.R.id.text1, values) {
-                                @Override
-                                public View getView(int position, View convertView, ViewGroup parent) {
-                                    View view = super.getView(position, convertView, parent);
-                                    ((ImageView)view.findViewById(R.id.icon)).setImageResource(values[position].iconDrawable);
-                                    return view;
-                                }
+
+                    View footer = View.inflate(activity, R.layout.view_drawer_footer, null);
+                    ((TextView)footer.findViewById(android.R.id.text1)).setText(activity.getString(R.string.version) + ": " + BuildConfig.VERSION_CODE + "(" + BuildConfig.VERSION_NAME+")");
+                    listView.addFooterView(footer, null, false);
+
+                    mCurrentMenuItems.clear();
+                    mCurrentMenuItems.add(MenuItem.THEMES);
+                    if (mAdapter == null) {
+                        mAdapter = new ArrayAdapter<MenuItem>(activity,
+                                R.layout.adapter_left_menu,
+                                android.R.id.text1, mCurrentMenuItems) {
+                            @Override
+                            public View getView(int position, View convertView, ViewGroup parent) {
+                                View view = super.getView(position, convertView, parent);
+                                ((ImageView) view.findViewById(R.id.icon)).setImageResource(mCurrentMenuItems.get(position).iconDrawable);
+                                return view;
                             }
-                    );
+                        };
+                        listView.setAdapter(mAdapter);
+                    } else {
+                        mAdapter.notifyDataSetChanged();
+                    }
+
+                    Core.ExecuteOperationBuilder<ConfigProcessor.Config> operationBuilder = new Core.ExecuteOperationBuilder<>();
+                    DataSourceRequest pDataSourceRequest = new DataSourceRequest("http://wrt-phone.appspot.com/config");
+                    pDataSourceRequest.setCacheable(true);
+                    pDataSourceRequest.setForceUpdateData(true);
+                    pDataSourceRequest.setCacheExpiration(DateUtils.DAY_IN_MILLIS);
+                    operationBuilder
+                            .setActivity(activity)
+                            .setDataSourceKey(HttpAndroidDataSource.SYSTEM_SERVICE_KEY)
+                            .setProcessorKey(ConfigProcessor.APP_SERVICE_KEY)
+                            .setDataSourceRequest(pDataSourceRequest)
+                            .setSuccess(new ISuccess<ConfigProcessor.Config>() {
+                                @Override
+                                public void success(ConfigProcessor.Config config) {
+                                    mConfig = config;
+                                    updateAdapter(config);
+                                }
+
+                            }).setDataSourceServiceListener(new Core.SimpleDataSourceServiceListener() {
+                        @Override
+                        public void onDone(Bundle resultData) {
+
+                        }
+
+                        @Override
+                        public void onCached(Bundle resultData) {
+                            super.onCached(resultData);
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    final ConfigProcessor.Config config = ConfigProcessor.getFromCache();
+                                    mConfig = config;
+                                    activity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            updateAdapter(config);
+                                        }
+                                    });
+                                }
+                            }).start();
+                        }
+                    });
+                    Core.get(activity).execute(operationBuilder.build());
+
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            values[position - 1].clickListener.onClick(view);
+                            view.setTag(mConfig);
+                            mCurrentMenuItems.get(position - 1).clickListener.onClick(view);
                         }
                     });
-                    mPlusOneButton = (PlusOneButton) mHeader.findViewById(R.id.plus_one_button);
-                    mLikeButton = (LikeView) mHeader.findViewById(R.id.facebook_button);
-                    //mLikeButton.setVisibility(View.INVISIBLE);
-                    //mPlusOneButton.setVisibility(View.INVISIBLE);
-                    //String url = BuildConfig.MARKET_URL + BuildConfig.APPLICATION_ID;
-                    mShareUrl = "https://google.com";
-                    mPlusOneButton.initialize(mShareUrl, MainActivity.REQUEST_CODE_PLUS);
-                    /*mPlusOneButton.initialize(url, new PlusOneButton.OnPlusOneClickListener() {
-                        @Override
-                        public void onPlusOneClick(Intent intent) {
-                            // Launch the Google+ share dialog with attribution to your app.
-                            Intent shareIntent = new PlusShare.Builder(activity)
-                                    .setType("text/plain")
-                                    .setText("Welcome to the Google+ platform.")
-                                    .setContentUrl(Uri.parse(url))
-                                    .getIntent();
-                            activity.startActivityForResult(shareIntent, 0);
-
-                        }
-                    });*/
-                    mLikeButton.setObjectIdAndType(mShareUrl, LikeView.ObjectType.PAGE);
                 }
-                TextView nameView = (TextView) mHeader.findViewById(R.id.profile_name);
-                ImageView iconView = (ImageView) mHeader.findViewById(R.id.profile_icon);
-
-                if (!CursorUtils.isEmpty(data)) {
-                    String mimeType;
-                    String photoUri = StringUtil.EMPTY;
-                    String phoneNumber = StringUtil.EMPTY;
-                    String givenName = StringUtil.EMPTY;
-                    String familyName = StringUtil.EMPTY;
-                    String email = StringUtil.EMPTY;
-                    data.moveToFirst();
-                    do {
-                        mimeType = CursorUtils.getString(ContactsContract.Contacts.Data.MIMETYPE, data);
-                        switch (mimeType) {
-                            case ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE:
-                                email = CursorUtils.getString(ContactsContract.CommonDataKinds.Email.ADDRESS, data);
-                                break;
-                            case ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE:
-                                givenName = CursorUtils.getString(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME, data);
-                                familyName = CursorUtils.getString(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME, data);
-                                break;
-                            case ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE:
-                                phoneNumber = CursorUtils.getString(ContactsContract.CommonDataKinds.Phone.NUMBER, data);
-                                break;
-                            case ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE:
-                                photoUri = CursorUtils.getString(ContactsContract.CommonDataKinds.Photo.PHOTO_URI, data);
-                                break;
-                        }
-                    } while (data.moveToNext());
-                    String name = StringUtil.join(" ", true, givenName, familyName);
-                    if (StringUtil.isEmpty(name) && !StringUtil.isEmpty(email)) {
-                        name = email;
-                    }
-                    if (StringUtil.isEmpty(name)) {
-                        if (!StringUtil.isEmpty(phoneNumber)) {
-                            nameView.setText(phoneNumber);
-                        } else {
-                            nameView.setText(StringUtil.EMPTY);
-                        }
-                    } else {
-                        if (!StringUtil.isEmpty(phoneNumber)) {
-                            nameView.setText(Html.fromHtml("<b>"+name+"</b><br>" + phoneNumber), TextView.BufferType.SPANNABLE);
-                        } else {
-                            nameView.setText(name);
-                        }
-                    }
-                    if (!StringUtil.isEmpty(photoUri)) {
-                        Picasso.with(activity).
-                                load(photoUri).
-                                transform(Application.ROUNDED_TRANSFORMATION).
-                                into(iconView);
-                        ((View)iconView.getParent()).setVisibility(View.VISIBLE);
-                    } else {
-                        iconView.setImageDrawable(null);
-                        ((View)iconView.getParent()).setVisibility(View.INVISIBLE);
-                    }
-                } else {
-                    nameView.setText(StringUtil.EMPTY);
-                    iconView.setImageDrawable(null);
-                    ((View)iconView.getParent()).setVisibility(View.INVISIBLE);
-                }
+                initHeaderView(data, activity);
             }
 
             @Override
@@ -205,7 +201,139 @@ public class DrawerInitializer {
         });
     }
 
+    private void updateAdapter(ConfigProcessor.Config config) {
+        if (config == null) {
+            return;
+        }
+        String fbLikeUrl = config.getFbLikeUrl();
+        if (!StringUtil.isEmpty(fbLikeUrl) && isNotLiked()) {
+            mLikeButton.setVisibility(View.VISIBLE);
+            mLikeButton.setObjectIdAndType(fbLikeUrl, LikeView.ObjectType.PAGE);
+            ((ViewGroup)mLikeButton.getChildAt(0)).getChildAt(0).setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    ITracker.Impl.get(ContextHolder.get()).track("like:tap");
+                    PreferenceHelper.set(LIKED_TIME_KEY, System.currentTimeMillis());
+                    return false;
+                }
+            });
+        } else {
+            mLikeButton.setVisibility(View.INVISIBLE);
+        }
+        String plusOneUrl = config.getPlusOneUrl();
+        if (!StringUtil.isEmpty(plusOneUrl) && isNotPlusOne()) {
+            mPlusOneButton.setVisibility(View.VISIBLE);
+            mPlusOneButton.initialize(plusOneUrl, MainActivity.REQUEST_CODE_PLUS);
+            mPlusOneButton.setOnPlusOneClickListener(new PlusOneButton.OnPlusOneClickListener() {
+                @Override
+                public void onPlusOneClick(Intent intent) {
+                    ITracker.Impl.get(ContextHolder.get()).track("plusone:tap");
+                    PreferenceHelper.set(PLUS_ONE_TIME_KEY, System.currentTimeMillis());
+                }
+            });
+        } else {
+            mPlusOneButton.setVisibility(View.INVISIBLE);
+        }
+
+        mCurrentMenuItems.clear();
+        mCurrentMenuItems.add(MenuItem.THEMES);
+        if (!StringUtil.isEmpty(config.getShareUrl())) {
+            mCurrentMenuItems.add(MenuItem.SHARE);
+        }
+        List<ConfigProcessor.Config.Group> groups = config.getGroups();
+        if (groups != null && !groups.isEmpty()) {
+            mCurrentMenuItems.add(MenuItem.JOIN_GROUP);
+        }
+        if (!StringUtil.isEmpty(config.getRateAppUrl())) {
+            mCurrentMenuItems.add(MenuItem.RATE);
+        }
+        if (!StringUtil.isEmpty(config.getProUrl())) {
+            mCurrentMenuItems.add(MenuItem.PLAY_VERSION);
+        }
+        if (!StringUtil.isEmpty(config.getGithubUrl())) {
+            mCurrentMenuItems.add(MenuItem.OPEN_SOURCE);
+        }
+        if (!StringUtil.isEmpty(config.getAboutAppUrl())) {
+            mCurrentMenuItems.add(MenuItem.ABOUT);
+        }
+    }
+
+    private boolean isNotLiked() {
+        long savedTime = PreferenceHelper.getLong(LIKED_TIME_KEY, 0l);
+        return savedTime == 0l || System.currentTimeMillis() - savedTime < DELAY_FOR_HIDE_TIME;
+    }
+
+    private boolean isNotPlusOne() {
+        long savedTime = PreferenceHelper.getLong(PLUS_ONE_TIME_KEY, 0l);
+        return savedTime == 0l || System.currentTimeMillis() - savedTime < DELAY_FOR_HIDE_TIME;
+    }
+
+    private void initHeaderView(Cursor data, FragmentActivity activity) {
+        TextView nameView = (TextView) mHeader.findViewById(R.id.profile_name);
+        ImageView iconView = (ImageView) mHeader.findViewById(R.id.profile_icon);
+        if (!CursorUtils.isEmpty(data)) {
+            String mimeType;
+            String photoUri = StringUtil.EMPTY;
+            String phoneNumber = StringUtil.EMPTY;
+            String givenName = StringUtil.EMPTY;
+            String familyName = StringUtil.EMPTY;
+            String email = StringUtil.EMPTY;
+            data.moveToFirst();
+            do {
+                mimeType = CursorUtils.getString(ContactsContract.Contacts.Data.MIMETYPE, data);
+                switch (mimeType) {
+                    case ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE:
+                        email = CursorUtils.getString(ContactsContract.CommonDataKinds.Email.ADDRESS, data);
+                        break;
+                    case ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE:
+                        givenName = CursorUtils.getString(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME, data);
+                        familyName = CursorUtils.getString(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME, data);
+                        break;
+                    case ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE:
+                        phoneNumber = CursorUtils.getString(ContactsContract.CommonDataKinds.Phone.NUMBER, data);
+                        break;
+                    case ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE:
+                        photoUri = CursorUtils.getString(ContactsContract.CommonDataKinds.Photo.PHOTO_URI, data);
+                        break;
+                }
+            } while (data.moveToNext());
+            String name = StringUtil.join(" ", true, givenName, familyName);
+            if (StringUtil.isEmpty(name) && !StringUtil.isEmpty(email)) {
+                name = email;
+            }
+            if (StringUtil.isEmpty(name)) {
+                if (!StringUtil.isEmpty(phoneNumber)) {
+                    nameView.setText(phoneNumber);
+                } else {
+                    nameView.setText(StringUtil.EMPTY);
+                }
+            } else {
+                if (!StringUtil.isEmpty(phoneNumber)) {
+                    nameView.setText(Html.fromHtml("<b>" + name + "</b><br>" + phoneNumber), TextView.BufferType.SPANNABLE);
+                } else {
+                    nameView.setText(name);
+                }
+            }
+            if (!StringUtil.isEmpty(photoUri)) {
+                Picasso.with(activity).
+                        load(photoUri).
+                        transform(Application.ROUNDED_TRANSFORMATION).
+                        into(iconView);
+                ((View)iconView.getParent()).setVisibility(View.VISIBLE);
+            } else {
+                iconView.setImageDrawable(null);
+                ((View)iconView.getParent()).setVisibility(View.INVISIBLE);
+            }
+        } else {
+            nameView.setText(StringUtil.EMPTY);
+            iconView.setImageDrawable(null);
+            ((View)iconView.getParent()).setVisibility(View.INVISIBLE);
+        }
+    }
+
     public void refreshButtons() {
-        mPlusOneButton.initialize(mShareUrl, MainActivity.REQUEST_CODE_PLUS);
+        if (mConfig != null) {
+            updateAdapter(mConfig);
+        }
     }
 }

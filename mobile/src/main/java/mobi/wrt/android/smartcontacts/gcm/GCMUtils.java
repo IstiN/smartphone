@@ -48,8 +48,8 @@ public class GCMUtils {
         if (resultCode != ConnectionResult.SUCCESS && context instanceof Activity) {
             Activity activity = (Activity)context;
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-                GooglePlayServicesUtil.getErrorDialog(resultCode, (Activity) context,
-                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+                /*GooglePlayServicesUtil.getErrorDialog(resultCode, (Activity) context,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();*/
             } else {
                 activity.finish();
             }

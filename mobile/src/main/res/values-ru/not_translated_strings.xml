@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="choose_theme">Выберите тему</string>
+    <string name="theme">Темы</string>
+
+    <string name="share">Поделиться</string>
+
+    <string name="share_title">Лучшая звонилка для Android!</string>
+    <string name="share_message">Современный интерфейс выплненный в стиле material, умная сортировка контактов и все самые необходимые функции в одном месте.</string>
+
+    <string name="join_to_group">Вступить в группу</string>
+    <string name="rate_app">Оценить приложение</string>
+    <string name="ads_free_version">Без рекламы</string>
+    <string name="about">Про приложение</string>
+    <string name="version">Версия</string>
+
+</resources>

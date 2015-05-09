@@ -4,10 +4,16 @@
     <string name="choose_theme">Choose theme</string>
     <string name="theme">Themes</string>
     <string name="share">Share</string>
-    <string name="share_message">Share message</string>
+
+    <string name="open_source">OpenSource</string>
+
+    <string name="share_title">The best Dialer app for Android!</string>
+    <string name="share_message">Modern, material-styled look, smart sorting of contacts and most useful functions in a single place.</string>
+
     <string name="join_to_group">Join group</string>
     <string name="rate_app">Rate app</string>
     <string name="ads_free_version">Ads free version</string>
     <string name="about">About application</string>
+    <string name="version">Version</string>
 
 </resources>

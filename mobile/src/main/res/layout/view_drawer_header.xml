@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin_16"
         plus:size="standard"
+        android:visibility="invisible"
         android:layout_alignParentRight="true"
         plus:annotation="bubble" />
 
@@ -50,6 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin_16"
+        android:visibility="invisible"
         android:layout_alignParentRight="true"
         />
 

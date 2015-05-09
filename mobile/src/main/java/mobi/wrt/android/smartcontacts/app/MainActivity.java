@@ -1,5 +1,6 @@
 package mobi.wrt.android.smartcontacts.app;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
@@ -114,8 +115,14 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                         if (!mIntentInProgress && !connectionResult.hasResolution()) {
                             try {
                                 mIntentInProgress = true;
-                                startIntentSenderForResult(connectionResult.getResolution().getIntentSender(),
-                                        REQUEST_CODE_RESOLUTION, null, 0, 0, 0);
+                                PendingIntent resolution = connectionResult.getResolution();
+                                if (resolution != null) {
+                                    IntentSender intentSender = resolution.getIntentSender();
+                                    if (intentSender != null) {
+                                        startIntentSenderForResult(intentSender,
+                                                REQUEST_CODE_RESOLUTION, null, 0, 0, 0);
+                                    }
+                                }
                             } catch (IntentSender.SendIntentException e) {
                                 // The intent was canceled before it was sent.  Return to the default
                                 // state and attempt to connect to get an updated ConnectionResult.
@@ -354,7 +361,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
 
         };
         proceedIntent(getIntent());
-        if (UiUtil.hasKitKat()) {
+        if (UiUtil.hasKitKat() && !UiUtil.hasL()) {
             findViewById(R.id.main_container).setPadding(0, UiUtil.getStatusBarHeight(this), 0, 0);
         }
     }
