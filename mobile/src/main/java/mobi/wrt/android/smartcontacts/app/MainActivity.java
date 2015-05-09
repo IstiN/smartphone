@@ -387,6 +387,15 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 showPhone(path);
                 getTracker().track("onShowPhone:intent");
             }
+            String action = intent.getAction();
+            if (action != null && "com.android.phone.action.RECENT_CALLS".equals(action)) {
+                mViewPager.setCurrentItem(1);
+            }
+            String type = intent.getType();
+            if (type != null && "vnd.android.cursor.dir/calls".equals(type)) {
+                mViewPager.setCurrentItem(1);
+                onBackPressed();
+            }
         }
     }
 
