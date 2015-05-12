@@ -11,6 +11,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.text.Html;
 import android.text.format.DateUtils;
+import android.view.InflateException;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,7 +112,11 @@ public class DrawerInitializer {
             @Override
             public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
                 if (mHeader == null) {
-                    mHeader = View.inflate(activity, R.layout.view_drawer_header, null);
+                    try {
+                        mHeader = View.inflate(activity, R.layout.view_drawer_header, null);
+                    } catch (InflateException e) {
+                        mHeader = View.inflate(activity, R.layout.view_drawer_header_without_plus_one, null);
+                    }
                     mPlusOneButton = (PlusOneButton) mHeader.findViewById(R.id.plus_one_button);
                     mLikeButton = (LikeView) mHeader.findViewById(R.id.facebook_button);
 
@@ -119,7 +124,7 @@ public class DrawerInitializer {
                     listView.addHeaderView(mHeader, null, false);
 
                     View footer = View.inflate(activity, R.layout.view_drawer_footer, null);
-                    ((TextView)footer.findViewById(android.R.id.text1)).setText(activity.getString(R.string.version) + ": " + BuildConfig.VERSION_CODE + "(" + BuildConfig.VERSION_NAME+")");
+                    ((TextView)footer.findViewById(android.R.id.text1)).setText(activity.getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE+")");
                     listView.addFooterView(footer, null, false);
 
                     mCurrentMenuItems.clear();
@@ -135,6 +140,13 @@ public class DrawerInitializer {
                                 return view;
                             }
                         };
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                view.setTag(mConfig);
+                                mCurrentMenuItems.get(position - 1).clickListener.onClick(view);
+                            }
+                        });
                         listView.setAdapter(mAdapter);
                     } else {
                         mAdapter.notifyDataSetChanged();
@@ -143,7 +155,6 @@ public class DrawerInitializer {
                     Core.ExecuteOperationBuilder<ConfigProcessor.Config> operationBuilder = new Core.ExecuteOperationBuilder<>();
                     DataSourceRequest pDataSourceRequest = new DataSourceRequest("http://wrt-phone.appspot.com/config");
                     pDataSourceRequest.setCacheable(true);
-                    pDataSourceRequest.setForceUpdateData(true);
                     pDataSourceRequest.setCacheExpiration(DateUtils.DAY_IN_MILLIS);
                     operationBuilder
                             .setActivity(activity)
@@ -182,14 +193,6 @@ public class DrawerInitializer {
                         }
                     });
                     Core.get(activity).execute(operationBuilder.build());
-
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            view.setTag(mConfig);
-                            mCurrentMenuItems.get(position - 1).clickListener.onClick(view);
-                        }
-                    });
                 }
                 initHeaderView(data, activity);
             }
@@ -222,17 +225,21 @@ public class DrawerInitializer {
         }
         String plusOneUrl = config.getPlusOneUrl();
         if (!StringUtil.isEmpty(plusOneUrl) && isNotPlusOne()) {
-            mPlusOneButton.setVisibility(View.VISIBLE);
-            mPlusOneButton.initialize(plusOneUrl, MainActivity.REQUEST_CODE_PLUS);
-            mPlusOneButton.setOnPlusOneClickListener(new PlusOneButton.OnPlusOneClickListener() {
-                @Override
-                public void onPlusOneClick(Intent intent) {
-                    ITracker.Impl.get(ContextHolder.get()).track("plusone:tap");
-                    PreferenceHelper.set(PLUS_ONE_TIME_KEY, System.currentTimeMillis());
-                }
-            });
+            if (mPlusOneButton != null) {
+                mPlusOneButton.setVisibility(View.VISIBLE);
+                mPlusOneButton.initialize(plusOneUrl, MainActivity.REQUEST_CODE_PLUS);
+                mPlusOneButton.setOnPlusOneClickListener(new PlusOneButton.OnPlusOneClickListener() {
+                    @Override
+                    public void onPlusOneClick(Intent intent) {
+                        ITracker.Impl.get(ContextHolder.get()).track("plusone:tap");
+                        PreferenceHelper.set(PLUS_ONE_TIME_KEY, System.currentTimeMillis());
+                    }
+                });
+            }
         } else {
-            mPlusOneButton.setVisibility(View.INVISIBLE);
+            if (mPlusOneButton != null) {
+                mPlusOneButton.setVisibility(View.INVISIBLE);
+            }
         }
 
         mCurrentMenuItems.clear();
@@ -256,6 +263,7 @@ public class DrawerInitializer {
         if (!StringUtil.isEmpty(config.getAboutAppUrl())) {
             mCurrentMenuItems.add(MenuItem.ABOUT);
         }
+        mAdapter.notifyDataSetChanged();
     }
 
     private boolean isNotLiked() {

@@ -67,16 +67,16 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
 
     private View mSearchClear;
 
+    private Handler mHandler = new Handler();
+
+    private Runnable mSearchRunnable = new Runnable() {
+        @Override
+        public void run() {
+            CursorLoaderFragmentHelper.restartLoader(SearchFragment.this);
+        }
+    };
+
     private TextWatcher mWatcher = new TextWatcher() {
-
-        private Handler mHandler = new Handler();
-
-        private Runnable mSearchRunnable = new Runnable() {
-            @Override
-            public void run() {
-                CursorLoaderFragmentHelper.restartLoader(SearchFragment.this);
-            }
-        };
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -312,6 +312,7 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
         if (isCloseRunning) {
             return;
         }
+        mHandler.removeCallbacks(mSearchRunnable);
         isCloseRunning = true;
         animate(1, 0, new SimpleAnimationListener() {
 

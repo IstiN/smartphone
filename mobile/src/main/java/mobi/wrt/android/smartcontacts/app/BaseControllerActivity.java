@@ -1,5 +1,6 @@
 package mobi.wrt.android.smartcontacts.app;
 
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -77,13 +79,21 @@ public class BaseControllerActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_INSERT);
         intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
         intent.putExtra(ContactsContract.Intents.Insert.PHONE, phone);
-        context.startActivity(intent);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(context, "Please install contact application", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void openContact(Long id) {
         Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, String.valueOf(id));
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, "Please install contact application", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onRecentContactClick(View view) {
@@ -93,7 +103,7 @@ public class BaseControllerActivity extends AppCompatActivity {
             getTracker().track("onRecentContactClick:open");
             return;
         }
-        makeCall(BaseControllerActivity.this, (String)tag);
+        makeCall(BaseControllerActivity.this, (String) tag);
         getTracker().track("onRecentContactClick:call");
     }
 
@@ -188,13 +198,21 @@ public class BaseControllerActivity extends AppCompatActivity {
 
     public static void makeCall(Context context, String phone) {
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+StringUtil.encode(phone)));
-        context.startActivity(intent);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(context, "Please install phone application", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static void sendSms(Context context, String phone) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("sms:" + StringUtil.encode(phone)));
-        context.startActivity(intent);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(context, "Please install sms application", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

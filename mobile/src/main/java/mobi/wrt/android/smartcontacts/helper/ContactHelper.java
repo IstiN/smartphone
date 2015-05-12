@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
 
+import com.crashlytics.android.Crashlytics;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -79,15 +81,19 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
 
     private String getContactIdFromNumber(String number) {
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
-        Cursor c = ContextHolder.get().getContentResolver().query(uri, PROJECTION, null, null, null);
-        if (c.moveToFirst()) {
-            String photoUri = CursorUtils.getString(ContactsContract.Contacts.PHOTO_URI, c);
-            Long id = CursorUtils.getLong(ContactsContract.Contacts._ID, c);
-            mContactIdCache.put(number, id);
-            CursorUtils.close(c);
-            return photoUri == null ? StringUtil.EMPTY : photoUri;
-        } else {
-            CursorUtils.close(c);
+        try {
+            Cursor c = ContextHolder.get().getContentResolver().query(uri, PROJECTION, null, null, null);
+            if (c.moveToFirst()) {
+                String photoUri = CursorUtils.getString(ContactsContract.Contacts.PHOTO_URI, c);
+                Long id = CursorUtils.getLong(ContactsContract.Contacts._ID, c);
+                mContactIdCache.put(number, id);
+                CursorUtils.close(c);
+                return photoUri == null ? StringUtil.EMPTY : photoUri;
+            } else {
+                CursorUtils.close(c);
+            }
+        } catch (IllegalArgumentException e) {
+            Crashlytics.logException(new IllegalArgumentException("number:" + number, e));
         }
         return StringUtil.EMPTY;
     }

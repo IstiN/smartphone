@@ -119,7 +119,11 @@ public class SmartAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, Sm
         if (photoUri == null) {
             int color = ColorUtils.calculateColor(name);
             textViewCharacter.setBackgroundColor(color);
-            textViewCharacter.setText(String.valueOf(Character.toUpperCase(name.charAt(0))));
+            if (StringUtil.isEmpty(name)) {
+                textViewCharacter.setText(StringUtil.EMPTY);
+            } else {
+                textViewCharacter.setText(String.valueOf(Character.toUpperCase(name.charAt(0))));
+            }
             UiUtil.setBackground(textView, null);
         } else {
             UiUtil.setBackground(textView, mTextShadow);

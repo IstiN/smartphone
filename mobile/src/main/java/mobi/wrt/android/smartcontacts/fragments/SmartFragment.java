@@ -205,9 +205,13 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
 
     @Override
     public void onLoadFinished(Loader<SmartModel> loader, SmartModel cursor) {
-        this.count = cursor.getCount();
+        if (cursor == null) {
+            this.count = 0;
+        } else {
+            this.count = cursor.getCount();
+        }
         final View recentCallView = getActivity().findViewById(R.id.recent_call);
-        if (!CursorUtils.isEmpty(cursor.mLastCall)) {
+        if (cursor != null && !CursorUtils.isEmpty(cursor.mLastCall)) {
             cursor.mLastCall.moveToFirst();
             RecentAdapter.initItem(new RecentAdapter.Holder(recentCallView), cursor.mLastCall, Picasso.with(recentCallView.getContext()), new View.OnLongClickListener() {
                 @Override

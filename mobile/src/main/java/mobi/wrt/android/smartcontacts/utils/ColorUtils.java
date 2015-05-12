@@ -11,6 +11,8 @@ import android.support.v7.graphics.Palette;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import by.istin.android.xcore.utils.StringUtil;
+
 /**
  * Created by IstiN on 18.02.2015.
  */
@@ -38,6 +40,9 @@ public class ColorUtils {
     };
 
     public static int calculateColorBase(String value) {
+        if (value == null) {
+            value = StringUtil.EMPTY;
+        }
         String opacity = "#ff"; //opacity between 00-ff
         String hexColor = String.format(
                 opacity + "%06X", (0xeeeeee & value.hashCode()));

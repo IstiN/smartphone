@@ -39,8 +39,8 @@ android {
         applicationId "mobi.wrt.android.smartcontacts"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.2"
 
         buildConfigField "String", "MAT_ADVERTISER_ID", MAT_ADVERTISER_ID
         buildConfigField "String", "MAT_CONVERSION_KEY", MAT_CONVERSION_KEY
@@ -79,6 +79,11 @@ android {
                 flavorDimension "market"
                 buildConfigField "String", "MARKET_URL", "\"https://play.google.com/store/apps/details?id=\""
                 buildConfigField "String", "MARKET_VERSION", "\"opera\""
+            }
+            yandex {
+                flavorDimension "market"
+                buildConfigField "String", "MARKET_URL", "\"https://play.google.com/store/apps/details?id=\""
+                buildConfigField "String", "MARKET_VERSION", "\"yandex\""
             }
             samsung {
                 flavorDimension "market"
