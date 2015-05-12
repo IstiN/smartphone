@@ -303,14 +303,23 @@ public class PhoneFragment extends AbstractFragment {
         }
     }
 
+    private String newPhone;
+
     private void setNumber(String phone) {
         if (isValidPhoneNumber(phone)) {
+            if (mEditText == null) {
+                newPhone = phone;
+                return;
+            }
             mEditText.setText(phone);
             mEditText.setSelection(phone.length());
         }
     }
 
     private String getPhone() {
+        if (newPhone != null) {
+            return newPhone;
+        }
         Bundle arguments = getArguments();
         if (arguments != null) {
             return arguments.getString(EXTRA_PHONE);

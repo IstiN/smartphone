@@ -164,7 +164,9 @@ public class DrawerInitializer {
                             .setSuccess(new ISuccess<ConfigProcessor.Config>() {
                                 @Override
                                 public void success(ConfigProcessor.Config config) {
-                                    mConfig = config;
+                                    if (mConfig == null) {
+                                        mConfig = config;
+                                    }
                                     updateAdapter(config);
                                 }
 

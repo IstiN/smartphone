@@ -166,11 +166,13 @@ public class ConfigProcessor extends AbstractGsonProcessor<ConfigProcessor.Confi
 
     @Override
     public void cache(Context context, DataSourceRequest dataSourceRequest, Config config) throws Exception {
-        PreferenceHelper.set(CONFIG_KEY, new Gson().toJson(config));
+        String value = new Gson().toJson(config);
+        PreferenceHelper.set(CONFIG_KEY, value);
     }
 
     public static Config getFromCache() {
-        return new Gson().fromJson(PreferenceHelper.getString(CONFIG_KEY, null), Config.class);
+        String value = PreferenceHelper.getString(CONFIG_KEY, null);
+        return new Gson().fromJson(value, Config.class);
     }
 
     @Override

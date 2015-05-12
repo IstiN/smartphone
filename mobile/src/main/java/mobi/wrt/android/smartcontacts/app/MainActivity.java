@@ -1,6 +1,7 @@
 package mobi.wrt.android.smartcontacts.app;
 
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
@@ -36,6 +37,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import by.istin.android.xcore.analytics.ITracker;
+import by.istin.android.xcore.error.ErrorHandler;
+import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.Intents;
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.ManifestMetadataUtils;
@@ -396,6 +399,29 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 mViewPager.setCurrentItem(1);
                 onBackPressed();
             }
+            /* Bundle extras = intent.getExtras();
+            StringBuilder stringBuilder = new StringBuilder();
+            if (extras != null) {
+                Set<String> strings = extras.keySet();
+                if (strings != null) {
+                    for (String key : strings) {
+                        stringBuilder.append(key + ":" + extras.get(key) + "\n");
+                    }
+                }
+            }
+           final String value = "data:" + data + "\n"
+                    + "type: " + type + "\n"
+                    + "action: " + action + "\n"
+                    + "dataString: " + intent.getDataString() + "\n"
+                    + "extras: " + stringBuilder.toString() + "\n"
+                    ;
+            DialogBuilder.simple(this, value, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent sendEmailIntent = ErrorHandler.getSendEmailIntent("istin2007@gmail.com", null, "Logs", value, null);
+                    startActivity(sendEmailIntent);
+                }
+            });*/
         }
     }
 

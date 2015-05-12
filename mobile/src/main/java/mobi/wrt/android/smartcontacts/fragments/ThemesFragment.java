@@ -59,7 +59,7 @@ public class ThemesFragment extends AbstractFragment {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 ImageView imageView = (ImageView) view.findViewById(R.id.icon);
-                String path = "https://dl.dropboxusercontent.com/u/16403954/smartphone/themes/" + finalImageWidth + "/" + values[position].name() + ".jpeg";
+                String path = "http://robust-window-94306.appspot.com/themes/" + finalImageWidth + "/" + values[position].name() + ".jpeg";
                 Picasso.with(getActivity()).load(path).into(imageView);
                 return view;
             }
