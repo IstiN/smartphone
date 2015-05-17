@@ -140,6 +140,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 .build();
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
+        mAdsProvider.onCreate(this);
         setContentView(R.layout.activity_main);
 
         // Initialize MAT
@@ -147,7 +148,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 BuildConfig.MAT_ADVERTISER_ID,
                 BuildConfig.MAT_CONVERSION_KEY);
 
-        mAdsProvider.onCreate(this);
+
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
