@@ -206,7 +206,11 @@ public class PhoneFragment extends AbstractFragment {
                                                     mQuickPhoneCall.setVisibility(View.INVISIBLE);
                                                 } else {
                                                     mQuickPhoneCall.setVisibility(View.VISIBLE);
-                                                    characterView.setText(displayName == null ? "?" : String.valueOf(Character.toUpperCase(displayName.charAt(0))));
+                                                    if (StringUtil.isEmpty(displayName)) {
+                                                        characterView.setText(StringUtil.EMPTY);
+                                                    } else {
+                                                        characterView.setText(displayName == null ? "?" : String.valueOf(Character.toUpperCase(displayName.charAt(0))));
+                                                    }
                                                 }
                                                 UiUtil.setBackground(imageView, ColorUtils.getColorCircle(imageView.getHeight(), displayName));
                                             } else {
@@ -442,6 +446,9 @@ public class PhoneFragment extends AbstractFragment {
             public void onAnimationEnd(Animator animation) {
                 FragmentActivity activity = getActivity();
                 if (activity == null) {
+                    return;
+                }
+                if (activity.isFinishing()) {
                     return;
                 }
                 activity.getSupportFragmentManager().popBackStackImmediate();

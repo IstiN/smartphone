@@ -109,7 +109,7 @@ public class ContactsFragment extends RecyclerViewFragment<ContactsAdapter.Holde
                         pos = firstVisibleItemPosition + 1;
                     }
                     ContactsModel modelByPosition = adapter.getModelByPosition(pos);
-                    if (modelByPosition.getInt(ContactsContract.Contacts.STARRED) == 0) {
+                    if (!CursorUtils.isEmpty(modelByPosition) && modelByPosition.getInt(ContactsContract.Contacts.STARRED) == 0) {
                         scrollCharacterCard.removeCallbacks(hideRunnable);
                         scrollCharacterCard.setVisibility(View.VISIBLE);
                         scrollCharacterCard.postDelayed(hideRunnable, 1000l);

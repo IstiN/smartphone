@@ -21,6 +21,9 @@ public class ColorUtils {
     private static ConcurrentHashMap<String, Drawable> sCache = new ConcurrentHashMap<>();
 
     public static Drawable getColorCircle(int size, String value) {
+        if (value == null) {
+            value = StringUtil.EMPTY;
+        }
         Drawable drawable = sCache.get(value);
         if (drawable != null) {
             return drawable;

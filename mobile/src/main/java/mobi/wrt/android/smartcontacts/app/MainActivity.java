@@ -449,6 +449,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                     args.putString(PhoneFragment.EXTRA_PHONE, phoneNumber);
                     fragment.setArguments(args);
                 }
+                if (isFinishing()) {
+                    return;
+                }
                 getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container, fragment).commit();
             }
         }, 200l);

@@ -330,6 +330,12 @@ public class SearchFragment extends RecyclerViewFragment<RecyclerView.ViewHolder
     }
 
     @Override
+    public void onDetach() {
+        mHandler.removeCallbacks(mSearchRunnable);
+        super.onDetach();
+    }
+
+    @Override
     public Uri getUri() {
         if (StringUtil.isEmpty(mSearchQuery)) {
             return null;

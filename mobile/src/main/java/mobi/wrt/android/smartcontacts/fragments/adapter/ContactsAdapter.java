@@ -83,8 +83,13 @@ public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, 
         getPicasso().load(photoUri).into(holder.mImageView);
 
         if (StringUtil.isEmpty(photoUri)) {
-            holder.mCharacterView.setText(String.valueOf(Character.toUpperCase(name.charAt(0))));
-            UiUtil.setBackground(holder.mImageView, ColorUtils.getColorCircle(holder.mImageView.getHeight(), name));
+            if (name == null) {
+                holder.mCharacterView.setText(StringUtil.EMPTY);
+                UiUtil.setBackground(holder.mImageView, ColorUtils.getColorCircle(holder.mImageView.getHeight(), StringUtil.EMPTY));
+            } else {
+                holder.mCharacterView.setText(String.valueOf(Character.toUpperCase(name.charAt(0))));
+                UiUtil.setBackground(holder.mImageView, ColorUtils.getColorCircle(holder.mImageView.getHeight(), name));
+            }
         } else {
             holder.mCharacterView.setText(StringUtil.EMPTY);
             UiUtil.setBackground(holder.mImageView, null);

@@ -80,10 +80,13 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
     }
 
     private String getContactIdFromNumber(String number) {
+        if (StringUtil.isEmpty(number)) {
+            return StringUtil.EMPTY;
+        }
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
         try {
             Cursor c = ContextHolder.get().getContentResolver().query(uri, PROJECTION, null, null, null);
-            if (c.moveToFirst()) {
+            if (!CursorUtils.isEmpty(c) && c.moveToFirst()) {
                 String photoUri = CursorUtils.getString(ContactsContract.Contacts.PHOTO_URI, c);
                 Long id = CursorUtils.getLong(ContactsContract.Contacts._ID, c);
                 mContactIdCache.put(number, id);

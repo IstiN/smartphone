@@ -40,7 +40,9 @@ public class Application extends CoreApplication {
             }
 
             Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
-
+            if (bitmap == null) {
+                return source;
+            }
             Canvas canvas = new Canvas(bitmap);
 
             Paint paint = new Paint();
