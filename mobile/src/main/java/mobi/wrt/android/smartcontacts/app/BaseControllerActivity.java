@@ -9,6 +9,7 @@ import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
@@ -25,6 +26,7 @@ import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
+import mobi.wrt.android.smartcontacts.fragments.SearchFragment;
 import mobi.wrt.android.smartcontacts.helper.ContactHelper;
 import mobi.wrt.android.smartcontacts.utils.ThemeUtils;
 
@@ -102,6 +104,13 @@ public class BaseControllerActivity extends AppCompatActivity {
             openContact((Long)tag);
             getTracker().track("onRecentContactClick:open");
             return;
+        }
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if (fragment != null) {
+            if (fragment instanceof SearchFragment) {
+                getTracker().track("onSearchContactCallClick");
+                ((SearchFragment) fragment).closeSearch();
+            }
         }
         makeCall(BaseControllerActivity.this, (String) tag);
         getTracker().track("onRecentContactClick:call");
