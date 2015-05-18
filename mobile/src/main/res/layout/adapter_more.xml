@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:onClick="onRecentMoreClick"
-        android:layout_marginBottom="72dip">
+        >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

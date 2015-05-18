@@ -341,7 +341,8 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         };
         proceedIntent(getIntent());
         if (UiUtil.hasKitKat() && !UiUtil.hasL()) {
-            findViewById(R.id.main_container).setPadding(0, UiUtil.getStatusBarHeight(this), 0, 0);
+            View mainContainer = findViewById(R.id.main_container);
+            mainContainer.setPadding(0, UiUtil.getStatusBarHeight(this), 0, 0);
         }
     }
 
@@ -504,7 +505,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
         } else {
             recyclerView.setOnScrollListener(mFloatHeaderScrollListener);
         }
-        recyclerView.setPadding(0, mAdditionalAdapterHeight, 0, 0);
+        recyclerView.setPadding(recyclerView.getPaddingTop(), mAdditionalAdapterHeight, recyclerView.getPaddingRight(), recyclerView.getPaddingBottom());
         mRecyclerViews.add(recyclerView);
     }
 

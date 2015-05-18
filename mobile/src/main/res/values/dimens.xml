@@ -1,5 +1,7 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="bottom_float_btn_padding">96dip</dimen>
     <dimen name="height_recent_call">66dp</dimen>
     <dimen name="height_search_bar">54dp</dimen>
     <dimen name="default_size_54">64dp</dimen>
