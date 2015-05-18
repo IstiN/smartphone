@@ -14,7 +14,6 @@ import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.ContactsFragment;
-import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 import mobi.wrt.android.smartcontacts.utils.ColorUtils;
 
 /**
@@ -26,8 +25,8 @@ public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, 
 
     private Drawable mStarOutlineDrawable;
 
-    public ContactsAdapter(ContactsFragment.ContactsModel cursors, int topPadding, IFloatHeader floatHeader) {
-        super(cursors, topPadding, floatHeader);
+    public ContactsAdapter(ContactsFragment.ContactsModel cursors) {
+        super(cursors);
         mStarDrawable = ContextHolder.get().getResources().getDrawable(R.drawable.ic_star);
         mStarOutlineDrawable = ContextHolder.get().getResources().getDrawable(R.drawable.ic_star_outline);
     }
@@ -63,7 +62,6 @@ public class ContactsAdapter extends FloatHeaderAdapter<ContactsAdapter.Holder, 
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        super.onBindViewHolder(holder, position);
         ContactsFragment.ContactsModel cursorModel = getModelByPosition(position);
         String name = cursorModel.getString(ContactsContract.Contacts.DISPLAY_NAME);
         String photoUri = cursorModel.getString(ContactsContract.Contacts.PHOTO_URI);

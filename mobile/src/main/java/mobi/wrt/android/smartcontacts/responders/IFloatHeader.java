@@ -10,9 +10,6 @@ import mobi.wrt.android.smartcontacts.view.GroupOnScrollListener;
  */
 public interface IFloatHeader {
 
-    int attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView);
+    void attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView);
 
-    void addTopView(View view);
-
-    void removeTopView(View view);
 }

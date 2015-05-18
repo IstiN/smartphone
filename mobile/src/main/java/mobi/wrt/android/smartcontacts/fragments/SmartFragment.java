@@ -177,7 +177,8 @@ public class SmartFragment extends RecyclerViewFragment<RecyclerView.ViewHolder,
     @Override
     public SmartAdapter createAdapter(FragmentActivity fragmentActivity, SmartModel cursor) {
         IFloatHeader firstResponderFor = findFirstResponderFor(IFloatHeader.class);
-        return new SmartAdapter(cursor, firstResponderFor.attach(null, getCollectionView()), firstResponderFor);
+        firstResponderFor.attach(null, getCollectionView());
+        return new SmartAdapter(cursor);
     }
 
     private int count;

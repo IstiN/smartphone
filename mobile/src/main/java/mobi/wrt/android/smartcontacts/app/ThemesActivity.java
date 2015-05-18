@@ -41,17 +41,8 @@ public class ThemesActivity extends BaseControllerActivity implements IFloatHead
     }
 
     @Override
-    public int attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView) {
-        return 0;
-    }
-
-    @Override
-    public void addTopView(View view) {
+    public void attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView) {
 
     }
 
-    @Override
-    public void removeTopView(View view) {
-
-    }
 }

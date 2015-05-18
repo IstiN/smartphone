@@ -55,8 +55,8 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
 
     private boolean isLimit = true;
 
-    public RecentAdapter(RecentFragment.RecentModel model, int topPadding, IFloatHeader floatHeader, boolean isLimit) {
-        super(model, topPadding, floatHeader);
+    public RecentAdapter(RecentFragment.RecentModel model, boolean isLimit) {
+        super(model);
         this.isLimit = isLimit;
     }
 
@@ -155,7 +155,6 @@ public class RecentAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, R
         if (position == getItemCount() - 1) {
             return;
         }
-        super.onBindViewHolder(holder, position);
         RecentFragment.RecentModel modelByPosition = getModelByPosition(position);
         int viewType = getViewType(modelByPosition);
         if (viewType == VIEW_TYPE_NUMBER) {

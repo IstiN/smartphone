@@ -80,7 +80,7 @@ public class ContactsFragment extends RecyclerViewFragment<ContactsAdapter.Holde
         IFloatHeader firstResponderFor = findFirstResponderFor(IFloatHeader.class);
         final View scrollCharacterCard = getView().findViewById(R.id.scrollCharacterCard);
         final TextView scrollCharacter = (TextView) getView().findViewById(R.id.scrollCharacter);
-        int attach = firstResponderFor.attach(new RecyclerView.OnScrollListener() {
+        firstResponderFor.attach(new RecyclerView.OnScrollListener() {
 
             private Runnable hideRunnable = new Runnable() {
 
@@ -118,7 +118,7 @@ public class ContactsFragment extends RecyclerViewFragment<ContactsAdapter.Holde
                 }
             }
         }, getCollectionView());
-        return new ContactsAdapter(cursor, attach, firstResponderFor);
+        return new ContactsAdapter(cursor);
     }
 
     @Override

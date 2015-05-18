@@ -14,8 +14,6 @@ import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.SmartFragment;
-import mobi.wrt.android.smartcontacts.helper.ContactHelper;
-import mobi.wrt.android.smartcontacts.responders.IFloatHeader;
 import mobi.wrt.android.smartcontacts.utils.ColorUtils;
 
 /**
@@ -32,8 +30,8 @@ public class SmartAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, Sm
 
     private Drawable mTextShadow;
 
-    public SmartAdapter(SmartFragment.SmartModel cursors, int topPadding, IFloatHeader floatHeader) {
-        super(cursors, topPadding, floatHeader);
+    public SmartAdapter(SmartFragment.SmartModel cursors) {
+        super(cursors);
         smartContactHeight = ContextHolder.get().getResources().getDimensionPixelSize(R.dimen.smart_contact_height);
         mTextShadow = ContextHolder.get().getResources().getDrawable(R.drawable.bg_smart_text);
     }
@@ -96,7 +94,6 @@ public class SmartAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, Sm
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        super.onBindViewHolder(holder, position);
         if (getItemViewType(position) == FOOTER_VIEW_TYPE) {
             View itemView = holder.itemView;
             ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
@@ -134,16 +131,6 @@ public class SmartAdapter extends FloatHeaderAdapter<RecyclerView.ViewHolder, Sm
         Long id = cursorModel.getLong(ContactsContract.Contacts._ID);
         regularHolder.mClickableView.setTag(id);
         regularHolder.mMoreView.setTag(id);
-    }
-
-    @Override
-    protected boolean isFloatPosition(int position) {
-        return position == 0 || position == 1;
-    }
-
-    @Override
-    protected int getFloatPositionCount() {
-        return 2;
     }
 
     @Override

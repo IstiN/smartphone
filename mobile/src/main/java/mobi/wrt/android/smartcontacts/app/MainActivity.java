@@ -1,10 +1,8 @@
 package mobi.wrt.android.smartcontacts.app;
 
-import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
@@ -18,7 +16,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.telecom.TelecomManager;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,8 +39,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import by.istin.android.xcore.analytics.ITracker;
-import by.istin.android.xcore.error.ErrorHandler;
-import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.Intents;
 import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.ManifestMetadataUtils;
@@ -309,6 +304,9 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == 1) {
+                    if (mCurrentView != null) {
+                        return;
+                    }
                     mCurrentView = recyclerView;
                     maxHeight = - (defaultMarginSmall + floatHeaderContainer.getHeight() - defaultMargin);
                     mHeaderLayoutParams = (LinearLayout.LayoutParams) floatHeaderContainer.getLayoutParams();
@@ -338,32 +336,7 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 floatHeaderContainer.setLayoutParams(mHeaderLayoutParams);
                 for (RecyclerView view : mRecyclerViews) {
                     if (view != recyclerView) {
-                        RecyclerView.LayoutManager layoutManager = view.getLayoutManager();
-                        //if (layoutManager instanceof LinearLayoutManager) {
-                            LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
-                            int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
-                            if (firstVisibleItemPosition == 0) {
-                                //we don't need to scroll if we already don't see first item
-                                linearLayoutManager.scrollToPositionWithOffset(0, newTopMargin);
-                            }
-                        /*} else if (layoutManager instanceof StaggeredGridLayoutManager) {
-                            Log.xd(MainActivity.this, "new " + newTopMargin);
-                            StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) layoutManager;
-                            try {
-                                int[] firstVisibleItemPositions = staggeredGridLayoutManager.findFirstCompletelyVisibleItemPositions(null);
-                                if (firstVisibleItemPositions != null) {
-                                    for (int pos : firstVisibleItemPositions) {
-                                        if (pos < 3) {
-                                            //we don't need to scroll if we already don't see first item
-                                            staggeredGridLayoutManager.scrollToPositionWithOffset(0, newTopMargin);
-                                            break;
-                                        }
-                                    }
-                                }
-                            } catch (NullPointerException e) {
-                                //staggeredgrid manager has a bug
-                            }
-                        }*/
+                        view.scrollBy(dx, dy);
                     }
                 }
             }
@@ -407,34 +380,10 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 onBackPressed();
             }
             removeMissedCallNotifications(this);
-            /* Bundle extras = intent.getExtras();
-            StringBuilder stringBuilder = new StringBuilder();
-            if (extras != null) {
-                Set<String> strings = extras.keySet();
-                if (strings != null) {
-                    for (String key : strings) {
-                        stringBuilder.append(key + ":" + extras.get(key) + "\n");
-                    }
-                }
-            }
-           final String value = "data:" + data + "\n"
-                    + "type: " + type + "\n"
-                    + "action: " + action + "\n"
-                    + "dataString: " + intent.getDataString() + "\n"
-                    + "extras: " + stringBuilder.toString() + "\n"
-                    ;
-            DialogBuilder.simple(this, value, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Intent sendEmailIntent = ErrorHandler.getSendEmailIntent("istin2007@gmail.com", null, "Logs", value, null);
-                    startActivity(sendEmailIntent);
-                }
-            });*/
         }
     }
 
     /** Removes the missed call notifications. */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static void removeMissedCallNotifications(final Context context) {
         // Clear the list of new missed calls.
         new Thread(new Runnable() {
@@ -573,23 +522,14 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
     }
 
     @Override
-    public int attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView) {
+    public void attach(RecyclerView.OnScrollListener scrollListener, RecyclerView recyclerView) {
         if (scrollListener != null) {
             recyclerView.setOnScrollListener(new GroupOnScrollListener(scrollListener, mFloatHeaderScrollListener));
         } else {
             recyclerView.setOnScrollListener(mFloatHeaderScrollListener);
         }
-
+        recyclerView.setPadding(0, mAdditionalAdapterHeight, 0, 0);
         mRecyclerViews.add(recyclerView);
-        return mAdditionalAdapterHeight;
-    }
-
-    @Override
-    public void addTopView(View view) {
-    }
-
-    @Override
-    public void removeTopView(View view) {
     }
 
     @Override
