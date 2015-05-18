@@ -1,12 +1,16 @@
 package mobi.wrt.android.smartcontacts.app;
 
+import android.annotation.TargetApi;
 import android.app.PendingIntent;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.CallLog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -14,6 +18,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telecom.TelecomManager;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -392,14 +397,16 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 getTracker().track("onShowPhone:intent");
             }
             String action = intent.getAction();
+            String type = intent.getType();
             if (action != null && "com.android.phone.action.RECENT_CALLS".equals(action)) {
                 mViewPager.setCurrentItem(1);
-            }
-            String type = intent.getType();
-            if (type != null && "vnd.android.cursor.dir/calls".equals(type)) {
+            } else if ("android.intent.action.VIEW".equals(action) && "vnd.android.cursor.dir/calls".equals(type)) {
+                mViewPager.setCurrentItem(1);
+            } else if (type != null && "vnd.android.cursor.dir/calls".equals(type)) {
                 mViewPager.setCurrentItem(1);
                 onBackPressed();
             }
+            removeMissedCallNotifications(this);
             /* Bundle extras = intent.getExtras();
             StringBuilder stringBuilder = new StringBuilder();
             if (extras != null) {
@@ -424,6 +431,27 @@ public class MainActivity extends BaseControllerActivity implements IFloatHeader
                 }
             });*/
         }
+    }
+
+    /** Removes the missed call notifications. */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public static void removeMissedCallNotifications(final Context context) {
+        // Clear the list of new missed calls.
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ContentValues values = new ContentValues();
+                values.put(CallLog.Calls.NEW, 0);
+                values.put(CallLog.Calls.IS_READ, 1);
+                StringBuilder where = new StringBuilder();
+                where.append(CallLog.Calls.NEW);
+                where.append(" = 1 AND ");
+                where.append(CallLog.Calls.TYPE);
+                where.append(" = ?");
+                context.getContentResolver().update(CallLog.Calls.CONTENT_URI, values, where.toString(),
+                        new String[]{ Integer.toString(CallLog.Calls.MISSED_TYPE) });
+            }
+        }).start();
     }
 
     private void showPhone(final String phoneNumber) {
