@@ -1,5 +1,6 @@
 package mobi.wrt.android.smartcontacts.drawer;
 
+import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -36,6 +37,7 @@ import by.istin.android.xcore.preference.PreferenceHelper;
 import by.istin.android.xcore.source.DataSourceRequest;
 import by.istin.android.xcore.source.impl.http.HttpAndroidDataSource;
 import by.istin.android.xcore.utils.CursorUtils;
+import by.istin.android.xcore.utils.Log;
 import by.istin.android.xcore.utils.StringUtil;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.Application;
@@ -68,6 +70,7 @@ public class DrawerInitializer {
     public static final long DELAY_FOR_HIDE_TIME = 2 * DateUtils.MINUTE_IN_MILLIS;
 
     private final String[] PROJECTION = {
+            ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID,
             ContactsContract.CommonDataKinds.Email.ADDRESS,
             ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
             ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
@@ -124,7 +127,7 @@ public class DrawerInitializer {
                     listView.addHeaderView(mHeader, null, false);
 
                     View footer = View.inflate(activity, R.layout.view_drawer_footer, null);
-                    ((TextView)footer.findViewById(android.R.id.text1)).setText(activity.getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE+")");
+                    ((TextView) footer.findViewById(android.R.id.text1)).setText(activity.getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE + ")");
                     listView.addFooterView(footer, null, false);
 
                     mCurrentMenuItems.clear();
@@ -289,7 +292,11 @@ public class DrawerInitializer {
             String familyName = StringUtil.EMPTY;
             String email = StringUtil.EMPTY;
             data.moveToFirst();
+            String id = null;
             do {
+                if (id == null) {
+                    id = CursorUtils.getString(ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID, data);
+                }
                 mimeType = CursorUtils.getString(ContactsContract.Contacts.Data.MIMETYPE, data);
                 switch (mimeType) {
                     case ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE:
@@ -307,6 +314,20 @@ public class DrawerInitializer {
                         break;
                 }
             } while (data.moveToNext());
+            if (!StringUtil.isEmpty(id)) {
+                /*
+                TODO find solution later. Doesn't work now.
+                final Intent currentProfileEditIntent = new Intent(Intent.ACTION_EDIT);
+                Uri contactUri = ContentUris.withAppendedId(ContactsContract.Profile.CONTENT_URI, Long.valueOf(id));
+                currentProfileEditIntent.setDataAndType(contactUri, ContactsContract.RawContacts.CONTENT_ITEM_TYPE);
+                mHeader.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        v.getContext().startActivity(currentProfileEditIntent);
+                    }
+                });
+                */
+            }
             String name = StringUtil.join(" ", true, givenName, familyName);
             if (StringUtil.isEmpty(name) && !StringUtil.isEmpty(email)) {
                 name = email;
