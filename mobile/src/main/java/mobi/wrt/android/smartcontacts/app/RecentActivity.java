@@ -1,11 +1,17 @@
 package mobi.wrt.android.smartcontacts.app;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.os.Handler;
+import android.provider.CallLog;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 
+import by.istin.android.xcore.ContextHolder;
+import by.istin.android.xcore.analytics.ITracker;
+import by.istin.android.xcore.ui.DialogBuilder;
 import by.istin.android.xcore.utils.UiUtil;
 import mobi.wrt.android.smartcontacts.R;
 import mobi.wrt.android.smartcontacts.fragments.RecentFragment;
@@ -38,4 +44,32 @@ public class RecentActivity extends BaseControllerActivity implements IFloatHead
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_recent, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_clear_all) {
+            DialogBuilder.confirm(this, getString(R.string.clearCallLogConfirmation_title), getString(R.string.clearCallLogConfirmation), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ITracker.Impl.get(RecentActivity.this).track("removeCallLogAll");
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getContentResolver().delete(android.provider.CallLog.Calls.CONTENT_URI, null, null) ;
+                        }
+                    }).start();
+                }
+            });
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

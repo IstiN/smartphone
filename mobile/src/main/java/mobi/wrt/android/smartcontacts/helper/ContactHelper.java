@@ -123,7 +123,7 @@ public class ContactHelper implements XCoreHelper.IAppServiceKey {
 
     public void removeCallLog(final Context context, final Long id, final Runnable runnable) {
         final Handler handler = new Handler();
-        DialogBuilder.confirm(context, context.getString(R.string.clearCallLogConfirmation_title), context.getString(R.string.clearCallLogConfirmation_title), new DialogInterface.OnClickListener() {
+        DialogBuilder.confirm(context, context.getString(R.string.clearCallLogConfirmation_title), context.getString(R.string.recentCalls_removeFromRecentList), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ITracker.Impl.get(context).track("removeCallLog");

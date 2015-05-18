@@ -4,6 +4,7 @@
 package mobi.wrt.android.smartcontacts.utils;
 
 import android.text.format.DateUtils;
+import android.text.format.Time;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,26 +33,22 @@ public class HumanTimeUtil {
 				DateUtils.MINUTE_IN_MILLIS,
 				DateUtils.FORMAT_ABBREV_RELATIVE);
 	}
-	
+
+	private static final Time TIME = new Time();
+
 	public static String humanFriendlyDateHeader(Long date) {
-		// today
-		Date today = new Date();
-		
-		// how much time since (ms)
-		Long duration = today.getTime() - date;
-		
-		long second = 1000;
-		long minute = second * 60;
-		long hour = minute * 60;
-		long day = hour * 24;
-		
-		if (duration < day) {
+		long currentTime = System.currentTimeMillis();
+		TIME.set(date);
+		int startDay = Time.getJulianDay(date, TIME.gmtoff);
+		TIME.set(currentTime);
+		int currentDay = Time.getJulianDay(currentTime, TIME.gmtoff);
+		int difference = Math.abs(currentDay - startDay);
+		if (difference == 0) {
 			return ContextHolder.get().getString(R.string.call_log_header_today);
 		}
-		if (duration > day && duration < day * 2l) {
+		if (difference == 1) {
 			return ContextHolder.get().getString(R.string.call_log_header_yesterday);
 		}
-
         return ContextHolder.get().getString(R.string.call_log_header_other);
 	}
 
