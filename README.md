@@ -12,6 +12,8 @@ App includes about 40 lights and dark themes
  * copy gradle.properties from root folder to mobile
  * change in gradle.properties following to yours values
 
+# Configure
+
     GOOGLE_ANALYTICS_KEY=\"[GOOGLE_ANALYTICS_KEY]\"
     FLURRY_KEY=\"[FLURRY_KEY]\"
     MAT_ADVERTISER_ID=\"[MAT_ADVERTISER_ID]\"
