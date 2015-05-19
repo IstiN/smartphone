@@ -1,0 +1,34 @@
+
+    Material Design Dialer.
+    Copyright © 2015 Uladzimir Klyshevich.
+
+    The code in that repository is mainly covered by *GPLv3*, except some 3rd party libs and resources.
+    ATTENTION: please be aware that some artwork has proprietary license.
+    EXCEPTION of GPLv3:
+    * Publishing applications using the Material Design Dialer GPLv3 code to Google Play, Amazon Market or Apple Store should be done with written permission*
+
+    Main AUTHORS (more detailed list in AUTHORS):
+        Uladzimir Klyshevich – all parts of the project, originator
+
+    -------------------------- GPLv3 ----------------------------------
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    -------------------------------------------------------------------
+
+
+    * Source code in main repositories is covered by GPLv3
+
+    * 3rd party libraries present in the libs folder and dependecies in build gradle covered by apache licenses
+
+    * Pull-requests and translations:
+        - All pull requests are accepted under Apache 2.0 License
