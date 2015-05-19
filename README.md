@@ -8,9 +8,9 @@ App includes about 40 lights and dark themes
 
 ## Instructions for project setup
 
-    * use SourceTree for checkout, or make sure that all submodules downloaded correct
-    * copy gradle.properties from root folder to mobile
-    * change in gradle.properties following to yours values
+ * use SourceTree for checkout, or make sure that all submodules downloaded correct
+ * copy gradle.properties from root folder to mobile
+ * change in gradle.properties following to yours values
 
     GOOGLE_ANALYTICS_KEY=\"[GOOGLE_ANALYTICS_KEY]\"
     FLURRY_KEY=\"[FLURRY_KEY]\"
@@ -25,11 +25,11 @@ App includes about 40 lights and dark themes
     KEYSTORE_PASSWORD=password
 
 
-Regards.
+Have fun.
 
 ## License
 
-    <https://github.com/IstiN/smartphone/blob/master/LICENSE>
+ <https://github.com/IstiN/smartphone/blob/master/LICENSE.txt>
 
     Copyright © 2015 Uladzimir Klyshevich.
 
