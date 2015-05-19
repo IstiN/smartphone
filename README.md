@@ -35,6 +35,14 @@ Have fun.
 
     Copyright © 2015 Uladzimir Klyshevich.
 
+    The code in that repository is mainly covered by *GPLv3*, except some 3rd party libs and resources.
+    ATTENTION: please be aware that some artwork has proprietary license.
+    EXCEPTION of GPLv3:
+    * Publishing applications using the Material Design Dialer GPLv3 code to Google Play, Amazon Market or Apple     Store should be done with written permission*
+
+    Main AUTHORS (more detailed list in AUTHORS):
+        Uladzimir Klyshevich – all parts of the project, originator
+        
     -------------------------- GPLv3 ----------------------------------
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
