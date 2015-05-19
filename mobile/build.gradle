@@ -39,8 +39,8 @@ android {
         applicationId "mobi.wrt.android.smartcontacts"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 5
-        versionName "1.0.4"
+        versionCode 6
+        versionName "1.0.5"
 
         buildConfigField "String", "MAT_ADVERTISER_ID", MAT_ADVERTISER_ID
         buildConfigField "String", "MAT_CONVERSION_KEY", MAT_CONVERSION_KEY
